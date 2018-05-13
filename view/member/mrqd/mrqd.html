@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Shopex Onex B2B2C</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" href="../../../css/style.css">
+	    <style type="text/css">
+	    	.jf-div{
+	    		margin-top: 2.8rem;
+	    		background-image: url(../../../img/mrqd/jf.png);
+	    		background-size:100% 7.2rem;
+				background-repeat:no-repeat;
+	    		height: 7.2rem;
+	    		text-align: center;
+	    		padding: 3.7rem 0rem 0rem 0.4rem ;
+	    	}
+	    	.jf-div span{
+	    		color: #f79754;
+	    		font-weight: bold;
+	    		font-size:1.4rem ;
+	    	}
+	    	/*内容css*/
+	    	.top-div{
+	    		background-color: #FFFFFF;	
+	    		padding: 1rem 0rem 1rem 1rem;
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    		border-bottom: 1px solid #CCCCCC;
+	    	}
+	    	.top-div-left{
+	    		flex: 3;
+	    	}
+	    	.top-div-left-span{
+	    		color: #1F1F1F;
+	    		font-size: 1rem;
+	    	}
+	    	.top-div-left-img{
+	    		width: 0.5rem;
+	    	}
+	    	.top-div-right{
+	    		flex: 1;
+	    	}
+	    	.top-div-right-content{
+	    		background-color: #2AB673;
+	    		border-top-left-radius:1.5rem;
+	    		border-bottom-left-radius:1.5rem;
+	    		align-content: flex-end;
+	    		align-items: center;
+	    		padding: 0.3rem 0rem 0.3rem 0rem;
+	    	}
+	    	.top-div-right-content-img{
+	    		width:1rem;
+	    		margin-left: 1rem;
+	    		margin-top: 0.2rem;
+	    	}
+	    	.top-div-right-content-text{
+	    		color: #FFFFFF;
+	    		font-size: 0.8rem;
+	    	}
+	    	.top-center-calendar{
+	    		background-color: #FFFFFF;	
+	    		padding: 1rem 1rem 1rem 1rem;
+	    	}
+	    	.top-center-calendar-date{
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    		text-align: center;
+	    	}
+	    	.top-center-calendar-date-span{
+	    		color: #1F1F1F;
+	    		flex: 1;
+	    		font-size: 0.8rem;
+	    	}
+	    	.top-center-calendar-day{
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    		text-align: center;
+	    	}
+	    	.top-center-calendar-day-span{
+	    		color: #AAAAAA;
+	    		flex: 1;
+	    		font-size: 0.6rem;
+	    		line-height: 2rem;
+	    	}
+	    	.top-center-calendar-day-span1{
+	    		color: #666666;
+	    		flex: 1;
+	    		font-size: 0.6rem;
+	    		line-height: 2rem;
+	    	}
+	    	.top-center-calendar-day-span2{
+	    		color: #FFFFFF;
+	    		flex: 1;
+	    		font-size: 0.8rem;
+	    		line-height: 1.5rem;
+	    		display:-webkit-box;
+	    		-webkit-box-pack:center;
+	    		-webkit-box-orient: horizontal;
+	    	}
+	    	.top-center-calendar-day-span2 div{
+	    		background-color: #2AB673;
+	    		border-radius: 50%;
+	    		width: 1.5rem;
+	    		height: 1.5rem;
+	    	}
+	    	.top-center-calendar-button{
+	    		text-align: center;
+	    		padding: 1rem 5rem 1rem 5rem;
+	    	}
+	    	.top-center-calendar-button-span{
+	    		font-size: 1.2rem;
+	    		color: #FFFFFF;
+	    		background-color: #2AB673;
+	    		padding: 0.5rem 0rem 0.5rem 0rem;
+	    		border-radius: 2rem;
+	    	}
+	    	.bottom-div{
+	    		padding: 1rem;
+	    		background-color: #FFFFFF;
+	    		border-bottom: 1px solid #CCCCCC;
+	    	}
+	    	.bottom-div-title{
+	    		color: #333333;
+	    		font-size: 1rem;
+	    		font-weight: bold;
+	    	}
+	    	.bottom-div-contain{
+	    		color: #666666;
+	    		font-size: 0.8rem;
+	    	}
+	    </style>
+	</head>
+	<body>
+		<header class="page-header">
+	      <img class="header-img" src="../../../img/register/back.png"/>
+	      <div class="header-title">每日签到</div>
+	    </header>
+	    <section class="jf-div">
+	    	<span>20</span>
+	    </section>
+	    <section>
+	    	<div class="top-div">
+	    		<div class="top-div-left">
+	    			<span class="top-div-left-span">十二月</span>
+	    			<img class="top-div-left-img" src="../../../img/mrqd/next.png">
+	    		</div>
+	    		<div class="top-div-right">
+		    		<div class="top-div-right-content">
+		    			<img class="top-div-right-content-img" src="../../../img/hyzx/signin.png" />
+		    			<span class="top-div-right-content-text">
+			    			已签到
+			    		</span>
+		    		</div>
+		    	</div>
+	    	</div>
+	    	<div class="top-center-calendar">
+	    		<div class="top-center-calendar-date">
+	    			<div class="top-center-calendar-date-span">
+	    				日
+	    			</div>
+	    			<div class="top-center-calendar-date-span">
+	    				一
+	    			</div>
+	    			<div class="top-center-calendar-date-span">
+	    				二
+	    			</div>
+	    			<div class="top-center-calendar-date-span">
+	    				三
+	    			</div>
+	    			<div class="top-center-calendar-date-span">
+	    				四
+	    			</div>
+	    			<div class="top-center-calendar-date-span">
+	    				五
+	    			</div>
+	    			<div class="top-center-calendar-date-span">
+	    				六
+	    			</div>
+	    		</div>
+	    		<div>
+	    			<div class="top-center-calendar-day">
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				1
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				2
+		    			</div>
+		    		</div>
+		    		<div class="top-center-calendar-day">
+		    			<div class="top-center-calendar-day-span">
+		    				3
+		    			</div>
+		    			<div class="top-center-calendar-day-span2">
+		    				<div>4</div>
+		    			</div>
+		    			<div class="top-center-calendar-day-span2">
+		    				<div>5</div>
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				6
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				7
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				8
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				9
+		    			</div>
+		    		</div>
+		    		<div class="top-center-calendar-day">
+		    			<div class="top-center-calendar-day-span">
+		    				10
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				11
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				12
+		    			</div>
+		    			<div class="top-center-calendar-day-span2">
+		    				<div>13</div>
+		    			</div>
+		    			<div class="top-center-calendar-day-span2">
+		    				<div>14</div>
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				15
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				16
+		    			</div>
+		    		</div>
+		    		<div class="top-center-calendar-day">
+		    			<div class="top-center-calendar-day-span1">
+		    				17
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				18
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				19
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				20
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				21
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				22
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				23
+		    			</div>
+		    		</div>
+		    		<div class="top-center-calendar-day">
+		    			<div class="top-center-calendar-day-span1">
+		    				24
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				25
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				26
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				27
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				28
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				29
+		    			</div>
+		    			<div class="top-center-calendar-day-span1">
+		    				30
+		    			</div>
+		    		</div>
+		    		<div class="top-center-calendar-day">
+		    			<div class="top-center-calendar-day-span1">
+		    				31
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    			<div class="top-center-calendar-day-span">
+		    				&nbsp;
+		    			</div>
+		    		</div>
+	    		</div>
+	    		<div class="top-center-calendar-button">
+	    			<div class="top-center-calendar-button-span">
+	    				签到
+	    			</div>
+	    		</div>
+	    	</div>
+	    </section>
+	    <section>
+	    	<div class="bottom-div">
+	    		<div class="bottom-div-title">
+					签到规则说明
+	    		</div>
+	    	</div>
+	    	<div class="bottom-div">
+	    		<div class="bottom-div-contain">
+					1、每日完成签到可领取2积分。
+	    		</div>
+	    		<div class="bottom-div-contain">
+					2、每累计签到至5、10、15、20、25、30天可分别获得积分10、20、30、40、50、100。
+	    		</div>
+	    		<div class="bottom-div-contain">
+					3、累计签到数只计算一个月，下一个月累计数清零。
+	    		</div>
+	    	</div>
+	    </section>
+	</body>
+</html>

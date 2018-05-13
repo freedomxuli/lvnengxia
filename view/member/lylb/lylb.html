@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <title>Shopex Onex B2B2C</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+	    <link rel="stylesheet" href="../../../css/style.css">
+	    <style type="text/css">
+	    	.header-img{
+	    		top:0.7rem !important;
+	    	}
+	    	.space-div{
+				height: 10px;
+			}
+	    	/*内容css*/
+	    	.top-div{
+	    		background-color: #FFFFFF;	
+	    		padding: 1rem 0rem 1rem 1rem;
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    	}
+	    	.top-div-left{
+	    		flex: 1;
+	    	}
+	    	.top-div-left-img{
+	    		width: 4rem;
+	    	}
+	    	.top-div-center{
+	    		flex: 2;
+	    	}
+	    	.top-div-center-tel{
+	    		font-size: 1rem;
+	    		color: #000000;
+	    	}
+	    	.top-div-center-name{
+	    		color: #808080;
+	    		font-size: 0.8rem;
+	    	}
+	    	.top-div-right{
+	    		flex: 1;
+	    	}
+	    	.top-div-right-content{
+	    		background-color: #2AB673;
+	    		border-top-left-radius:1.5rem;
+	    		border-bottom-left-radius:1.5rem;
+	    		align-content: flex-end;
+	    		align-items: center;
+	    		padding: 0.3rem 0rem 0.3rem 0rem;
+	    	}
+	    	.top-div-right-content-img{
+	    		width:1rem;
+	    		margin-left: 1rem;
+	    		margin-top: 0.2rem;
+	    	}
+	    	.top-div-right-content-text{
+	    		color: #FFFFFF;
+	    		font-size: 0.8rem;
+	    	}
+	    	.center-content-div{
+	    		background-color: #FFFFFF;
+	    		border-bottom: 1px solid #CCCCCC;
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    		padding: 1rem 0rem 1rem 0rem;
+	    	}
+	    	.center-content-div-flex{
+	    		flex:1;
+	    		text-align: center;
+	    	}
+	    	.center-content-div-flex-img-div{
+	    		height: 2.5rem;
+	    		line-height:2.5rem;
+	    		margin: 0 auto;
+	    	}
+	    	.center-content-div-flex-img{
+	    		width: 2rem;
+	    	}
+	    	.center-content-div-flex-span{
+	    		color: #666666;
+	    		font-size: 0.8rem;
+	    	}
+	    	.content-div-message-list-tab{
+	    		display: flex;
+	    		flex-direction:row ;
+	    		padding: 1rem 1rem 0.5rem 1rem;
+	    		background-color: #FFFFFF;
+	    		align-items: center !important;
+	    		border-bottom: 1px solid #CCCCCC;
+	    	}
+	    	.content-div-message-img-div{
+	    		flex: 1;
+	    	}
+	    	.content-div-message-img{
+	    		width: 1.8rem;
+	    	}
+	    	.content-div-message-span{
+	    		flex: 6;
+	    		color: #282828;
+	    		font-weight: bold;
+	    	}
+	    	.content-div-message-right{
+	    		flex:3;
+	    		color: #9a9a9a;
+	    		text-align: end;
+	    	}
+	    	.content-div-message-right-img{
+	    		height: 1rem;
+	    		padding-top: 0.2rem;
+	    	}
+	    	.content-div-message-list-all{
+	    		padding: 1rem 1rem 0.5rem 1rem;
+	    		border-bottom: 1px solid #CCCCCC;
+	    		background-color: #FFFFFF;
+	    	}
+	    	.content-div-message-list{
+	    		display: flex;
+	    		flex-direction:row ;
+	    	}
+	    	.content-div-message-list-left{
+	    		flex: 1;
+	    	}
+	    	.content-div-message-list-left-img{
+	    		width: 3rem;
+	    	}
+	    	.content-div-message-list-center{
+	    		flex: 5;
+	    	}
+	    	.content-div-message-list-title{
+	    		color: #556994;
+	    		font-size: 0.8rem;
+	    	}
+	    	.content-div-message-list-nr{
+	    		color: #333333;
+	    		font-size: 0.8rem;
+	    		word-break: break-word;
+	    	}
+	    	.content-div-message-list-imgs{
+	    		display: flex;
+	    		flex: row;
+	    		padding: 0.5rem 0rem 0rem 0rem;
+	    	}
+	    	.content-div-message-list-imgs-div{
+	    		flex: 1;
+	    	}
+	    	.content-div-message-list-imgs-div-1{
+	    		width: 5rem;
+	    	}
+	    	.content-div-message-list-date{
+	    		color: #666666;
+	    		font-size: 0.6rem;
+	    	}
+	    	.content-div-message-list-memo{
+	    		text-align: end;
+	    		color: #969696;
+	    		font-size: 0.9rem;
+	    	}
+	    	.content-div-message-list-memo-img{
+	    		width: 0.9rem;
+	    	}
+	    	.content-div-pl-list-all{
+	    		background-color: #f3f3f5;
+	    		padding: 0.5rem 0.5rem 0.5rem 1rem;
+	    	}
+	    	.content-div-dz-list{
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    		border-bottom:1px solid #DDDDDD ;
+	    	}
+	    	.content-div-dz-list-left{
+	    		flex: 1;
+	    	}
+	    	.content-div-dz-list-left-img{
+	    		width: 1rem;
+	    	}
+	    	.content-div-dz-list-right{
+	    		flex: 12;
+	    	}
+	    	.content-div-dz-list-right{
+	    		display: flex;
+	    		flex-direction: row;
+	    		align-items: center;
+	    	}
+	    	.content-div-dz-list-right-list{
+	    		flex: 1;
+	    	}
+	    	.content-div-dz-list-right-img{
+	    		width: 2rem;
+	    	}
+	    	.content-div-pl-list{
+	    		padding: 0.5rem 0rem 0.5rem 0rem;
+	    		display: flex;
+	    		flex-direction: row;
+	    		border-bottom:1px solid #DDDDDD ;
+	    	}
+	    	.content-div-pl-content{
+	    		flex: 9;
+	    		padding: 0rem 0rem 0rem 0.3rem;
+	    	}
+	    	.content-div-pl-content-title{
+	    		color: #556994;
+	    		font-size: 0.8rem;
+	    		line-height: 1rem;
+	    	}
+	    	.content-div-pl-content-nr{
+	    		color: #333333;
+	    		font-size: 0.8rem;
+	    		line-height: 1rem;
+	    	}
+	    	.content-div-pl-content-date{
+	    		color: #666666;
+	    		font-size: 0.8rem;
+	    		flex: 2;
+	    	}
+	    	.content-div-pl-list-all-new{
+	    		
+	    	}
+	    	.section-pl{
+	    		margin-bottom: 2rem;
+	    		margin-top: 3.3rem;
+	    	}
+	    	.section-bottom{
+	    		position:fixed;
+	    		bottom: 0rem;
+	    		left: 0rem;
+	    		background-color:#36aa70;
+	    		padding: 1rem 0rem 0.3rem 0rem;
+	    		width: 100%;
+	    		margin: 0rem;
+	    		display: flex;
+	    		flex-direction: row;
+	    	}
+	    	.div-bottom{
+	    		flex: 1;
+	    		text-align: center;
+	    		color: #FFFFFF;
+	    		display: flex;
+	    		flex-direction: row;
+	    	}
+	    	.div-bottom-list-img{
+	    		flex: 1;
+	    		text-align: end;
+	    		padding: 0rem 0.2rem 0rem 0rem;
+	    	}
+	    	.div-bottom-img{
+	    		width: 1.5rem;
+	    		height: 1.5rem;
+	    	}
+	    	.div-bottom-list-span{
+	    		flex: 1.2;
+	    		padding: 0rem 0rem 0rem 0.2rem;
+	    		text-align: start;
+	    	}
+	    	.div-bottom-span{
+	    		
+	    	}
+	    </style>
+	</head>
+	<body>
+		<header class="page-header">
+	        <img class="header-img" src="../../../img/register/back.png"/>
+	        <div class="header-title">留言列表</div>
+	        <div class="header-span">发布留言</div>
+	   </header>
+		<section class="section-pl">
+			<div class="content-div-message-list-tab">
+				<div class="content-div-message-img-div">
+					<img class="content-div-message-img" src="../../../img/hyzx/lylb.png" />
+				</div>
+				<div class="content-div-message-span">
+					留言列表
+				</div>
+<!--				<div class="content-div-message-right">
+					<span>发布留言　</span>
+					<img class="content-div-message-right-img" src="../../../img/hyzx/next.png" />
+				</div>-->
+			</div>
+			<div class="content-div-message-list-all">
+				<div class="content-div-message-list">
+					<div class="content-div-message-list-left">
+						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
+					</div>
+					<div class="content-div-message-list-center">
+					<div class="content-div-message-list-title">
+							桔子童年
+						</div>
+						<div class="content-div-message-list-nr">
+							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+						</div>
+						<div class="content-div-message-list-imgs">
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+						</div>
+						<div class="content-div-message-list-date">
+							2017-12-05
+						</div>
+						<div class="content-div-message-list-memo">
+							<span>5</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
+							<span>3</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="content-div-pl-list-all">
+					<div class="content-div-dz-list">
+						<div class="content-div-dz-list-left">
+							<img class="content-div-dz-list-left-img" src="../../../img/hyzx/licon.png" />
+						</div>
+						<div class="content-div-dz-list-right">
+							<div class="content-div-dz-list-right-list">
+								<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+							</div>
+						</div>
+					</div>
+					<div class="content-div-pl-list-all-new">
+						<div class="content-div-pl-list">
+							<div class="content-div-dz-list-left">
+								<img class="content-div-dz-list-left-img" src="../../../img/hyzx/pllisticon.png" />
+							</div>
+							<div class="content-div-dz-list-left">
+								<div class="content-div-dz-list-right-list">
+									<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								</div>
+							</div>
+							<div class="content-div-pl-content">
+								<div class="content-div-pl-content-title">
+									aaaaaaa
+								</div>
+								<div class="content-div-pl-content-nr">
+									测试测试测试测试测试
+								</div>
+							</div>
+							<div class="content-div-pl-content-date">
+								12-06
+							</div>
+						</div>
+						<div class="content-div-pl-list">
+							<div class="content-div-dz-list-left">
+								
+							</div>
+							<div class="content-div-dz-list-left">
+								<div class="content-div-dz-list-right-list">
+									<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								</div>
+							</div>
+							<div class="content-div-pl-content">
+								<div class="content-div-pl-content-title">
+									aaaaaaa
+								</div>
+								<div class="content-div-pl-content-nr">
+									测试测试测试测试测试
+								</div>
+							</div>
+							<div class="content-div-pl-content-date">
+								12-06
+							</div>
+						</div>
+						<div class="content-div-pl-list">
+							<div class="content-div-dz-list-left">
+								
+							</div>
+							<div class="content-div-dz-list-left">
+								<div class="content-div-dz-list-right-list">
+									<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								</div>
+							</div>
+							<div class="content-div-pl-content">
+								<div class="content-div-pl-content-title">
+									aaaaaaa
+								</div>
+								<div class="content-div-pl-content-nr">
+									测试测试测试测试测试
+								</div>
+							</div>
+							<div class="content-div-pl-content-date">
+								12-06
+							</div>
+						</div>
+						<div class="content-div-pl-list">
+							<div class="content-div-dz-list-left">
+								
+							</div>
+							<div class="content-div-dz-list-left">
+								<div class="content-div-dz-list-right-list">
+									<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								</div>
+							</div>
+							<div class="content-div-pl-content">
+								<div class="content-div-pl-content-title">
+									aaaaaaa
+								</div>
+								<div class="content-div-pl-content-nr">
+									测试测试测试测试测试
+								</div>
+							</div>
+							<div class="content-div-pl-content-date">
+								12-06
+							</div>
+						</div>
+						<div class="content-div-pl-list">
+							<div class="content-div-dz-list-left">
+								
+							</div>
+							<div class="content-div-dz-list-left">
+								<div class="content-div-dz-list-right-list">
+									<img class="content-div-dz-list-right-img" src="../../../img/hyzx/head2.png" />
+								</div>
+							</div>
+							<div class="content-div-pl-content">
+								<div class="content-div-pl-content-title">
+									aaaaaaa
+								</div>
+								<div class="content-div-pl-content-nr">
+									测试测试测试测试测试
+								</div>
+							</div>
+							<div class="content-div-pl-content-date">
+								12-06
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-div-message-list-all">
+				<div class="content-div-message-list">
+					<div class="content-div-message-list-left">
+						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
+					</div>
+					<div class="content-div-message-list-center">
+					<div class="content-div-message-list-title">
+							桔子童年
+						</div>
+						<div class="content-div-message-list-nr">
+							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+						</div>
+						<div class="content-div-message-list-imgs">
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+						</div>
+						<div class="content-div-message-list-date">
+							2017-12-05
+						</div>
+						<div class="content-div-message-list-memo">
+							<span>5</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
+							<span>3</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-div-message-list-all">
+				<div class="content-div-message-list">
+					<div class="content-div-message-list-left">
+						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
+					</div>
+					<div class="content-div-message-list-center">
+					<div class="content-div-message-list-title">
+							桔子童年
+						</div>
+						<div class="content-div-message-list-nr">
+							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+						</div>
+						<div class="content-div-message-list-imgs">
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+						</div>
+						<div class="content-div-message-list-date">
+							2017-12-05
+						</div>
+						<div class="content-div-message-list-memo">
+							<span>5</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
+							<span>3</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-div-message-list-all">
+				<div class="content-div-message-list">
+					<div class="content-div-message-list-left">
+						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
+					</div>
+					<div class="content-div-message-list-center">
+					<div class="content-div-message-list-title">
+							桔子童年
+						</div>
+						<div class="content-div-message-list-nr">
+							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+						</div>
+						<div class="content-div-message-list-imgs">
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+						</div>
+						<div class="content-div-message-list-date">
+							2017-12-05
+						</div>
+						<div class="content-div-message-list-memo">
+							<span>5</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
+							<span>3</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content-div-message-list-all">
+				<div class="content-div-message-list">
+					<div class="content-div-message-list-left">
+						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
+					</div>
+					<div class="content-div-message-list-center">
+					<div class="content-div-message-list-title">
+							桔子童年
+						</div>
+						<div class="content-div-message-list-nr">
+							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+						</div>
+						<div class="content-div-message-list-imgs">
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+						</div>
+						<div class="content-div-message-list-date">
+							2017-12-05
+						</div>
+						<div class="content-div-message-list-memo">
+							<span>5</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
+							<span>3</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script src="../../../js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			var slider = mui("#slider");
+			document.getElementById("switch").addEventListener('toggle', function(e) {
+				if (e.detail.isActive) {
+					slider.slider({
+						interval: 5000
+					});
+				} else {
+					slider.slider({
+						interval: 0
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

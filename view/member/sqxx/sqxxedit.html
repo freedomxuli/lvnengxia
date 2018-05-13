@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Shopex Onex B2B2C</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    
+		<link rel="stylesheet" href="../../../css/style.css">
+		<style type="text/css">
+			.title-sm{
+				background-color: #2AB673;
+				padding: 3.8rem 1rem 1rem 1rem;
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.content-title{
+				background-color: #EDF9F5;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 0.5rem 1rem 0.5rem 1rem;
+			}
+			.content-title-left{
+				flex: 1;
+				color: #1F1F1F;
+			}
+			.content-title-center{
+				flex: 3;
+				color: #1F1F1F;
+			}
+			.content-title-right{
+				flex: 2.5;
+			}
+			.content-title-right-div{
+				background-color: #f7941c;
+				padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+				border-radius:2rem ;
+				display: flex;
+				flex-direction: row;
+			}
+			.content-title-right-div-img{
+				flex: 1;
+			}
+			.content-title-right-div-img img{
+				width: 1.2rem;
+				margin-left: 0.4rem;
+			}
+			.content-title-right-div-span{
+				flex: 5;
+				text-align: center;
+			}
+			.content-title-right-div-span span{
+				color: #FFFFFF;
+			}
+			.center-content-nr{
+				background-color: #FFFFFF;
+				padding: 0.8rem 1rem 0.6rem 1rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.center-content-nr1{
+				background-color: #e9f8f1;
+				padding: 0.8rem 1rem 0.6rem 1rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.center-content-nr-bottom{
+				padding: 0.8rem 1rem 2rem 1rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.center-content-nr-left{
+				color: #1f1f1f;
+			}
+			.center-content-nr-right{
+				color: #555555;
+				padding-left: 3rem;
+			}
+			.center-content-nr-right1{
+				color: #f69653;
+				padding-left: 3rem;
+			}
+			.center-content-nr-right2{
+				color: #555555;
+				padding-left: 1rem;
+			}
+			.center-content-nr-right-img{
+				flex: 1;
+				text-align: right;
+			}
+			.center-content-nr-right-img img{
+				height: 1rem;
+			}
+			.center-content-nr-right-img1{
+				flex: 1;
+				text-align: right;
+			}
+			.center-content-nr-right-img1 img{
+				height: 1.4rem;
+			}
+			.center-content-nr-right-img2{
+				flex: 1;
+				text-align: right;
+				margin-top: 0.8rem;
+			}
+			.center-content-nr-right-img2 span{
+				width: 2rem;
+				writing-mode: vertical-lr;
+				height: 5rem;
+				background-color: #f79754;
+				color: #FFFFFF;
+				padding: 0.2rem;
+				margin-right: -0.3rem;
+			}
+			.center-content-nr-right-img2 img{
+				width: 4rem;
+				height: 5rem;
+			}
+			.center-content-nr-left-2{
+				flex: 1;
+			}
+			.center-content-nr-right-2{
+				flex: 2;
+				color: #666666;
+			}
+			.center-content-nr-right-input{
+				border:none !important;
+				height: 2rem !important;
+				margin-bottom: 0rem !important;
+				padding: 0rem !important;
+			}
+			.center-content-nr-submit{
+				color: #FFFFFF;
+				background-color: #2AB673;
+				text-align: center;
+				flex: 1;
+				padding: 0.5rem 0rem 0.5rem 0rem;
+				border-radius: 5px;
+			}
+			.center-content-nr-yzm{
+				color: #555555;
+				background-color: #CCCCCC;
+			}
+			.center-content-nr-right-input{
+				border:none !important;
+				height: 2rem !important;
+				margin-bottom: 0rem !important;
+				padding: 0rem !important;
+			}
+			.bottom-div-left-img{
+	    		width:5.5rem;
+	    		padding: 1rem 1.5rem 2rem 1.5rem;
+	    		border: 2px dashed #CCCCCC;
+	    	}
+	    	.bottom-div-right{
+	    		flex: 1;
+	    		margin: 1rem;
+	    		text-align: end;
+	    	}
+	    	.bottom-div-left-text{
+	    		padding-left: 1.2rem;
+	    		margin-top: -2rem;
+	    		font-size: 0.8rem;
+	    		color:#CCCCCC;
+	    	}
+	    	.bottom-div-right-text{
+	    		color: #A1A1A1;
+	    		font-size: 0.8rem;
+	    	}
+		</style>
+	</head>
+	<body>
+		<header class="page-header">
+	      <img class="header-img" src="../../../img/register/back.png"/>
+	      <div class="header-title"></div>
+	    </header>
+	    <section class="title-sm">
+	    	<div>申请信息修改</div>
+	    	<div>Query Information</div>
+	    </section>
+	    <section class="content">
+	    	<div class="center-content-nr1">
+	    		<div class="center-content-nr-left">
+	    			登记日期　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			2017-12-13
+	    		</div>
+	    		<div class="center-content-nr-right-img1">
+	    			<img src="../../../img/sqxx/calendar.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			客户名称　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			邹俊毅
+	    		</div>
+	    		<div class="center-content-nr-right-img1">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr1">
+	    		<div class="center-content-nr-left">
+	    			客户类型　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			私宅
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			省　　　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			江苏省
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr1">
+	    		<div class="center-content-nr-left">
+	    			市　　　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			常州市
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			区　　　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			钟楼区
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr1">
+	    		<div class="center-content-nr-left">
+	    			镇　　　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			北港街道　
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			详细地址　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="详细地址，如楼牌号等" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr1">
+	    		<div class="center-content-nr-left">
+	    			贷款模式　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			贷款
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			贷款年限　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			2年
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			借款人　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="借款人" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			房屋远景　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img2">
+	    			<span>删　　除</span>
+	    			<img src="../../../img/sqxx/photo.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			屋顶瓦片类型　　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			<img src="../../../img/member/next.png" />
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			屋顶朝南面积　　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="面积" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			m2
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			房产证证号页　　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			房产证内容页　　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			土地证　　　　　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			户主正面身份证　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			户主反面身份证　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			配偶正面身份证　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			配偶反面身份证　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			户口簿(最多6张)　
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			银行卡　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			结婚证　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			单身正面　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<img class="bottom-div-left-img" src="../../../img/fbpl/camera.png" />
+		    		<div class="bottom-div-left-text">
+		    			添加图片
+		    		</div>
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			开户行　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="请输入开户行" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			户表名　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="请输入户表名" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			户表号　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="请输入户表号" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			银行账号　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="请输入银行账号" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			申请容量（KWp）
+	    		</div>
+	    		<div class="center-content-nr-right2">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="申请容量" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    	<div class="center-content-nr">
+	    		<div class="center-content-nr-left">
+	    			备注　　　　
+	    		</div>
+	    		<div class="center-content-nr-right">
+	    			<input class="center-content-nr-right-input" type="text" placeholder="备注" />
+	    		</div>
+	    		<div class="center-content-nr-right-img">
+	    			
+	    		</div>
+	    	</div>
+	    </section>
+    	<div class="center-content-nr-bottom">
+    		<div class="center-content-nr-submit">
+    			确定并保存
+    		</div>
+    	</div>
+	</body>
+</html>

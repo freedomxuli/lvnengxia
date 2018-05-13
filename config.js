@@ -1,19 +1,37 @@
 var config = {
-    server: 'http://47.96.163.10:8080/test_hangtong/public/index.php/',
-    apiversion: 'v1', //系统api版本
-    apiname: 'topapi', //系统配置的api名称
+    server: 'http://test.lvnengxia.cn/api.php/',
+    apiversion: 'app1', //系统api版本
+    apiname: '', //系统配置的api名称
     pagesize: 10, // 分页组件每页显示数量
     cpage: 1, //分页当前页
     apimethod: { //接口method集合
         home: 'theme.modules', //首页
         category: 'category.itemCategory', //分类
         vcode: 'user.vcode', //图片验证码
-        usersendSms: 'user.sendSms', //注册发送验证码
-        userVerifySms: 'user.verifySms', //验证注册短信
+        usersendSms: 'send.sms.vcode', //注册发送验证码
+        userVerifySms: 'password.forget.verifi.smsCode', //找回密码短信
+        changepsw:'password.forget.reset',
         verifyAccount: 'user.verifyAccount', //校验注册用户名
-        signup: 'user.signup', //用户注册
-        member: 'member.index', //会员中心
-        login: 'user.login', //用户登录
+        signup: 'register.private.apply', //用户注册
+        signupcom: 'register.business.apply', //企业注册
+        member: 'member.info.get', //会员中心
+        signin:'member.sign.in',//首页签到
+        picshow:'image.carousel.list.get',//首页轮播图
+        pertzinfo:'profit.priviate.setting.get',//个人投资收益配置信息获取
+        pertzdetail:'profit.priviate.calc',//个人投资收益计算收益和明细
+        comtzinfo:'profit.qy.setting.get',//企业投资收益配置信息获取
+        comtzdetail:'profit.qy.calc',//企业投资收益计算
+        comtzmblist:'vague.offer.qy.template.list',//企业模糊报价模版列表
+        comtzmbdetail:'vague.price.qy.template.info.get',//企业模糊报价模版信息获取
+        perjzinfo:'apply.build.personal.initData.get',//个人一键申请建站初始数据获取
+        perjzsave:'apply.build.personal.save',//个人申请建站保存
+        imageupload:'image.upload',//上传图片
+        comjzinfo:'apply.build.qy.initData.get',//企业一键申请建站初始数据获取
+        comjzsave:'apply.build.qy.save',//企业一键申请建站初始数据获取
+        isinfget:'is.perfect.infomation.get',//获取是否已经完善个人资料
+        perjzjd:'apply.personal. progress.list',//个人建站进度查询
+        comjzjd:'apply.qy. progress.list',//企业建站进度查询
+        login: 'login.account.passwd', //用户登录
         logout: 'user.logout', //用户登出
         agreement: 'user.license', //注册协议
         useProtocol: 'user.protocol', //使用协议
@@ -114,6 +132,8 @@ var config = {
         logisticszitilist: 'logistics.ziti.list', //根据收货地区id获取自提点列表
         messagePushRegister:'message.push.register',  //第一次启动的时候注册机器用的接口
         filteritems: 'item.filterItems', //根据搜索条件，列出渐进式的筛选项
-        getcommonsetting: 'common.getsetting' //根据配置名获取配置值
+        getcommonsetting: 'common.getsetting', //根据配置名获取配置值
+        arealist:'get.area.list',//获取地区列表
+        areachildlist:'get.area.children'//获取地区列表
     }
 }

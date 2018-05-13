@@ -51,8 +51,8 @@
      	margin-top:2rem;
      }
      .logo{
-     	width:5rem;
-     	height:5rem;
+     	width:6rem;
+     	height:6rem;
      }
      .mui-input-row{
      	border-bottom: 1px solid #d9d9d9;
@@ -123,24 +123,24 @@
         <section>
           <div class="mui-input-row">
             <img class="login_img" src="../../img/login/login.png" />
-            <input id="account" type="text" value="" class="login_input" placeholder="请输入手机号">	
+            <input id="username" name="username" type="tel" value="" class="login_input" placeholder="请输入手机号">	
           </div>
           <div class="mui-input-row">
             <img class="login_img" src="../../img/login/psw.png" />
-            <input id="password" type="password" class="mui-input-password login_input" placeholder="请输入密码">
+            <input id='password' name="password" type="password" class="mui-input-password login_input" placeholder="请输入密码">
           </div>
           <div id="vcode_form" class="form-inline">
             <div class="mui-input-row form-inline-adaptive">
               <img class="login_img" src="../../img/login/code.png" />
-              <input id="vcode" type="text" class="login_input" placeholder="请输入验证码">
+              <input id='verify' name="verify" type="number" class="login_input" placeholder="请输入验证码">
               <div class="form-inline-unadaptive">
-	              <img id="vcode_img" width="100" height="30" src="">
+	              <img id="imgCode" width="100" height="30" src="">
 	            </div>
             </div>
           </div>
           <div class="mui-input-row">
             <input id="account" type="text" value="" readonly="readonly" class="login_input" placeholder="记住密码">	
-            <div class="mui-switch mui-active">
+            <div id="autoLogin" class="mui-switch mui-active">
 							<div class="mui-switch-handle"></div>
 						</div>
           </div>
@@ -153,13 +153,13 @@
         <button id='login' type="submit" class="mui-btn mui-btn-block mui-btn-warning bbc-btn-warning">登录</button>
       </section>
       <section class="content-horizontal-padded register_div">
-        <a href="javascript:void(0);" class="register_text">
+        <a href="javascript:void(0);" id="reg" class="register_text">
         	<span>●</span> 个人注册
         </a>
-        <a href="javascript:void(0);" class="register_text">
+        <a href="javascript:void(0);" id="regQY" class="register_text">
         	<span>●</span> 企业注册
         </a>
-        <a href="javascript:void(0);" class="register_text">
+        <a href="javascript:void(0);" id="forgetPassword" class="register_text">
         	<span>●</span> 忘记密码？
         </a>
       </section>
@@ -187,176 +187,150 @@
     <script src="../../js/template.min.js"></script>
     <script src="../../config.js"></script>
     <script src="../../js/app.js"></script>
-    <script>
-        mui.plusReady(function() {
-          var settings = app.getSettings();
-          var state = app.getState();
-          var entrance = plus.webview.currentWebview().entrance;
-          var toMain = function() {
-            var parentview = plus.webview.currentWebview().opener();
-            parentview.reload(true);
-            var ws = plus.webview.currentWebview();
-            plus.webview.close(ws,'slide-out-bottom');
-          };
-          //检查 "登录状态/锁屏状态" 开始
-          if(state.token) {
-            document.getElementById('account').value = state.account;
-          } else {
-            app.setState(null);
-            //第三方登录
-            var authBtns = ['qq','weixin','sinaweibo']; //配置业务支持的第三方登录
-            var auths = {};
-            var oauthArea = document.querySelector('.sns-login .section-container');
-            plus.oauth.getServices(function(services) {
-              for(var i in services) {
-                var service = services[i];
-                auths[service.id] = service;
-                if(~authBtns.indexOf(service.id)) {
-                  var isInstalled = app.isInstalled(service.id);
-                  var btn = document.createElement('a'); 
-                  //如果微信未安装，则为不启用状态
-                  btn.setAttribute('class', 'section-init content-center oauth-btn' + (!isInstalled && service.id === 'weixin' ? (' disabled') : ''));
-                  btn.authId = service.id;
-                  if(service.id=='weixin'){
-                    btn.innerHTML = '<i class="bbc-icon bbc-icon-weixin-member"></i><br> 微信';
-                  }else if(service.id=='qq'){
-                    btn.innerHTML = '<i class="bbc-icon bbc-icon-QQ-member"></i><br> QQ';
-                  }else if(service.id=='sinaweibo'){
-                    btn.innerHTML = '<i class="bbc-icon bbc-icon-sina-member"></i><br> 微博';
-                  }
-                  oauthArea.appendChild(btn);
-                }
-              }
-
-              mui(oauthArea).on('tap', 'a', function() {
-                if(this.classList.contains('disabled')) {
-                  plus.nativeUI.toast('您尚未安装微信客户端');
-                  return;
-                }
-                var auth = auths[this.authId];
-                var waiting = plus.nativeUI.showWaiting();
-                auth.login(function() {
-                  waiting.close(); 
-                  plus.nativeUI.toast("登录认证成功"); 
-                  auth.getUserInfo(function() {
-//                  plus.nativeUI.toast("获取用户信息成功");
-//                  var name = auth.userInfo.nickname || auth.userInfo.name;
-
-                    var param = {
-                      queryData: {
-                        'method': config.apimethod.trustDcloudLogin,
-                        'trust_params': JSON.stringify(auth),
-                        'deviceid':plus.device.uuid
-                      },
-                      method: 'POST'
-                    }
-
-                    Zepto.dataRequest(param, function(rs) {
-                      if(!rs.data.binded ) {
-                        clicked('_www/view/passport/bind.html', {'trust_params':auth});
-                      }else{
-                        var data = rs.data;
-                        var account = data.account;
-                        var token = data.accessToken;
-                        app.createState(account,token,function(){
-                          clicked('_www/view/member/member.html');
-                        });
-                      }
-                    });
-                  }, function(e) {
-                    plus.nativeUI.toast("获取用户信息失败：" + e.message);
-                  });
-                }, function(e) {
-                  waiting.close();
-                  plus.nativeUI.toast("登录认证失败：" + e.message);
-                });
-              });
-            }, function(e) {
-              oauthArea.style.display = 'none';
-              plus.nativeUI.toast("获取登录认证失败：" + e.message);
-            });
-          }
-          // close splash
-          setTimeout(function() {
-            //关闭 splash
-            plus.navigator.closeSplashscreen();
-          }, 600);
-          //检查 "登录状态/锁屏状态" 结束
-          var loginButton = document.getElementById('login');
-          var accountBox = document.getElementById('account');
-          var passwordBox = document.getElementById('password');
-          var vcodeBox = document.getElementById('vcode');
-          var autoLoginButton = document.getElementById("autoLogin");
-          var regButton = document.getElementById('reg');
-          var forgetButton = document.getElementById('forgetPassword');
-          var loginErrTime = 0;
-          loginButton.addEventListener('tap', function(event) {
-            var loginInfo = {
-              account: accountBox.value,
-              password: passwordBox.value,
-              vcode: vcodeBox.value
-            };
-            app.login(loginInfo, function(err) {
-              if(err) {
-                var islogined = localStorage.getItem('loginErroTimes');
-                if(islogined){
-                  if(islogined >= 3){
-                    $('#vcode_form').show();
-                    fetchVcode('topapi_login',$('#vcode_img'));
-                  }
-                  islogined ++
-                  localStorage.setItem('loginErroTimes',islogined);
-                }else{
-                  islogined = 1
-                  localStorage.setItem('loginErroTimes',islogined);
-                }
-                plus.nativeUI.toast(err);
-                return;
-              }
-              toMain();
-              localStorage.removeItem('loginErroTimes');
-            });
-          });
-          
-          $('#vcode_img').on('tap', function() {
-            fetchVcode('topapi_login',$(this));
-          })
-
-          mui.enterfocus('#login_form input', function() {
-            mui.trigger(loginButton, 'tap');
-          });
-
-          regButton.addEventListener('tap', function(event) {
-            clicked('_www/view/passport/register.html',{'entrance':entrance});
-          }, false);
-
-          forgetButton.addEventListener('tap', function(event) {
-            clicked('_www/view/passport/checkusername.html')
-          }, false);
-
-          window.addEventListener('resize', function() {
-            //oauthArea.style.display = document.body.clientHeight > 400 ? 'block' : 'none';
-          }, false);
-
-          var backButtonPress = 0;
-          mui.back = function(event) {
-            backButtonPress++;
-            if(backButtonPress > 1) {
-              plus.runtime.quit();
-            } else {
-              plus.nativeUI.toast('再按一次退出应用');
-            }
-            setTimeout(function() {
-              backButtonPress = 0;
-            }, 1000);
-            return false;
-          };
-        });
-
-        mui(document).on('tap', '#close_login', function() {
-          plus.webview.close('_www/view/passport/login.html', 'slide-out-bottom');
-        });
-    </script>
+    <script src="../../js/sign.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				var regUrl = "_www/view/passport/register.html";
+				var regQYUrl = "_www/view/passport/registerbycom.html";
+				var forgetPwUrl = "_www/view/passport/forgetpassword.html";
+				var urlImage = "http://crm.lvnengxia.cn/index.php?controller=LoginWeixin&action=ImgCode";
+			
+				mui.init({
+		        swipeBack: true //启用右滑关闭功能
+		   });
+		    if(localStorage.getItem("autoLogin")=="1")
+		    	if(localStorage.getItem("account"))
+		    		clicked('_www/view/member/hyzx/hyzx.html');
+		    
+		    freshImg(); 
+			  var autoLoginButton = document.getElementById('autoLogin');
+				var isActive = '';
+				mui('.mui-switch').each(function() {
+					//toggle.classList.contains('mui-active') 可识别该toggle的开关状态
+					isActive = this.classList.contains('mui-active') ? '1' : '0';
+					/**
+					* toggle 事件监听
+					*/
+					this.addEventListener('toggle', function(event) {
+						//event.detail.isActive 可直接获取当前状态
+						isActive = event.detail.isActive ? '1' : '0';
+					});
+				});
+				mui(document.body).on('tap',".mui-btn",function(){
+					var waiting = plus.nativeUI.showWaiting();
+					var that = this;
+					var username = document.getElementById('username').value;
+					if(!username){
+						mui.toast('请输入用户名');
+						waiting.close();
+						return;
+					}
+					var password = document.getElementById('password').value;
+					if(!password){
+						mui.toast('请输入密码');
+						waiting.close();
+						return;
+					}
+					if(!password){
+						mui.toast('请输入密码');
+						waiting.close();
+						return;
+					}
+					var	verify = document.getElementById('verify').value;
+					if(!verify){
+						mui.toast('请输入验证码');
+						waiting.close();
+						return;
+					}
+					var val_obj = {};
+					val_obj["account"] = username;
+					val_obj["password"] = password;
+					val_obj["autoLogin"] = isActive;
+					console.log(val_obj); 
+					var sign = GetSign(val_obj);
+					console.log(sign);
+					console.log(config.apimethod.login);
+					var param = {
+		        queryData: {
+		          'method': config.apimethod.login,
+		          'sign':sign,
+		          'account':username,
+		          'password':password,
+		          'autoLogin':isActive
+		        },
+		        method: 'POST'
+		      }
+					$.dataRequest(param, function(rs) {
+			        console.log(JSON.stringify(rs));
+			        waiting.close();
+			        if(rs.rsp=="succ")
+			        {
+			        	if(rs.data.success=="true"){
+			        		plus.nativeUI.toast(rs.data.message);
+			        		localStorage.setItem('sid',rs.data.sid);
+			        		localStorage.setItem('autoLogin',isActive);
+			        		console.log(localStorage.getItem('sid'));
+			        		if(isActive=='1')
+			        		{
+			        			localStorage.setItem('account',username);
+			        			localStorage.setItem('password',password);
+			        		}
+			        		clicked('_www/view/member/hyzx/hyzx.html');
+			        	}else
+			        	{
+			        		plus.nativeUI.toast("登录认证失败：" + rs.data.message);
+									return;
+			        	}
+			        }else
+			        {
+			        	plus.nativeUI.toast("登录认证失败：" + rs.data);
+								return;
+			        }
+			   });
+				});
+		
+				mui(document.body).on('tap',"#imgCode",function(){
+					freshImg();
+				});
+		
+				mui(document.body).on('tap',"#reg",function(){
+					clicked(regUrl,{
+						'type': 'person'
+					});
+				})
+		
+				mui(document.body).on('tap',"#regQY",function(){
+					clicked(regQYUrl,{
+						'type': 'bussiness'
+					});
+				})
+		
+				mui(document.body).on('tap',"#forgetPassword",function(){
+					clicked(forgetPwUrl);
+				})
+		
+				function freshImg(){
+					var code = Date.parse(new Date());
+					document.getElementById('imgCode').src = urlImage+'&code='+code;
+					console.log(document.getElementById('imgCode').src);
+					document.getElementById('verify').value = '';
+				}
+				var backButtonPress = 0;
+				mui.back = function(event) {
+					backButtonPress++;
+					if(backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};
+			});
+	</script>
   </body>
 
 </html>

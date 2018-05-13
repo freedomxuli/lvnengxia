@@ -6588,7 +6588,38 @@ header .header-title {
   bottom: 0;
   line-height: 3rem;
   text-align: center;
-  color: #333;
+  color: #fff;
+  font-size: 1.1rem;
+  z-index: 5;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+header .header-img {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  right: 5rem;
+  bottom: 0;
+  line-height: 3rem;
+  width: 1.5rem;
+  z-index: 5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+header .header-span {
+  position: absolute;
+  left: 0rem;
+  top: 0;
+  right: 1rem;
+  bottom: 0;
+  line-height: 3rem;
+  text-align: end;
+  color: #fff;
   font-size: 1.1rem;
   z-index: 5;
   overflow: hidden;
@@ -6756,7 +6787,7 @@ header.home-header .mui-input-clear~ .mui-icon-clear {
 }
 
 header.page-header {
-  background: #fff;
+  background: #2AB673;
 }
 
 header.page-header:before {
@@ -6766,7 +6797,7 @@ header.page-header:before {
   left: 0;
   right: 0;
   height: 1px;
-  background: #E8E8E8;
+  /*background: #E8E8E8;*/
 }
 
 header.icons-header {

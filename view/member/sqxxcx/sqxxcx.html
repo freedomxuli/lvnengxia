@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Shopex Onex B2B2C</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    
+		<link rel="stylesheet" href="../../../css/style.css">
+	    <style type="text/css">
+		    .title-sm{
+				background-color: #2AB673;
+				padding: 3.8rem 1rem 1rem 1rem;
+				color: #FFFFFF;
+				font-weight: bold;
+				font-size: 1.2rem;
+			}
+			.content-title{
+				background-color: #EDF9F5;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				padding: 0.5rem 1rem 0.5rem 1rem;
+			}
+			.content-title-left{
+				flex: 1;
+				color: #1F1F1F;
+			}
+			.content-title-center{
+				flex: 3;
+				color: #1F1F1F;
+			}
+			.content-title-right{
+				flex: 2.5;
+			}
+			.content-title-right-div{
+				background-color: #f7941c;
+				padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+				border-radius:2rem ;
+				display: flex;
+				flex-direction: row;
+			}
+			.content-title-right-div-img{
+				flex: 1;
+			}
+			.content-title-right-div-img img{
+				width: 1.2rem;
+				margin-left: 0.4rem;
+			}
+			.content-title-right-div-span{
+				flex: 5;
+				text-align: center;
+			}
+			.content-title-right-div-span span{
+				color: #FFFFFF;
+			}
+			.center-content-nr{
+				background-color: #FFFFFF;
+				padding: 0.8rem 1rem 0.6rem 1rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px dashed #CCCCCC;
+			}
+			.center-content-nr-bottom{
+				background-color: #FFFFFF;
+				padding: 0.8rem 1rem 0.6rem 1rem;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				border-bottom: 1px solid #CCCCCC;
+			}
+			.center-content-nr-left{
+				color: #1f1f1f;
+			}
+			.center-content-nr-right{
+				color: #666666;
+			}
+			.center-content-nr-right1{
+				color: #f69653;
+			}
+			.center-content-nr-right-img{
+				flex: 1;
+				text-align: right;
+			}
+			.center-content-nr-right-img img{
+				height: 1rem;
+			}
+			.center-content-nr-left-2{
+				flex: 1;
+			}
+			.center-content-nr-right-2{
+				flex: 2;
+				color: #666666;
+			}
+			.center-content-nr-right-input{
+				border:none !important;
+				height: 2rem !important;
+				margin-bottom: 0rem !important;
+				padding: 0rem !important;
+			}
+			.center-content-nr-submit{
+				color: #FFFFFF;
+				background-color: #2AB673;
+				text-align: center;
+				flex: 1;
+				padding: 0.5rem 0rem 0.5rem 0rem;
+				border-radius: 5px;
+			}
+			.center-content-nr-yzm{
+				color: #555555;
+				background-color: #CCCCCC;
+			}
+			.center-content-img-list{
+				background-color: #EDF9F4;
+				padding: 0.8rem;
+			}
+			.center-content-img-list-title{
+				padding-bottom: 1rem;
+			}
+	    </style>
+	</head>
+	<body>
+		<header class="page-header">
+	      <img class="header-img" src="../../../img/register/back.png"/>
+	      <div class="header-title"></div>
+	    </header>
+	    <section class="title-sm">
+	    	<div>申请信息查询</div>
+	    	<div>Query Information</div>
+	    </section>
+	    <section class="content">
+	    	<div>
+	    		<div class="content-title">
+	    			<div class="content-title-left">
+	    				客户
+	    			</div>
+	    			<div class="content-title-center">
+	    				邹俊毅
+	    			</div>
+	    			<div class="content-title-right">
+	    				<div class="content-title-right-div">
+	    					<div class="content-title-right-div-img">
+	    						<img src="../../../img/sqxxcx/book.png" />
+	    					</div>
+	    					<div class="content-title-right-div-span">
+	    						<span>未接受申请</span>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			日　期：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			2017-12-13
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			类　型：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			私宅
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			负责人：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			等　级：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			一级
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			地　区：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			江苏省常州市钟楼区北港街道7788
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			付款模式：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			全款
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			申请容量：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			KWp
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			身份证：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			开户行：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			户表名：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			户表号：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			银行账号：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			瓦片类型：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			小瓦
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			屋顶朝南：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			200m²
+		    		</div>
+		    		<div class="center-content-nr-right-img">
+		    			<img src="../../../img/member/next.png" />
+		    		</div>
+		    	</div>
+		    	<div class="center-content-img-list">
+		    		<div class="center-content-img-list-title">
+		    			相关照片
+		    		</div>
+		    		<div id="slider" class="mui-slider" >
+						<div class="mui-slider-group mui-slider-loop">
+							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第一张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第二张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第三张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第四张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+						</div>
+					</div>
+		    	</div>
+	    	</div>
+	    </section>
+	    	    <section class="content">
+	    	<div>
+	    		<div class="content-title">
+	    			<div class="content-title-left">
+	    				客户
+	    			</div>
+	    			<div class="content-title-center">
+	    				邹俊毅
+	    			</div>
+	    			<div class="content-title-right">
+	    				<div class="content-title-right-div">
+	    					<div class="content-title-right-div-img">
+	    						<img src="../../../img/sqxxcx/book.png" />
+	    					</div>
+	    					<div class="content-title-right-div-span">
+	    						<span>未接受申请</span>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			日　期：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			2017-12-13
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			类　型：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			私宅
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			负责人：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			等　级：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			一级
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			地　区：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			江苏省常州市钟楼区北港街道7788
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			付款模式：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			全款
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			申请容量：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			KWp
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			身份证：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			开户行：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			户表名：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			户表号：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			银行账号：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			瓦片类型：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			小瓦
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			屋顶朝南：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			200m²
+		    		</div>
+		    		<div class="center-content-nr-right-img">
+		    			<img src="../../../img/member/next.png" />
+		    		</div>
+		    	</div>
+		    	<div class="center-content-img-list">
+		    		<div class="center-content-img-list-title">
+		    			相关照片
+		    		</div>
+		    		<div id="slider" class="mui-slider" >
+						<div class="mui-slider-group mui-slider-loop">
+							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第一张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第二张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第三张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第四张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+						</div>
+					</div>
+		    	</div>
+	    	</div>
+	    </section>
+	    	    <section class="content">
+	    	<div>
+	    		<div class="content-title">
+	    			<div class="content-title-left">
+	    				客户
+	    			</div>
+	    			<div class="content-title-center">
+	    				邹俊毅
+	    			</div>
+	    			<div class="content-title-right">
+	    				<div class="content-title-right-div">
+	    					<div class="content-title-right-div-img">
+	    						<img src="../../../img/sqxxcx/book.png" />
+	    					</div>
+	    					<div class="content-title-right-div-span">
+	    						<span>未接受申请</span>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			日　期：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			2017-12-13
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			类　型：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			私宅
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			负责人：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			等　级：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			一级
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			地　区：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			江苏省常州市钟楼区北港街道7788
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			付款模式：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			全款
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			申请容量：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			KWp
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			身份证：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			开户行：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			户表名：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			户表号：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			银行账号：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			瓦片类型：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			小瓦
+		    		</div>
+		    	</div>
+		    	<div class="center-content-nr">
+		    		<div class="center-content-nr-left">
+		    			屋顶朝南：
+		    		</div>
+		    		<div class="center-content-nr-right">
+		    			200m²
+		    		</div>
+		    		<div class="center-content-nr-right-img">
+		    			<img src="../../../img/member/next.png" />
+		    		</div>
+		    	</div>
+		    	<div class="center-content-img-list">
+		    		<div class="center-content-img-list-title">
+		    			相关照片
+		    		</div>
+		    		<div id="slider" class="mui-slider" >
+						<div class="mui-slider-group mui-slider-loop">
+							<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第一张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第二张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第三张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 第四张 -->
+							<div class="mui-slider-item">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+							<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+							<div class="mui-slider-item mui-slider-item-duplicate">
+								<a href="#">
+									<img src="../../../img/sqxxcx/imglist.png">
+								</a>
+							</div>
+						</div>
+						<div class="mui-slider-indicator">
+							<div class="mui-indicator mui-active"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+							<div class="mui-indicator"></div>
+						</div>
+					</div>
+		    	</div>
+	    	</div>
+	    </section>
+	    <script src="../../../js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			var slider = mui("#slider");
+			document.getElementById("switch").addEventListener('toggle', function(e) {
+				if (e.detail.isActive) {
+					slider.slider({
+						interval: 5000
+					});
+				} else {
+					slider.slider({
+						interval: 0
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

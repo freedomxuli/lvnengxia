@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jado绿能侠</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/style.css">
+		<link rel="stylesheet" type="text/css" href="../../css/mui.yh.css" />
+        
+        <style>
+            .mui-input-group:first-child {
+                margin-top: 20px;
+            }
+            .mui-input-group label {
+                width: 33%;
+            }
+            .mui-input-row label~input,
+            .mui-input-row label~select,
+            .mui-input-row label~textarea {
+                width: 67%;
+            }
+            .mui-btn {
+                padding: 10px;
+            }
+            .mui-content-padded {
+                margin-top: 25px;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-arrowthinleft mui-pull-left"></a>
+            <h1 class="mui-title">修改密码</h1>
+        </header>
+        <div class="mui-content">
+            <form class="mui-input-group">
+                <div class="mui-input-row">
+                    <label>新密码</label>
+                    <input type="password" class="mui-input-clear" placeholder="输入新密码" id="passwd" name="passwd">
+                </div>
+                <div class="mui-input-row">
+                    <label>确认新密码</label>
+                    <input type="password" class="mui-input-clear" placeholder="确认新密码" id="repasswd" name="repasswd">
+                </div>
+            </form>
+            <div class="mui-content-padded">
+                <button id="submit" class="mui-btn mui-btn-block mui-btn-success" type="submit">确认</button>
+            </div>
+        </div>
+		<script src="../../js/zepto.js"></script>
+		<script src="../../js/mui.min.js"></script>
+	    <script src="../../js/template.min.js"></script>
+	    <script src="../../config.js"></script>
+	    <script src="../../js/app.js"></script>
+	    <script src="../../js/sign.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
+        <script>
+            
+            mui.init({
+                swipeBack:true //启用右滑关闭功能
+            });
+            var token = "";
+            var phone = "";
+            mui.plusReady(function() {
+      			token = plus.webview.currentWebview().token;
+      			phone = plus.webview.currentWebview().phone;
+			});
+			
+            mui(document.body).on('tap',"#submit",function(){
+                var waiting = plus.nativeUI.showWaiting();
+                var that = this;
+                var passwd = document.getElementById('passwd');
+                var repasswd = document.getElementById('repasswd');
+				if (!passwd.value) {
+					mui.toast('请先填写新密码');
+					waiting.close();
+					return;
+				}
+				if (!repasswd.value) {
+					mui.toast('请先填写确认新密码');
+					waiting.close();
+					return;
+				}
+				if (passwd.value != repasswd.value) {
+					mui.toast('密码不一致');
+					waiting.close();
+					return;
+				}
+				var val_obj = {};
+				val_obj["phone"] = phone;
+				val_obj["token"] = token;
+				val_obj["password"] = repasswd;
+				console.log(val_obj); 
+				var sign = GetSign(val_obj);
+				console.log(sign);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.changepsw,
+			          'sign':sign,
+			          'phone':phone,
+			          'token':token,
+			          'password':repasswd.value
+			        },
+			        method: 'POST'
+			    }
+				console.log(JSON.stringify(param));
+				$.dataRequest(param, function(rs) {
+			        console.log(JSON.stringify(rs));
+			        waiting.close(); 
+			        if(rs.rsp=="succ")
+			        {
+			        	if(rs.data.success=="true"){
+			        		clicked('_www/view/passport/login.html');
+			        	}else
+			        	{
+			        		plus.nativeUI.toast("修改密码失败：" + rs.data.message);
+							return;
+			        	}
+			        }else
+			        {
+			        	plus.nativeUI.toast("修改密码失败：" + rs.data);
+						return;
+			        }
+			    });
+            });
+            
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Jado绿能侠</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.picker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../..//css/mui.poppicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+    
+    <style type="text/css">
+        .mui-plus header.mui-bar{
+            display: block;
+        }
+        .mui-plus .mui-bar-nav~.mui-content{
+            margin-top: 0px;
+        }
+
+        /*hm开头的表示仅为 Hello MUI示例定义*/
+        .hm-description{
+            margin: .5em 0;
+        }
+
+        .hm-description>li {
+            font-size: 14px;
+            color: #8f8f94;
+        }
+        .mui-plus .plus{
+            display: inline;
+        }
+        #btn_submit{z-index: 100;}
+        .mui-btn {
+            font-size: 16px;
+            padding: 8px;
+            margin: 3px;
+        }
+        .ui-alert {
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 16px;
+        }
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+        }
+        .plus{
+            display: none;
+        }
+
+        p {
+            text-indent: 22px;
+        }
+        span.mui-icon {
+            font-size: 14px;
+            color: #007aff;
+            margin-left: -15px;
+            padding-right: 10px;
+        }
+        .mui-popover {
+            height: 100px;
+        }
+        #topPopover {
+            position: fixed;
+            top: 16px;
+            left: 3px;
+        }
+        #topPopover .mui-popover-arrow {
+            left: 3px;
+        }
+
+        footer{position: fixed;bottom: 0px;left: 0px;width: 100%;height: 40px;z-index: 99;}
+        footer button{height: 40px;border-radius: 0px !important;padding:0px;line-height: 0.8 !important;margin: 0px !important;}
+        .mui-input-row{height: auto !important;}
+        .mui-input-btn-label{width: 100%;}
+        .mui-input-row label{width: 40%;}
+        .mui-input-row input[type='text'],textarea{width: 60% !important;}
+        .mui-input-btn-label input[type='text']{width: 45% !important;float: left !important;}
+        .mui-input-btn-label button{width: 15% !important;padding: 8px !important;margin:0px !important;}
+        .up-image{
+            width: 73px;
+            height: 74px;
+            _width: 73px;
+            _height: 74px;
+            position: relative;
+            z-index: 9;
+            opacity: 0;
+        }
+        .up-image-btn{
+            background: url('../../../img/fbpl/photo.jpg')  no-repeat; 
+            background-position: -2px -4px;
+            position: absolute;
+            border: 1px solid #d1d1d1;
+            display: inline-block;
+            color: #fff;
+            width: 70px;
+            height: 70px;
+            _width: 70px;
+            _height: 70px;
+            text-align: center;
+            top: 2px;
+            left: 0px;
+        }
+        .image-box{width: 60%;float: left;position: relative;}
+        .image-row{height:auto!important; height:70px; min-height:70px;}
+        .image-show-box{float: right;height:auto!important; height:70px; min-height:70px;max-width:100px;position: relative;border:0px solid #d1d1d1;display: none;}
+        .image-show-box img{max-height: 70px;max-width:150px; }
+        .image-show-box .gray-div-img{width: 100%;height: 70px;opacity: 0.7;background: #222;position: absolute;top: 0px;left: 0px;text-align: center;padding-top: 40%;color: #fff;display: none;z-index: 4;}
+        .image-show-box i{
+            position: absolute;
+            left: -20px;
+            top: 4px;
+            font-size: 0.7em;
+            background: #F69753;
+            color: #fff;
+            z-index: 3;
+            max-height: 70px;
+            white-space: normal;
+            height: 70px;
+            width: 20px;
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 20px;
+            font-style:normal;
+            line-height: 17px
+        }
+        .box-check-group{float: left;width: 60%;line-height: 40px;}
+        .box-check-group input[type='radio']{padding: 10px;position: relative;width: 20px;height: 20px;border:1px solid #a1a1a1; border-radius: 50%;background: #efefef;margin-left: 20px;}
+        .box-check-group input[type='radio']:checked:after{
+            content: ' ';
+            width: 12px;
+            height: 12px;
+            border-radius: 50px;
+            margin-top:-6px;
+            margin-left:-6px;
+            position: absolute;
+            top: 50%;
+            background: #007aff;
+            color: #007aff;
+            box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+            text-shadow: 0px;
+            left: 50%;
+        }
+        .block-dis{display: block;}
+        .mui-input-btn-label button {border-radius: 0px  !important;margin-top: 1px !important;}
+        .display-none{display: none}
+        .mui-input-row button i,img{margin-top:4px}
+        .up-image-android,.up-image-house{
+            width: 100%;
+            height: 28px;
+            _width: 100%;
+            _height: 28px;
+            position: absolute;
+            z-index: 9;
+            opacity: 0;
+            margin-top: 6px;
+            left:90px;
+        }
+        .image-btn-box{position: relative;display: inline-block;width: 100%;}
+        .up-image-btn-1{color: red;}
+        .mui-popover.mui-popover-action.mui-popover-bottom{margin-bottom: 50px;}
+    </style>
+    
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-home mui-icon mui-icon-arrowthinleft"></a>
+        <h1 class="mui-title"></h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-header-eqinfo">
+            <div class="head-header">一键申请</div>
+            <div class="head-english">Input information</div>
+            <div class="head-icon-img"><img src="Resource/Image/member_icon/029.png"></div>
+        </div>
+    </div>
+    <div class="mui-after-content">
+        <form class="mui-input-group" id="form_client" action="http://crm.lvnengxia.cn/index.php?controller=Jichu_APP_Member&action=Save" method="POST">
+        <!-- 申请日期 -->
+        <div class="mui-input-date mui-input-row mui-input-btn-label mui-input-btn-label-bg">
+            <label>登记日期</label>
+            <input type="text" name="clientDate" placeholder="登记日期" id="clientDate" value="2018-05-13" readonly="readonly">
+            <button id='clientDateBtn' data-options='{"type":"date"}' class="btn mui-btn mui-btn-block btn-date"><img src="../../../img/sqxx/calendar.png" style="width:20px"></button>
+        </div>
+        <div class="mui-input-row">
+            <label>客户名称</label>
+            <input type="text" name="compName" placeholder="客户名称" id="compName" value="徐力">
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="userId" value="443">
+        </div>
+        <div class="mui-input-row">
+            <label>客户类型</label>
+            <input type="text" name="clientType" placeholder="客户类型" id="clientType" value="私宅" readonly>
+        </div>
+        <div class="mui-input-row mui-input-btn-label">
+            <label>省</label>
+            <input type="text" name="area_text1" placeholder="省" id="area_text1" value="" readonly class="area-text">
+            <button id='showarea_id1'  data-level=1 data-select='' class="mui-btn mui-btn-block btn-select-area" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input class="select-hide" type="hidden" id="area_id1" name="area_id1" value="10808">
+        </div>
+        <div class="mui-input-row mui-input-btn-label mui-input-btn-label-bg">
+            <label>市</label>
+            <input type="text" name="area_text2" placeholder="市" id="area_text2" value="" readonly class="area-text">
+            <button id='showarea_id2' data-select='' class="mui-btn mui-btn-block btn-select-area" data-level=2 type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input class="select-hide" type="hidden" id="area_id2" name="area_id2" value="11245">
+        </div>
+        <div class="mui-input-row mui-input-btn-label">
+            <label>区</label>
+            <input type="text" name="area_text3" placeholder="区" id="area_text3" value="" readonly class="area-text">
+            <button id='showarea_id3'  data-level=3 data-select='' class="mui-btn mui-btn-block btn-select-area" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input class="select-hide" type="hidden" id="area_id3" name="area_id3" value="11254">
+        </div>
+        <div class="mui-input-row mui-input-btn-label mui-input-btn-label-bg">
+            <label>镇</label>
+            <input type="text" name="area_text4" placeholder="镇" id="area_text4" value="" readonly>
+            <button id='showarea_id4'  data-level=4 data-select='' class="mui-btn mui-btn-block btn-select-area" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input class="select-hide" type="hidden" id="area_id4" name="area_id4" value="11256">
+        </div>
+        <div class="mui-input-row">
+            <label>详细地址</label>
+            <input type="text" name="address" placeholder="详细地址，如楼牌号等" id="address" value="">
+        </div>
+        <div class="mui-input-row mui-input-btn-label mui-input-btn-label-bg">
+            <label>付款模式</label>
+            <input type="text" name="isDaikText" placeholder="付款模式" id="isDaikText" value="全款" readonly>
+            <button id='showIsDaik' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input class="select-hide" type="hidden" id="isDaik" name="isDaik" value="">
+        </div>
+        <div class="mui-input-row mui-input-btn-label display display-none">
+            <label>贷款年限</label>
+            <input type="text" name="daikyearText" placeholder="贷款年限" id="daikyearText" value="0年" readonly>
+            <button id='showDaikyear' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input class="select-hide" type="hidden" id="daikyear" name="daikyear" value="">
+        </div>
+        <div class="mui-input-row display display-none">
+            <label>借款人</label>
+            <input type="text" name="borrowName" placeholder="借款人" id="borrowName" value="">
+        </div>
+        <div class="mui-input-row image-row">
+            <label>房屋远景</label>
+            <div class="image-box">
+                <a href="#sheet_0"><input type="file" accept="image/*;capture=camera" name="longShotFile" id="longShotFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="longShotPic" id="longShotPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row mui-input-btn-label">
+            <label>屋顶瓦片类型</label>
+            <input type="text" name="kind" placeholder="屋顶瓦片类型" id="kind" value="彩钢瓦" readonly>
+            <button id='showkind' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+        </div>
+        <div class="mui-input-row">
+            <label>屋顶朝南面积(m²)</label>
+            <input type="text" name="acreage" placeholder="屋顶朝南大概面积" id="acreage" value="3">
+        </div>
+        <div class="mui-input-row image-row">
+            <label>房产证证号页</label>
+            <div class="image-box">
+                <a href="#sheet_1"><input type="file" accept="image/*;capture=camera" name="proCardFile" id="proCardFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="proCardPic" id="proCardPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row">
+            <label>房产证内容页</label>
+            <div class="image-box">
+                <a href="#sheet_2"><input type="file" accept="image/*;capture=camera" name="proContFile" id="proContFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="proContPic" id="proContPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row">
+            <label>土地证</label>
+            <div class="image-box">
+                <a href="#sheet_3"><input type="file" accept="image/*;capture=camera" name="landCardFile" id="landCardFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="landCardPic" id="landCardPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row">
+            <label>户主身份证正面照</label>
+            <div class="image-box">
+                <a href="#sheet_4"><input type="file" accept="image/*;capture=camera" name="IDFrontFile" id="IDFrontFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class=" mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="IDFrontPic" id="IDFrontPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row">
+            <label>户主身份证反面照</label>
+            <div class="image-box">
+                <a href="#sheet_5"><input type="file" accept="image/*;capture=camera" name="IDBackFile" id="IDBackFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="IDBackPic" id="IDBackPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row display display-none">
+            <label>配偶身份证正面照</label>
+            <div class="image-box">
+                <a href="#sheet_6"><input type="file" accept="image/*;capture=camera" name="mateIDFrontFile" id="mateIDFrontFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="mateIDFrontPic" id="mateIDFrontPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row display display-none">
+            <label>配偶身份证反面照</label>
+            <div class="image-box">
+                <a href="#sheet_7"><input type="file" accept="image/*;capture=camera" name="mateIDBackFile" id="mateIDBackFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="mateIDBackPic" id="mateIDBackPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row">
+            <label>户口簿整本(最多6张)</label>
+            <div class="image-box">
+                <a href="#sheet_8"><input type="file" accept="image/*;capture=camera" name="houseAppFile" id="houseAppFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove-house">删除</i>
+                    <input type="hidden" name="houseAppPic" id="houseAppPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row">
+            <label>银行卡</label>
+            <div class="image-box">
+                <a href="#sheet_9"><input type="file" accept="image/*;capture=camera" name="bankCardFile" id="bankCardFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="bankCardPic" id="bankCardPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row display display-none">
+            <label>结婚证</label>
+            <div class="image-box">
+                <a href="#sheet_10"><input type="file" accept="image/*;capture=camera" name="marryCardFile" id="marryCardFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="marryCardPic" id="marryCardPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row image-row display display-none">
+            <label>单身证明</label>
+            <div class="image-box">
+                <a href="#sheet_11"><input type="file" accept="image/*;capture=camera" name="singleCardFile" id="singleCardFile" class='up-image'></a>
+                <i class="up-image-btn"></i>
+                <div class="image-show-box ">
+                    <div class="gray-div-img">上传中...</div>
+                    <i class="mui-img-remove">删除</i>
+                    <img src="">
+                    <input type="hidden" name="singleCardPic" id="singleCardPic" value="">
+                </div>
+            </div>
+        </div>
+        <div class="mui-input-row mui-input-btn-label">
+            <label>开户行</label>
+            <input type="text" name="bankName" placeholder="请输入开户行" id="bankName" value="">
+            <button id='showbankName' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+        </div>
+        <div class="mui-input-row">
+            <label>户表名</label>
+            <input type="text" name="huBiaoName" placeholder="请输入户表名" id="huBiaoName" value="">
+        </div>
+        <div class="mui-input-row">
+            <label>户表号</label>
+            <input type="text" name="hubiaoCard" placeholder="请输入户表号" id="hubiaoCard" value="">
+        </div>
+        <div class="mui-input-row">
+            <label>银行账号</label>
+            <input type="text" name="bankId" placeholder="账号长度为5~30号" id="bankId" value="">
+        </div>
+        <div class="mui-input-row" style="height: auto;">
+            <label>申请容量(KWp)</label>
+            <input type="text" name="ApplyCapacityText" placeholder="申请容量" id="ApplyCapacityText" value="0.49">
+            <input type="hidden" name="ApplyCapacity" id="ApplyCapacity" value="0.4909">
+            <input type="hidden" name="people" id="people" value="">
+            <input type="hidden" name="phone" id="phone" value="">
+            <input type="hidden" name="contactId" value="">
+        </div>
+        <div class="mui-input-row" style="height: auto;">
+            <label>备注</label>
+            <textarea class="form-control" placeholder="备注" rows="2" name="memo" id="memo"></textarea>
+        </div>
+        </form>
+        <div class="" style="height: 50px;"></div>
+    </div>
+        <div id="sheet_0" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="longShotFile" value="" class="up-image-android">
+                    <span class="longShotFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="longShotFile" value="" class="up-image-android">
+                    <span class="longShotFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_1" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="proCardFile" value="" class="up-image-android">
+                    <span class="proCardFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="proCardFile" value="" class="up-image-android">
+                    <span class="proCardFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_2" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="proContFile" value="" class="up-image-android">
+                    <span class="proContFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="proContFile" value="" class="up-image-android">
+                    <span class="proContFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_3" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="landCardFile" value="" class="up-image-android">
+                    <span class="landCardFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="landCardFile" value="" class="up-image-android">
+                    <span class="landCardFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_4" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="IDFrontFile" value="" class="up-image-android">
+                    <span class="IDFrontFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="IDFrontFile" value="" class="up-image-android">
+                    <span class="IDFrontFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_5" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="IDBackFile" value="" class="up-image-android">
+                    <span class="IDBackFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="IDBackFile" value="" class="up-image-android">
+                    <span class="IDBackFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_6" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="mateIDFrontFile" value="" class="up-image-android">
+                    <span class="mateIDFrontFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="mateIDFrontFile" value="" class="up-image-android">
+                    <span class="mateIDFrontFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_7" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="mateIDBackFile" value="" class="up-image-android">
+                    <span class="mateIDBackFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="mateIDBackFile" value="" class="up-image-android">
+                    <span class="mateIDBackFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_8" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="houseAppFile" value="" class="up-image-house">
+                    <span class="houseAppFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="houseAppFile" value="" class="up-image-house">
+                    <span class="houseAppFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_9" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="bankCardFile" value="" class="up-image-android">
+                    <span class="bankCardFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="bankCardFile" value="" class="up-image-android">
+                    <span class="bankCardFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_10" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="marryCardFile" value="" class="up-image-android">
+                    <span class="marryCardFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="marryCardFile" value="" class="up-image-android">
+                    <span class="marryCardFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+        <div id="sheet_11" class="mui-popover mui-popover-action mui-popover-bottom"  style="display: none;">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="singleCardFile" value="" class="up-image-android">
+                    <span class="singleCardFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+            <li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="singleCardFile" value="" class="up-image-android">
+                    <span class="singleCardFile"></span>
+                    <span class="up-image-btn-2">上传</span>
+                </div>
+            </li>
+        </ul>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#sheet" class=""><b>取消</b></a>
+            </li>
+        </ul>
+    </div>
+    
+    <footer>
+        <button type="button" id="btn_submit" class="mui-btn mui-btn-block mui-btn-success">立即上传</button>
+    </footer>
+</body>
+<script src="../../../js/mui.min.js"></script>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/mui.picker.js"></script>
+<script src="../../../js/mui.picker.min.js"></script>
+<script src="../../../js/mui.poppicker.js"></script>
+<script src="../../../js/mui.enterfocus.js"></script>
+<script src="../../../js/template.min.js"></script>
+<script src="../../../config.js"></script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/sign.js"></script>
+<script src="../../../js/md5.js"></script>
+<script src="../../../js/jquery.1.9.1.js"></script>
+<script type="text/javascript">
+    var jQuery = jQuery.noConflict();
+</script>
+<script>
+	//var area_url = "http://crm.lvnengxia.cn/index.php?controller=Jichu_Area&action=GetAreaList";
+	//var img_url = "http://crm.lvnengxia.cn/index.php?controller=Jichu_Client&action=AddPics";
+	var acreage = '0.1636363636363636363636';
+	var sid = localStorage.getItem("sid");
+
+    mui.init();
+	mui.plusReady(function() {
+		loadData();
+		
+		function loadData(){
+			var waiting = plus.nativeUI.showWaiting();
+			var obj_pertzinfo = {};
+	    	obj_comtzinfo["sid"] = sid;
+	    	var sign = GetSign(obj_comtzinfo);
+	    	var param = {
+		        queryData: {
+		          'method': config.apimethod.comtzinfo,
+		          'sign':sign,
+		          'sid':sid
+		        },
+		        method: 'POST'
+		    }
+		}
+	})
+    //修改的时候默认给输入框显示值
+    jQuery('.select-hide[value!=""]').each(function(){
+        var textInput=jQuery(this).siblings('input[type=text]');
+        var _data = jQuery(this).siblings('button').data('select');
+        var curVal = jQuery(this).val();
+        if(!textInput.value){
+            for(var k in _data){
+                if(_data[k]['value'] == curVal){
+                    textInput.val(_data[k]['text']);
+                }
+            }
+        }
+    });
+
+    jQuery('.display').each(function(){
+        var type = jQuery('#isDaikText').val();
+        if(type=='全款') {
+            jQuery(this).addClass("display-none");
+        }else{
+            jQuery(this).removeClass("display-none");
+        }
+    });
+
+    //公式计算申请容量
+    jQuery('#acreage').change(function(){
+        var zhuangji = parseFloat(jQuery(this).val()||0)*acreage;
+        zhuangji = zhuangji.toFixed(4);
+        jQuery('#ApplyCapacity').val(zhuangji);
+        zhuangjiText = Math.floor(zhuangji*100)/100;
+        jQuery('#ApplyCapacityText').val(zhuangjiText);
+    });
+
+    //首页
+    mui(document.body).on('tap','.mui-action-home',function(){
+        clicked("_www/view/member/hyzx/hyzx.html");
+    });
+
+    // mui('.mui-scroll-wrapper').scroll();
+
+    //日期选择
+    var btns = mui('.btn-date');
+    btns.each(function(i, btn) {
+        btn.addEventListener('tap', function() {
+            var optionsJson = this.getAttribute('data-options') || '{}';
+            var options = JSON.parse(optionsJson);
+            var id = this.getAttribute('id');
+            var that = this;
+            /*
+             * 首次显示时实例化组件
+             * 示例为了简洁，将 options 放在了按钮的 dom 上
+             * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+             */
+            var picker = new mui.DtPicker(options);
+            picker.show(function(rs) {
+                jQuery(that).parents('.mui-input-date').find('input').val(rs.text);
+                picker.dispose();
+            });
+        }, false);
+    });
+
+    //选择类型
+    jQuery('.btn-select').each(function(){
+        var picker = new mui.PopPicker();
+        var json = jQuery(this).data('select');
+        picker.setData(json);
+        var forInput = jQuery(this).siblings('input[type=text]');
+        var forVal = jQuery(this).siblings('input[type=hidden]');
+        if(forVal.val()){
+            picker.pickers[0].setSelectedValue(forVal.val(), 2000);
+        }
+        this.addEventListener('tap', function(event) {
+            picker.show(function(items) {
+                forInput && forInput.val(items[0]['text']);
+                forVal && forVal.val(items[0]['value']);
+                forVal.change();
+            });
+        }, false);
+    });
+
+    //显示贷款类型信息
+    jQuery('#isDaik').change(function(){
+        var that = this;
+        var type = jQuery(that).val();
+        var dis = jQuery(that).parents('.mui-after-content').find('.display');
+        if(type==1) {
+            dis.removeClass("display-none");
+        }else{
+            dis.addClass("display-none");
+        }
+    });
+
+    //地区的选择，特殊
+    //选择类型
+    var pickerArea = [];
+    jQuery('.btn-select-area').each(function(){
+        var llevel = jQuery(this).data('level');
+        pickerArea[llevel] = new mui.PopPicker();
+        var json = jQuery(this).data('select');
+
+        pickerArea[llevel].setData(json);
+
+        var forInput = jQuery(this).siblings('input[type=text]');
+        var forVal = jQuery(this).siblings('input[type=hidden]');
+        if(forVal.val()){
+            pickerArea[llevel].pickers[0].setSelectedValue(forVal.val(), 2000);
+        }
+        this.addEventListener('tap', function(event) {
+            var level = parseInt(jQuery(this).data('level'))||1;
+            if(level != 1){
+                //查看上一级是否已经选择，没有选择上级不能拿选择当前地区
+                var prevLevel = level - 1;
+                var _tmpval = jQuery('#area_text'+prevLevel).val();
+                if(!_tmpval){
+                    mui.toast('请先选择上级地区');
+                    return;
+                }
+            }
+            var oldVal = forInput.val();
+            pickerArea[llevel].show(function(items) {
+                forInput && forInput.val(items[0]['text']);
+                forVal && forVal.val(items[0]['value']);
+
+                if(oldVal!=items[0]['text'])forInput.change();
+            });
+        }, false);
+    });
+
+    //改变取值后，对下一级进行更新选项
+    jQuery('.area-text').change(function(){
+        var that = this;
+        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
+        curLevel = curLevel+1;
+        //强制清空下级所有数据
+        for(var le=curLevel;le<=4;le++){
+            pickerArea[le].setData([]);
+            //清空text和hidden值
+            jQuery('#area_text'+le).val('');
+            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
+        }
+        //清空end
+
+        //获取下一级地区数据
+        var button = jQuery('#area_text'+curLevel).siblings('button');
+        // button.attr('disabled' ,'disabled');
+
+        var area_id = jQuery(this).siblings('input[type=hidden]').val();
+        button.attr('data-select','');
+        //开始到后台获取数据
+        jQuery.ajax(area_url,{
+            data:{
+                parentId:area_id,
+                format:'select',
+            },
+            dataType:'json',//服务器返回json格式数据
+            type:'get',//HTTP请求类型
+            success:function(data){
+                if(data){
+                    button.attr('data-select',JSON.stringify(data.data));
+                    pickerArea[curLevel].setData(data.data);
+                }
+            }
+        });
+        // button.removeAttr('disabled');
+    });
+
+    //end
+
+    //ajax提交图片，处理图片功能
+    jQuery('.up-image-android').change(function(){
+        jQuery('.mui-popover').css('display','none');
+        jQuery('.mui-popover').removeClass('mui-active');
+        jQuery('.mui-backdrop').css('display','none');
+        // debugger;
+        var that = this;
+        var id = jQuery(that).siblings().attr('class');
+        var input = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+        var grayDiv = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+        //提交图片到后台处理
+        var form = new FormData();
+        form.append("upload", 1);
+        form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
+
+        grayDiv.show();
+        //预览图片
+        var url = '';
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(that.files[0]) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(that.files[0]) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(that.files[0]) ;
+        }
+        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
+        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
+
+        // ajaxFileUpload(that);
+        $.ajax({
+            url: img_url,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: form,
+            dataType:'json',
+            async: true,
+            success: function(d) {
+                if(d.bpic){
+                    input.val(d.bpic);
+                    grayDiv.hide();
+                }else{
+                    jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.mui-img-remove').click();
+                }
+
+            }
+        });
+
+    });
+    jQuery('.up-image-house').change(function(){
+        jQuery('.mui-popover').css('display','none');
+        jQuery('.mui-popover').removeClass('mui-active');
+        jQuery('.mui-backdrop').css('display','none');
+        // debugger;
+        var that = this;
+        var id = jQuery(that).siblings().attr('class');
+        var input = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+        var grayDiv = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+        var value = jQuery('#houseAppPic').val();
+        //提交图片到后台处理
+        var form = new FormData();
+        form.append("upload", 1);
+        form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
+
+        grayDiv.show();
+        //预览图片
+        var url = '';
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(that.files[0]) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(that.files[0]) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(that.files[0]) ;
+        }
+        if (value=='') {
+            jQuery(that).parents('.image-box').find('img').remove();
+        }
+        jQuery('#houseAppPic').before("<img src="+url+">");
+        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
+
+        $.ajax({
+            url: img_url,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: form,
+            dataType:'json',
+            async: true,
+            success: function(d) {
+                if(d.bpic){
+                    value = value + d.bpic + ',';
+                    input.val(value);
+                    grayDiv.hide();
+                }else{
+                    jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.mui-img-remove').click();
+                }
+
+            }
+        });
+        var num = jQuery('#houseAppPic').siblings('img').length;
+        console.log(num);
+        if(num>=6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).attr('disabled','disabled');
+
+    });
+
+    //删掉当前图片
+    jQuery('.mui-img-remove').click(function(){
+        var that = this;
+        //隐藏div
+        jQuery(that).parents('.image-show-box').hide();
+        //删掉图片展示，
+        jQuery(that).siblings('img').attr('src','');
+        //清空input，hidden,file
+        // jQuery(that).siblings('input').val('');
+        jQuery(that).parents('.image-box').find('input').val('');
+    });
+    jQuery('.mui-img-remove-house').click(function(){
+        var that = this;
+        //隐藏div
+        jQuery(that).parents('.image-show-box').hide();
+        //删掉图片展示，
+        jQuery(that).siblings('img').remove();
+        //清空input，hidden,file
+        jQuery(that).parents('.image-box').find('input').val('');
+        var num = jQuery(that).siblings('img').length;
+        if(num<6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).removeAttr('disabled');
+    });
+
+    //提交按钮事件：需要验证基本信息
+    var rulesRequired = ['compName','area_text1','area_text2','area_text3','area_text4','address'];
+    var rulesQuan = ['longShotPic','kind','acreage','proCardPic','proContPic','landCardPic','IDFrontPic','IDBackPic','houseAppPic','bankCardPic','huBiaoName','bankName','hubiaoCard','bankId','ApplyCapacity'];
+    var rulesDai = ['longShotPic','kind','acreage','proCardPic','proContPic','landCardPic','IDFrontPic','IDBackPic','houseAppPic','bankCardPic','bankName','huBiaoName','hubiaoCard','bankId','ApplyCapacity','daikyear','borrowName','mateIDFrontPic','mateIDBackPic','marryCardPic','singleCardPic'];
+    jQuery('#btn_submit').click(function(){
+        var that = this;
+
+        //验证是否填写
+        var _rule_res = '';
+        jQuery(rulesRequired).each(function(){
+            var _val = jQuery('#'+this).val();
+            if(!_val){
+                _rule_res = jQuery('#'+this).attr('placeholder');
+                return false;
+            }
+        });
+        if(_rule_res){
+            mui.alert(_rule_res+'必填');
+            setTimeout(function() {
+                mui(that).button('reset');
+            }.bind(that), 100);
+            return;
+        }
+
+        var _rule = '';
+        var type = jQuery('#isDaik').val();
+        if(type==1) {
+            jQuery(rulesDai).each(function(){
+                var _val = jQuery('#'+this).val();
+                if(!_val){
+                    _rule = 'false';
+                    return false;
+                }
+            });
+        }else{
+            jQuery(rulesQuan).each(function(){
+                var _val = jQuery('#'+this).val();
+                if(!_val){
+                    _rule = 'false';
+                    return false;
+                }
+            });
+        }
+        if(_rule!=''){
+            var btnArray = ['否', '是'];
+            mui.confirm('您有信息未填写完整，完整度越高申请通过率越大，是否完善信息？',null,btnArray,function(e) {
+                if (e.index == 1) {
+                    return;
+                } else {
+                    //提交
+                    jQuery('#form_client').submit();
+                }
+            });
+        }else{
+            //提交
+            jQuery('#form_client').submit();
+        }
+
+        setTimeout(function() {
+            mui(that).button('reset');
+        }.bind(that), 500);
+    });
+</script>
+</html>

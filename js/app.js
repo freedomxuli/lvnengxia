@@ -900,8 +900,7 @@ function preateClear() {
 
   $.dataRequest = function(data, renderCallback) {
     var baseData = {
-      'v': config.apiversion,
-      'format': 'json'
+      'version': config.apiversion
     };
     if(data) {
       $.extend(baseData, data.queryData);

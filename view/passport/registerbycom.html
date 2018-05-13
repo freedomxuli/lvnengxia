@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="ui-page-login">
 
@@ -7,10 +8,10 @@
 		<title>Jado绿能侠</title>
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.css" />
-	    <link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
-	    <link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css" />
-	    <link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
-	    <link rel="stylesheet" type="text/css" href="../../css/mui.yh.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/mui.poppicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/icons-extra.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/mui.yh.css" />
 		
 		<style>
 			.mui-input-group:first-child {
@@ -34,23 +35,6 @@
 			.mui-btn {
 				padding: 10px;
 			}
-   			.box-check-group{float: left;width: 60%;line-height: 40px;}
-		    .box-check-group input[type='radio']{padding: 10px;position: relative;width: 20px;height: 20px;border:1px solid #a1a1a1; border-radius: 50%;background: #efefef;margin-left: 20px;}
-		    .box-check-group input[type='radio']:checked:after{
-		        content: ' ';
-		        width: 12px;
-		        height: 12px;
-		        border-radius: 50px;
-		        margin-top:-6px;
-		        margin-left:-6px;
-		        position: absolute;
-		        top: 50%;
-		        background: #007aff;
-		        color: #007aff;
-		        box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
-		        text-shadow: 0px;
-		        left: 50%;
-		    }
 		    .mui-input-row .extra {
 			    position: absolute;
 			    right: 0;
@@ -73,7 +57,7 @@
 			}
 			.mui-input-btn-label input[type='text']{width: 45% !important;float: left !important;}
     		.mui-input-btn-label button{width: 15% !important;padding: 8px !important;margin:0px !important;}
-			.head-middle{font-size:70%;padding-top: 5px}
+    		.head-middle{font-size:70%;padding-top: 5px}
 		</style>
 		
 	</head>
@@ -91,12 +75,12 @@
 	        </div>
 	    </div>
 	    <div class="mui-after-content tab-btn-group">
-			<div class="tab-btn col-6 active">个人注册</div>
-			<div class="tab-btn col-6 mui-btn-link-tab">企业注册</div>
+			<div class="tab-btn col-6 mui-btn-link-tab">个人注册</div>
+			<div class="tab-btn col-6 active">企业注册</div>
 	    </div>
-	    <div class="mui-after-content">
+		<div class="mui-after-content">
 			<form class="mui-input-group">
-				<input id='inputToken' type="hidden" value="eba93499684c8dadb6c81396f25ebf0a">
+			<input id='inputToken' type="hidden" value="a956adaa99ea6733b89a8f3c31d58d45">
 				<div class="mui-input-row">
 					<label>手机号</label>
 					<input id='mobile' type="tel" class="mui-input-clear mui-input" placeholder="请输入手机号码">
@@ -105,7 +89,7 @@
 					<label>姓名</label>
 					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入姓名">
 					<input id='code' type="hidden" value="">
-					<input id='avatar' type="hidden" value="http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoDXm8XZmVSqhQk7q6vvqMQ4ZibcrDvXhQMbibSIGLBKHukV9c1aS4ZgOnh1rrfDiaAo8t5K2GVIe6Lg/132">
+					<input id='avatar' type="hidden" value="">
 				</div>
 				<div class="mui-input-row">
 					<label>密码</label>
@@ -114,19 +98,30 @@
 				<div class="mui-input-row">
 					<label>确认密码</label>
 					<input id='password_confirm' type="password" class="mui-input-clear mui-input" placeholder="请确认密码">
-					<input id='regType' type="hidden" value="0">
+					<input id='regType' type="hidden" value="1">
+				</div>
+				<!-- <div class="mui-input-row">
+		            <label>注册类型</label>
+		            <div class="box-check-group">
+		                <input type="radio" name='regType' value="0" >私宅
+		                <input type="radio" name='regType' value="1" checked="true" >企业
+		            </div>
+		        </div> -->
+		        <div class="mui-input-row">
+					<label>公司名称</label>
+					<input id='compName' type="text" class="mui-input-clear mui-input" placeholder="请输入公司名称">
 				</div>
 		        <div class="mui-input-row mui-input-btn-label">
 		            <label>省</label>
 		            <input type="text" name="area_text1" placeholder="省" id="area_text1" value="" readonly class="area-text">
-		            <button id='showarea_id1'  data-level=1 class="mui-btn mui-btn-block btn-select-area" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
-		            <input class="select-hide" type="hidden" id="area_id1" name="area_id1" value="">
+		            <button id='showarea_id1'  data-level=1 data-select='' class="mui-btn mui-btn-block btn-select-area" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+		            <input class="select-hide" type="hidden" id="area_id1" name="area_id1" value="10808">
 		        </div>
 		        <div class="mui-input-row mui-input-btn-label">
 		            <label>市</label>
 		            <input type="text" name="area_text2" placeholder="市" id="area_text2" value="" readonly class="area-text">
 		            <button id='showarea_id2' data-select='' class="mui-btn mui-btn-block btn-select-area" data-level=2 type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
-		            <input class="select-hide" type="hidden" id="area_id2" name="area_id2" value="">
+		            <input class="select-hide" type="hidden" id="area_id2" name="area_id2" value="11245">
 		        </div>
 		        <div class="mui-input-row mui-input-btn-label">
 		            <label>区</label>
@@ -180,11 +175,12 @@
 		    var jQuery = jQuery.noConflict();
 		</script>
 		<script>
-			var _urlChange = "_www/view/passport/registerbycom.html";
+			var _urlChange = "_www/view/passport/register.html";
 			var _urlLogin = "_www/view/passport/login.html";
 			var appCode = "";
 			var province_obj = {};
 			var pickerArea = [];
+			
 		    /* 获取验证码倒计时 */
 		    function getCodeCountDown(sec) {
 		        var s = sec;
@@ -203,7 +199,7 @@
 		            }
 		        }, 1000)
 		    }
-		    
+    
 		    var val_area = {};
 		    val_area["mid"] = "";
 		    val_area["timestamp"] = new Date().getTime();
@@ -228,71 +224,71 @@
 		        	}
 		        	
 		        	setdq();
-	
+		
 				    //改变取值后，对下一级进行更新选项
 				    jQuery('.area-text').change(function(){
-				        var that = this;
-				        jQuery(this).siblings('input[type=hidden]').val(province_obj[jQuery(this).val()]);
-				        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
-				        curLevel = curLevel+1;
-				        //强制清空下级所有数据
-				        for(var le=curLevel;le<=4;le++){
-				            pickerArea[le].setData([]);
-				            //清空text和hidden值
-				            jQuery('#area_text'+le).val('');
-				            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
-				        }
-				        //清空end
-	
-				        //获取下一级地区数据
-				        var button = jQuery('#area_text'+curLevel).siblings('button');
-				        // button.attr('disabled' ,'disabled');
-	
-				        var area_id = jQuery(this).siblings('input[type=hidden]').val();
-				        console.log(area_id);
-				        button.attr('data-select','');
-				        //开始到后台获取数据
-				        var val_obj = {};
-						val_obj["areaid"] = area_id;
-						val_obj["timestamp"] = new Date().getTime();
-						console.log(val_obj); 
-						var sign = GetSign(val_obj);
-						console.log(sign);
-						var param = {
-					        queryData: {
-					          'method': config.apimethod.areachildlist,
-					          'sign':sign,
-					          'areaid':area_id,
-					          'timestamp':val_obj["timestamp"]
-					        },
-					        method: 'POST'
-					    }
-						$.dataRequest(param, function(rs1) {
-					        console.log(JSON.stringify(rs1));
-					        if(rs1.rsp=="succ")
-		        			{
-		        				jQuery("#showarea_id"+(curLevel-1)).data("select",rs1.data.Area[0]);
-		        				setdq();
-		        			}
+					        var that = this;
+					        jQuery(this).siblings('input[type=hidden]').val(province_obj[jQuery(this).val()]);
+					        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
+					        curLevel = curLevel+1;
+					        //强制清空下级所有数据
+					        for(var le=curLevel;le<=4;le++){
+					            pickerArea[le].setData([]);
+					            //清空text和hidden值
+					            jQuery('#area_text'+le).val('');
+					            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
+					        }
+					        //清空end
+			
+					        //获取下一级地区数据
+					        var button = jQuery('#area_text'+curLevel).siblings('button');
+					        // button.attr('disabled' ,'disabled');
+			
+					        var area_id = jQuery(this).siblings('input[type=hidden]').val();
+					        console.log(area_id);
+					        button.attr('data-select','');
+					        //开始到后台获取数据
+					        var val_obj = {};
+									val_obj["areaid"] = area_id;
+									val_obj["timestamp"] = new Date().getTime();
+									console.log(val_obj); 
+									var sign = GetSign(val_obj);
+									console.log(sign);
+									var param = {
+						        queryData: {
+						          'method': config.apimethod.areachildlist,
+						          'sign':sign,
+						          'areaid':area_id,
+						          'timestamp':val_obj["timestamp"]
+						        },
+						        method: 'POST'
+							    }
+									$.dataRequest(param, function(rs1) {
+							        console.log(JSON.stringify(rs1));
+							        if(rs1.rsp=="succ")
+				        			{
+				        				jQuery("#showarea_id"+(curLevel-1)).data("select",rs1.data.Area[0]);
+				        				setdq();
+				        			}
+							    });
 					    });
-				    });
 		        }else
 		        {
 		        	plus.nativeUI.toast("获取失败：" + rs.data);
-					return;
+							return;
 		        }
 		    });
-		    
+    
 		    function setdq(){
-	    		//地区的选择，特殊
+				//地区的选择，特殊
 			    //选择类型
 			    jQuery('.btn-select-area').each(function(){
 			        var llevel = jQuery(this).data('level');
 			        pickerArea[llevel] = new mui.PopPicker();
 			        var json = jQuery(this).data('select');
-
+		
 			        pickerArea[llevel].setData(json);
-
+		
 			        var forInput = jQuery(this).siblings('input[type=text]');
 			        var forVal = jQuery(this).siblings('input[type=hidden]');
 			        if(forVal.val()){
@@ -313,14 +309,14 @@
 			            pickerArea[llevel].show(function(items) {
 			                forInput && forInput.val(items[0]['text']);
 			                forVal && forVal.val(items[0]['value']);
-
+		
 			                if(oldVal!=items[0]['text'])forInput.change();
 			            });
 			        }, false);
 			    });
 		    }
-		    
-	       	//获取重新发送的验证码
+    
+		    //获取重新发送的验证码
 		    mui(document.body).on('tap','#sendBtn',function(){
 		    	var waiting = plus.nativeUI.showWaiting();
 		    	var that = this;
@@ -368,9 +364,10 @@
 			        }
 			    });
 		    });
+    
 			(function($, doc) {
-   			 	//mui.init();
-   			 	//默认给输入框显示值
+			 	//mui.init();
+			 	//默认给输入框显示值
 			    jQuery('.select-hide[value!=""]').each(function(){
 			        var textInput=jQuery(this).siblings('input[type=text]');
 			        var _data = jQuery(this).siblings('button').data('select');
@@ -383,7 +380,6 @@
 			            }
 			        }
 			    });
-
 			    //end
 			})(mui, document);
 
@@ -394,16 +390,12 @@
 					clicked(_urlChange);
 				}
 			});
+
 			mui(document.body).on('tap',".mui-action-login",function(){
-				clicked(_urlLogin);
+				clicked(_urlChange);
 			});
 
-			/*mui(document.body).on('tap',".mui-icon-left-nav",function(){
-				document.location.href = _urlBack;
-			});*/
-
 			mui(document.body).on('tap',"#reg",function(){
-				//mui(this).button('loading');
 				var waiting = plus.nativeUI.showWaiting();
 				var that = this;
 				var regButton = document.getElementById('reg');
@@ -411,11 +403,8 @@
 				var passwordBox = document.getElementById('password');
 				var passwordConfirmBox = document.getElementById('password_confirm');
 				var mobileBox = document.getElementById('mobile');
-				var age = document.getElementById('age');
 				var code = document.getElementById('code');
 				var avatar = document.getElementById('avatar');
-				var roofAcreage = document.getElementById('roofAcreage');
-				var tileKind = document.getElementById('tileKind');
 				var area_text1 = document.getElementById('area_text1');
 				var area_text2 = document.getElementById('area_text2');
 				var area_text3 = document.getElementById('area_text3');
@@ -426,9 +415,10 @@
 				var area_id4 = document.getElementById('area_id4');
 				var addr = document.getElementById('addr');
 				var regType = document.getElementById('regType');
+				var compName = document.getElementById('compName');
 				var msgCode = document.getElementById('msgCode');
 				var inputToken = document.getElementById('inputToken');
-
+	
 				var passwordConfirm = passwordConfirmBox.value;
 				if (passwordConfirm != passwordBox.value) {
 					mui.toast('密码不一致');
@@ -442,6 +432,11 @@
 				}
 				if(!accountBox.value){
 					mui.toast('请输入姓名');
+					waiting.close();
+					return;
+				}
+				if(!compName.value){
+					mui.toast('请输入公司名称');
 					waiting.close();
 					return;
 				}
@@ -470,9 +465,11 @@
 					waiting.close();
 					return;
 				}
+				
 				var obj_reg = {};
 				obj_reg["mobile"] = mobileBox.value;
 				obj_reg["name"] = accountBox.value;
+				obj_reg["compName"] = compName.value;
 				obj_reg["password"] = passwordConfirm;
 				obj_reg["area_id1"] = area_id1.value;
 				obj_reg["area_id2"] = area_id2.value;
@@ -483,84 +480,93 @@
 				obj_reg["code"] = '';
 				var sign = GetSign(obj_reg);
 				var param_reg = {
-			        queryData: {
-			          'method': config.apimethod.signup,
-			          'sign':sign,
-			          'mobile':mobileBox.value,
-			          'name':accountBox.value,
-			          'password':passwordConfirm,
-			          'area_id1':area_id1.value,
-			          'area_id2':area_id2.value,
-			          'area_id3':area_id3.value,
-			          'area_id4':area_id4.value,
-			          'addr':addr.value,
-			          'vcode':msgCode.value,
-			          'code':''
-			        },
-			        method: 'POST'
-			    }
+		        queryData: {
+		          'method': config.apimethod.signupcom,
+		          'sign':sign,
+		          'mobile':mobileBox.value,
+		          'name':accountBox.value,
+		          'compName':compName.value,
+		          'password':passwordConfirm,
+		          'area_id1':area_id1.value,
+		          'area_id2':area_id2.value,
+		          'area_id3':area_id3.value,
+		          'area_id4':area_id4.value,
+		          'addr':addr.value,
+		          'vcode':msgCode.value,
+		          'code':''
+		        },
+		        method: 'POST'
+		    }
 				$.dataRequest(param, function(rs) {
-			        console.log(JSON.stringify(rs));
-			        waiting.close(); 
-			        if(rs.rsp=="succ")
-			        {
-			        	if(rs.data.success=="true"){
-			        		plus.nativeUI.toast("注册成功");
-			        		clicked('_www/view/passport/login.html');
-							//return;
-			        	}else
-			        	{
-			        		plus.nativeUI.toast("注册失败：" + rs.data.msg);
+		        console.log(JSON.stringify(rs));
+		        waiting.close(); 
+		        if(rs.rsp=="succ")
+		        {
+		        	if(rs.data.success=="true"){
+		        		plus.nativeUI.toast("注册成功");
+		        		clicked('_www/view/passport/login.html');
+						//return;
+		        	}else
+		        	{
+		        		plus.nativeUI.toast("注册失败：" + rs.data.msg);
+								return;
+		        	}
+		        }else
+		        {
+		        	plus.nativeUI.toast("注册失败：" + rs.data);
 							return;
-			        	}
-			        }else
-			        {
-			        	plus.nativeUI.toast("注册失败：" + rs.data);
-						return;
-			        }
-			    });
-/*				jQuery.ajax(_url,{
-		            data:{
-						account: accountBox.value,
-						password: passwordBox.value,
-						mobile: mobileBox.value,
-						regType:regType.value,
-						code: code.value,
-						avatar: avatar.value,
-						area_id1:area_id1.value,
-						area_id2:area_id2.value,
-						area_id3:area_id3.value,
-						area_id4:area_id4.value,
-						area_text1:area_text1.value,
-						area_text2:area_text2.value,
-						area_text3:area_text3.value,
-						area_text4:area_text4.value,
-						addr:addr.value,
-						msgCode:msgCode.value,
-						inputToken:inputToken.value
-					},
-		            type: 'POST',
-		            dataType: 'json',
-		            success: function (json) {
-		            	console.log(json);
-		            	if(json.succ == 'fail'){
-							mui.alert(json.message);
-						}else if(json.confirm){
-						    mui.confirm(json.message,'',json.arr,function(e) {
-						        if(e.index == 1){
-						        	document.location.href = json.url;
-						        }
-						    });
-						}else if(json.url){
-							mui.toast(json.message);
-							document.location.href = json.url;
-						}else{
+		        }
+		    });
 
-						}
-						mui(that).button('reset');
-		            }
-		       });*/
-			});
+/*			jQuery.ajax(_url,{
+	      data:{
+					account: accountBox.value,
+					password: passwordBox.value,
+					mobile: mobileBox.value,
+					regType:regType.value,
+					compName:compName.value,
+					code: code.value,
+					avatar: avatar.value,
+					area_id1:area_id1.value,
+					area_id2:area_id2.value,
+					area_id3:area_id3.value,
+					area_id4:area_id4.value,
+					area_text1:area_text1.value,
+					area_text2:area_text2.value,
+					area_text3:area_text3.value,
+					area_text4:area_text4.value,
+					addr:addr.value,
+					msgCode:msgCode.value,
+					inputToken:inputToken.value
+				},
+	            type: 'POST',
+	            dataType: 'json',
+	            success: function (json) {
+	            	console.log(json);
+	            	if(json.succ == 'fail'){
+						mui.alert(json.message);
+					}else if(json.confirm){
+					    mui.confirm(json.message,'',json.arr,function(e) {
+					        if(e.index == 1){
+					        	document.location.href = json.url;
+					        }
+					    });
+					}else if(json.url){
+						var btnArray = ['我知道了'];
+                mui.confirm(json.message,'绿能侠',btnArray,function(e) {
+                    if(e.index == 1){
+                        document.location.href = json.url;
+                    }else{
+                    	document.location.href = json.url;
+                    }
+                });
+					}else{
+
+					}
+					mui(that).button('reset');
+	            }
+	       });*/
+		});
 		</script>
 	
 	</body>
