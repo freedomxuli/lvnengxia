@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+		
+		<style>
+			.mui-media-body{
+				width:80%;
+				float:right;
+				padding-top:5px;
+			}
+			.avatar{padding-top:3px;}
+			.mui-card-content{
+				text-align:center;
+			}
+			.left_tip{
+				float: left;
+				margin-left:13px;
+				font-size: 13px;
+			}
+			.detail_tip{
+				margin-top: -12px;
+				font-size: 13px;
+				padding-bottom: 10px
+			}
+			.mui-btn{
+				margin-top:12px;
+				width:90%;
+			}
+		</style>
+		
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-arrowthinleft mui-pull-left"></a>
+			<h1 class="mui-title">邀请好友</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card mui-card-list-eqinfo mui-card-eqinfo-line">
+	            <div class="mui-card-header mui-card-header-tip">
+	                <div class="cell-view-12">
+                        <img src="" width="50" class="avatar"/>
+	                    <div class="mui-media-body">
+							<b></b>
+							<p></p>
+						</div>
+	                </div>
+	            </div>
+	            <div class="mui-card-content">
+	            	<p class="left_tip" style="margin-top:15px;">1. 右上角点击"发送给朋友"分享</p>
+  					<p class="left_tip">2. 长按二维码可选择下载或发送给朋友</p>
+  					<!-- <button class="mui-btn mui-btn-success btn" data-clipboard-text="">复制我的专属邀请链接</button> -->
+					<img class="ewm" src="" alt="" width="80%"/>
+					<p class="detail_tip">扫一扫邀请好友注册会员</p>
+					<p class="detail_tip"></p>
+				</div>
+        	</div>
+		</div>
+		<script language="javascript" type="text/javascript" src="Resource/Script/jquery.1.9.1.js?v=1505271128"></script>
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/zepto.js"></script>
+		<script src="../../../js/mui.picker.js"></script>
+		<script src="../../../js/mui.picker.min.js"></script>
+		<script src="../../../js/mui.poppicker.js"></script>
+		<script src="../../../js/mui.enterfocus.js"></script>
+		<script src="../../../js/template.min.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/app.js"></script>
+		<script src="../../../js/sign.js"></script>
+		<script src="../../../js/md5.js"></script>
+		<script src="../../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
+		<script>
+			mui.init({
+	            swipeBack:true //启用右滑关闭功能
+	        });
+	        
+	        var sid = localStorage.getItem("sid");
+	        
+			mui.plusReady(function() {
+				var waiting = plus.nativeUI.showWaiting();
+      			var obj_yq = {};
+      			obj_yq["sid"] = sid;
+      			var sign = GetSign(obj_yq);
+      			var param = {
+			        queryData: {
+			          'method': config.apimethod.ewmget,
+			          'sign':sign,
+			          'sid':sid
+			        },
+			        method: 'POST'
+			    }
+      			console.log(JSON.stringify(param));
+      			$.dataRequest(param, function(rs) {
+      				console.log(JSON.stringify(rs));
+      				waiting.close();
+      				if(rs.rsp=="succ")
+			        {
+			        	jQuery(".avatar").attr('src',rs.data.avatar); 
+		        		jQuery(".mui-media-body").html("<b>"+rs.data.showName+"</b><p>"+rs.data.account+"</p>");
+		        		jQuery(".ewm").attr('src',rs.data.qrcodeImg);
+			        }else
+			        {
+			        	plus.nativeUI.toast("获取失败：" + rs.data);
+						return;
+			        }
+      			})
+			});
+			/*var type = "";
+            mui.plusReady(function() {
+      			type = plus.webview.currentWebview().type;
+      			
+				if(type==1)
+				{
+					mui(document.body).on('tap','.header-img',function(){
+				        clicked("_www/view/member/member/membercom.html");
+				    });
+				}
+				else
+				{
+					mui(document.body).on('tap','.header-img',function(){
+				        clicked("_www/view/member/member/memberper.html");
+				    });
+				}
+			});*/
+			/*jQuery(document).ready(function(){
+            	var clipboard = new Clipboard('.btn');
+            	clipboard.on('success', function(e) {
+			  		e.clearSelection();
+			  		mui.alert("复制成功");
+			  	});
+			  	clipboard.on('error', function(e) {
+			  		mui.alert("复制失败");
+			  	});
+			});*/
+
+		</script>
+	</body>
+</html>

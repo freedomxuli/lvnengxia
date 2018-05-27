@@ -28,9 +28,31 @@ var config = {
         imageupload:'image.upload',//上传图片
         comjzinfo:'apply.build.qy.initData.get',//企业一键申请建站初始数据获取
         comjzsave:'apply.build.qy.save',//企业一键申请建站初始数据获取
-        isinfget:'is.perfect.infomation.get',//获取是否已经完善个人资料
-        perjzjd:'apply.personal. progress.list',//个人建站进度查询
-        comjzjd:'apply.qy. progress.list',//企业建站进度查询
+        isinfoget:'is.perfect.infomation.get',//获取是否已经完善个人资料
+        perjzjd:'apply.personal.progress.list',//个人建站进度查询
+        comjzjd:'apply.qy.progress.list',//企业建站进度查询
+        grjdzl:'project.schedule.report',//个人进度总览
+        xmjdmxcx:'project.schedule.view.get',//项目进度明细查询
+        changetel:'telphone.update',//更换手机号
+        changepwd:'password.update',//修改会员密码
+        savecom:'infomation.perfect.qy.save',//企业信息完善
+        saveper:'infomation.perfect.personal.save',//个人信息完善
+        roofget:'archives.roof.list.get',//获取屋顶结构选择项信息
+        headimgup:'headimg.upload.confirm',//上传头像图片
+        getpointlist:'point.logs.list',//会员积分日志列表
+        ewmget:'invitation.info.get',//获取邀请二维码
+        gethylist:'invitation.member.list',//获取邀请二维码
+        homemsglist:'comment.list.home.get',//首页留言列表信息
+        msglist:'comment.list.get',//留言评论列表
+        addmsg:'comment.add.save',//发表评论
+        followup:'comment.follow.up',//留言评论点赞
+        msgsend:'comment.reply.send',//对留言发表评论
+        singlemsg:'comment.single.info.get',//获取单条留言评论最新状态
+        customerlist:'customer.list.get',//客服列表
+        activitylist:'activity.list.get',//活动专属列表
+        getshopurl:'shop.point.url.get',//获取积分商城地址
+        znxlist:'mail.list',
+        znxdetail:'mail.detail.get',
         login: 'login.account.passwd', //用户登录
         logout: 'user.logout', //用户登出
         agreement: 'user.license', //注册协议

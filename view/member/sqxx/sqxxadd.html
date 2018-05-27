@@ -179,7 +179,7 @@
         </div>
     </div>
     <div class="mui-after-content">
-        <form class="mui-input-group" id="form_client" action="http://crm.lvnengxia.cn/index.php?controller=Jichu_APP_Member&action=Save" method="POST">
+        <form class="mui-input-group" id="form_client" method="POST">
         <!-- 申请日期 -->
         <div class="mui-input-date mui-input-row mui-input-btn-label mui-input-btn-label-bg">
             <label>登记日期</label>
@@ -226,14 +226,14 @@
         </div>
         <div class="mui-input-row mui-input-btn-label mui-input-btn-label-bg">
             <label>付款模式</label>
-            <input type="text" name="isDaikText" placeholder="付款模式" id="isDaikText" value="全额" readonly>
-            <button id='showIsDaik' data-select='[{"text":"\u5168\u6b3e","value":0},{"text":"\u8d37\u6b3e","value":1}]' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <input type="text" name="isDaikText" placeholder="付款模式" id="isDaikText" value="全款" readonly>
+            <button id='showIsDaik' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
             <input class="select-hide" type="hidden" id="isDaik" name="isDaik" value="">
         </div>
         <div class="mui-input-row mui-input-btn-label display display-none">
             <label>贷款年限</label>
             <input type="text" name="daikyearText" placeholder="贷款年限" id="daikyearText" value="0年" readonly>
-            <button id='showDaikyear' data-select='[{"text":"1\u5e74","value":1},{"text":"2\u5e74","value":2},{"text":"3\u5e74","value":3},{"text":"4\u5e74","value":4},{"text":"5\u5e74","value":5},{"text":"6\u5e74","value":6},{"text":"7\u5e74","value":7},{"text":"8\u5e74","value":8},{"text":"9\u5e74","value":9},{"text":"10\u5e74","value":10}]' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <button id='showDaikyear' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
             <input class="select-hide" type="hidden" id="daikyear" name="daikyear" value="">
         </div>
         <div class="mui-input-row display display-none">
@@ -256,7 +256,7 @@
         <div class="mui-input-row mui-input-btn-label">
             <label>屋顶瓦片类型</label>
             <input type="text" name="kind" placeholder="屋顶瓦片类型" id="kind" value="" readonly>
-            <button id='showkind' data-select='[{"text":"\u5c0f\u74e6","value":"\u5c0f\u74e6"},{"text":"\u6d0b\u74e6","value":"\u6d0b\u74e6"},{"text":"\u7409\u7483\u74e6","value":"\u7409\u7483\u74e6"},{"text":"\u534a\u5706\u7b52\u74e6","value":"\u534a\u5706\u7b52\u74e6"},{"text":"\u5f69\u94a2\u74e6","value":"\u5f69\u94a2\u74e6"},{"text":"\u6bdb\u6be1","value":"\u6bdb\u6be1"}]' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <button id='showkind' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
         </div>
         <div class="mui-input-row">
             <label>屋顶朝南面积(m²)</label>
@@ -407,7 +407,7 @@
         <div class="mui-input-row mui-input-btn-label">
             <label>开户行</label>
             <input type="text" name="bankName" placeholder="请输入开户行" id="bankName" value="">
-            <button id='showbankName' data-select='[{"text":"\u4e2d\u56fd\u519c\u4e1a\u94f6\u884c\u5e38\u5dde\u5357\u5b85\u652f\u884c","value":"\u4e2d\u56fd\u519c\u4e1a\u94f6\u884c\u5e38\u5dde\u5357\u5b85\u652f\u884c"},{"text":"\u4e2d\u56fd\u519c\u4e1a\u94f6\u884c\u6d1b\u9633\u652f\u884c","value":"\u4e2d\u56fd\u519c\u4e1a\u94f6\u884c\u6d1b\u9633\u652f\u884c"},{"text":"\u6c5f\u5357\u94f6\u884c\u793e\u6e1a\u652f\u884c","value":"\u6c5f\u5357\u94f6\u884c\u793e\u6e1a\u652f\u884c"},{"text":"\u6c5f\u5357\u94f6\u884c\u7af9\u7ba6\u652f\u884c","value":"\u6c5f\u5357\u94f6\u884c\u7af9\u7ba6\u652f\u884c"},{"text":"\u6c5f\u5357\u94f6\u884c\u9756\u6c5f\u652f\u884c","value":"\u6c5f\u5357\u94f6\u884c\u9756\u6c5f\u652f\u884c"}]' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+            <button id='showbankName' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
         </div>
         <div class="mui-input-row">
             <label>户表名</label>
@@ -452,20 +452,34 @@
                     <span class="up-image-btn-2">上传</span>
                 </div>
             </li>-->
-        	<li class="mui-table-view-cell action-camera">
+        	<!--<li class="mui-table-view-cell action-camera">
         		<input type="file" capture="camera" accept="image/*" name="longShotFile" value="" class="up-image-android">
                 <span class="longShotFile"></span>
 				<a>拍照</a>
-			</li>
-			<li class="mui-table-view-cell action-gallery">
+			</li>-->
+			<li class="mui-table-view-cell">
+                <div class="paizhao image-btn-box">
+                    <input type="file" capture="camera" accept="image/*" name="longShotFile" value="" class="up-image-android action-camera">
+                    <span class="longShotFile"></span>
+                    <span class="up-image-btn-1">拍照</span>
+                </div>
+            </li>
+<!--			<li class="mui-table-view-cell ">
 				<input type="file" capture="camera" accept="image/*;capture=camera" name="longShotFile" value="" class="up-image-android">
                 <span class="longShotFile"></span>
 				<a>相册</a>
-			</li>
+			</li>-->
+			<li class="mui-table-view-cell">
+                <div class="select-file image-btn-box">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="longShotFile" value="" class="up-image-android action-gallery">
+                    <span class="longShotFile"></span>
+                    <span class="up-image-btn-2">相册</span>
+                </div>
+            </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_0" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -473,22 +487,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="proCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="proCardFile" value="" class="up-image-android action-camera">
                     <span class="proCardFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="proCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="proCardFile" value="" class="up-image-android action-gallery">
                     <span class="proCardFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_1" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -496,22 +510,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="proContFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="proContFile" value="" class="up-image-android action-camera">
                     <span class="proContFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="proContFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="proContFile" value="" class="up-image-android action-gallery">
                     <span class="proContFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_2" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -519,22 +533,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="landCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="landCardFile" value="" class="up-image-android action-camera">
                     <span class="landCardFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="landCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="landCardFile" value="" class="up-image-android action-gallery">
                     <span class="landCardFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_3" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -542,22 +556,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="IDFrontFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="IDFrontFile" value="" class="up-image-android action-camera">
                     <span class="IDFrontFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="IDFrontFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="IDFrontFile" value="" class="up-image-android action-gallery">
                     <span class="IDFrontFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_4" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -565,22 +579,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="IDBackFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="IDBackFile" value="" class="up-image-android action-camera">
                     <span class="IDBackFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="IDBackFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="IDBackFile" value="" class="up-image-android action-gallery">
                     <span class="IDBackFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_5" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -588,22 +602,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="mateIDFrontFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="mateIDFrontFile" value="" class="up-image-android action-camera">
                     <span class="mateIDFrontFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="mateIDFrontFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="mateIDFrontFile" value="" class="up-image-android action-gallery">
                     <span class="mateIDFrontFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_6" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -611,22 +625,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="mateIDBackFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="mateIDBackFile" value="" class="up-image-android action-camera">
                     <span class="mateIDBackFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="mateIDBackFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="mateIDBackFile" value="" class="up-image-android action-gallery">
                     <span class="mateIDBackFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_7" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -634,22 +648,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="houseAppFile" value="" class="up-image-house">
+                    <input type="file" capture="camera" accept="image/*" name="houseAppFile" value="" class="up-image-house action-camera1">
                     <span class="houseAppFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="houseAppFile" value="" class="up-image-house">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="houseAppFile" value="" class="up-image-house action-gallery1">
                     <span class="houseAppFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_8" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -657,22 +671,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="bankCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="bankCardFile" value="" class="up-image-android action-camera">
                     <span class="bankCardFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="bankCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="bankCardFile" value="" class="up-image-android action-gallery">
                     <span class="bankCardFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_9" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -680,22 +694,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="marryCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="marryCardFile" value="" class="up-image-android action-camera">
                     <span class="marryCardFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="marryCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="marryCardFile" value="" class="up-image-android action-gallery">
                     <span class="marryCardFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_10" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -703,22 +717,22 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 <div class="paizhao image-btn-box">
-                    <input type="file" capture="camera" accept="image/*" name="singleCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*" name="singleCardFile" value="" class="up-image-android action-camera">
                     <span class="singleCardFile"></span>
                     <span class="up-image-btn-1">拍照</span>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 <div class="select-file image-btn-box">
-                    <input type="file" capture="camera" accept="image/*;capture=camera" name="singleCardFile" value="" class="up-image-android">
+                    <input type="file" capture="camera" accept="image/*;capture=camera" name="singleCardFile" value="" class="up-image-android action-gallery">
                     <span class="singleCardFile"></span>
-                    <span class="up-image-btn-2">上传</span>
+                    <span class="up-image-btn-2">相册</span>
                 </div>
             </li>
         </ul>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
-                <a href="#sheet" class=""><b>取消</b></a>
+                <a href="#sheet_11" class=""><b>取消</b></a>
             </li>
         </ul>
     </div>
@@ -758,7 +772,28 @@
 	});
     mui.init();
 	mui.plusReady(function() {
-		loadData();
+		var obj_xx = {};
+		obj_xx['sid'] = sid;
+		var sign = GetSign(obj_xx);
+		var param_xx = {
+	        queryData: {
+	          'method': config.apimethod.isinfoget,
+	          'sign':sign,
+	          'sid':sid
+	        },
+	        method: 'POST'
+	    }
+		$.dataRequest(param_xx, function(rs) {
+			if(rs.rsp=="succ")
+			{
+				loadData();
+			}else
+			{
+				mui.alert('请先完善个人信息', '提示', function() {
+                    clicked("_www/view/member/tzsy/tzsy.html");
+               });
+			}
+		})
 		
 		function loadData(){
 			var waiting = plus.nativeUI.showWaiting();
@@ -795,11 +830,22 @@
 		        	jQuery("#bankName").val(rs.data.bankName);
 		        	jQuery("#huBiaoName").val(rs.data.huBiaoName);
 		        	jQuery("#proCardPic").val(rs.data.proCardPic);
-		        	jQuery("#proCardPic").siblings("img").attr("src",rs.data.proCardPic.showPic);
+		        	jQuery("#proContPic").val(rs.data.proContPic);
+		        	jQuery("#landCardPic").val(rs.data.landCardPic);
+		        	jQuery("#IDFrontPic").val(rs.data.IDFrontPic);
+		        	jQuery("#IDBackPic").val(rs.data.IDBackPic);
+		        	jQuery("#bankCardPic").val(rs.data.bankCardPic);
+		        	jQuery("#houseAppPic").val(rs.data.houseAppPic);
+		        	jQuery("#longShotPic").val(rs.data.longShotPic);
+		        	//jQuery("#proCardPic").siblings("img").attr("src",rs.data.proCardPic.showPic);
 		        	jQuery("#area_id1").val(rs.data.Areas.selected[0]);
 		        	jQuery("#area_id2").val(rs.data.Areas.selected[1]);
 		        	jQuery("#area_id3").val(rs.data.Areas.selected[2]);
 		        	jQuery("#area_id4").val(rs.data.Areas.selected[3]);
+		        	jQuery("#showbankName").data("select",rs.data.Options.bankName);
+		        	jQuery("#showIsDaik").data("select",rs.data.Options.isDaik);
+		        	jQuery("#showkind").data("select",rs.data.Options.tiletype);
+		        	jQuery("#showDaikyear").data("select",rs.data.Options.daikyear);
 		        	
 		        	var val_area = {};
 				    val_area["mid"] = "";
@@ -826,6 +872,55 @@
 				        	}
 				        	setdq();
 				        	changedq(1);
+				        	//选择类型
+						    jQuery('.btn-select').each(function(){
+						        var picker = new mui.PopPicker();
+						        var json = jQuery(this).data('select');
+						        picker.setData(json);
+						        var forInput = jQuery(this).siblings('input[type=text]');
+						        var forVal = jQuery(this).siblings('input[type=hidden]');
+						        if(forVal.val()){
+						            picker.pickers[0].setSelectedValue(forVal.val(), 2000);
+						        }
+						        this.addEventListener('tap', function(event) {
+						            picker.show(function(items) {
+						                forInput && forInput.val(items[0]['text']);
+						                forVal && forVal.val(items[0]['value']);
+						                forVal.change();
+						            });
+						        }, false);
+						    });
+						    
+						    //显示贷款类型信息
+						    jQuery('#isDaik').change(function(){
+						        var that = this;
+						        var type = jQuery(that).val();
+						        var dis = jQuery(that).parents('.mui-after-content').find('.display');
+						        if(type==1) {
+						            dis.removeClass("display-none");
+						        }else{
+						            dis.addClass("display-none");
+						        }
+						    });
+						    
+						    jQuery('.display').each(function(){
+						        var type = jQuery('#isDaikText').val();
+						        if(type=='全款') {
+						            jQuery(this).addClass("display-none");
+						        }else{
+						            jQuery(this).removeClass("display-none");
+						        }
+						    });
+						
+						    //公式计算申请容量
+						    jQuery('#acreage').change(function(){
+						        var zhuangji = parseFloat(jQuery(this).val()||0)*acreage;
+						        zhuangji = zhuangji.toFixed(4);
+						        jQuery('#ApplyCapacity').val(zhuangji);
+						        zhuangjiText = Math.floor(zhuangji*100)/100;
+						        jQuery('#ApplyCapacityText').val(zhuangjiText);
+						    });
+						    
 				        }else
 				        {
 				        	plus.nativeUI.toast("获取失败：" + rs1.data);
@@ -842,131 +937,99 @@
 		        }
 	    	})
 		}
-	})
 	
-	function changedq(n){
-    	//改变取值后，对下一级进行更新选项
-    	var obj = {};
-    	switch(n)
-    	{
-    		case 1:
-    			obj = city1;
-    		break;
-    		case 2:
-    			obj = city2;
-    		break;
-    		case 3:
-    			obj = city3;
-    		break;
-    		case 4:
-    			obj = city4;
-    		break;
-    	}
-    	console.log(n);
-    	console.log(JSON.stringify(obj));
-	    jQuery('.area-text').change(function(){
-	        var that = this;
-	        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
-	        jQuery(this).siblings('input[type=hidden]').val(obj[jQuery(this).val()]);
-	        curLevel = curLevel+1;
-	        console.log(curLevel);
-	        //强制清空下级所有数据
-	        for(var le=curLevel;le<=4;le++){
-	            pickerArea[le].setData([]);
-	            //清空text和hidden值
-	            jQuery('#area_text'+le).val('');
-	            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
-	        }
-	        //清空end
-
-	        //获取下一级地区数据
-	        var button = jQuery('#area_text'+curLevel).siblings('button');
-	        // button.attr('disabled' ,'disabled');
-
-	        var area_id = jQuery(this).siblings('input[type=hidden]').val();
-	        console.log(area_id);
-	        button.attr('data-select','');
-	        //开始到后台获取数据
-	        var val_obj = {};
-			val_obj["areaid"] = area_id;
-			val_obj["timestamp"] = new Date().getTime();
-			console.log(val_obj); 
-			var sign = GetSign(val_obj);
-			console.log(sign);
-			var param = {
-		        queryData: {
-		          'method': config.apimethod.areachildlist,
-		          'sign':sign,
-		          'areaid':area_id,
-		          'timestamp':val_obj["timestamp"]
-		        },
-		        method: 'POST'
-		    }
-			$.dataRequest(param, function(rs1) {
-		        if(rs1.rsp=="succ")
-    			{
-    				console.log(JSON.stringify(rs1.data));
-    				jQuery("#showarea_id"+curLevel).data("select",rs1.data);
-    				for(var i = 0;i<rs1.data.length;i++)
-		        	{
-		        		if(curLevel==2)
-		        		{
-		        			city2[rs1.data[i].text] = rs1.data[i].value;
-		        			pickerArea[2].setData(rs1.data);
-		        		}else if(curLevel==3)
-		        		{
-		        			city3[rs1.data[i].text] = rs1.data[i].value;
-		        			pickerArea[3].setData(rs1.data);
-		        		}else
-		        		{
-		        			city4[rs1.data[i].text] = rs1.data[i].value;
-		        			pickerArea[4].setData(rs1.data);
-		        		}
-		        	}
-		        	console.log(JSON.stringify(city2));
-    				setdq2(curLevel);
-    				if(curLevel<4)
-    					changedq(curLevel);
-    			}
+		function changedq(n){
+	    	//改变取值后，对下一级进行更新选项
+	    	var obj = {};
+	    	switch(n)
+	    	{
+	    		case 1:
+	    			obj = city1;
+	    		break;
+	    		case 2:
+	    			obj = city2;
+	    		break;
+	    		case 3:
+	    			obj = city3;
+	    		break;
+	    		case 4:
+	    			obj = city4;
+	    		break;
+	    	}
+	    	console.log(n);
+	    	console.log(JSON.stringify(obj));
+		    jQuery('.area-text').change(function(){
+		        var that = this;
+		        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
+		        jQuery(this).siblings('input[type=hidden]').val(obj[jQuery(this).val()]);
+		        curLevel = curLevel+1;
+		        console.log(curLevel);
+		        //强制清空下级所有数据
+		        for(var le=curLevel;le<=4;le++){
+		            pickerArea[le].setData([]);
+		            //清空text和hidden值
+		            jQuery('#area_text'+le).val('');
+		            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
+		        }
+		        //清空end
+	
+		        //获取下一级地区数据
+		        var button = jQuery('#area_text'+curLevel).siblings('button');
+		        // button.attr('disabled' ,'disabled');
+	
+		        var area_id = jQuery(this).siblings('input[type=hidden]').val();
+		        console.log(area_id);
+		        button.attr('data-select','');
+		        //开始到后台获取数据
+		        var val_obj = {};
+				val_obj["areaid"] = area_id;
+				val_obj["timestamp"] = new Date().getTime();
+				console.log(val_obj); 
+				var sign = GetSign(val_obj);
+				console.log(sign);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.areachildlist,
+			          'sign':sign,
+			          'areaid':area_id,
+			          'timestamp':val_obj["timestamp"]
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs1) {
+			        if(rs1.rsp=="succ")
+	    			{
+	    				console.log(JSON.stringify(rs1.data));
+	    				jQuery("#showarea_id"+curLevel).data("select",rs1.data);
+	    				for(var i = 0;i<rs1.data.length;i++)
+			        	{
+			        		if(curLevel==2)
+			        		{
+			        			city2[rs1.data[i].text] = rs1.data[i].value;
+			        			pickerArea[2].setData(rs1.data);
+			        		}else if(curLevel==3)
+			        		{
+			        			city3[rs1.data[i].text] = rs1.data[i].value;
+			        			pickerArea[3].setData(rs1.data);
+			        		}else
+			        		{
+			        			city4[rs1.data[i].text] = rs1.data[i].value;
+			        			pickerArea[4].setData(rs1.data);
+			        		}
+			        	}
+			        	console.log(JSON.stringify(city2));
+	    				setdq2(curLevel);
+	    				if(curLevel<4)
+	    					changedq(curLevel);
+	    			}
+			    });
 		    });
-	    });
-    }
-	
-    function setdq(){
-    	jQuery('.btn-select-area').each(function(){
-    		var llevel = jQuery(this).data('level');
-    		this.addEventListener('tap', function(event) {
-    			var level = parseInt(jQuery(this).data('level'))||1;
-    			if(level != 1){
-	                //查看上一级是否已经选择，没有选择上级不能拿选择当前地区
-	                var prevLevel = level - 1;
-	                var _tmpval = jQuery('#area_text'+prevLevel).val();
-	                if(!_tmpval){
-	                    mui.toast('请先选择上级地区');
-	                    return;
-	                }
-	           }
-    			var forInput = jQuery(this).siblings('input[type=text]');
-		        var forVal = jQuery(this).siblings('input[type=hidden]');
-		        var oldVal = forInput.val();
-		        if(forVal.val()){
-		            pickerArea[llevel].pickers[0].setSelectedValue(forVal.val(), 2000);
-		        } 
-    			pickerArea[llevel].show(function(items) {
-	                forInput && forInput.val(items[0]['text']);
-	                forVal && forVal.val(items[0]['value']);
-
-	                if(oldVal!=items[0]['text'])forInput.change();
-	            });
-    		});
-    	});
-    }
-    function setdq2(curLevel){
-    	jQuery('.btn-select-area').each(function(){
-    		var llevel = jQuery(this).data('level');
-    		if(parseInt(llevel)>=parseInt(curLevel))
-    		{
-    			this.addEventListener('tap', function(event) {
+	    }
+		
+	    function setdq(){
+	    	jQuery('.btn-select-area').each(function(){
+	    		var llevel = jQuery(this).data('level');
+	    		this.addEventListener('tap', function(event) {
 	    			var level = parseInt(jQuery(this).data('level'))||1;
 	    			if(level != 1){
 		                //查看上一级是否已经选择，没有选择上级不能拿选择当前地区
@@ -976,7 +1039,7 @@
 		                    mui.toast('请先选择上级地区');
 		                    return;
 		                }
-		            }
+		           }
 	    			var forInput = jQuery(this).siblings('input[type=text]');
 			        var forVal = jQuery(this).siblings('input[type=hidden]');
 			        var oldVal = forInput.val();
@@ -986,521 +1049,878 @@
 	    			pickerArea[llevel].show(function(items) {
 		                forInput && forInput.val(items[0]['text']);
 		                forVal && forVal.val(items[0]['value']);
-
+	
 		                if(oldVal!=items[0]['text'])forInput.change();
 		            });
 	    		});
-    		}
-    	});
-    }
-		    
-    //修改的时候默认给输入框显示值
-    jQuery('.select-hide[value!=""]').each(function(){
-        var textInput=jQuery(this).siblings('input[type=text]');
-        var _data = jQuery(this).siblings('button').data('select');
-        var curVal = jQuery(this).val();
-        if(!textInput.value){
-            for(var k in _data){
-                if(_data[k]['value'] == curVal){
-                    textInput.val(_data[k]['text']);
-                }
-            }
-        }
-    });
+	    	});
+	    }
+	    function setdq2(curLevel){
+	    	jQuery('.btn-select-area').each(function(){
+	    		var llevel = jQuery(this).data('level');
+	    		if(parseInt(llevel)>=parseInt(curLevel))
+	    		{
+	    			this.addEventListener('tap', function(event) {
+		    			var level = parseInt(jQuery(this).data('level'))||1;
+		    			if(level != 1){
+			                //查看上一级是否已经选择，没有选择上级不能拿选择当前地区
+			                var prevLevel = level - 1;
+			                var _tmpval = jQuery('#area_text'+prevLevel).val();
+			                if(!_tmpval){
+			                    mui.toast('请先选择上级地区');
+			                    return;
+			                }
+			            }
+		    			var forInput = jQuery(this).siblings('input[type=text]');
+				        var forVal = jQuery(this).siblings('input[type=hidden]');
+				        var oldVal = forInput.val();
+				        if(forVal.val()){
+				            pickerArea[llevel].pickers[0].setSelectedValue(forVal.val(), 2000);
+				        } 
+		    			pickerArea[llevel].show(function(items) {
+			                forInput && forInput.val(items[0]['text']);
+			                forVal && forVal.val(items[0]['value']);
+	
+			                if(oldVal!=items[0]['text'])forInput.change();
+			            });
+		    		});
+	    		}
+	    	});
+	    }
+			    
+	    //修改的时候默认给输入框显示值
+	    jQuery('.select-hide[value!=""]').each(function(){
+	        var textInput=jQuery(this).siblings('input[type=text]');
+	        var _data = jQuery(this).siblings('button').data('select');
+	        var curVal = jQuery(this).val();
+	        if(!textInput.value){
+	            for(var k in _data){
+	                if(_data[k]['value'] == curVal){
+	                    textInput.val(_data[k]['text']);
+	                }
+	            }
+	        }
+	    });
 
-    jQuery('.display').each(function(){
-        var type = jQuery('#isDaikText').val();
-        if(type=='全款') {
-            jQuery(this).addClass("display-none");
-        }else{
-            jQuery(this).removeClass("display-none");
-        }
-    });
-
-    //公式计算申请容量
-    jQuery('#acreage').change(function(){
-        var zhuangji = parseFloat(jQuery(this).val()||0)*acreage;
-        zhuangji = zhuangji.toFixed(4);
-        jQuery('#ApplyCapacity').val(zhuangji);
-        zhuangjiText = Math.floor(zhuangji*100)/100;
-        jQuery('#ApplyCapacityText').val(zhuangjiText);
-    });
-
-    //首页
-    mui(document.body).on('tap','.mui-action-home',function(){
-        clicked("_www/view/member/hyzx/hyzx.html");
-    });
-
-    // mui('.mui-scroll-wrapper').scroll();
-
-    //日期选择
-    var btns = mui('.btn-date');
-    btns.each(function(i, btn) {
-        btn.addEventListener('tap', function() {
-            var optionsJson = this.getAttribute('data-options') || '{}';
-            var options = JSON.parse(optionsJson);
-            var id = this.getAttribute('id');
-            var that = this;
-            /*
-             * 首次显示时实例化组件
-             * 示例为了简洁，将 options 放在了按钮的 dom 上
-             * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
-             */
-            var picker = new mui.DtPicker(options);
-            picker.show(function(rs) {
-                jQuery(that).parents('.mui-input-date').find('input').val(rs.text);
-                picker.dispose();
-            });
-        }, false);
-    });
-
-    //选择类型
-    jQuery('.btn-select').each(function(){
-        var picker = new mui.PopPicker();
-        var json = jQuery(this).data('select');
-        picker.setData(json);
-        var forInput = jQuery(this).siblings('input[type=text]');
-        var forVal = jQuery(this).siblings('input[type=hidden]');
-        if(forVal.val()){
-            picker.pickers[0].setSelectedValue(forVal.val(), 2000);
-        }
-        this.addEventListener('tap', function(event) {
-            picker.show(function(items) {
-                forInput && forInput.val(items[0]['text']);
-                forVal && forVal.val(items[0]['value']);
-                forVal.change();
-            });
-        }, false);
-    });
-
-    //显示贷款类型信息
-    jQuery('#isDaik').change(function(){
-        var that = this;
-        var type = jQuery(that).val();
-        var dis = jQuery(that).parents('.mui-after-content').find('.display');
-        if(type==1) {
-            dis.removeClass("display-none");
-        }else{
-            dis.addClass("display-none");
-        }
-    });
-
-    //地区的选择，特殊
-    //选择类型
-    /*var pickerArea = [];
-    jQuery('.btn-select-area').each(function(){
-        var llevel = jQuery(this).data('level');
-        pickerArea[llevel] = new mui.PopPicker();
-        var json = jQuery(this).data('select');
-
-        pickerArea[llevel].setData(json);
-
-        var forInput = jQuery(this).siblings('input[type=text]');
-        var forVal = jQuery(this).siblings('input[type=hidden]');
-        if(forVal.val()){
-            pickerArea[llevel].pickers[0].setSelectedValue(forVal.val(), 2000);
-        }
-        this.addEventListener('tap', function(event) {
-            var level = parseInt(jQuery(this).data('level'))||1;
-            if(level != 1){
-                //查看上一级是否已经选择，没有选择上级不能拿选择当前地区
-                var prevLevel = level - 1;
-                var _tmpval = jQuery('#area_text'+prevLevel).val();
-                if(!_tmpval){
-                    mui.toast('请先选择上级地区');
-                    return;
-                }
-            }
-            var oldVal = forInput.val();
-            pickerArea[llevel].show(function(items) {
-                forInput && forInput.val(items[0]['text']);
-                forVal && forVal.val(items[0]['value']);
-
-                if(oldVal!=items[0]['text'])forInput.change();
-            });
-        }, false);
-    });*/
-
-    //改变取值后，对下一级进行更新选项
-/*    jQuery('.area-text').change(function(){
-        var that = this;
-        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
-        curLevel = curLevel+1;
-        //强制清空下级所有数据
-        for(var le=curLevel;le<=4;le++){
-            pickerArea[le].setData([]);
-            //清空text和hidden值
-            jQuery('#area_text'+le).val('');
-            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
-        }
-        //清空end
-
-        //获取下一级地区数据
-        var button = jQuery('#area_text'+curLevel).siblings('button');
-        // button.attr('disabled' ,'disabled');
-
-        var area_id = jQuery(this).siblings('input[type=hidden]').val();
-        button.attr('data-select','');
-        //开始到后台获取数据
-        jQuery.ajax(area_url,{
-            data:{
-                parentId:area_id,
-                format:'select',
-            },
-            dataType:'json',//服务器返回json格式数据
-            type:'get',//HTTP请求类型
-            success:function(data){
-                if(data){
-                    button.attr('data-select',JSON.stringify(data.data));
-                    pickerArea[curLevel].setData(data.data);
-                }
-            }
-        });
-        // button.removeAttr('disabled');
-    });*/
-
-    //end
-
-    //ajax提交图片，处理图片功能
-    jQuery('.up-image-android').change(function(){
-        jQuery('.mui-popover').css('display','none');
-        jQuery('.mui-popover').removeClass('mui-active');
-        jQuery('.mui-backdrop').css('display','none');
-        // debugger;
-        var that = this;
-        var id = jQuery(that).siblings().attr('class');
-        var input = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
-        var grayDiv = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
-        //提交图片到后台处理
-        var form = new FormData();
-        form.append("upload", 1);
-        form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
-
-        grayDiv.show();
-        //预览图片
-        var url = '';
-        if (window.createObjectURL!=undefined) { // basic
-            url = window.createObjectURL(that.files[0]) ;
-        } else if (window.URL!=undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(that.files[0]) ;
-        } else if (window.webkitURL!=undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(that.files[0]) ;
-        }
-        console.log(window.URL);
-        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
-        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
-		
-		var img_obj = {};
-		
-        // ajaxFileUpload(that);
-        /*$.ajax({
-            url: img_url,
-            type: "POST",
-            processData: false,
-            contentType: false,
-            data: form,
-            dataType:'json',
-            async: true,
-            success: function(d) {
-                if(d.bpic){
-                    input.val(d.bpic);
-                    grayDiv.hide();
-                }else{
-                    jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.mui-img-remove').click();
-                }
-
-            }
-        });*/
-
-    });
-    
-	var maxcount = 0;
-	//上传图片
-	$('.action-camera').on('tap', function() {
-		//getImage();
-		jQuery('.mui-popover').css('display','none');
-        jQuery('.mui-popover').removeClass('mui-active');
-        jQuery('.mui-backdrop').css('display','none');
-        // debugger;
-        var id = jQuery(this).siblings().attr('class');
-        var input = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
-        var grayDiv = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
-        var cmr = plus.camera.getCamera();
-		
-		cmr.captureImage(function(p) {
-			plus.io.resolveLocalFileSystemURL(p, function(entry) {
-				var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
-				appendFile(entry.toLocalURL(), name);
-			}, function(e) {
-				console.log("读取拍照文件错误：" + e.message);
-			});
-		}, function(e) {
-			console.log("失败：" + e.message);
-		}, {
-			filename: "_doc/camera/",
-			index: 1
-		});
-	});
-	$('.action-gallery').on('tap', function() {
-		galleryImgsMaximum(maxcount);
-	});
-	$('.choose-cancel').on('tap', function() {
-		//mui('#choose_img').popover('hide');
-	});
-
-	//拍照
-	function getImage() {
-		var cmr = plus.camera.getCamera();
-		cmr.captureImage(function(p) {
-			plus.io.resolveLocalFileSystemURL(p, function(entry) {
-				var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
-				appendFile(entry.toLocalURL(), name);
-			}, function(e) {
-				log("读取拍照文件错误：" + e.message);
-			});
-		}, function(e) {
-			log("失败：" + e.message);
-		}, {
-			filename: "_doc/camera/",
-			index: 1
-		});
-	}
-
-	//从相册中选择图片
-	function galleryImgsMaximum(maxcount) {
-		// 从相册中选择图片
-		plus.gallery.pick(function(e) {
-			var imgstr = "";
-			imgCount = that.find('.rate-img-list').find('img').length + e.files.length;
-			if(imgCount >= 1) {
-				that.find('.rate-img-box').hide();
-			} else {
-				that.find('.rate-img-box').show();
-			}
-			var name = '';
-			for(var i in e.files) {
-				name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
-				appendFile(e.files[i], name);
-			}
-		}, function(e) {
-			//          log( "取消选择图片" );
-		}, {
-			filter: "image",
-			multiple: true,
-			maximum: maxcount,
-			system: false,
-			onmaxed: function() {
-				plus.nativeUI.alert('最多只能选择' + maxcount + '张图片');
-			}
-		});
-	}
-	// 添加文件
-	function appendFile(path, imgname) {
-		var img = new Image();
-		img.src = path; // 传过来的图片路径在这里用。
-		var img_id = '';
-		img.onload = function() {
-			var el = this;
-			//生成比例 
-			var w = el.width,
-				h = el.height;
-			if(w > h) {
-				var scale = w / h;
-				w = 1280 || w;
-				h = w / scale;
-			} else {
-				var scale = h / w;
-				h = 1280 || h;
-				w = h / scale;
-			}
-			//生成canvas
-			var canvas = document.createElement('canvas');
-			var ctx = canvas.getContext('2d');
-			if(w > h) {
-				$(canvas).attr({
-					width: w,
-					height: h
+	
+	    // mui('.mui-scroll-wrapper').scroll();
+	
+	    //日期选择
+	    var btns = mui('.btn-date');
+	    btns.each(function(i, btn) {
+	        btn.addEventListener('tap', function() {
+	            var optionsJson = this.getAttribute('data-options') || '{}';
+	            var options = JSON.parse(optionsJson);
+	            var id = this.getAttribute('id');
+	            var that = this;
+	            /*
+	             * 首次显示时实例化组件
+	             * 示例为了简洁，将 options 放在了按钮的 dom 上
+	             * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+	             */
+	            var picker = new mui.DtPicker(options);
+	            picker.show(function(rs) {
+	                jQuery(that).parents('.mui-input-date').find('input').val(rs.text);
+	                picker.dispose();
+	            });
+	        }, false);
+	    });
+	
+	    //地区的选择，特殊
+	    //选择类型
+	    /*var pickerArea = [];
+	    jQuery('.btn-select-area').each(function(){
+	        var llevel = jQuery(this).data('level');
+	        pickerArea[llevel] = new mui.PopPicker();
+	        var json = jQuery(this).data('select');
+	
+	        pickerArea[llevel].setData(json);
+	
+	        var forInput = jQuery(this).siblings('input[type=text]');
+	        var forVal = jQuery(this).siblings('input[type=hidden]');
+	        if(forVal.val()){
+	            pickerArea[llevel].pickers[0].setSelectedValue(forVal.val(), 2000);
+	        }
+	        this.addEventListener('tap', function(event) {
+	            var level = parseInt(jQuery(this).data('level'))||1;
+	            if(level != 1){
+	                //查看上一级是否已经选择，没有选择上级不能拿选择当前地区
+	                var prevLevel = level - 1;
+	                var _tmpval = jQuery('#area_text'+prevLevel).val();
+	                if(!_tmpval){
+	                    mui.toast('请先选择上级地区');
+	                    return;
+	                }
+	            }
+	            var oldVal = forInput.val();
+	            pickerArea[llevel].show(function(items) {
+	                forInput && forInput.val(items[0]['text']);
+	                forVal && forVal.val(items[0]['value']);
+	
+	                if(oldVal!=items[0]['text'])forInput.change();
+	            });
+	        }, false);
+	    });*/
+	
+	    //改变取值后，对下一级进行更新选项
+	/*    jQuery('.area-text').change(function(){
+	        var that = this;
+	        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
+	        curLevel = curLevel+1;
+	        //强制清空下级所有数据
+	        for(var le=curLevel;le<=4;le++){
+	            pickerArea[le].setData([]);
+	            //清空text和hidden值
+	            jQuery('#area_text'+le).val('');
+	            jQuery('#area_text'+le).siblings('input[type=hidden]').val('');
+	        }
+	        //清空end
+	
+	        //获取下一级地区数据
+	        var button = jQuery('#area_text'+curLevel).siblings('button');
+	        // button.attr('disabled' ,'disabled');
+	
+	        var area_id = jQuery(this).siblings('input[type=hidden]').val();
+	        button.attr('data-select','');
+	        //开始到后台获取数据
+	        jQuery.ajax(area_url,{
+	            data:{
+	                parentId:area_id,
+	                format:'select',
+	            },
+	            dataType:'json',//服务器返回json格式数据
+	            type:'get',//HTTP请求类型
+	            success:function(data){
+	                if(data){
+	                    button.attr('data-select',JSON.stringify(data.data));
+	                    pickerArea[curLevel].setData(data.data);
+	                }
+	            }
+	        });
+	        // button.removeAttr('disabled');
+	    });*/
+	
+	    //end
+	
+	    //ajax提交图片，处理图片功能
+	    /*jQuery('.up-image-android').change(function(){
+	        jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        // debugger;
+	        var that = this;
+	        var id = jQuery(that).siblings().attr('class');
+	        var input = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+	        var grayDiv = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+	        //提交图片到后台处理
+	        var form = new FormData();
+	        form.append("upload", 1);
+	        form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
+	
+	        grayDiv.show();
+	        //预览图片
+	        var url = '';
+	        if (window.createObjectURL!=undefined) { // basic
+	            url = window.createObjectURL(that.files[0]) ;
+	        } else if (window.URL!=undefined) { // mozilla(firefox)
+	            url = window.URL.createObjectURL(that.files[0]) ;
+	        } else if (window.webkitURL!=undefined) { // webkit or chrome
+	            url = window.webkitURL.createObjectURL(that.files[0]) ;
+	        }
+	        console.log(window.URL);
+	        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
+	        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
+			
+			var img_obj = {};
+	
+	    });*/
+	    
+	    $('.cancel_div').on('tap', function() { 
+	    	jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        return;
+	    })
+	    
+		var maxcount = 1;
+		//上传图片
+		$('.action-camera').on('tap', function() {
+			var img_own = this;
+			//getImage();
+			jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        // debugger;
+	        var id = jQuery(this).siblings().attr('class');
+	        var input = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+	        var grayDiv = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+	        var cmr = plus.camera.getCamera();
+			
+			cmr.captureImage(function(p) {
+				plus.io.resolveLocalFileSystemURL(p, function(entry) {
+					var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+					appendFile(img_own, id, input, grayDiv, entry.toLocalURL(), name);
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
 				});
-				ctx.drawImage(el, 0, 0, w, h);
-			} else {
-				$(canvas).attr({
-					width: h,
-					height: w
+			}, function(e) {
+				console.log("失败：" + e.message);
+			}, {
+				filename: "_doc/camera/",
+				index: 1
+			});
+		});
+		$('.action-camera1').on('tap', function() {
+			var img_own = this;
+			//getImage();
+			jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        // debugger;
+	        var id = jQuery(this).siblings().attr('class');
+	        var input = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+	        var grayDiv = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+	        var value = jQuery('#houseAppPic').val();
+	        var cmr = plus.camera.getCamera();
+			
+			cmr.captureImage(function(p) {
+				plus.io.resolveLocalFileSystemURL(p, function(entry) {
+					var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+					appendFile1(value, img_own, id, input, grayDiv, entry.toLocalURL(), name);
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
 				});
-				ctx.drawImage(el, 0, 0, h, w);
-			}
-
-			var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
-			upload(path, base64, imgname);
+			}, function(e) {
+				console.log("失败：" + e.message);
+			}, {
+				filename: "_doc/camera/",
+				index: 1
+			});
+		});
+		$('.action-gallery').on('tap', function() {
+			//galleryImgsMaximum(maxcount);
+			var img_own = this;
+			//getImage();
+			jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        // debugger;
+	        var id = jQuery(this).siblings().attr('class');
+	        var input = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+	        var grayDiv = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+	        // 从相册中选择图片
+			plus.gallery.pick(function(e) {
+				var imgstr = "";
+/*				imgCount = jQuery(this).find('.rate-img-list').find('img').length + e.files.length;
+				if(imgCount >= 1) {
+					jQuery(this).find('.rate-img-box').hide();
+				} else {
+					jQuery(this).find('.rate-img-box').show();
+				}*/
+				var name = '';
+				for(var i in e.files) {
+					name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+					//appendFile(e.files[i], name);
+					appendFile(img_own, id, input, grayDiv, e.files[i], name);
+				}
+			}, function(e) {
+				//          log( "取消选择图片" );
+			}, {
+				filter: "image",
+				multiple: true,
+				maximum: maxcount,
+				system: false,
+				onmaxed: function() {
+					plus.nativeUI.alert('最多只能选择' + maxcount + '张图片');
+				}
+			});
+		});
+		$('.action-gallery1').on('tap', function() {
+			//galleryImgsMaximum(maxcount);
+			var img_own = this;
+			//getImage();
+			jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        // debugger;
+	        var id = jQuery(this).siblings().attr('class');
+	        var input = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+	        var grayDiv = jQuery(this).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+	        var value = jQuery('#houseAppPic').val();
+	        // 从相册中选择图片
+			plus.gallery.pick(function(e) {
+				var imgstr = "";
+/*				imgCount = jQuery(this).find('.rate-img-list').find('img').length + e.files.length;
+				if(imgCount >= 1) {
+					jQuery(this).find('.rate-img-box').hide();
+				} else {
+					jQuery(this).find('.rate-img-box').show();
+				}*/
+				var name = '';
+				for(var i in e.files) {
+					name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+					//appendFile(e.files[i], name);
+					appendFile1(value, img_own, id, input, grayDiv, e.files[i], name);
+				}
+			}, function(e) {
+				//          log( "取消选择图片" );
+			}, {
+				filter: "image",
+				multiple: true,
+				maximum: maxcount,
+				system: false,
+				onmaxed: function() {
+					plus.nativeUI.alert('最多只能选择' + maxcount + '张图片');
+				}
+			});
+		});
+	
+		//拍照
+	/*	function getImage() {
+			var cmr = plus.camera.getCamera();
+			cmr.captureImage(function(p) {
+				plus.io.resolveLocalFileSystemURL(p, function(entry) {
+					var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+					appendFile(entry.toLocalURL(), name);
+				}, function(e) {
+					log("读取拍照文件错误：" + e.message);
+				});
+			}, function(e) {
+				log("失败：" + e.message);
+			}, {
+				filename: "_doc/camera/",
+				index: 1
+			});
+		}*/
+	
+		//从相册中选择图片
+		function galleryImgsMaximum(maxcount) {
+			// 从相册中选择图片
+			plus.gallery.pick(function(e) {
+				var imgstr = "";
+				imgCount = that.find('.rate-img-list').find('img').length + e.files.length;
+				if(imgCount >= 1) {
+					that.find('.rate-img-box').hide();
+				} else {
+					that.find('.rate-img-box').show();
+				}
+				var name = '';
+				for(var i in e.files) {
+					name = e.files[i].substr(e.files[i].lastIndexOf('/') + 1);
+					appendFile(e.files[i], name);
+				}
+			}, function(e) {
+				//          log( "取消选择图片" );
+			}, {
+				filter: "image",
+				multiple: true,
+				maximum: maxcount,
+				system: false,
+				onmaxed: function() {
+					plus.nativeUI.alert('最多只能选择' + maxcount + '张图片');
+				}
+			});
 		}
-	}
-	// 上传文件
-	function upload(localPath, base64, imagename) {
-		console.log(localPath);console.log(base64);console.log(imagename);
-		/*plus.nativeUI.showWaiting();
-		//发送数据  
-		var imgParam = {
-			'v': config.apiversion,
-			'format': 'json',
-			'method': config.apimethod.imgupload,
-			'accessToken': state.token,
-			'upload_type': 'base64',
-			'image': base64,
-			'image_input_title': imagename
-		};
-		mui.post(config.server + config.apiname, imgParam, function(rs) {
-			if(rs.errorcode == 0) {
-				plus.nativeUI.closeWaiting();
-				var type = that.find('.rate-img-list').attr("type");
-				var imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + localPath + '" data-preview-src="" data-preview-group="' + type + '" data-id="' + rs.data.image_id + '" /></li>';
-
-				that.find('.rate-img-list').append(imgstr);
-			} else {
-				mui.alert(rs.message);
+		// 添加文件
+		function appendFile(imgown, newid, inputnew, grayDiv, path, imgname) {
+			var img = new Image();
+			img.src = path; // 传过来的图片路径在这里用。
+			var img_id = '';
+			img.onload = function() {
+				var el = this;
+				//生成比例 
+				var w = el.width,
+					h = el.height;
+				if(w > h) {
+					var scale = w / h;
+					w = 1280 || w;
+					h = w / scale;
+				} else {
+					var scale = h / w;
+					h = 1280 || h;
+					w = h / scale;
+				}
+				//生成canvas
+				var canvas = document.createElement('canvas');
+				var ctx = canvas.getContext('2d');
+				if(w > h) {
+					$(canvas).attr({
+						width: w,
+						height: h
+					});
+					ctx.drawImage(el, 0, 0, w, h);
+				} else {
+					$(canvas).attr({
+						width: h,
+						height: w
+					});
+					ctx.drawImage(el, 0, 0, h, w);
+				}
+	
+				var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+				upload(imgown, newid, inputnew, grayDiv, path, base64, imgname);
 			}
-		}, 'json');*/
-	}
-    
-    jQuery('.up-image-house').change(function(){
-        jQuery('.mui-popover').css('display','none');
-        jQuery('.mui-popover').removeClass('mui-active');
-        jQuery('.mui-backdrop').css('display','none');
-        // debugger;
-        var that = this;
-        var id = jQuery(that).siblings().attr('class');
-        var input = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
-        var grayDiv = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
-        var value = jQuery('#houseAppPic').val();
-        //提交图片到后台处理
-        var form = new FormData();
-        form.append("upload", 1);
-        form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
+		}
+		// 添加文件
+		function appendFile1(houseAppPic,imgown, newid, inputnew, grayDiv, path, imgname) {
+			var img = new Image();
+			img.src = path; // 传过来的图片路径在这里用。
+			var img_id = '';
+			img.onload = function() {
+				var el = this;
+				//生成比例 
+				var w = el.width,
+					h = el.height;
+				if(w > h) {
+					var scale = w / h;
+					w = 1280 || w;
+					h = w / scale;
+				} else {
+					var scale = h / w;
+					h = 1280 || h;
+					w = h / scale;
+				}
+				//生成canvas
+				var canvas = document.createElement('canvas');
+				var ctx = canvas.getContext('2d');
+				if(w > h) {
+					$(canvas).attr({
+						width: w,
+						height: h
+					});
+					ctx.drawImage(el, 0, 0, w, h);
+				} else {
+					$(canvas).attr({
+						width: h,
+						height: w
+					});
+					ctx.drawImage(el, 0, 0, h, w);
+				}
+	
+				var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+				upload1(houseAppPic, imgown, newid, inputnew, grayDiv, path, base64, imgname);
+			}
+		}
+		// 上传文件
+		function upload(imgown, newid, inputnew, grayDiv, localPath, base64, imagename) {
+			var waiting = plus.nativeUI.showWaiting();
+			console.log(localPath);
+			console.log(base64);
+			console.log(imagename);
+			grayDiv.show();
+			//jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
+	        jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('.image-show-box').show();
+	        
+	        var obj_img_up = {};
+	        obj_img_up["from"] = "APP";
+	        obj_img_up["keyCode"] = "";
+	        obj_img_up["key"] = "APPLYBUILD";
+	        obj_img_up["imageFiles"] = base64;
+	        var sign = GetSign(obj_img_up);
+	        var param = {
+		        queryData: {
+		          'method': config.apimethod.imageupload,
+		          'sign':sign,
+		          'from':"APP",
+		          'keyCode':'',
+		          'key':"APPLYBUILD",
+		          'imageFiles':base64
+		        },
+		        method: 'POST'
+		    }
+	        $.dataRequest(param, function(rs) {
+		        if(rs.rsp=="succ")
+		        {
+		        	if(rs.data.success=="true"){
+		        		console.log(rs.data.bpicShow);
+		        		console.log(rs.data.bpic);
+		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
+	                    inputnew.val(rs.data.bpic);
+	                    grayDiv.hide();
+	                    waiting.close(); 
+		        	}else
+		        	{
+		        		plus.nativeUI.toast("上传失败：" + rs.data.msg);
+						return;
+		        	}
+		        }else
+		        {
+		        	plus.nativeUI.toast("上传失败：" + rs.data);
+					return;
+		        }
+		    });
+			/*plus.nativeUI.showWaiting();
+			//发送数据  
+			var imgParam = {
+				'v': config.apiversion,
+				'format': 'json',
+				'method': config.apimethod.imgupload,
+				'accessToken': state.token,
+				'upload_type': 'base64',
+				'image': base64,
+				'image_input_title': imagename
+			};
+			mui.post(config.server + config.apiname, imgParam, function(rs) {
+				if(rs.errorcode == 0) {
+					plus.nativeUI.closeWaiting();
+					var type = that.find('.rate-img-list').attr("type");
+					var imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + localPath + '" data-preview-src="" data-preview-group="' + type + '" data-id="' + rs.data.image_id + '" /></li>';
+	
+					that.find('.rate-img-list').append(imgstr);
+				} else {
+					mui.alert(rs.message);
+				}
+			}, 'json');*/
+		}
+		// 上传文件
+		function upload1(houseAppPic, imgown, newid, inputnew, grayDiv, localPath, base64, imagename) {
+			var waiting = plus.nativeUI.showWaiting();
+			console.log(localPath);
+			console.log(base64);
+			console.log(imagename);
+			grayDiv.show();
+			//jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
+	        jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('.image-show-box').show();
+	        
+	        var obj_img_up = {};
+	        obj_img_up["from"] = "APP";
+	        obj_img_up["keyCode"] = "";
+	        obj_img_up["key"] = "APPLYBUILD";
+	        obj_img_up["imageFiles"] = base64;
+	        var sign = GetSign(obj_img_up);
+	        var param = {
+		        queryData: {
+		          'method': config.apimethod.imageupload,
+		          'sign':sign,
+		          'from':"APP",
+		          'keyCode':'',
+		          'key':"APPLYBUILD",
+		          'imageFiles':base64
+		        },
+		        method: 'POST'
+		    }
+	        $.dataRequest(param, function(rs) {
+		        if(rs.rsp=="succ")
+		        {
+		        	if(rs.data.success=="true"){
+		        		/*if (houseAppPic=='') {
+				            jQuery(imgown).parents('.image-box').find('img').remove();
+				        }*/
+				        jQuery('#houseAppPic').before("<img src="+rs.data.bpicShow+">");
+		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
+	                    houseAppPic = houseAppPic + rs.data.bpic + ',';
+	                    inputnew.val(houseAppPic);
+	                    grayDiv.hide();
+	                    var num = jQuery('#houseAppPic').siblings('img').length;
+				        console.log(num);
+				        if(num>=6) jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).attr('disabled','disabled');
+	                    waiting.close(); 
+		        	}else
+		        	{
+		        		plus.nativeUI.toast("上传失败：" + rs.data.msg);
+						return;
+		        	}
+		        }else
+		        {
+		        	plus.nativeUI.toast("上传失败：" + rs.data);
+					return;
+		        }
+		    });
+			/*plus.nativeUI.showWaiting();
+			//发送数据  
+			var imgParam = {
+				'v': config.apiversion,
+				'format': 'json',
+				'method': config.apimethod.imgupload,
+				'accessToken': state.token,
+				'upload_type': 'base64',
+				'image': base64,
+				'image_input_title': imagename
+			};
+			mui.post(config.server + config.apiname, imgParam, function(rs) {
+				if(rs.errorcode == 0) {
+					plus.nativeUI.closeWaiting();
+					var type = that.find('.rate-img-list').attr("type");
+					var imgstr = '<li class="imgDiv"><span class="mui-icon mui-icon-close delete" ></span><img src="' + localPath + '" data-preview-src="" data-preview-group="' + type + '" data-id="' + rs.data.image_id + '" /></li>';
+	
+					that.find('.rate-img-list').append(imgstr);
+				} else {
+					mui.alert(rs.message);
+				}
+			}, 'json');*/
+		}
+	    
+	    jQuery('.up-image-house').change(function(){
+	        jQuery('.mui-popover').css('display','none');
+	        jQuery('.mui-popover').removeClass('mui-active');
+	        jQuery('.mui-backdrop').css('display','none');
+	        // debugger;
+	        var that = this;
+	        var id = jQuery(that).siblings().attr('class');
+	        var input = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('input[type=hidden]');
+	        var grayDiv = jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.gray-div-img');
+	        var value = jQuery('#houseAppPic').val();
+	        //提交图片到后台处理
+	        var form = new FormData();
+	        form.append("upload", 1);
+	        form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
+	
+	        grayDiv.show();
+	        //预览图片
+	        var url = '';
+	        if (window.createObjectURL!=undefined) { // basic
+	            url = window.createObjectURL(that.files[0]) ;
+	        } else if (window.URL!=undefined) { // mozilla(firefox)
+	            url = window.URL.createObjectURL(that.files[0]) ;
+	        } else if (window.webkitURL!=undefined) { // webkit or chrome
+	            url = window.webkitURL.createObjectURL(that.files[0]) ;
+	        }
+	        if (value=='') {
+	            jQuery(that).parents('.image-box').find('img').remove();
+	        }
+	        jQuery('#houseAppPic').before("<img src="+url+">");
+	        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
+	
+	/*        $.ajax({
+	            url: img_url,
+	            type: "POST",
+	            processData: false,
+	            contentType: false,
+	            data: form,
+	            dataType:'json',
+	            async: true,
+	            success: function(d) {
+	                if(d.bpic){
+	                    value = value + d.bpic + ',';
+	                    input.val(value);
+	                    grayDiv.hide();
+	                }else{
+	                    jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.mui-img-remove').click();
+	                }
+	
+	            }
+	        });*/
+	        var num = jQuery('#houseAppPic').siblings('img').length;
+	        console.log(num);
+	        if(num>=6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).attr('disabled','disabled');
+	
+	    });
+	
+	    //删掉当前图片
+	    jQuery('.mui-img-remove').click(function(){
+	        var that = this;
+	        //隐藏div
+	        jQuery(that).parents('.image-show-box').hide();
+	        //删掉图片展示，
+	        jQuery(that).siblings('img').attr('src','');
+	        //清空input，hidden,file
+	        // jQuery(that).siblings('input').val('');
+	        jQuery(that).parents('.image-box').find('input').val('');
+	    });
+	    jQuery('.mui-img-remove-house').click(function(){
+	        var that = this;
+	        //隐藏div
+	        jQuery(that).parents('.image-show-box').hide();
+	        //删掉图片展示，
+	        jQuery(that).siblings('img').remove();
+	        //清空input，hidden,file
+	        jQuery(that).parents('.image-box').find('input').val('');
+	        var num = jQuery(that).siblings('img').length;
+	        if(num<6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).removeAttr('disabled');
+	    });
+	
+	    //提交按钮事件：需要验证基本信息
+	    var rulesRequired = ['compName','area_text1','area_text2','area_text3','area_text4','address'];
+	    var rulesQuan = ['longShotPic','kind','acreage','proCardPic','proContPic','landCardPic','IDFrontPic','IDBackPic','houseAppPic','bankCardPic','huBiaoName','bankName','hubiaoCard','bankId','ApplyCapacity'];
+	    var rulesDai = ['longShotPic','kind','acreage','proCardPic','proContPic','landCardPic','IDFrontPic','IDBackPic','houseAppPic','bankCardPic','bankName','huBiaoName','hubiaoCard','bankId','ApplyCapacity','daikyear','borrowName','mateIDFrontPic','mateIDBackPic','marryCardPic','singleCardPic'];
+	    jQuery('#btn_submit').click(function(){
+	    	var waiting = plus.nativeUI.showWaiting();
+	        var that = this;
+	
+	        //验证是否填写
+	        var _rule_res = '';
+	        jQuery(rulesRequired).each(function(){
+	            var _val = jQuery('#'+this).val();
+	            if(!_val){
+	                _rule_res = jQuery('#'+this).attr('placeholder');
+	                waiting.close();
+	                return false;
+	            }
+	        });
+	        if(_rule_res){
+	            mui.alert(_rule_res+'必填');
+	            waiting.close();
+	            return;
+	        }
+	
+	        var _rule = '';
+	        var type = jQuery('#isDaik').val();
+	        if(type==1) {
+	            jQuery(rulesDai).each(function(){
+	                var _val = jQuery('#'+this).val();
+	                if(!_val){
+	                    _rule = 'false';
+	                    return false;
+	                }
+	            });
+	        }else{
+	            jQuery(rulesQuan).each(function(){
+	                var _val = jQuery('#'+this).val();
+	                if(!_val){
+	                    _rule = 'false';
+	                    return false;
+	                }
+	            });
+	        }
+	        
+	        var clientType = jQuery("#clientType").val();
+        	var compName = jQuery("#compName").val();
+        	var tiletype = jQuery("#kind").val();
+        	var acreage = jQuery("#acreage").val();
+        	var clientDate = jQuery("#clientDate").val();
+        	var isDaik = jQuery("#isDaik").val();
+        	var daikyear = jQuery("#daikyear").val();
+        	var borrowName = jQuery("#borrowName").val();
+        	var address = jQuery("#address").val();
+        	var memo = jQuery("#memo").val();
+        	var hubiaoCard = jQuery("#hubiaoCard").val();
+        	var bankId = jQuery("#bankId").val();
+        	var bankName = jQuery("#bankName").val();
+        	var huBiaoName = jQuery("#huBiaoName").val();
+        	var proCardPic = jQuery("#proCardPic").val();
+        	var proContPic = jQuery("#proContPic").val();
+        	var landCardPic = jQuery("#landCardPic").val();
+        	var IDFrontPic = jQuery("#IDFrontPic").val();
+        	var IDBackPic = jQuery("#IDBackPic").val();
+        	var bankCardPic = jQuery("#bankCardPic").val();
+        	var houseAppPic = jQuery("#houseAppPic").val();
+        	var longShotPic = jQuery("#longShotPic").val();
+        	var areaid1 = jQuery("#area_id1").val();
+        	var areaid2 = jQuery("#area_id2").val();
+        	var areaid3 = jQuery("#area_id3").val();
+        	var areaid4 = jQuery("#area_id4").val();
+        	
+        	var obj_add = {};
+        	obj_add["sid"] = sid;
+        	obj_add["id"] = '';
+			obj_add["clientType"] = clientType;
+			obj_add["compName"] = compName;
+			obj_add["tiletype"] = tiletype;
+			obj_add["acreage"] = acreage;
+			obj_add["clientDate"] = clientDate;
+			obj_add["isDaik"] = isDaik;
+			obj_add["daikyear"] = daikyear;
+			obj_add["borrowName"] = borrowName;
+			obj_add["address"] = address;
+			obj_add["memo"] = memo;
+			obj_add["hubiaoCard"] = hubiaoCard;
+			obj_add["bankId"] = bankId;
+			obj_add["bankName"] = bankName;
+			obj_add["huBiaoName"] = huBiaoName;
+			obj_add["proCardPic"] = proCardPic;
+			obj_add["proContPic"] = proContPic;
+			obj_add["landCardPic"] = landCardPic;
+			obj_add["IDFrontPic"] = IDFrontPic;
+			obj_add["IDBackPic"] = IDBackPic;
+			obj_add["bankCardPic"] = bankCardPic;
+			obj_add["houseAppPic"] = houseAppPic;
+			obj_add["longShotPic"] = longShotPic;
+			obj_add["areaid1"] = areaid1;
+			obj_add["areaid2"] = areaid2;
+			obj_add["areaid3"] = areaid3;
+			obj_add["areaid4"] = areaid4;
 
-        grayDiv.show();
-        //预览图片
-        var url = '';
-        if (window.createObjectURL!=undefined) { // basic
-            url = window.createObjectURL(that.files[0]) ;
-        } else if (window.URL!=undefined) { // mozilla(firefox)
-            url = window.URL.createObjectURL(that.files[0]) ;
-        } else if (window.webkitURL!=undefined) { // webkit or chrome
-            url = window.webkitURL.createObjectURL(that.files[0]) ;
-        }
-        if (value=='') {
-            jQuery(that).parents('.image-box').find('img').remove();
-        }
-        jQuery('#houseAppPic').before("<img src="+url+">");
-        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
+			var sign = GetSign(obj_add);
+			var param_add = {
+		        queryData: {
+		          'method': config.apimethod.perjzsave,
+		          'sign':sign,
+		          'sid':sid,
+				  'id':'',
+				  'clientType':clientType,
+				  'compName':compName,
+				  'tiletype':tiletype,
+				  'acreage':acreage,
+				  'clientDate':clientDate,
+				  'isDaik':isDaik,
+				  'daikyear':daikyear,
+				  'borrowName':borrowName,
+				  'address':address,
+				  'memo':memo,
+				  'hubiaoCard':hubiaoCard,
+				  'bankId':bankId,
+				  'bankName':bankName,
+				  'huBiaoName':huBiaoName,
+				  'proCardPic':proCardPic,
+				  'proContPic':proContPic,
+				  'landCardPic':landCardPic,
+				  'IDFrontPic':IDFrontPic,
+				  'IDBackPic':IDBackPic,
+				  'bankCardPic':bankCardPic,
+				  'houseAppPic':houseAppPic,
+				  'longShotPic':longShotPic,
+				  'areaid1':areaid1,
+				  'areaid2':areaid2,
+				  'areaid3':areaid3,
+				  'areaid4':areaid4
+		        },
+		        method: 'POST'
+		    }
 
-/*        $.ajax({
-            url: img_url,
-            type: "POST",
-            processData: false,
-            contentType: false,
-            data: form,
-            dataType:'json',
-            async: true,
-            success: function(d) {
-                if(d.bpic){
-                    value = value + d.bpic + ',';
-                    input.val(value);
-                    grayDiv.hide();
-                }else{
-                    jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.mui-img-remove').click();
-                }
-
-            }
-        });*/
-        var num = jQuery('#houseAppPic').siblings('img').length;
-        console.log(num);
-        if(num>=6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).attr('disabled','disabled');
-
-    });
-
-    //删掉当前图片
-    jQuery('.mui-img-remove').click(function(){
-        var that = this;
-        //隐藏div
-        jQuery(that).parents('.image-show-box').hide();
-        //删掉图片展示，
-        jQuery(that).siblings('img').attr('src','');
-        //清空input，hidden,file
-        // jQuery(that).siblings('input').val('');
-        jQuery(that).parents('.image-box').find('input').val('');
-    });
-    jQuery('.mui-img-remove-house').click(function(){
-        var that = this;
-        //隐藏div
-        jQuery(that).parents('.image-show-box').hide();
-        //删掉图片展示，
-        jQuery(that).siblings('img').remove();
-        //清空input，hidden,file
-        jQuery(that).parents('.image-box').find('input').val('');
-        var num = jQuery(that).siblings('img').length;
-        if(num<6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).removeAttr('disabled');
-    });
-
-    //提交按钮事件：需要验证基本信息
-    var rulesRequired = ['compName','area_text1','area_text2','area_text3','area_text4','address'];
-    var rulesQuan = ['longShotPic','kind','acreage','proCardPic','proContPic','landCardPic','IDFrontPic','IDBackPic','houseAppPic','bankCardPic','huBiaoName','bankName','hubiaoCard','bankId','ApplyCapacity'];
-    var rulesDai = ['longShotPic','kind','acreage','proCardPic','proContPic','landCardPic','IDFrontPic','IDBackPic','houseAppPic','bankCardPic','bankName','huBiaoName','hubiaoCard','bankId','ApplyCapacity','daikyear','borrowName','mateIDFrontPic','mateIDBackPic','marryCardPic','singleCardPic'];
-    jQuery('#btn_submit').click(function(){
-        var that = this;
-
-        //验证是否填写
-        var _rule_res = '';
-        jQuery(rulesRequired).each(function(){
-            var _val = jQuery('#'+this).val();
-            if(!_val){
-                _rule_res = jQuery('#'+this).attr('placeholder');
-                return false;
-            }
-        });
-        if(_rule_res){
-            mui.alert(_rule_res+'必填');
-            setTimeout(function() {
-                mui(that).button('reset');
-            }.bind(that), 100);
-            return;
-        }
-
-        var _rule = '';
-        var type = jQuery('#isDaik').val();
-        if(type==1) {
-            jQuery(rulesDai).each(function(){
-                var _val = jQuery('#'+this).val();
-                if(!_val){
-                    _rule = 'false';
-                    return false;
-                }
-            });
-        }else{
-            jQuery(rulesQuan).each(function(){
-                var _val = jQuery('#'+this).val();
-                if(!_val){
-                    _rule = 'false';
-                    return false;
-                }
-            });
-        }
-        if(_rule!=''){
-            var btnArray = ['否', '是'];
-            mui.confirm('您有信息未填写完整，完整度越高申请通过率越大，是否完善信息？',null,btnArray,function(e) {
-                if (e.index == 1) {
-                    return;
-                } else {
-                    //提交
-                    jQuery('#form_client').submit();
-                }
-            });
-        }else{
-            //提交
-            jQuery('#form_client').submit();
-        }
-
-        setTimeout(function() {
-            mui(that).button('reset');
-        }.bind(that), 500);
-    });
+	        if(_rule!=''){
+	            var btnArray = ['否', '是'];
+	            mui.confirm('您有信息未填写完整，完整度越高申请通过率越大，是否完善信息？',null,btnArray,function(e) {
+	                if (e.index == 1) {
+	                	waiting.close();
+	                    return;
+	                } else {
+						$.dataRequest(param_add, function(rs) {
+					        console.log(JSON.stringify(rs));
+					        waiting.close(); 
+					        if(rs.rsp=="succ")
+					        {
+					        	if(rs.data.status=="succ"){
+					        		plus.nativeUI.toast("保存成功");
+					        		clicked("_www/view/member/hyzx/hyzx.html");
+									//return;
+					        	}else
+					        	{
+					        		plus.nativeUI.toast("保存失败：" + rs.data.msg);
+									return;
+					        	}
+					        }else
+					        {
+					        	plus.nativeUI.toast("保存失败：" + rs.data);
+								return;
+					        }
+					    });
+	                }
+	            });
+	        }else{
+	            //提交
+	            
+				$.dataRequest(param_add, function(rs) {
+		        	console.log(JSON.stringify(rs));
+			        waiting.close(); 
+			        if(rs.rsp=="succ")
+			        {
+			        	if(rs.data.status=="succ"){
+			        		plus.nativeUI.toast("保存成功");
+			        		clicked("_www/view/member/hyzx/hyzx.html");
+							//return;
+			        	}else
+			        	{
+			        		plus.nativeUI.toast("保存失败：" + rs.data.msg);
+							return;
+			        	}
+			        }else
+			        {
+			        	plus.nativeUI.toast("保存失败：" + rs.data);
+						return;
+			        }
+			    });
+	        }
+	    });
+	})
 </script>
 </html>

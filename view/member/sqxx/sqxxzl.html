@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Jado绿能侠</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+    
+    <style type="text/css">
+        .mui-card-list-eqinfo{background:#efefef;}
+        .mui-card-content{position: relative;}
+        .nearsite-message{
+            display: inline-block;
+            clear:both;
+            margin: 10px;
+            width:348px;
+            word-wrap: break-word;
+            word-break: normal;
+        }
+        .nearsite-message .avatar{
+            float: left;
+        }
+        .nearsite-message .avatar img{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .nearsite-message .content{
+            float: left;
+            background: #fff;
+            padding: 10px;
+            border-radius:7px;
+            max-width: 84%;
+            position: relative;
+            min-height: 20px;
+            font-size:15px;
+            color:black;
+            line-height: 1em;
+        }
+        .nearsite-message .content img{
+            width: 100%;
+        }
+        .nearsite-message .triangle{
+            height:0px;
+            width:0px;
+            border-width:8px;
+            border-style:solid;
+            position: absolute;
+            top:8px;
+            border-color:transparent #fff transparent transparent;
+            left:-16px;
+            z-index:3;
+        }
+        .vertbar{
+            height: 100px;
+            margin: -40px 25px -10px;
+            border-left: 1px solid #a2a2a2;
+        }
+        .longer{margin: -70px 25px -10px;}
+        .mui-icon-arrowright{font-size:17px;}
+    </style>
+    
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+        <h1 class="mui-title"></h1>
+    </header>
+    <div class="mui-content">
+            <div class="mui-header-eqinfo">
+                <div class="head-header">进度总览</div>
+                <div class="head-english">Schedule information</div>
+            </div>
+        </div>
+    <div class="mui-after-content">
+        <div class="mui-card mui-card-list-eqinfo mui-card-eqinfo-line">
+            <div class="mui-card-content">
+                <div class="mui-card-content-inner">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../../js/mui.min.js"></script>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/mui.picker.js"></script>
+<script src="../../../js/mui.picker.min.js"></script>
+<script src="../../../js/mui.poppicker.js"></script>
+<script src="../../../js/mui.enterfocus.js"></script>
+<script src="../../../js/template.min.js"></script>
+<script src="../../../config.js"></script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/sign.js"></script>
+<script src="../../../js/md5.js"></script>
+<script src="../../../js/jquery.1.9.1.js"></script>
+<script type="text/javascript">
+    var jQuery = jQuery.noConflict();
+</script>
+<script type="text/html" id="zl_list">
+	<%
+		for(var i = 0;i < data.length;i++)
+		{
+			%>
+	        <div class='nearsite-message'>
+                <div class='avatar'>
+                	<%if(data[i].finish=="true"){%>
+                     	<img src="../../../img/sqxxcx/site2.png"/>
+                     <%}else{%>
+                     	<img src="../../../img/sqxxcx/site.png"/> 
+                     <%}%>
+                </div>
+                <div class='content'>
+                    <div class='triangle'></div>
+                    <span><%=data[i].text%></span>
+                    <%if(data[i].finish=="true"&&(data[i].itemCode=="Kancha"||data[i].itemCode=="Hetong"||data[i].itemCode=="Caigou"||data[i].itemCode=="Caigou"||data[i].itemCode=="Shigong")){%>
+                     	<span class="mui-icon mui-icon-arrowright goto-a" data-itemcode="<%=data[i].itemCode%>" data-itemvalue="<%=data[i].itemValue%>"></span><br>
+                     <%}else{%>
+                     	<span></span><br>
+                     <%}%>
+                    <span><%=data[i].memo%></span>
+                </div>
+            </div>
+            <div class="vertbar"></div>
+			<%
+		}
+	%>
+</script>
+<script>
+	var sid = localStorage.getItem("sid");
+	var pid = "";
+    mui.init();
+    mui.plusReady(function(){
+    	pid = plus.webview.currentWebview().pid;
+    	var obj_jd ={};
+	    obj_jd["sid"] = sid;
+	    var sign = GetSign(obj_jd);
+	    var param = {
+	        queryData: {
+	          'method': config.apimethod.grjdzl,
+	          'sign':sign,
+	          'pid':pid,
+	          'sid':sid
+	        },
+	        method: 'POST'
+	    }
+	    $.dataRequest(param, function(rs) {
+	    	console.log(JSON.stringify(rs));
+			if(rs.rsp=="succ")
+			{
+				var result = template('zl_list', rs);
+				jQuery('.mui-card-content-inner').html(result);
+			}else
+			{
+				plus.nativeUI.toast("获取失败：" + rs.data);
+				return;
+			}
+		})
+    
+	    mui(document.body).on('tap','.goto-a',function(){
+	        clicked("_www/view/member/sqxx/sqxxzldetail.html",{
+	        	pid:pid,
+	        	itemCode:$(this).data("itemcode"),
+	        	itemValue:$(this).data("itemvalue")
+	        });
+	    });
+    });
+
+    mui(".mui-slider").slider({
+        interval: 2800
+    });
+
+
+</script>
+</html>

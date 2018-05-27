@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jado绿能侠</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.picker.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../..//css/mui.poppicker.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+        
+        <style>
+        .mui-header{min-height: 35px;}
+        .mui-content-avatar{width:100%;height:140px; background-color: #fff;text-align: center}
+        .mui-table-view-cell>a{font-size:15px;}
+        .mui-icon-arrowright{float:right;}
+        .mui-btn-success{width:90%;}
+        .zhuxiao-content{margin-top:10px;margin-bottom:10px; background-color:#EDF9F5;height:44px;line-height: 44px;text-align:center;border-bottom:1px #ddd solid;border-top:1px #ddd solid;}
+        .zhuxiao-content a{color:#444;position:relative;font-size: 14px;display: inline-block;width: 100%;height: 44px;line-height: 44px;}
+        .box-check-group{float: left;width: 50%;line-height: 40px;}
+        .box-check-group input[type='radio']{padding: 10px;position: relative;width: 20px;height: 15px;border:1px solid #a1a1a1; border-radius: 50%;background: #efefef;margin-left: 10px;}
+
+        .mui-input-row .extra {
+            position: absolute;
+            right: -8px;
+            top: 2px;
+            width: 117px;
+            height: 30px;
+        }
+        .mui-input-row .get-code {
+            display: block;
+            width: 92px;
+            height: 30px;
+            border: 0;
+            background: #dfe2e5;
+            color: #565656;
+            cursor: pointer;
+        }
+        .mui-input-btn-label input[type='text']{width: 45% !important;float: left !important;}
+        .mui-input-btn-label button{width: 15% !important;padding: 8px !important;margin:0px !important;}
+        #up-avatar{margin-top:20px; width: 20%;height: 50%;border-radius:100px}
+        #head_photo{
+            width: 40%;
+            height: 110px;
+            position: absolute;
+            z-index: 9;
+            opacity: 0;
+            left: 30%;
+            top:40px;
+        }
+        .up-image{
+            width: 100%;
+            height: 28px;
+            _width: 100%;
+            _height: 28px;
+            position: absolute;
+            z-index: 9;
+            opacity: 0;
+            margin-top: 6px;
+            left:90px;
+        }
+
+        .image-btn-box{position: relative;display: inline-block;width: 100%;}
+        .up-image-btn{color: red;}
+        .mui-table-view-cell.mui-collapse .mui-collapse-content{padding: 4px 15px;}
+        .border{border-top:1px #ddd dotted;}
+        .mui-collapse-content h5{color: #333;}
+        .mui-button-row{padding-top:2px;}
+        </style>
+        
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-home mui-icon mui-icon-arrowthinleft"></a>
+            <h1 class="mui-title">会员中心</h1>
+        </header>
+        <div class="mui-content">
+            <div class="mui-content-avatar">
+                <div class="mui-collapse-content">
+                    <form>
+                        <a href="#sheet"><img src="" alt="头像" id="up-avatar" title="点击修改头像"/>
+	                        <input type="hidden" name="head_photo" id="head_photo" value="">
+	                        <input type="hidden" name="photo_pic" id="photo_pic" value="">
+                        </a>
+                    </form>
+                    <p style="margin-top:5px">点击修改头像</p>
+                </div>
+            </div>
+            <!-- 手拉琴 -->
+            <ul class="mui-table-view mui-grid-row" style="margin-top: 8px;">
+                <li class="mui-table-view-cell mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#">
+                        <img src="../../../img/member/grxx.png" class="icon-style" style="width:17px">
+                        <span class="span-style">个人信息</span>
+                    </a>
+                    <div id="account" class="mui-collapse-content">
+                        <h5>用户名：</h5>
+                    </div>
+                    <div id="name" class="mui-collapse-content border">
+                        <h5>姓　名：</h5>
+                    </div>
+                    <div id="addr" class="mui-collapse-content border">
+                        <h5>地　址：</h5>
+                    </div>
+                    <div id="regType" class="mui-collapse-content border">
+                        <h5>类　型：</h5>
+                    </div>
+                    <div id="level" class="mui-collapse-content border">
+                        <h5>等　级：</h5>
+                    </div>
+                    <div class="mui-collapse-content border">
+                    	<a class="hyjfrz" href="javascript:void(0);">
+	                        <h5>总积分：<span style="color:#F79652" id="point">0</span>
+		                        <span class="mui-icon mui-icon-arrowright"></span>
+	                        </h5>
+	                    </a>
+                    </div>
+                    <div id="age" class="mui-collapse-content border">
+                        <h5>户主年龄：</h5>
+                    </div>
+                    <div id="roofAcreage" class="mui-collapse-content border">
+                        <h5>屋顶朝南面积：</h5>
+                    </div>
+                    <div id="tileKind" class="mui-collapse-content border">
+                        <h5>瓦片类型：</h5>
+                    </div>
+                    <div class="mui-collapse-content border">
+                    	<a class="wdyqm" href="javascript:void(0);">
+	                        <h5>我的邀请码：<span style="color:#F79652" id="wdyqm"></span>
+		                        <span class="mui-icon mui-icon-arrowright"></span>
+	                        </h5>
+	                    </a>
+                    </div>
+                    <div class="mui-collapse-content border">
+                    	<a class="wtjdhy" href="javascript:void(0);">
+	                        <h5>我推荐的会员：<span style="color:#F79652" id="submember">0</span>
+	                        	<span class="mui-icon mui-icon-arrowright"></span>
+	                        </h5>
+	                    </a>
+                    </div>
+                    <div class="mui-collapse-content border">
+                    	<a class="znx" href="javascript:void(0);">
+	                        <h5>站内信：<span class="znxnum"></span>            <span class="mui-icon mui-icon-arrowright" style="padding-top:3px" id="mail"></span>
+	                        	
+	                        </h5>
+	                    </a>
+                    </div><!--<span class="mui-badge">1</span>-->
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                       <img src="../../../img/member/wsxx.png" class="icon-style" style="width:15px">
+                        <span class="span-style">完善信息</span>
+                    </a>
+                    <div class="mui-collapse-content">
+                        <form class="mui-input-group">
+                            <input id='inputToken' type="hidden" value="">
+                            <div class="mui-input-row">
+                                <label>姓名</label>
+                                <input type="text" class="mui-input-clear" placeholder="姓名" name="realName" id="realName" value="">
+                            </div>
+                            <div class="mui-input-row">
+                                <label>户主年龄</label>
+                                <input type="text" name="age" id="hznl" class="mui-input-clear mui-input" placeholder="请输入年龄" value="">
+                            </div>
+                            <div class="mui-input-row">
+                                <label>朝南面积</label>
+                                <input type="text" name="roofAcreage" id="cnmj" class="mui-input-clear mui-input" placeholder="屋顶朝南面积或几开间" value="3">
+                            </div>
+                            <div class="mui-input-row mui-input-btn-label">
+                                <label>瓦片类型</label>
+                                <input type="text" name="tileKind" id="wplx" placeholder="瓦片类型" value="" readonly>
+                                <button id='showTileKind' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
+                            </div>
+                            <div class="mui-input-row">
+                                <label>详细地址</label>
+                                <input type="text" name="addr" id="xxdz" class="mui-input-clear mui-input" placeholder="详细地址" value="">
+                            </div>
+                            <div class="mui-button-row">
+                                <button class="mui-btn mui-btn-success" type="submit" id="sub">确定并保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        <img src="../../../img/member/ghsjh.png" class="icon-style" style="width:14px;top:11px">
+                        <span class="span-style">更换手机号</span>
+                    </a>
+                    <div class="mui-collapse-content">
+                        <form class="mui-input-group">
+                            <div class="mui-input-row">
+                                <label>新手机号</label>
+                                <input type="number" class="mui-input-clear" placeholder="输入新手机号" id="newphone" name="newphone">
+                            </div>
+                            <div class="mui-input-row">
+                                <label>验证码</label>
+                                <input id="msgCode" type="text" name="msgCode" class="text msgCode" placeholder="短信验证码" >
+                                <div class="extra">
+                                    <button id="sendBtn" class="msgCodeBtn get-code" type="button" style="display: block;">获取验证码
+                                    </button>
+                                    <button id="resetTimeBtn" class="msgCodeBtn get-code" disabled style="display: none;">
+                                        <span id="resetTime-mobile">60</span>秒后重发
+                                    </button>
+                                </div>
+                                <p class="fill-info"></p>
+                            </div>
+                            <div class="mui-button-row">
+                                <button class="mui-btn mui-btn-success" type="submit" id="changetel">确定并保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#">
+                        <img src="../../../img/member/xgmm.png" class="icon-style">
+                        <span class="span-style">修改密码</span>
+                    </a>
+                    <div class="mui-collapse-content">
+                        <form class="mui-input-group">
+                            <div class="mui-input-row" >
+                                <label>新密码</label>
+                                <input type="password" class="mui-input-clear" style="font-size:15px" placeholder="输入新密码" id="passwd" name="passwd">
+                            </div>
+                            <div class="mui-input-row">
+                                <label>确认新密码</label>
+                                <input type="password" class="mui-input-clear" placeholder="确认新密码" id="repasswd" name="repasswd">
+                            </div>
+                            <div class="mui-button-row">
+                                <button class="mui-btn mui-btn-success" type="submit" id="changepwd">确定并保存</button>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="zhuxiao-content">
+            <a class="logout goto-a" href="javascript:void(0);">退出登录</a>
+        </div>
+	    <div id="sheet" class="mui-popover mui-popover-action mui-popover-bottom" style="display: none;">
+	        <ul class="mui-table-view">
+	            <li class="mui-table-view-cell">
+	                <div class="paizhao image-btn-box">
+	                    <input type="file" capture="camera" accept="image/*" name="head_photo1" id="head_photo1" value="" class="up-image action-camera">
+	                    <input type="hidden" name="photo_pic1" id="photo_pic1" value="">
+	                    <span class="up-image-btn">拍照</span>
+	                </div>
+	            </li>
+	            <li class="mui-table-view-cell">
+	                <div class="select-file image-btn-box">
+	                    <input type="file" capture="camera" accept="image/*;capture=camera" name="head_photo2" id="head_photo2" value="" class="up-image action-gallery">
+	                    <input type="hidden" name="photo_pic2" id="photo_pic2" value="">
+	                    <span class="up-image-btn-2">相册</span>
+	                </div>
+	            </li>
+	        </ul>
+	        <ul class="mui-table-view">
+	            <li class="mui-table-view-cell">
+	                <a href="#sheet" class=""><b>取消</b></a>
+	            </li>
+	        </ul>
+	    </div>
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/zepto.js"></script>
+		<script src="../../../js/mui.picker.js"></script>
+		<script src="../../../js/mui.picker.min.js"></script>
+		<script src="../../../js/mui.poppicker.js"></script>
+		<script src="../../../js/mui.enterfocus.js"></script>
+		<script src="../../../js/template.min.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/app.js"></script>
+		<script src="../../../js/sign.js"></script>
+		<script src="../../../js/md5.js"></script>
+		<script src="../../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
+		<script src="../../../js/ajaxfileupload.js"></script>
+		<script src="../../../js/layer.js"></script>
+
+        <script type="text/javascript">
+	        var Crop_url = "headimgedit.html";
+	        var sid = localStorage.getItem("sid");
+
+            /* 获取验证码倒计时 */
+            function getCodeCountDown(sec) {
+                var s = sec;
+                jQuery('#sendBtn').hide();
+                jQuery('#resetTimeBtn').show();
+                jQuery('#resetTime-mobile').text(s);
+                var timer = setInterval(function () {
+                    if (s > 1) {
+                        s--;
+                        jQuery('#resetTime-mobile').text(s);
+                    }
+                    else {
+                        jQuery('#sendBtn').show();
+                        jQuery('#resetTimeBtn').hide();
+                        clearInterval(timer);
+                    }
+                }, 1000)
+            }
+            
+            mui.init({
+	            swipeBack:true //启用右滑关闭功能
+	        });
+
+            mui.plusReady(function(){
+	        	loadData();
+	        	//loadkind();
+	        	
+	        	function loadData(){
+	        		var waiting = plus.nativeUI.showWaiting();
+	        		var obj_member = {};
+					obj_member["sid"] = sid;
+					obj_member["type"] = 'detailed';
+					var sign = GetSign(obj_member);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.member,
+				          'sign':sign,
+				          'sid':sid,
+				          'type':'detailed'
+				        },
+				        method: 'POST'
+				    }
+				    $.dataRequest(param, function(rs) {
+				   		waiting.close();
+				   		if(rs.rsp=="succ")
+				        {
+				        	jQuery("#up-avatar").attr('src',rs.data.headimgurl);
+				        	jQuery("#account").html("<h5>用户名："+rs.data.account+"</h5>");
+				        	jQuery("#name").html("<h5>姓　名："+rs.data.name+"</h5>");
+				        	jQuery("#addr").html("<h5>地　址："+rs.data.addr+"</h5>");
+				        	jQuery("#level").html("<h5>等　级："+rs.data.level+"</h5>");
+				        	jQuery("#point").html(rs.data.point);
+				        	if(rs.data.regType=="0")
+				        		jQuery("#regType").html("<h5>类　型：私宅</h5>");
+				        	else
+				        		jQuery("#regType").html("<h5>类　型：企业</h5>");
+				        		
+				        	jQuery("#age").val(rs.data.age);
+				        	jQuery("#roofAcreage").val(rs.data.roofAcreage);
+				        	jQuery("#tileKind").val(rs.data.tileKind);
+				        	if(rs.data.mail!="0"){
+				        		jQuery(".znxnum").addClass("mui-badge");
+				        		jQuery(".znxnum").html(rs.data.mail);
+				        	}
+				        	/*jQuery("#mail").html(rs.data.mail);*/
+				        	jQuery("#hznl").val(rs.data.age);
+				        	jQuery("#cnmj").val(rs.data.roofAcreage);
+				        	jQuery("#wplx").val(rs.data.tileKind);
+				        	jQuery("#xxdz").val(rs.data.address);
+
+				        }else
+				        {
+				        	plus.nativeUI.toast("获取个人信息失败：" + rs.data);
+							return;
+				        }
+				    })
+	        	}
+	        	
+	        	function loadkind(){
+	        		var obj_roof = {};
+	        		obj_roof["sid"] = sid;
+	        		var sign = GetSign(obj_roof);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.roofget,
+				          'sign':sign,
+				          'sid':sid
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+						if(rs.rsp=="succ")
+				        {
+				        	console.log(JSON.stringify(rs.data));
+				        	jQuery("#roofselect").data("select",rs.data);
+				        	//选择类型
+					        jQuery('.btn-select').each(function(){
+					            var picker = new mui.PopPicker();
+					            var json = jQuery(this).data('select'); 
+					            picker.setData(json);
+					            var forInput = jQuery(this).siblings('input[type=text]');
+					            var forVal = jQuery(this).siblings('input[type=hidden]');
+					            if(forVal.val()){
+					                picker.pickers[0].setSelectedValue(forVal.val(), 2000);
+					            }
+					            this.addEventListener('tap', function(event) {
+					                picker.show(function(items) {
+					                    forInput && forInput.val(items[0]['text']);
+					                    forVal && forVal.val(items[0]['value']);
+					                    forVal.change();
+					                });
+					            }, false);
+					        });
+				        }
+					})
+	        	}
+	        	
+	        	mui(document.body).on('tap','#sendBtn',function(){
+			    	var waiting = plus.nativeUI.showWaiting();
+			    	var that = this;
+			        var phonenum = jQuery('#newphone').val();
+			        var inputToken = jQuery('#inputToken').val();
+			        if (!phonenum) {
+						mui.toast('请先填写新手机号');
+						waiting.close();
+						return;
+					}
+			        var val_obj = {};
+					val_obj["type"] = "changeTel";
+					val_obj["mobile"] = phonenum;
+					val_obj["timestamp"] = new Date().getTime();
+					console.log(val_obj); 
+					var sign = GetSign(val_obj);
+					console.log(sign);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.usersendSms,
+				          'sign':sign,
+				          'type':"changeTel",
+				          'mobile':phonenum,
+				          'timestamp':val_obj["timestamp"]
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+				        console.log(JSON.stringify(rs));
+				        waiting.close(); 
+				        if(rs.rsp=="succ")
+				        {
+				        	if(rs.data.success=="true"){
+				        		plus.nativeUI.toast("发送成功");
+								return;
+				        	}else
+				        	{
+				        		plus.nativeUI.toast("发送失败：" + rs.data.message);
+								return;
+				        	}
+				        }else
+				        {
+				        	plus.nativeUI.toast("发送失败：" + rs.data);
+							return;
+				        }
+				    });
+			    });
+			    
+			    mui(document.body).on('tap','#changetel',function(){
+			    	var waiting = plus.nativeUI.showWaiting();
+			    	var phonenum = jQuery('#newphone').val();
+			    	var msgCode = jQuery('#msgCode').val();
+			        if (!phonenum) {
+						mui.toast('请先填写新手机号');
+						waiting.close();
+						return;
+					}
+			    	var obj_changetel = {};
+			    	obj_changetel["sid"] = sid;
+			    	obj_changetel["phone"] = phonenum;
+			    	obj_changetel["msgCode"] = msgCode;
+			    	obj_changetel["timestamp"] = new Date().getTime();
+			    	var sign = GetSign(obj_changetel);
+			    	var param = {
+				        queryData: {
+				          'method': config.apimethod.changetel,
+				          'sign':sign,
+				          'sid':sid,
+				          'phone':phonenum,
+				          'msgCode':msgCode,
+				          'timestamp':obj_changetel["timestamp"]
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+				        console.log(JSON.stringify(rs));
+				        waiting.close(); 
+				        if(rs.rsp=="succ")
+				        {
+				        	if(rs.data.success=="true"){
+				        		plus.nativeUI.toast("修改成功");
+								return;
+				        	}else
+				        	{
+				        		plus.nativeUI.toast("修改失败：" + rs.data.msg);
+								return;
+				        	}
+				        }else
+				        {
+				        	plus.nativeUI.toast("修改失败：" + rs.data);
+							return;
+				        }
+				    });
+			    	
+			    });
+			    
+			    mui(document.body).on('tap','#changepwd',function(){
+			    	var waiting = plus.nativeUI.showWaiting();
+	                var passwd = document.getElementById('passwd').value;
+	                var repasswd = document.getElementById('repasswd').value;
+					if (!passwd) {
+						mui.toast('请先填写新密码');
+						waiting.close();
+						return;
+					}
+					if (!repasswd) {
+						mui.toast('请先填写确认新密码');
+						waiting.close();
+						return;
+					}
+					if (passwd != repasswd) {
+						mui.toast('密码不一致');
+						waiting.close();
+						return;
+					}
+			    	var obj_changepwd = {};
+			    	obj_changepwd["sid"] = sid;
+			    	obj_changepwd["password"] = repasswd;
+			    	var sign = GetSign(obj_changepwd);
+			    	var param = {
+				        queryData: {
+				          'method': config.apimethod.changepwd,
+				          'sign':sign,
+				          'sid':sid,
+				          'password':repasswd
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+				        console.log(JSON.stringify(rs));
+				        waiting.close(); 
+				        if(rs.rsp=="succ")
+				        {
+				        	if(rs.data.success=="true"){
+				        		plus.nativeUI.toast("修改成功");
+								return;
+				        	}else
+				        	{
+				        		plus.nativeUI.toast("修改失败：" + rs.data.msg);
+								return;
+				        	}
+				        }else
+				        {
+				        	plus.nativeUI.toast("修改失败：" + rs.data);
+							return;
+				        }
+				    });
+			    });
+			    
+			    mui(document.body).on('tap','#sub',function(){
+			    	var waiting = plus.nativeUI.showWaiting();
+	                var realName = document.getElementById('realName').value;
+	                console.log(realName);
+	                var age = document.getElementById('hznl').value;
+	                console.log(age);
+	                var roofAcreage = document.getElementById('cnmj').value;
+	                console.log(roofAcreage);
+	                var tileKind = document.getElementById('wplx').value;
+	                console.log(tileKind);
+	                var addr = document.getElementById('xxdz').value;
+	                console.log(addr);
+	                
+					if (!realName) {
+						mui.toast('请先填写姓名');
+						waiting.close();
+						return;
+					}
+					if (!age) {
+						mui.toast('请先填写户主年龄');
+						waiting.close();
+						return;
+					}
+					if (!roofAcreage) {
+						mui.toast('请先填写朝南面积');
+						waiting.close();
+						return;
+					}
+					if (!tileKind) {
+						mui.toast('请先填写瓦片类型');
+						waiting.close();
+						return;
+					}
+					if (!addr) {
+						mui.toast('请先详细地址');
+						waiting.close();
+						return;
+					}
+			    	var obj_save = {};
+			    	obj_save["sid"] = sid;
+			    	obj_save["realName"] = realName;
+			    	obj_save["age"] = age;
+			    	obj_save["roofAcreage"] = roofAcreage;
+			    	obj_save["tileKind"] = tileKind;
+			    	obj_save["addr"] = addr;
+			    	var sign = GetSign(obj_save);
+			    	var param = {
+				        queryData: {
+				          'method': config.apimethod.saveper,
+				          'sign':sign,
+				          'sid':sid,
+				          'realName':realName,
+				          'age':age,
+				          'roofAcreage':roofAcreage,
+				          'tileKind':tileKind,
+				          'addr':addr
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+				        console.log(JSON.stringify(rs));
+				        waiting.close(); 
+				        if(rs.rsp=="succ")
+				        {
+				        	if(rs.data.success=="true"){
+				        		plus.nativeUI.toast("保存成功");
+								return;
+				        	}else
+				        	{
+				        		plus.nativeUI.toast("保存失败：" + rs.data.msg);
+								return;
+				        	}
+				        }else
+				        {
+				        	plus.nativeUI.toast("保存失败：" + rs.data);
+							return;
+				        }
+				    });
+			    });
+	        });
+
+            mui(document.body).on('tap','.mui-action-home',function(){
+	            clicked('_www/view/passport/login.html');
+	        });
+	        
+	        mui(document.body).on('tap','.goto-a',function(){
+	            clicked('_www/view/passport/login.html');
+	        });
+	        
+	        mui(document.body).on('tap','.hyjfrz',function(){
+	            clicked('_www/view/member/pointlist/pointlist.html',{
+					'type': 1
+				});
+	        });
+	        
+	        mui(document.body).on('tap','.wdyqm',function(){
+	            clicked('_www/view/member/yqhy/yqhy.html',{
+					'type': 1
+				});
+	        });
+	        
+	        mui(document.body).on('tap','.wtjdhy',function(){
+	            clicked('_www/view/member/hylist/hylist.html',{
+					'type': 1
+				});
+	        });
+	        
+	        mui(document.body).on('tap','.znx',function(){
+	            clicked('_www/view/member/znx/znxlist.html',{
+					'type': 1
+				});
+	        });
+
+            /*jQuery(document).ready(function(e){
+                jQuery(document.body).on('change','#head_photo',function(){
+                    ajaxFileUploadview('head_photo','photo_pic',upload_url);
+                });
+            });
+            jQuery(document).ready(function(e){
+                jQuery(document.body).on('change','#head_photo1',function(){
+                    ajaxFileUploadview('head_photo1','photo_pic1',upload_url);
+                });
+            });
+            jQuery(document).ready(function(e){
+                jQuery(document.body).on('change','#head_photo2',function(){
+                    ajaxFileUploadview('head_photo2','photo_pic2',upload_url);
+                });
+            });*/
+
+
+            //文件上传带预览
+            /*function ajaxFileUploadview(imgid,hiddenid,url){
+                jQuery('#sheet').css('display','none');
+                jQuery('.mui-backdrop').css('display','none');
+
+                var mask = mui.createMask(function(){
+                    mui.toast('图片上传中...');
+                });
+                mask.show();//显示遮罩
+                mui.toast('图片上传中...');
+
+                jQuery.ajaxFileUpload({
+                    url:url,
+                    secureuri:false,
+                    fileElementId:imgid,
+                    dataType: 'json',
+                    data:{name:'logan', id:'id'},
+
+                    success: function (data, status)
+                    {
+                        mask.close();//关闭遮罩
+                        if(typeof(data.error) != 'undefined')
+                        {
+                            if(data.error != '')
+                            {
+                                mui.alert(data.error);
+
+                            }else{
+
+                                var resp = data.msg;
+                                if(resp != '0000'){
+                                    mui.alert(data.error);
+                                    return false;
+                                }else{
+                                    jQuery('#'+hiddenid).val(data.imgurl);
+                                    t_layer = jQuery.layer({
+                                        type: 2,
+                                        shade: [1],
+                                        fix: false,
+                                        title: '裁剪头像',
+                                        iframe: {src : Crop_url+"&img="+data.imgurl},
+                                        area: ['100%' , '100%'],
+                                        border : [0, 0 , '#000', false],
+                                        close: function(index){//关闭时触发
+                                        },
+                                        callback:function(index,ret) {
+                                            mui.alert('修改成功',function(){
+                                                location.reload();
+                                            });
+                                        }
+                                    });
+                                }
+
+                            }
+                        }
+                    },
+                    error: function (data, status, e)
+                    {
+                        mui.alert('修改失败');
+                        mask.close();//关闭遮罩
+                    }
+                })
+
+                return false;
+            }*/
+
+            function tb_remove(){
+                layer.close(t_layer); //执行关闭
+            }
+            
+        </script>
+    </body>
+
+</html>

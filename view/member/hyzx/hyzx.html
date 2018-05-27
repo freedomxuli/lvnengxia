@@ -6,7 +6,8 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 	    <meta name="apple-mobile-web-app-capable" content="yes">
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-	
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
 	    <link rel="stylesheet" href="../../../css/style.css">
 	    <style type="text/css">
 	    	.header-img{
@@ -117,7 +118,6 @@
 	    		padding-top: 0.2rem;
 	    	}
 	    	.content-div-message-list-all{
-	    		padding: 1rem 1rem 0.5rem 1rem;
 	    		border-bottom: 1px solid #CCCCCC;
 	    		background-color: #FFFFFF;
 	    	}
@@ -262,7 +262,201 @@
 	    	.div-bottom-span{
 	    		
 	    	}
+	    	.pl-footer{width: 100%;text-align: center;height: 38px;background: #fff;margin-top: 2px;margin-bottom: 2px;line-height: 38px;}
+            .pl-footer a,.pl-footer span.mui-icon{font-size: 13px;color: #555;}
+
 	    </style>
+	    <style type="text/css">
+		    .mui-backdrop-e7 {
+		        position: fixed;
+		        top: 0;
+		        right: 0;
+		        bottom: 0;
+		        left: 0;
+		        z-index: 998;
+		        background-color: rgba(0,0,0,.2);
+		        display: none;
+		    }
+		    .mui-table-view .mui-media-body{color: #4F6F96;font-size: 0.9em}
+		    .mui-content-text{color: #444;background: #fff;white-space: normal;line-height: 126%;}
+		    .image-content{position: relative;white-space: normal;width: 100%;display: flex;flex-direction: row;flex-wrap: wrap;justify-content:flex-start;}
+		    .image-content .box{width:32%;overflow: hidden;text-align: center;display: inline-block;margin-bottom: 3px;margin-right: 3px;}
+		    .image-content .box img{width: 100%;}
+		    .mui-content-text .mui-pull-right span.mui-icon-extra{font-size: 20px;vertical-align: bottom;line-height: 1.1;}
+		    .mui-content-text .mui-pull-right .a-btn.zan-a{margin-right: 2px;}
+		    .mui-content-text-son{background: none;font-size: 12px;line-height: 126%;}
+		    .mui-icon-tip{font-size: 20px;position:absolute; left: 0px;color:#4F6F96; }
+		    .mui-table-view-son{padding-left: 5px;margin-top: 8px;}
+		    .mui-table-view-son .mui-table-view-cell{padding: 8px 20px;position: relative;}
+		    .time-tip{font-size: 13px;color: #5C6D8F;}
+		    .a-btn{display: inline-block;font-size: 14px;color: #9a9a9a;padding: 16px 12px 6px 12px;}
+		    .a-btn .mui-icon{color: #9a9a9a;}
+		    .mui-table-view-cell>a:not(.mui-btn).mui-active{background: #fff;}
+		    .mui-table-view-cell .mui-active{background: #fff;}
+		    .mui-table-view-son{background: #F4F3F4;}
+		    .mui-table-view-son:before {height: 0px;}
+		    .mui-table-view-son:after {height: 0px;}
+		    .hidden-info {display:none;}
+		    .son-tip{color: #9a9a9a;font-size: 0.8em;}
+		    .bottom-send{width: 100%;position: fixed;height: auto;min-height: 40px;max-height: 100px;bottom: 0px;left: 0px;background: #efefef;z-index: 1000;border-top: 1px solid #dadada;border-bottom: 1px solid #dadada;padding: 4px 6px;display: none;}
+		    .bottom-send .pl-input{min-height: 32px;height: auto;max-height: 72px;width: 78%;display: inline-block;margin-bottom:-10px;font-size: 15px;padding: 4px 5px;outline: 0;border: 1px solid #ccc;word-wrap: break-word;overflow-x: hidden;overflow-y:visible;height:100%; z-index: 1001;}
+		    .bottom-send .pl-btn{min-height: 32px;height: auto;max-height: 72px;width: 19%;display: inline-block;background: #2BB673;color: #fff;border-radius: 8px;border: 0px;z-index: 1002;}
+		    .bottom-send.active1{display:block; }
+		    .mui-preview-image.mui-fullscreen {
+                position: fixed;
+                z-index: 20;
+                background-color: #000;
+            }
+            .mui-preview-header,
+            .mui-preview-footer {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                z-index: 10;
+            }
+            .mui-preview-header {
+                height: 44px;
+                top: 0;
+            }
+            .mui-preview-footer {
+                height: 50px;
+                bottom: 0px;
+            }
+            .mui-preview-header .mui-preview-indicator {
+                display: block;
+                line-height: 25px;
+                color: #fff;
+                text-align: center;
+                margin: 15px auto 4;
+                width: 70px;
+                background-color: rgba(0, 0, 0, 0.4);
+                border-radius: 12px;
+                font-size: 16px;
+            }
+            .mui-preview-image {
+                display: none;
+                -webkit-animation-duration: 0.5s;
+                animation-duration: 0.5s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+            }
+            .mui-preview-image.mui-preview-in {
+                -webkit-animation-name: fadeIn;
+                animation-name: fadeIn;
+            }
+            .mui-preview-image.mui-preview-out {
+                background: none;
+                -webkit-animation-name: fadeOut;
+                animation-name: fadeOut;
+            }
+            .mui-preview-image.mui-preview-out .mui-preview-header,
+            .mui-preview-image.mui-preview-out .mui-preview-footer {
+                display: none;
+            }
+            .mui-zoom-scroller {
+                position: absolute;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                -webkit-backface-visibility: hidden;
+            }
+            .mui-zoom {
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+            }
+            .mui-slider .mui-slider-group .mui-slider-item img {
+                /*width: auto;
+                height: auto;*/
+                max-width: 100%;
+                max-height: 100%;
+            }
+            .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+                width: 100%;
+            }
+            .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+                display: inline-table;
+            }
+            .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            .mui-preview-loading {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                display: none;
+            }
+            .mui-preview-loading.mui-active {
+                display: block;
+            }
+            .mui-preview-loading .mui-spinner-white {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -25px;
+                margin-top: -25px;
+                height: 50px;
+                width: 50px;
+            }
+            .mui-preview-image img.mui-transitioning {
+                -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+                transition: transform 0.5s ease, opacity 0.5s ease;
+            }
+            .mui-table-view-cell-zan{border-bottom: 1px solid #efefef;}
+            .list-pinglun{border-bottom: 1px solid #efefef;}
+            .mui-table-view-cell:after{height: 0px;}
+            @-webkit-keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            @-webkit-keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                }
+            }
+            p img {
+                max-width: 100%;
+                height: auto;
+            }
+		</style>
 	</head>
 	<body>
 		<header class="page-header">
@@ -336,7 +530,7 @@
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
-	    			<div class="center-content-div-flex-span">邀请会员</div>
+	    			<div id="yqhy" class="center-content-div-flex-span">邀请会员</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			
@@ -355,6 +549,21 @@
             <ul class="mui-table-view">
                 <li class="mui-table-view-cell">
                     <a href="#sheet_1" class=""><b>取消</b></a>
+                </li>
+            </ul>
+        </div>
+        <div id="sheet_2" class="mui-popover mui-popover-action mui-popover-bottom" style="display: none;">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                    <a id="yjsq" class="a-href-to" href="javascript:void(0);">一键申请</a>
+                </li>
+                <li class="mui-table-view-cell">
+                    <a id="jdcx" class="a-href-to" href="javascript:void(0);">进度查询</a>
+                </li>
+            </ul>
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                    <a href="#sheet_2" class=""><b>取消</b></a>
                 </li>
             </ul>
         </div>
@@ -422,6 +631,11 @@
 				</div>
 			</div>
 			<div class="content-div-message-list-all">
+			</div>
+			<div class="pl-footer">
+                    	查看全部留言<span class="mui-icon mui-icon-forward"></span>
+			</div>
+			<!--<div class="content-div-message-list-all">
 				<div class="content-div-message-list">
 					<div class="content-div-message-list-left">
 						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
@@ -577,8 +791,43 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="content-div-message-list-all">
+			</div>-->
+			<!--<div class="content-div-message-list-all">
+				<div class="content-div-message-list">
+					<div class="content-div-message-list-left">
+						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
+					</div>
+					<div class="content-div-message-list-center">
+					<div class="content-div-message-list-title">
+							桔子童年
+						</div>
+						<div class="content-div-message-list-nr">
+							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+						</div>
+						<div class="content-div-message-list-imgs">
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+							<div class="content-div-message-list-imgs-div">
+								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
+							</div>
+						</div>
+						<div class="content-div-message-list-date">
+							2017-12-05
+						</div>
+						<div class="content-div-message-list-memo">
+							<span>5</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
+							<span>3</span>
+							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
+						</div>
+					</div>
+				</div>
+			</div>-->
+			<!--<div class="content-div-message-list-all">
 				<div class="content-div-message-list">
 					<div class="content-div-message-list-left">
 						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
@@ -682,43 +931,18 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="content-div-message-list-all">
-				<div class="content-div-message-list">
-					<div class="content-div-message-list-left">
-						<img class="content-div-message-list-left-img" src="../../../img/hyzx/head1.png" />
-					</div>
-					<div class="content-div-message-list-center">
-					<div class="content-div-message-list-title">
-							桔子童年
-						</div>
-						<div class="content-div-message-list-nr">
-							测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-						</div>
-						<div class="content-div-message-list-imgs">
-							<div class="content-div-message-list-imgs-div">
-								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
-							</div>
-							<div class="content-div-message-list-imgs-div">
-								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
-							</div>
-							<div class="content-div-message-list-imgs-div">
-								<img class="content-div-message-list-imgs-div-1" src="../../../img/hyzx/plimg.png" />
-							</div>
-						</div>
-						<div class="content-div-message-list-date">
-							2017-12-05
-						</div>
-						<div class="content-div-message-list-memo">
-							<span>5</span>
-							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/zicon.png" />
-							<span>3</span>
-							<img class="content-div-message-list-memo-img" src="../../../img/hyzx/plicon.png" />
-						</div>
-					</div>
-				</div>
-			</div>
+			</div>-->
 		</section>
+		<!-- 点击评论展示的内容 -->
+		<div class="bottom-send">
+		    <form method="post" action="">
+		    <input type="hidden" name="plid" id="plid">
+		    <input type="hidden" name="pid" id="pid">
+		    <textarea class="pl-input" name="content_pl" rows="1" placeholder="发表评论"></textarea>
+		    <button class="mui-btn-success pl-btn" name="content_pl_btn">评论</button>
+		    </form>
+		</div>
+		<div class="mui-backdrop-e7" style="opacity:1"></div>
 		<section class="section-bottom">
 			<div class="div-bottom">
 				<div class="div-bottom-list-img">
@@ -731,10 +955,10 @@
 		</section>
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/zepto.js"></script>
-		<script src="../../../js/mui.picker.js"></script>
-		<script src="../../../js/mui.picker.min.js"></script>
-		<script src="../../../js/mui.poppicker.js"></script>
-	    <script src="../../../js/mui.enterfocus.js"></script>
+	    <script src="../../../js/mui.zoom.js"></script>
+	    <script src="../../../js/mui.lazyload.js"></script>
+	    <script src="../../../js/mui.lazyload.img.js"></script>
+	    <script src="../../../js/mui.previewimage.js"></script>
 	    <script src="../../../js/template.min.js"></script>
 	    <script src="../../../config.js"></script>
 	    <script src="../../../js/app.js"></script>
@@ -745,14 +969,17 @@
 		    var jQuery = jQuery.noConflict();
 		</script>
 		<script type="text/javascript" charset="utf-8">
-			mui.plusReady(function() {
-				mui.init({
+		
+			var sid = localStorage.getItem("sid");
+			var box_width = "";
+			mui.init({
 					swipeBack:true //启用右滑关闭功能
 				});
-				var sid = localStorage.getItem("sid");
+			mui.plusReady(function() {
 				var regType = 0;
 				loadData();
 				picShow();
+				loadMsg();
 				
 			   	mui(document.body).on('tap','#qiandao',function(){
 			    	var waiting = plus.nativeUI.showWaiting();
@@ -844,6 +1071,42 @@
 				   });
 			    }
 			    
+			    function loadMsg(){
+			    	var obj_msg = {};
+			    	obj_msg["sid"] = sid;
+			    	var sign = GetSign(obj_msg);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.homemsglist,
+				          'sign':sign,
+				          'sid':sid
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+						console.log(JSON.stringify(rs));
+						var list = template("msg_list",rs);
+						jQuery(".content-div-message-list-all").html(list);
+						box_width = jQuery('.box:eq(0)').width();
+					    boxImgHeight1();
+					    
+					    //懒加载
+			            mui(document).imageLazyload({
+			                placeholder: 'Resource/Image/userimg.png'
+			            });
+			            //图片预览:会覆盖a标签跳转
+			            mui.previewImage();
+					})
+			    }
+			    
+			    function boxImgHeight1(){
+			        if(box_width > 30){
+			            jQuery('.box').css({'height':box_width+'px'});
+			            jQuery('.autoHeight').css({'height':box_width+'px'});
+			            jQuery('.autoHeight').css({'width':'auto'});
+			        }
+			    }
+			    
 			    function picShow(){
 			    	var sign = GetSign({});
 			    	var param = {
@@ -874,20 +1137,289 @@
 						clicked("_www/view/member/tzsy/tzsycom.html");
 			    });
 			    
+			    mui(document.body).on('tap','#member',function(){
+			    	if(regType=="0")
+						clicked("_www/view/member/member/memberper.html");
+					else
+						clicked("_www/view/member/member/membercom.html");
+			    });
+			    
 			    mui(document.body).on('tap','#mhbj',function(){
 			    	clicked("_www/view/member/mhbj/mhbj.html");
 			    });
 			    
 			    mui(document.body).on('tap','#yjsq',function(){
-			    	clicked("_www/view/member/sqxx/sqxxadd.html");
-			    })
+			    	if(regType=="0")
+			    		clicked("_www/view/member/sqxx/sqxxadd.html");
+			    	else
+			    		clicked("_www/view/member/sqxx/sqxxcomadd.html");
+			    });
+			    
+			    mui(document.body).on('tap','#jdcx',function(){
+			    	if(regType=="0")
+			    		clicked("_www/view/member/sqxx/jdcx.html");
+			    	else
+			    		clicked("_www/view/member/sqxx/jdcxcom.html");
+			    });
+			    
+			    mui(document.body).on('tap','#yqhy',function(){
+			    	clicked('_www/view/member/yqhy/yqhy.html',{
+						'type': 1
+					});
+			    });
+			    
+			    mui(document.body).on('tap','.pl-footer',function(){
+			    	clicked("_www/view/member/message/msglist.html");
+			    });
 			});
 
 			var slider = mui("#slider");
 			slider.slider({
 				interval: 2000
 			});
-
+			
+			/*setTimeout(function(){
+				mui(document).imageLazyload({
+	                placeholder: 'Resource/Image/userimg.png'
+	            });
+	            //图片预览:会覆盖a标签跳转
+	            mui.previewImage();
+			},2000);*/
+			
+			function loadMsg1(p_id){
+		    	var obj_msg = {};
+		    	obj_msg["sid"] = sid;
+		    	var sign = GetSign(obj_msg);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.homemsglist,
+			          'sign':sign,
+			          'sid':sid
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					var list = template("msg_list1",rs);
+					jQuery("#msg_son"+p_id).html(list);
+				})
+		    }
+			
+		    //boxImgHeight();
+		    function boxImgHeight(){
+		        if(box_width > 30){
+		            jQuery('.box').css({'height':box_width+'px'});
+		            jQuery('.autoHeight').css({'height':box_width+'px'});
+		            jQuery('.autoHeight').css({'width':'auto'});
+		        }
+		    }
+		
+		    //评论高度
+		    jQuery(document.body).on('keyup','.pl-input',function(){
+		        jQuery(this).css({'height':jQuery(this)[0].scrollHeight+'px'});
+		        jQuery('.pl-btn').css({'height':jQuery(this)[0].scrollHeight+'px'});
+		        var text = jQuery('.pl-input').val();
+		        var counter = text.length;
+		        if(counter>=51) {
+		            mui.toast('字数太多了');
+		            text = text.substring(0,counter-(counter-51));
+		            jQuery('.pl-input').val(text);
+		        }
+		    });
+		
+		    var maskBackdrop = function(){
+		        jQuery('.mui-backdrop-e7').css({'display':'block'});
+		    }
+		
+		    var removeBackdrop = function(){
+		        jQuery('.mui-backdrop-e7').css({'display':'none'});
+		    }
+		
+		    var activeKey = function(){
+		        setTimeout(function(){
+		            //如果评论显示，则重新定位位置
+		            if(jQuery('.bottom-send').hasClass('active1')){
+		                jQuery('.bottom-send').css({'bottom':'0px'});
+		            }
+		        },1000);
+		    }
+		
+		    jQuery(document.body).on('click','.pinglun',function(){
+		        var id = jQuery(this).siblings('.hidden-info').data("index");
+		        var pid = jQuery(this).siblings('.hidden-info').data("pid");
+		        jQuery('#plid').val(id);
+		        jQuery('#pid').val(pid);
+		        jQuery('.bottom-send').addClass('active1');
+		        maskBackdrop();//显示遮罩
+		        jQuery('.pl-input').focus();
+		
+		        activeKey();
+		    });
+		
+		    var tapbackdrop = 0;
+		    jQuery(document.body).on('tap','.mui-backdrop-e7',function(){
+		        tapbackdrop++;
+		
+		        var comment = jQuery('.pl-input').val();
+		        if(comment!='' && tapbackdrop < 2){
+		            document.activeElement.blur();
+		        }else{
+		            hideSend();
+		        }
+		    });
+		
+		    jQuery(document.body).on('tap','.pinglun-li-son',function(){
+		        var id = jQuery(this).siblings('.hidden-info').data("index");
+		        var pid = jQuery(this).siblings('.hidden-info').data("pid");
+		        jQuery('#plid').val(id);
+		        jQuery('#pid').val(pid);
+		        jQuery('.bottom-send').addClass('active1');
+		        maskBackdrop();;//显示遮罩
+		        jQuery('.pl-input').focus();
+		
+		        activeKey();
+		    });
+		
+		    jQuery(document.body).on('tap','.zan-a',function(){
+		        if(jQuery(this).attr('disabled')){
+		            return;
+		        }
+		        var that = this;
+		        jQuery(this).attr('disabled',true);
+		        var id = jQuery(this).siblings('.hidden-info').data("index");
+		        var obj_zan = {};
+		        obj_zan["sid"] = sid;
+		        obj_zan["cid"] = id;
+		        var sign = GetSign(obj_zan);
+		        var param = {
+			        queryData: {
+			          'method': config.apimethod.followup,
+			          'sign':sign,
+			          'sid':sid,
+			          'cid':id
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					if(rs.rsp=="succ")
+					{
+						if(rs.data.success)
+						{
+							jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart-filled'></span>赞&nbsp;"+rs.data.zanNum);
+							jQuery("#zan-person"+id).text(rs.data.zan);
+							mui.toast(rs.data.msg);
+						}else
+						{
+							mui.toast('点赞失败');
+						}
+					}else{
+						mui.toast('点赞失败');
+						return;
+					}
+				})
+		    });
+		
+		    //处理单击事件
+		    mui(document.body).on('click','.pl-btn',function(){
+		        sumbitFormPl();
+		    });
+		
+		    function sumbitFormPl(){
+		        //禁止重复提交
+		        if(jQuery('.pl-btn').attr('disabled')){
+		            return false;
+		        }
+		        jQuery('.pl-btn').attr('disabled','true');
+		        var plid = jQuery('#plid').val();
+		        var pid = jQuery('#pid').val();
+		        var comment = jQuery('.pl-input').val();
+		        var obj_pl = {};
+		        obj_pl["sid"] = sid;
+		        obj_pl["cid"] = plid;
+		        obj_pl["comment"] = comment;
+		        var sign = GetSign(obj_pl);
+		        var param = {
+			        queryData: {
+			          'method': config.apimethod.msgsend,
+			          'sign':sign,
+			          'sid':sid,
+			          'cid':plid,
+			          'comment':comment
+			        },
+			        method: 'POST'
+			    }
+		        $.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					if(rs.rsp=="succ")
+					{
+						if(rs.data.success)
+						{
+							jQuery('.pl-input').css({'height':'auto'});
+		                    jQuery('.pl-btn').css({'height':'auto'});
+							loadMsg1(pid);
+							mui.toast(rs.data.msg);
+							hideSend();
+							return;
+						}else
+						{
+							mui.toast('评论失败');
+							hideSend();
+						}
+					}else{
+						mui.toast('评论失败');
+						hideSend();
+						return;
+					}
+				})
+		        //code：ajax提交后台
+		        /*var plid = jQuery('#plid').val();
+		        var comment = jQuery('.pl-input').val();
+		        jQuery.ajax({
+		            url: _urlPL,
+		            data: {
+		              parentId: plid,
+		              comment: comment
+		            },
+		            type: 'POST',
+		            dataType: 'json',
+		            success: function (json) {
+		                if (json.succ == 'true') {
+		                    // location.reload();
+		                    //不使用刷新，试用html替换
+		                    if(json.html!=''){
+		                        jQuery('.plid-hide-'+plid).parents('.list-pinglun').replaceWith(json.html);
+		                        jQuery('.pl-input').css({'height':'auto'});
+		                        jQuery('.pl-btn').css({'height':'auto'});
+		                        boxImgHeight();
+		                    }else{
+		                        document.location.href = document.location.href;
+		                    }
+		                    
+		                    hideSend();
+		                }
+		            }
+		        });*/
+		
+		        //恢复按钮
+		        setTimeout(function() {
+		            jQuery('.pl-btn').removeAttr('disabled');
+		        }, 2000);
+		    }
+		
+		    //取消评论
+		    function hideSend(){
+		        tapbackdrop = 0;
+		        removeBackdrop();//关闭遮罩
+		        jQuery('.bottom-send').removeClass('active1');
+		        document.activeElement.blur();
+		        jQuery('.pl-input').val('');
+		        jQuery('#plid').val('');
+		        jQuery('#pid').val('');
+		    }
+		    var focusout_stop = function(e){}
+			
+			
 		</script>
 		<script type="text/html" id="pic_list">
 			<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
@@ -937,7 +1469,7 @@
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
 	    			<div class="center-content-div-flex-span">积分商城</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
+	    		<div id="member" class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hyzx.png" /></div>
 	    			<div class="center-content-div-flex-span">会员中心</div>
 	    		</div>
@@ -949,7 +1481,7 @@
 	    	<div class="center-content-div">
 	    		<div class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
-	    			<div class="center-content-div-flex-span">邀请会员</div>
+	    			<div id="yqhy" class="center-content-div-flex-span">邀请会员</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			
@@ -970,7 +1502,7 @@
 	    			<div class="center-content-div-flex-span">模糊报价</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
-	    			<a href="#sheet_1">
+	    			<a href="#sheet_2">
 		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/sqjz.png" /></div>
 		    			<div class="center-content-div-flex-span">申请建站</div>
 		    		</a>
@@ -985,7 +1517,7 @@
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
 	    			<div class="center-content-div-flex-span">积分商城</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
+	    		<div id="member" class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hyzx.png" /></div>
 	    			<div class="center-content-div-flex-span">会员中心</div>
 	    		</div>
@@ -1003,6 +1535,127 @@
 	    			
 	    		</div>
 	    	</div>
+		</script>
+		<script type="text/html" id="msg_list">
+			<ul class="mui-table-view">
+				 <li class="mui-table-view-cell mui-media list-pinglun"> 
+			 		<img class="mui-media-object mui-pull-left" src="<%=data.avatar%>" /> 
+				    <div class="mui-media-body">
+				      <%=data.com%> 
+				     <p class="mui-content-text"> <%=data.comment%></p> 
+				     <div class="image-content"> 
+				      <div class="box">
+				       <img data-lazyload="<%=data.pic[0].path%>" data-preview-src="" data-preview-group="<%=data.id%>" />
+				      </div> 
+				     </div> 
+				     <div class="mui-content-text"> 
+				      <span class="time-tip"><%=data.time%></span> 
+				      <div class="mui-pull-right"> 
+				       <div id="zan-a<%=data.id%>" class="a-btn zan-a"> 
+				       	<%if(data.isZan){
+				       		%>
+				       		<span class="mui-icon-extra mui-icon-extra-heart-filled"></span>赞&nbsp;<%=data.zannum%>
+				       		<%
+				       	}else{
+				       		%>
+				       		<span class="mui-icon-extra mui-icon-extra-heart"></span>赞&nbsp;<%=data.zannum%>
+				       		<%
+				       	}%>
+				       </div> 
+				       <div id="pl-a<%=data.id%>"  class="a-btn pinglun"> 
+				        <span class="mui-icon mui-icon-chatbubble"></span>评论&nbsp;<%=data.replynum%>  
+				       </div> 
+				       <div class="hidden-info plid-hide-<%=data.id%>" data-index="<%=data.id%>" data-pid="<%=data.id%>">
+				        <%=data.id%>
+				       </div> 
+				      </div> 
+				     </div> 
+				    </div> 
+				   <!-- 子评论列表 --> 
+				   <ul id="msg_son<%=data.id%>" class="mui-table-view mui-table-view-son"> 
+				    <div class="triangle triangle-up"></div> 
+				    <li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+				     <div class="mui-media-body"> 
+				      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
+				      <p id="zan-person<%=data.id%>" class="mui-content-text-son"> <%=data.Zan%> </p> 
+				     </div> 
+				    </li> 
+				    <%
+				    	for(var i = 0;i < data.reply.length; i++)
+				    	{
+				    		%>
+				    			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+							     <span class="mui-icon-tip mui-icon mui-icon-chatbubble"></span> 
+							     <img class="mui-media-object mui-pull-left" src="<%=data.reply[i].avatar%>" /> 
+							     <div class="mui-media-body pinglun-li-son show-pl-input">
+							       <%=data.reply[i].com%>
+							      <span class="mui-pull-right son-tip"><%=data.reply[i].date%></span> 
+							      <%
+							      	if(data.reply[i].level == 2)
+							      	{
+							      		%>
+							      		<p class="mui-content-text-son"><%=data.reply[i].comment%></p> 
+							      		<%
+							      	}else
+							      	{
+							      		%>
+							      		<p class="mui-content-text-son">回复<font color="#5C6D8F"><%=data.reply[i].rep%></font>：<%=data.reply[i].comment%></p> 
+							      		<%
+							      	}
+							      %>
+							      
+							     </div> 
+							     <div class="hidden-info plid-hide-37" data-index="<%=data.reply[i].id%>" data-pid="<%=data.id%>">
+							      <%=data.reply[i].id%>
+							     </div> 
+							    </li> 
+							<%
+				    	}
+				    %>
+				   </ul> 
+				 </li> 
+			</ul>
+		</script>
+		<script type="text/html" id="msg_list1">
+			<div class="triangle triangle-up"></div> 
+		    <li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+		     <div class="mui-media-body"> 
+		      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
+		      <p id="zan-person<%=data.id%>" class="mui-content-text-son"> <%=data.Zan%> </p> 
+		     </div> 
+		    </li> 
+		    <%
+		    	for(var i = 0;i < data.reply.length; i++)
+		    	{
+		    		%>
+		    			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+					     <span class="mui-icon-tip mui-icon mui-icon-chatbubble"></span> 
+					     <img class="mui-media-object mui-pull-left" src="<%=data.reply[i].avatar%>" /> 
+					     <div class="mui-media-body pinglun-li-son show-pl-input">
+					       <%=data.reply[i].com%>
+					      <span class="mui-pull-right son-tip"><%=data.reply[i].date%></span> 
+					      <%
+					      	if(data.reply[i].level == 2)
+					      	{
+					      		%>
+					      		<p class="mui-content-text-son"><%=data.reply[i].comment%></p> 
+					      		<%
+					      	}else
+					      	{
+					      		%>
+					      		<p class="mui-content-text-son">回复<font color="#5C6D8F"><%=data.reply[i].rep%></font>：<%=data.reply[i].comment%></p> 
+					      		<%
+					      	}
+					      %>
+					      
+					     </div> 
+					     <div class="hidden-info plid-hide-37" data-index="<%=data.reply[i].id%>" data-pid="<%=data.id%>">
+					      <%=data.reply[i].id%>
+					     </div> 
+					    </li> 
+					<%
+		    	}
+		    %>
 		</script>
 	</body>
 </html>

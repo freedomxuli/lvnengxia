@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jado绿能侠</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/weui.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/example.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+	    
+        <style type="text/css">
+            .input-pic{
+                argin:-10px 0px;
+                background-color:white;
+                height:250px;
+            }
+            #textarea{border:0px;}
+            .mui-content .mui-content-padded .mui-input-row{background-color:#fff}
+            .tongji{
+                float:right;
+                position: relative;
+                top:-20px;right:5px;
+            }
+            .weui-uploader__bd{
+                position: relative;
+                top:20px;
+                left:2.5%;
+            }
+            .up-image{
+                width: 100%;
+                height: 28px;
+                _width: 100%;
+                _height: 28px;
+                position: absolute;
+                z-index: 9;
+                opacity: 0;
+                margin-top: 4px;
+            }
+            .image-btn-box{position: relative;display: inline-block;width: 100%;}
+            .mui-table-view-cell{padding: 8px 10px;}
+            .up-image-btn{color: red;}
+            #hiddenId{display: none;}
+            .weui-uploader__file-content{font-size:12px}
+        </style>
+        
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+            <h1 class="mui-title">发表评论</h1>
+            <button type="button" class="mui-btn mui-btn-link mui-btn-nav mui-pull-right">发表</button>
+        </header>
+        <div class="mui-content">
+            <div class="mui-content-padded" style="margin: 0px 0px;">
+                <div class="mui-input-row">
+                    <textarea id="textarea" rows="6" placeholder="分享自己的观点..."></textarea>
+                </div>
+                <div class="mui-input-row input-pic" style="margin: -25px 0px; background-color:white">
+                    <div class="weui-gallery" id="gallery">
+                        <span class="weui-gallery__img" id="galleryImg"></span>
+                        <span id="hiddenId"></span>
+                        <div class="weui-gallery__opr">
+                            <a class="weui-gallery__del">
+                                <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="weui-uploader__bd">
+                        <ul class="weui-uploader__files" id="uploaderFiles">
+                        </ul>
+                        <div class="weui-uploader__input-box">
+                                                        <a href="#sheet">
+                                <img src="Resource/Image/member_icon/019.png" width="75">
+                                <input class="weui-uploader__input uploaderInput" type="file">
+                            </a>
+                                                        <input type="hidden" name="commentPic" id="commentPic" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sheet" class="mui-popover mui-popover-action mui-popover-bottom" style="display: none;">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                    <div class="paizhao image-btn-box">
+                        <input type="file" capture="camera" accept="image/*" name="comment_pz" id="comment_pz" value="" class="up-image uploaderInput">
+                        <span class="up-image-btn">拍照</span>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell">
+                    <div class="select-file image-btn-box">
+                        <input type="file" capture="camera" accept="image/*;capture=camera" name="comment" id="comment" value="" class="up-image uploaderInput">
+                        <span class="up-image-btn-2">上传</span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell">
+                    <a href="#sheet" class=""><b>取消</b></a>
+                </li>
+            </ul>
+        </div>
+    </body>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/zepto.js"></script>
+    <script src="../../../js/mui.zoom.js"></script>
+    <script src="../../../js/mui.lazyload.js"></script>
+    <script src="../../../js/mui.lazyload.img.js"></script>
+    <script src="../../../js/mui.previewimage.js"></script>
+    <script src="../../../js/template.min.js"></script>
+    <script src="../../../config.js"></script>
+    <script src="../../../js/app.js"></script>
+    <script src="../../../js/sign.js"></script>
+	<script src="../../../js/md5.js"></script>
+	<script src="../../../js/jquery.1.9.1.js"></script>
+	<script type="text/javascript">
+	    var jQuery = jQuery.noConflict();
+	</script>
+    <script>
+        
+        (function($, doc) {
+            mui.init({
+                swipeBack:true //启用右滑关闭功能
+            });
+
+        })(mui, document);
+
+        jQuery(function(){
+            jQuery('#textarea').after('<p class="tongji"><span id="detail_num">0</span> / <span>100</span></p>');
+            var text = jQuery("#textarea").val();
+            var counter = text.length;
+            jQuery("#detail_num").text(counter);
+            if(counter>100) {
+                jQuery('.tongji').css('color','red');
+            }else{
+                jQuery('.tongji').css('color','');
+            }
+            /*添加触发事件进行动态计算输入框的字数*/
+            jQuery("#textarea").on('blur keyup input',function(){
+                var text1 = jQuery("#textarea").val();
+                var counter1 = text1.length;
+                jQuery("#detail_num").text(counter1);
+                if(counter1>100) {
+                    jQuery('.tongji').css('color','red');
+                }else{
+                    jQuery('.tongji').css('color','');
+                }
+            });
+
+            var tmpl = '<li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(#url#)"><div class="weui-uploader__file-content">上传中</div><input type="hidden" name="pic[]"></li>',
+                $gallery = jQuery("#gallery"),
+                $galleryImg = jQuery("#galleryImg"),
+                $uploaderInput = jQuery(".uploaderInput"),
+                $uploaderFiles = jQuery("#uploaderFiles");
+
+            //上传图片
+            $uploaderInput.on("change", function(e){
+                jQuery('#sheet').css('display','none');
+                jQuery('#sheet').removeClass('mui-active');
+                jQuery('.mui-backdrop').css('display','none');
+                var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+                for (var i=0, len=files.length; i<len; ++i) {
+                    var file = files[i];
+                    if(url){
+                        src = url.createObjectURL(file);
+                    }else{
+                        src = e.target.result;
+                    }
+                    $uploaderFiles.append(jQuery(tmpl.replace('#url#', src)));
+                    var form = new FormData();
+                    var input = jQuery('#commentPic');
+                    form.append("upload", 1);
+                    form.append(jQuery(input).attr('id'), jQuery(this).get(0).files[0]);
+                    jQuery.ajax({
+                        url: _urlPic,
+                        type: "POST",
+                        processData: false,
+                        contentType: false,
+                        data: form,
+                        dataType:'json',
+                        async: true,
+                        success: function(d) {
+                            if(d.pic && d.pic!=''){
+                                jQuery('#uploaderFiles li').last().removeClass('weui-uploader__file_status').addClass('picId_'+d.pic).find('input').val(d.pic);
+                            }else{
+                                mui.alert(d.msg);
+                            }
+
+                        }
+                    });
+
+                    var num = $uploaderFiles.children('li').length;
+                    if(num>=6) jQuery('.weui-uploader__input-box').css('display','none');
+                }
+            });
+
+            //图片预览 删除
+            $uploaderFiles.on("click", "li", function(){
+                $galleryImg.attr("style", this.getAttribute("style"));
+                //获取图片id用于删除
+                jQuery('#hiddenId').addClass(jQuery(this).attr("class"));
+                jQuery('#hiddenId').removeClass("weui-uploader__file");
+                $gallery.fadeIn(100);
+            });
+            $gallery.on("click", '.weui-gallery__del', function(){
+                var hidclass = jQuery('#hiddenId').attr("class");
+                jQuery('#uploaderFiles').find("."+hidclass).remove();
+                var num = jQuery("#uploaderFiles").children('li').length;
+                if(num<6) jQuery('.weui-uploader__input-box').css('display','block');
+                jQuery('#hiddenId').removeClass();
+                $gallery.fadeOut(100);
+            });
+            $gallery.on("click", function(){
+                jQuery('#hiddenId').removeClass();
+                $gallery.fadeOut(100);
+            });
+
+            //提交评论
+            jQuery(document.body).on('click','.mui-btn-link',function(){
+                mui(this).button('loading');
+                var that = this;
+                var comment = jQuery('#textarea').val();
+                var counter = jQuery("#textarea").val().length;
+                if(counter>100){
+                    mui.alert('超出字数限制');
+                    return;
+                }
+                //拼接图片id
+                var list = jQuery('.weui-uploader__file').find('input');
+                var pic = '';
+                for(var i=0;i<list.length;i++){
+                    if(list[i].value!=''){
+                        pic += list[i].value+',';
+                    }
+                }
+                jQuery.ajax({
+                    url: _url,
+                    data: {
+                        comment: comment,
+                        commentPic: pic
+                    },
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (json) {
+                        if (json.succ == 'true') {
+                            document.location.href = homePage;
+                        }
+                        mui(that).button('reset');
+                    }
+                });
+                setTimeout(function() {
+                    mui(that).button('reset');
+                }.bind(that), 10000);
+            });
+
+        });
+
+        
+    </script>
+</html>

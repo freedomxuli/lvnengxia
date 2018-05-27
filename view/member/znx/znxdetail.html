@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jado绿能侠</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.picker.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../..//css/mui.poppicker.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+        
+        <style type="text/css">
+        .mui-content-header{background-color: #EDF9F5;padding-top:15px;padding-bottom:10px;border-top:1px #ddd solid;border-bottom:1px #ddd solid;min-height:50px;}
+        .mui-content-text{padding-top:15px;background-color: #fff;}
+        .header-content{text-align: center;color: #2BB673;}
+        .text-content{padding: 5px 18px;overflow:hidden}
+        .text-content img{max-width:250px;align:center}
+        </style>
+        
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+            <h1 class="mui-title"></h1>
+        </header>
+        <div class="mui-content">
+            <div class="mui-header-eqinfo">
+                <div class="head-header">消息详情</div>
+                <div class="head-english">Detail information</div>
+            </div>
+        </div>
+        <div class="mui-after-content">
+            <div class="mui-content-header">
+                <div class="header-content" id="title">
+                	
+                </div>
+            </div>
+            <div class="mui-content-text">
+                <div class="text-content" id="content">
+                	
+                </div>
+            </div>
+        </div>
+    </body>
+	<script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/zepto.js"></script>
+	<script src="../../../js/mui.picker.js"></script>
+	<script src="../../../js/mui.picker.min.js"></script>
+	<script src="../../../js/mui.poppicker.js"></script>
+	<script src="../../../js/mui.enterfocus.js"></script>
+	<script src="../../../js/template.min.js"></script>
+	<script src="../../../config.js"></script>
+	<script src="../../../js/app.js"></script>
+	<script src="../../../js/sign.js"></script>
+	<script src="../../../js/md5.js"></script>
+	<script src="../../../js/jquery.1.9.1.js"></script>
+	<script type="text/javascript">
+	    var jQuery = jQuery.noConflict();
+	</script>
+<script type="text/javascript" charset="utf-8">
+	var homePage = '';
+
+	mui.init();
+	var mid = "";
+	var sid = localStorage.getItem("sid");
+	mui.plusReady(function() {
+		mid = plus.webview.currentWebview().mid;
+		mui(document.body).on('tap','.mui-action-back',function(){
+		   clicked("_www/view/member/znx/znxlist.html");
+		});
+		var obj_znx = {};
+		obj_znx["sid"] = sid;
+		obj_znx["mid"] = mid;
+
+		var sign = GetSign(obj_znx);
+		var param = {
+	        queryData: {
+	          'method': config.apimethod.znxdetail,
+	          'sign':sign,
+	          'sid':sid,
+	          'mid':mid
+	        },
+	        method: 'POST'
+	    }
+		$.dataRequest(param, function(rs) {
+			console.log(JSON.stringify(rs));
+			jQuery("#title").html(rs.data.subject);
+			var s = '<div id="myDiv"></div>';
+			var temp = document.createElement('div');
+			temp.innerHTML = rs.data.content;
+			var htmlObject = temp.firstChild;
+			jQuery("#content").html(htmlObject); 
+		})
+	});
+
+</script>
+</html>

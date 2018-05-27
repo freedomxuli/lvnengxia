@@ -7,7 +7,12 @@
 	    <meta name="apple-mobile-web-app-capable" content="yes">
 	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 	    
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../../css/style.css">
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.picker.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../..//css/mui.poppicker.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
 	    <style type="text/css">
 		.space-div{
 			height: 10px;
@@ -67,7 +72,34 @@
 			</div>
 		</div>
 		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/zepto.js"></script>
+		<script src="../../../js/mui.picker.js"></script>
+		<script src="../../../js/mui.picker.min.js"></script>
+		<script src="../../../js/mui.poppicker.js"></script>
+		<script src="../../../js/mui.enterfocus.js"></script>
+		<script src="../../../js/template.min.js"></script>
+		<script src="../../../config.js"></script>
+		<script src="../../../js/app.js"></script>
+		<script src="../../../js/sign.js"></script>
+		<script src="../../../js/md5.js"></script>
 		<script>
+			var type = "";
+            mui.plusReady(function() {
+      			type = plus.webview.currentWebview().type;
+      			
+				if(type==1)
+				{
+					mui(document.body).on('tap','.header-img',function(){
+				        clicked("_www/view/member/member/membercom.html");
+				    });
+				}
+				else
+				{
+					mui(document.body).on('tap','.header-img',function(){
+				        clicked("_www/view/member/member/memberper.html");
+				    });
+				}
+			});
 			mui.init({
 				pullRefresh: {
 					container: '#pullrefresh',
@@ -80,63 +112,107 @@
 					}
 				}
 			});
-
-			var count = 0;
+			
+			var count = 1;
+			var pageNum = 15;
+			var sid = localStorage.getItem("sid");
+			
 			/**
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
-				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 5; i < len; i++) {
-						var li = document.createElement('li');
-						var html = '<section>';
-						html+='<div class="center-content-div">'+
-						    		'<div class="center-content-left">'+
-						    			'时间'+
-						    		'</div>'+
-						    		'<div class="center-content-right">'+
-						    			'2017-12-13 12:38:57'+
-						    		'</div>'+
-						    	'</div>';
-				    	html+='<div class="center-content-div">'+
-						    		'<div class="center-content-left">'+
-						    			'积分'+
-						    		'</div>'+
-						    		'<div class="center-content-left">'+
-						    			'+10'+
-						    		'</div>'+
-						    		'<div class="center-content-left">'+
-						    			'描述'+
-						    		'</div>'+
-						    		'<div class="center-content-left">'+
-						    			'会员签到'+
-						    		'</div>'+
-						    	'</div>';
-						html+='<div class="center-content-div">'+
-					    		'<div class="center-content-left">'+
-					    			'状态'+
-					    		'</div>'+
-					    		'<div class="center-content-right2">'+
-					    			'正常'+
-					    		'</div>'+
-					    	'</div>';
-					    html += '<div class="center-content-div">'+
-						    		'<div class="center-content-left">'+
-						    			'备注'+
-						    		'</div>'+
-						    		'<div class="center-content-right">'+
-						    			''+
-						    		'</div>'+
-						    	'</div>';
-						html+='</section>';
-						li.innerHTML = html;
-						table.appendChild(li);
-					}
-				}, 1500);
+				loadData();
 			}
+			
+			function timestampToTime(timestamp) {
+		        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+		        Y = date.getFullYear() + '-';
+		        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+		        D = date.getDate() + ' ';
+		        h = date.getHours() + ':';
+		        m = date.getMinutes() + ':';
+		        s = date.getSeconds();
+		        return Y+M+D+h+m+s;
+		    }
+			
+			function loadData(){
+				var obj_point = {};
+				obj_point["sid"] = sid;
+				obj_point["page"] = count;
+				obj_point["pageNum"] = pageNum;
+				var sign = GetSign(obj_point);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.getpointlist,
+			          'sign':sign,
+			          'sid':sid,
+			          'page':count,
+			          'pageNum':pageNum
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					if(rs.rsp=="succ")
+					{
+						++count;
+						setTimeout(function() {
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > rs.data.pageCount)); //参数为true代表没有更多数据了。
+							var table = document.body.querySelector('.mui-table-view');
+							var cells = document.body.querySelectorAll('.mui-table-view-cell');
+							for (var i = 0; i < rs.data.List.length; i++) {
+								var li = document.createElement('li');
+								var html = '<section>';
+								html+='<div class="center-content-div">'+
+								    		'<div class="center-content-left">'+
+								    			'时间'+
+								    		'</div>'+
+								    		'<div class="center-content-right">'+
+								    			timestampToTime(rs.data.List[i].time)+
+								    		'</div>'+
+								    	'</div>';
+						    	html+='<div class="center-content-div">'+
+								    		'<div class="center-content-left">'+
+								    			'积分'+
+								    		'</div>'+
+								    		'<div class="center-content-left">'+
+								    			rs.data.List[i].point+
+								    		'</div>'+
+								    		'<div class="center-content-left">'+
+								    			'描述'+
+								    		'</div>'+
+								    		'<div class="center-content-left">'+
+								    			rs.data.List[i].reason+
+								    		'</div>'+
+								    	'</div>';
+								html+='<div class="center-content-div">'+
+							    		'<div class="center-content-left">'+
+							    			'状态'+
+							    		'</div>'+
+							    		'<div class="center-content-right2">'+
+							    			rs.data.List[i].disabled+
+							    		'</div>'+
+							    	'</div>';
+							    html += '<div class="center-content-div">'+
+								    		'<div class="center-content-left">'+
+								    			'备注'+
+								    		'</div>'+
+								    		'<div class="center-content-right">'+
+								    			rs.data.List[i].remark+
+								    		'</div>'+
+								    	'</div>';
+								html+='</section>';
+								li.innerHTML = html;
+								table.appendChild(li);
+							}
+						}, 1500);
+					}else
+					{
+						plus.nativeUI.toast("获取失败：" + rs1.data);
+						return;
+					}
+				});
+			}
+			
 			if (mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
@@ -151,46 +227,4 @@
 			}
 		</script>
 	</body>
-	<!--<body>
-	    <section>
-	    	<div class="center-content-div">
-	    		<div class="center-content-left">
-	    			时间
-	    		</div>
-	    		<div class="center-content-right">
-	    			2017-12-13 12:38:57
-	    		</div>
-	    	</div>
-	    	<div class="center-content-div">
-	    		<div class="center-content-left">
-	    			积分
-	    		</div>
-	    		<div class="center-content-left">
-	    			+10
-	    		</div>
-	    		<div class="center-content-left">
-	    			描述
-	    		</div>
-	    		<div class="center-content-left">
-	    			会员签到
-	    		</div>
-	    	</div>
-	    	<div class="center-content-div">
-	    		<div class="center-content-left">
-	    			状态
-	    		</div>
-	    		<div class="center-content-right3">
-	    			积分无效
-	    		</div>
-	    	</div>
-	    	<div class="center-content-div">
-	    		<div class="center-content-left">
-	    			备注
-	    		</div>
-	    		<div class="center-content-right">
-	    			
-	    		</div>
-	    	</div>
-	    </section>
-	</body>-->
 </html>

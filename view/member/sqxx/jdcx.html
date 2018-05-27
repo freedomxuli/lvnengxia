@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Jado绿能侠</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.picker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../..//css/mui.poppicker.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
+    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+    
+    <style type="text/css">
+        .cell-detial{position: relative;font-size: 1em;color:#2BB673;width: 100%;background-color: #fff;border-top: 1px solid #efefef;clear: both;height: 30px;line-height: 30px;text-align: center;display: block;}
+        .mui-card-content{position: relative;}
+
+        .mui-input-row{height: auto !important;}
+        .mui-input-btn-label{width: 100%;}
+        .mui-input-row input[readonly]{background: #efefef;}
+        .mui-input-row label{width: 40%;}
+        .mui-input-row input[type='text'],textarea{width: 60% !important;}
+        .mui-input-btn-label input[type='text']{width: 45% !important;float: left !important;}
+        .mui-input-btn-label button{width: 15% !important;padding: 8px !important;margin:0px !important;}
+        .mui-card.mui-card-list-eqinfo .mui-card-content-inner{padding: 8px 0px;}
+        .mui-card-content-inner .cell-view-12{padding: 0px 10px;}
+        .detial-cell{padding: 0px 0px;border-top: 1px solid #efefef;display: none;clear: both;background-color: #EDF9F5;}
+        .mui-card-content-inner .cell-view-12.detial-cell{padding: 0px 0px;}
+        .title-max.mui-btn-success{color:#fff;background:#2BB673;padding-left:2px;border-radius:7px}
+    </style>
+    
+</head>
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-action-home mui-icon mui-icon-arrowthinleft"></a>
+        <h1 class="mui-title"></h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-header-eqinfo">
+            <div class="head-header">进度查询</div>
+            <div class="head-english">Query information</div>
+        </div>
+    </div>
+    <div class="mui-after-content">
+		<div class="cell-detial">
+            <i class="mui-icon mui-icon-arrowdown action-detial"></i>
+        </div>
+    </div>
+</body>
+<script src="../../../js/mui.min.js"></script>
+<script src="../../../js/zepto.js"></script>
+<script src="../../../js/mui.picker.js"></script>
+<script src="../../../js/mui.picker.min.js"></script>
+<script src="../../../js/mui.poppicker.js"></script>
+<script src="../../../js/mui.enterfocus.js"></script>
+<script src="../../../js/template.min.js"></script>
+<script src="../../../config.js"></script>
+<script src="../../../js/app.js"></script>
+<script src="../../../js/sign.js"></script>
+<script src="../../../js/md5.js"></script>
+<script src="../../../js/jquery.1.9.1.js"></script>
+<script type="text/javascript">
+    var jQuery = jQuery.noConflict();
+</script>
+<script type="text/html" id="jd_list">
+	<%
+	for(var i = 0;i<data.length;i++)
+	{
+		var isShenhe = data[i].isShenhe;
+		var sh_name = "";
+		if(isShenhe==0)
+			sh_name = "未接受申请";
+		else
+			sh_name = "已接受申请";
+		%>
+		<div class="mui-card mui-card-list-eqinfo mui-card-eqinfo-line">
+	        <div class="mui-card-header mui-card-header-tip">
+	            <div class="cell-view-12">
+	            	<span class="title-max">客户</span><b><%=data[i].compName%></b>
+	                <span class="mui-badge mui-badge-warning mui-pull-right mui-status-tip"><img src="../../../img/sqxx/027.png"><%=sh_name%></span>
+	            </div>
+	        </div>
+	        <div class="mui-card-content">
+	            <div class="mui-card-content-inner">
+	                <div class="cell-view-12">
+	                    <span class="title-max">日期</span><%=data[i].compName%>
+	                </div>
+	                <div class="cell-view-12">
+	                    <span class="title-max">类型</span><%=data[i].clientType%>
+	                </div>
+	                <div class="cell-view-12">
+	                    <span class="title-max">负责人</span>
+	                    <span class="orange"><%=data[i].employName%></span></div>
+	                <div class="cell-view-12">
+	                    <span class="title-max">等级</span>
+	                    <span class="green"><%=data[i].levelName%></span>
+	                </div>
+	                <div class="cell-view-12">
+	                <span class="title-max">地区</span><%=data[i].address%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">付款模式</span><%=data[i].payMode%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">申请容量</span><%=data[i].ApplyCapacity%>KWp</div>
+	                <div class="cell-view-12">
+	                <span class="title-max">开户行</span><%=data[i].bankName%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">户表名</span><%=data[i].hubiaoCard%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">户表号</span><%=data[i].huBiaoName%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">银行帐号</span><%=data[i].bankId%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">瓦片类型</span><%=data[i].tiletype%></div>
+	                <div class="cell-view-12">
+	                <span class="title-max">屋顶朝南</span><%=data[i].acreage%>m²</div>
+	                <a class="goto-a" href="javascript:void(0);" data-index="<%=data[i].id%>">
+	                    <div class="cell-view-12">
+	                        <span class="title-max mui-btn-success">项目进度</span>
+	                        <span class="mui-icon mui-icon-arrowright arrowright"></span>
+	                    </div>
+	                </a>
+	                <div class="cell-detial">
+	                    <i class="mui-icon mui-icon-arrowdown action-detial"></i>
+	                </div>
+	                <div class="cell-view-12 detial-cell" style="padding-top: 8px;">
+	                    <div class="cell-view-6 mui-pull-left" style="padding-left: 10px;">相关图片</div>
+	                    <div class="cell-view-6 mui-pull-right" style="text-align: right;padding-right: 10px;">
+	                        <a href="javascript:void(0);"  class="edit-client" data-index="<%=data[i].id%>">
+	                            	修改<span class="mui-icon mui-icon-compose"></span>
+	                        </a>
+	                    </div>
+	                    <% if(data[i].Slide!=null){ %>
+	                    <div id="slider" class="mui-slider" data-slidershowtimer="161">
+	                        <div class="mui-slider-group mui-slider-loop">
+                        		<div class="mui-slider-item mui-slider-item-duplicate">
+	                                <a href="#">
+	                                    <img src="<%=data[i].Slide[0].image%>">
+	                                    <p class="mui-slider-title"><%=data[i].Slide[0].text%></p>
+	                                </a>
+	                           </div>
+		                       <%
+	                        		for(var j = 0;j < data[i].Slide.length;j++)
+	                        		{
+	                        			%>
+		                        			<div class="mui-slider-item">
+				                                <a href="#">
+				                                    <img src="<%=data[i].Slide[j].image%>">
+				                                    <p class="mui-slider-title"><%=data[i].Slide[j].text%></p>
+				                                </a>
+				                            </div>
+			                            <%
+	                        		}
+	                        	%>
+	                            <div class="mui-slider-item mui-slider-item-duplicate">
+	                                <a href="#">
+	                                    <img src="<%=data[i].Slide[0].image%>">
+	                                    <p class="mui-slider-title"><%=data[i].Slide[0].text%></p>
+	                                </a>
+	                            </div>
+	                        </div>
+	                        <div class="mui-slider-indicator mui-text-right">
+	                            <div class="mui-indicator mui-active"></div>
+	                            <div class="mui-indicator "></div>
+	                            <div class="mui-indicator "></div>
+	                            <div class="mui-indicator "></div>
+	                            <div class="mui-indicator "></div>
+	                            <div class="mui-indicator "></div>
+	                            <div class="mui-indicator"></div>
+	                            <div class="mui-indicator "></div>
+	                        </div>
+	                    </div>
+	                    <%}%>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <%
+	}
+	%>
+    
+</script>
+<script>
+	
+	var sid = localStorage.getItem("sid");
+	
+	mui.init();
+	
+	mui.plusReady(function(){
+		//首页
+	    mui(document.body).on('tap','.mui-action-home',function(){
+	        clicked("_www/view/member/hyzx/hyzx.html");
+	    });
+	    mui(document.body).on('tap','.edit-client',function(){
+	        clicked("_www/view/member/sqxx/sqxxedit.html");
+	    });
+	    mui(document.body).on('tap','.goto-a',function(){
+	        clicked("_www/view/member/sqxx/sqxxzl.html",{
+	        	pid:$(this).data("index")
+	        });
+	    });
+	
+	    mui(".mui-slider").slider({
+	        interval: 2800
+	    });
+	    
+	    var obj_jd ={};
+	    obj_jd["sid"] = sid;
+	    var sign = GetSign(obj_jd);
+	    var param = {
+	        queryData: {
+	          'method': config.apimethod.perjzjd,
+	          'sign':sign,
+	          'sid':sid
+	        },
+	        method: 'POST'
+	    }
+	    $.dataRequest(param, function(rs) {
+	    	console.log(JSON.stringify(rs));
+			if(rs.rsp=="succ")
+			{
+				console.log(JSON.stringify(rs.data));
+				var result = template('jd_list', rs);
+				jQuery('.mui-after-content').html(result);
+				
+			    //显示详细
+			    jQuery('.action-detial').click(function(){
+			        jQuery(this).parent().siblings('.detial-cell').slideToggle();
+			        mui(".mui-slider").slider({
+			            interval: 2800
+			        });
+			    });
+			}else
+			{
+				plus.nativeUI.toast("获取失败：" + rs.data);
+				return;
+			}
+		})
+	})
+</script>
+</html>
