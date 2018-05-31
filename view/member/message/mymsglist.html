@@ -1,9 +1,765 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+		<meta charset="utf-8">
+	    <title>Shopex Onex B2B2C</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	    
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+	    <style type="text/css">
+		.space-div{
+			height: 10px;
+		}
+		/*内容css*/
+		.content-div{
+			position: absolute;
+			top: 2rem;
+		}
+		.title-sm{
+			background-color: #2AB673;
+			padding: 3.8rem 1rem 1rem 1rem;
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 1.2rem;
+		}
+		.center-content-div{
+			display: flex;
+			flex-direction: row;
+			border-bottom:1px solid #CCCCCC ;
+			background-color: #FFFFFF;
+		}
+		.center-content-left{
+			flex: 1;
+			color: #555555;
+		}
+		.center-content-right{
+			flex: 3;
+		}
+		.center-content-right2{
+			flex:3;
+			color: orange;
+		}
+		.center-content-right3{
+			flex:3;
+			color: #2AB673;
+		}
+		.title-a{font-size: 15px; color: #6d6d72;}
+        .title-a span{font-size: 19px;color: #6d6d72;}
+
+        .pl-list-tip{width: 100%;text-align: center;height: 30px;background: #fff;margin-top: 2px;margin-bottom: 2px;line-height: 30px;}
+        .pl-list-tip a,.pl-list-tip span.mui-icon{font-size: 13px;color: #555;}
+        .pl-sum-cnt{color: #888;font-size: 13px;}
+        .pl-self{margin:5px 0px;position: relative;background-color: #fff;}
+        .mui-table-view:before{background: #fff;}
+        .mui-badge-green, .mui-badge-success{background-color: #2BB673;}
+        .title-l {
+            margin: 1px 0px 1.5px 0px;
+            color: #333;
+            font-size: 1em;
+            background: #fff;
+            line-height: 40px;
+            height: 40px;
+            position: relative;
+            padding-left: 19px;
+        }
+        .pl-tip-icon-img{height: 27px;vertical-align: middle;margin-top: -3px;}
+
+	    </style>
+	    <style type="text/css">
+		    .mui-backdrop-e7 {
+		        position: fixed;
+		        top: 0;
+		        right: 0;
+		        bottom: 0;
+		        left: 0;
+		        z-index: 998;
+		        background-color: rgba(0,0,0,.2);
+		        display: none;
+		    }
+		    .mui-table-view .mui-media-body{color: #4F6F96;font-size: 0.9em}
+		    .mui-content-text{color: #444;background: #fff;white-space: normal;line-height: 126%;}
+		    .image-content{position: relative;white-space: normal;width: 100%;display: flex;flex-direction: row;flex-wrap: wrap;justify-content:flex-start;}
+		    .image-content .box{width:32%;overflow: hidden;text-align: center;display: inline-block;margin-bottom: 3px;margin-right: 3px;}
+		    .image-content .box img{width: 100%;}
+		    .mui-content-text .mui-pull-right span.mui-icon-extra{font-size: 20px;vertical-align: bottom;line-height: 1.1;}
+		    .mui-content-text .mui-pull-right .a-btn.zan-a{margin-right: 2px;}
+		    .mui-content-text-son{background: none;font-size: 12px;line-height: 126%;}
+		    .mui-icon-tip{font-size: 20px;position:absolute; left: 0px;color:#4F6F96; }
+		    .mui-table-view-son{padding-left: 5px;margin-top: 8px;}
+		    .mui-table-view-son .mui-table-view-cell{padding: 8px 20px;position: relative;}
+		    .time-tip{font-size: 13px;color: #5C6D8F;}
+		    .a-btn{display: inline-block;font-size: 14px;color: #9a9a9a;padding: 16px 12px 6px 12px;}
+		    .a-btn .mui-icon{color: #9a9a9a;}
+		    .mui-table-view-cell>a:not(.mui-btn).mui-active{background: #fff;}
+		    .mui-table-view-cell .mui-active{background: #fff;}
+		    .mui-table-view-son{background: #F4F3F4;}
+		    .mui-table-view-son:before {height: 0px;}
+		    .mui-table-view-son:after {height: 0px;}
+		    .hidden-info {display:none;}
+		    .son-tip{color: #9a9a9a;font-size: 0.8em;}
+		    .bottom-send{width: 100%;position: fixed;height: auto;min-height: 40px;max-height: 100px;bottom: 0px;left: 0px;background: #efefef;z-index: 1000;border-top: 1px solid #dadada;border-bottom: 1px solid #dadada;padding: 4px 6px;display: none;}
+		    .bottom-send .pl-input{min-height: 32px;height: auto;max-height: 72px;width: 78%;display: inline-block;margin:0px;font-size: 15px;padding: 4px 5px;outline: 0;border: 1px solid #ccc;word-wrap: break-word;overflow-x: hidden;overflow-y:visible;height:100%; z-index: 1001;}
+		    .bottom-send .pl-btn{min-height: 32px;height: auto;max-height: 72px;width: 19%;display: inline-block;background: #2BB673;color: #fff;border-radius: 8px;border: 0px;z-index: 1002;}
+		    .bottom-send.active1{display:block; }
+		    .mui-preview-image.mui-fullscreen {
+		                position: fixed;
+		                z-index: 20;
+		                background-color: #000;
+		            }
+		            .mui-preview-header,
+		            .mui-preview-footer {
+		                position: absolute;
+		                width: 100%;
+		                left: 0;
+		                z-index: 10;
+		            }
+		            .mui-preview-header {
+		                height: 44px;
+		                top: 0;
+		            }
+		            .mui-preview-footer {
+		                height: 50px;
+		                bottom: 0px;
+		            }
+		            .mui-preview-header .mui-preview-indicator {
+		                display: block;
+		                line-height: 25px;
+		                color: #fff;
+		                text-align: center;
+		                margin: 15px auto 4;
+		                width: 70px;
+		                background-color: rgba(0, 0, 0, 0.4);
+		                border-radius: 12px;
+		                font-size: 16px;
+		            }
+		            .mui-preview-image {
+		                display: none;
+		                -webkit-animation-duration: 0.5s;
+		                animation-duration: 0.5s;
+		                -webkit-animation-fill-mode: both;
+		                animation-fill-mode: both;
+		            }
+		            .mui-preview-image.mui-preview-in {
+		                -webkit-animation-name: fadeIn;
+		                animation-name: fadeIn;
+		            }
+		            .mui-preview-image.mui-preview-out {
+		                background: none;
+		                -webkit-animation-name: fadeOut;
+		                animation-name: fadeOut;
+		            }
+		            .mui-preview-image.mui-preview-out .mui-preview-header,
+		            .mui-preview-image.mui-preview-out .mui-preview-footer {
+		                display: none;
+		            }
+		            .mui-zoom-scroller {
+		                position: absolute;
+		                display: -webkit-box;
+		                display: -webkit-flex;
+		                display: flex;
+		                -webkit-box-align: center;
+		                -webkit-align-items: center;
+		                align-items: center;
+		                -webkit-box-pack: center;
+		                -webkit-justify-content: center;
+		                justify-content: center;
+		                left: 0;
+		                right: 0;
+		                bottom: 0;
+		                top: 0;
+		                width: 100%;
+		                height: 100%;
+		                margin: 0;
+		                -webkit-backface-visibility: hidden;
+		            }
+		            .mui-zoom {
+		                -webkit-transform-style: preserve-3d;
+		                transform-style: preserve-3d;
+		            }
+		            .mui-slider .mui-slider-group .mui-slider-item img {
+		                /*width: auto;
+		                height: auto;*/
+		                max-width: 100%;
+		                max-height: 100%;
+		            }
+		            .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+		                width: 100%;
+		            }
+		            .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+		                display: inline-table;
+		            }
+		            .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+		                display: table-cell;
+		                vertical-align: middle;
+		            }
+		            .mui-preview-loading {
+		                position: absolute;
+		                width: 100%;
+		                height: 100%;
+		                top: 0;
+		                left: 0;
+		                display: none;
+		            }
+		            .mui-preview-loading.mui-active {
+		                display: block;
+		            }
+		            .mui-preview-loading .mui-spinner-white {
+		                position: absolute;
+		                top: 50%;
+		                left: 50%;
+		                margin-left: -25px;
+		                margin-top: -25px;
+		                height: 50px;
+		                width: 50px;
+		            }
+		            .mui-preview-image img.mui-transitioning {
+		                -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+		                transition: transform 0.5s ease, opacity 0.5s ease;
+		            }
+		            .mui-table-view-cell-zan{border-bottom: 1px solid #efefef;}
+		            .list-pinglun{border-bottom: 1px solid #efefef;}
+		            .mui-table-view-cell:after{height: 0px;}
+		            @-webkit-keyframes fadeIn {
+		                0% {
+		                    opacity: 0;
+		                }
+		                100% {
+		                    opacity: 1;
+		                }
+		            }
+		            @keyframes fadeIn {
+		                0% {
+		                    opacity: 0;
+		                }
+		                100% {
+		                    opacity: 1;
+		                }
+		            }
+		            @-webkit-keyframes fadeOut {
+		                0% {
+		                    opacity: 1;
+		                }
+		                100% {
+		                    opacity: 0;
+		                }
+		            }
+		            @keyframes fadeOut {
+		                0% {
+		                    opacity: 1;
+		                }
+		                100% {
+		                    opacity: 0;
+		                }
+		            }
+		            p img {
+		                max-width: 100%;
+		                height: auto;
+		            }
+		</style>
 	</head>
 	<body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+            <h1 class="mui-title">留言列表</h1>
+            <div class="mui-pull-right href-go">
+                <i class="mui-icon mui-icon-compose"></i>
+            </div>
+        </header>
+        <div class="mui-content">
+<!--	        <div class="pl-self pl-list-tip">
+	            和我相关消息 <span class="mui-badge mui-badge-success ywxg"></span><span class="mui-icon mui-icon-forward"></span>
+	        </div>-->
+	        <div class="title-l">
+	            <img height="26px" class="pl-tip-icon-img" src="../../../img/hyzx/lylb.png">&nbsp;留言列表
+	        </div>
+        </div>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view main-class">
+					
+				</ul>
+			</div>
+		</div>
+		<!-- 点击评论展示的内容 -->
+		<div class="bottom-send">
+		    <form method="post" action="">
+		    <input type="hidden" name="plid" id="plid">
+		    <input type="hidden" name="pid" id="pid">
+		    <textarea class="pl-input" name="content_pl" rows="1" placeholder="发表评论"></textarea>
+		    <button class="mui-btn-success pl-btn" name="content_pl_btn">评论</button>
+		    </form>
+		</div>
+		<div class="mui-backdrop-e7" style="opacity:1"></div>
+		
+
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/zepto.js"></script>
+	    <script src="../../../js/mui.zoom.js"></script>
+	    <script src="../../../js/mui.lazyload.js"></script>
+	    <script src="../../../js/mui.lazyload.img.js"></script>
+	    <script src="../../../js/mui.previewimage.js"></script>
+	    <script src="../../../js/template.min.js"></script>
+	    <script src="../../../config.js"></script>
+	    <script src="../../../js/app.js"></script>
+	    <script src="../../../js/sign.js"></script>
+		<script src="../../../js/md5.js"></script>
+		<script src="../../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
+		<script>
+			var box_width = "";
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					/*down: {
+						callback: pulldownRefresh
+					},*/
+					up: {
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			
+			var count = 1;
+			var pageNum = 5;
+			var sid = localStorage.getItem("sid");
+			
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				loadData();
+			}
+			
+			function loadData(){
+				var obj_point = {};
+				obj_point["sid"] = sid;
+				obj_point["page"] = count;
+				obj_point["pageNum"] = pageNum;
+				obj_point["tip"] = 0;
+				var sign = GetSign(obj_point);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.msglist,
+			          'sign':sign,
+			          'sid':sid,
+			          'page':count,
+			          'pageNum':pageNum,
+			          'tip':1
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					if(rs.rsp=="succ")
+					{
+						jQuery(".ywxg").text(rs.data.cntSelf);
+						++count;
+						setTimeout(function() {
+							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > rs.data.pageCount)); //参数为true代表没有更多数据了。
+							//var table = document.body.querySelector('.mui-table-view');
+							var list = template("msg_list",rs.data);
+							jQuery('.main-class').append(list);
+							boxImgHeight();
+							document.body.removeAttribute('data-imagelazyload');
+							//懒加载
+				            mui(document).imageLazyload({
+				                placeholder: 'Resource/Image/userimg.png'
+				            });
+				            //图片预览:会覆盖a标签跳转
+				            mui.previewImage();
+						},2000);
+					}else
+					{
+						plus.nativeUI.toast("获取失败：" + rs1.data);
+						return;
+					}
+				});
+			}
+			
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+			
+		    var box_width = jQuery('.box:eq(0)').width();
+		    //boxImgHeight();
+		    function boxImgHeight(){
+		        if(box_width > 30){
+		            jQuery('.box').css({'height':box_width+'px'});
+		            jQuery('.autoHeight').css({'height':box_width+'px'});
+		            jQuery('.autoHeight').css({'width':'auto'});
+		        }
+		    }
+		
+		    //评论高度
+		    jQuery(document.body).on('keyup','.pl-input',function(){
+		        jQuery(this).css({'height':jQuery(this)[0].scrollHeight+'px'});
+		        jQuery('.pl-btn').css({'height':jQuery(this)[0].scrollHeight+'px'});
+		        var text = jQuery('.pl-input').val();
+		        var counter = text.length;
+		        if(counter>=51) {
+		            mui.toast('字数太多了');
+		            text = text.substring(0,counter-(counter-51));
+		            jQuery('.pl-input').val(text);
+		        }
+		    });
+		
+		    var maskBackdrop = function(){
+		        jQuery('.mui-backdrop-e7').css({'display':'block'});
+		    }
+		
+		    var removeBackdrop = function(){
+		        jQuery('.mui-backdrop-e7').css({'display':'none'});
+		    }
+		
+		    var activeKey = function(){
+		        setTimeout(function(){
+		            //如果评论显示，则重新定位位置
+		            if(jQuery('.bottom-send').hasClass('active1')){
+		                jQuery('.bottom-send').css({'bottom':'0px'});
+		            }
+		        },1000);
+		    }
+		
+		    jQuery(document.body).on('click','.pinglun',function(){
+		        var id = jQuery(this).siblings('.hidden-info').data("index");
+		        var pid = jQuery(this).siblings('.hidden-info').data("pid");
+		        jQuery('#plid').val(id);
+		        jQuery('#pid').val(pid);
+		        jQuery('.bottom-send').addClass('active1');
+		        maskBackdrop();//显示遮罩
+		        jQuery('.pl-input').focus();
+		
+		        activeKey();
+		    });
+		
+		    var tapbackdrop = 0;
+		    jQuery(document.body).on('tap','.mui-backdrop-e7',function(){
+		        tapbackdrop++;
+		
+		        var comment = jQuery('.pl-input').val();
+		        if(comment!='' && tapbackdrop < 2){
+		            document.activeElement.blur();
+		        }else{
+		            hideSend();
+		        }
+		    });
+		
+		    jQuery(document.body).on('tap','.pinglun-li-son',function(){
+		        var id = jQuery(this).siblings('.hidden-info').data("index");
+		        var pid = jQuery(this).siblings('.hidden-info').data("pid");
+		        jQuery('#plid').val(id);
+		        jQuery('#pid').val(pid);
+		        jQuery('.bottom-send').addClass('active1');
+		        maskBackdrop();;//显示遮罩
+		        jQuery('.pl-input').focus();
+		
+		        activeKey();
+		    });
+		
+			jQuery(document.body).on('tap','.zan-a',function(){
+		        if(jQuery(this).attr('disabled')){
+		            return;
+		        }
+		        var that = this;
+		        jQuery(this).attr('disabled',true);
+		        var id = jQuery(this).siblings('.hidden-info').data("index");
+		        var obj_zan = {};
+		        obj_zan["sid"] = sid;
+		        obj_zan["cid"] = id;
+		        var sign = GetSign(obj_zan);
+		        var param = {
+			        queryData: {
+			          'method': config.apimethod.followup,
+			          'sign':sign,
+			          'sid':sid,
+			          'cid':id
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					if(rs.rsp=="succ")
+					{
+						if(rs.data.success)
+						{
+							jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart-filled'></span>赞&nbsp;"+rs.data.zanNum);
+							jQuery("#zan-person"+id).text(rs.data.zan);
+							mui.toast(rs.data.msg);
+						}else
+						{
+							mui.toast('点赞失败');
+						}
+					}else{
+						mui.toast('点赞失败');
+						return;
+					}
+				})
+		    });
+		
+		    //处理单击事件
+		    mui(document.body).on('click','.pl-btn',function(){
+		        sumbitFormPl();
+		    });
+		
+		    function sumbitFormPl(){
+		        //禁止重复提交
+		        if(jQuery('.pl-btn').attr('disabled')){
+		            return false;
+		        }
+		        jQuery('.pl-btn').attr('disabled','true');
+		        var plid = jQuery('#plid').val();
+		        var pid = jQuery('#pid').val();
+		        var comment = jQuery('.pl-input').val();
+		        var obj_pl = {};
+		        obj_pl["sid"] = sid;
+		        obj_pl["cid"] = plid;
+		        obj_pl["comment"] = comment;
+		        var sign = GetSign(obj_pl);
+		        var param = {
+			        queryData: {
+			          'method': config.apimethod.msgsend,
+			          'sign':sign,
+			          'sid':sid,
+			          'cid':plid,
+			          'comment':comment
+			        },
+			        method: 'POST'
+			    }
+		        $.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					if(rs.rsp=="succ")
+					{
+						if(rs.data.success)
+						{
+							jQuery('.pl-input').css({'height':'auto'});
+		                    jQuery('.pl-btn').css({'height':'auto'});
+							loadMsg1(plid,pid);
+							mui.toast(rs.data.msg);
+							hideSend();
+							return;
+						}else
+						{
+							mui.toast('评论失败');
+							hideSend();
+						}
+					}else{
+						mui.toast('评论失败');
+						hideSend();
+						return;
+					}
+				})
+		
+		        //恢复按钮
+		        setTimeout(function() {
+		            jQuery('.pl-btn').removeAttr('disabled');
+		        }, 2000);
+		    }
+		
+		    //取消评论
+		    function hideSend(){
+		        tapbackdrop = 0;
+		        removeBackdrop();//关闭遮罩
+		        jQuery('.bottom-send').removeClass('active1');
+		        document.activeElement.blur();
+		        jQuery('.pl-input').val('');
+		        jQuery('#plid').val('');
+		        jQuery('#pid').val('');
+		    }
+		    var focusout_stop = function(e){}
+		    
+		    function loadMsg1(plid,p_id){
+		    	var obj_msg = {};
+		    	obj_msg["sid"] = sid;
+		    	obj_msg["cid"] = plid;
+		    	var sign = GetSign(obj_msg);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.singlemsg,
+			          'sign':sign,
+			          'sid':sid,
+			          'cid':plid
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					var list = template("msg_list1",rs);
+					jQuery("#msg_son"+p_id).html(list);
+				})
+		    }
+		    
+		    mui(document.body).on('tap','.pl-self',function(){
+		    	clicked("_www/view/member/message/mymsglist.html");
+		    });
+		    
+		    mui(document.body).on('tap','.href-go',function(){
+		    	clicked("_www/view/member/message/sendmsg.html");
+		    });
+		    
+		</script>
+		
+		<script type="text/html" id="msg_list">
+			<%
+				for(var i = 0;i < List.length;i++)
+				{
+					%>
+						<li class="mui-table-view-cell mui-media list-pinglun">
+				            <img class="mui-media-object mui-pull-left" src="<%=List[i].avatar%>" /> 
+						    <div class="mui-media-body">
+						      <%=List[i].com%> 
+						     <p class="mui-content-text"> <%=List[i].comment%></p> 
+						     <div class="image-content"> 
+						      <div class="box">
+						      	<%if(List[i].pic){
+						      		for(var j=0;j<List[i].pic.length;j++)
+						      		{
+						      			%>
+						      			<img data-lazyload="<%=List[i].pic[j].path%>" data-preview-src="" data-preview-group="<%=List[i].id%> " />
+						      			<%
+						      		}
+						      	}%>
+						      </div> 
+						     </div> 
+						     <div class="mui-content-text"> 
+						      <span class="time-tip"><%=List[i].time%></span> 
+						      <div class="mui-pull-right"> 
+						       <div id="zan-a<%=List[i].id%>" class="a-btn zan-a"> 
+						       	<%if(List[i].isZan){
+						       		%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart-filled"></span>赞&nbsp;<%=List[i].zannum%>
+						       		<%
+						       	}else{
+						       		%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart"></span>赞&nbsp;<%=List[i].zannum%>
+						       		<%
+						       	}%>
+						       </div> 
+						       <div id="pl-a<%=List[i].id%>"  class="a-btn pinglun"> 
+						        <span class="mui-icon mui-icon-chatbubble"></span>评论&nbsp;<%=List[i].replynum%>  
+						       </div> 
+						       <div class="hidden-info plid-hide-<%=List[i].id%>" data-index="<%=List[i].id%>" data-pid="<%=List[i].id%>">
+						        <%=List[i].id%>
+						       </div> 
+						      </div> 
+						     </div> 
+						    </div> 
+			        		<!-- 子评论列表 -->
+					        <ul id="msg_son<%=List[i].id%>" class="mui-table-view mui-table-view-son"> 
+					        <%
+					        	if(List[i].reply&&List[i].reply.length>0){
+					        	%>
+					        		<div class="triangle triangle-up"></div> 
+					        		<%if(List[i].Zan){
+					        			%>
+						        			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+										     <div class="mui-media-body"> 
+										      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
+										      <p id="zan-person<%=List[i].id%>" class="mui-content-text-son"> <%=List[i].Zan%> </p> 
+										     </div> 
+										    </li> 
+					        			<%
+					        		}%>
+								    <%
+								    	for(var k = 0;k < List[i].reply.length; k++)
+								    	{
+								    		%>
+								    			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+											     <span class="mui-icon-tip mui-icon mui-icon-chatbubble"></span> 
+											     <img class="mui-media-object mui-pull-left" src="<%=List[i].reply[k].avatar%>" /> 
+											     <div class="mui-media-body pinglun-li-son show-pl-input">
+											       <%=List[i].reply[k].com%>
+											      <span class="mui-pull-right son-tip"><%=List[i].reply[k].date%></span> 
+											      <%
+											      	if(List[i].reply[k].level == 2)
+											      	{
+											      		%>
+											      		<p class="mui-content-text-son"><%=List[i].reply[k].comment%></p> 
+											      		<%
+											      	}else
+											      	{
+											      		%>
+											      		<p class="mui-content-text-son">回复<font color="#5C6D8F"><%=List[i].reply[k].rep%></font>：<%=List[i].reply[k].comment%></p> 
+											      		<%
+											      	}
+											      %>
+											      
+											     </div> 
+											     <div class="hidden-info plid-hide-<%=List[i].reply[k].id%>" data-index="<%=List[i].reply[k].id%>" data-pid="<%=List[i].id%>">
+											      <%=List[i].reply[k].id%>
+											     </div> 
+											    </li> 
+											<%
+								    	}
+								    %>
+					        	<%
+					        }%>
+
+						   </ul>   
+						</li>
+					<%
+				}
+			%>
+		</script>
+		<script type="text/html" id="msg_list1">
+			<%if(data.Zan){
+    			%>
+        			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+				     <div class="mui-media-body"> 
+				      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
+				      <p id="zan-person<%=data.id%>" class="mui-content-text-son"> <%=data.Zan%> </p> 
+				     </div> 
+				    </li> 
+    			<%
+    			}
+		    	for(var i = 0;i < data.reply.length; i++)
+		    	{
+		    		%>
+		    			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+					     <span class="mui-icon-tip mui-icon mui-icon-chatbubble"></span> 
+					     <img class="mui-media-object mui-pull-left" src="<%=data.reply[i].avatar%>" /> 
+					     <div class="mui-media-body pinglun-li-son show-pl-input">
+					       <%=data.reply[i].com%>
+					      <span class="mui-pull-right son-tip"><%=data.reply[i].date%></span> 
+					      <%
+					      	if(data.reply[i].level == 2)
+					      	{
+					      		%>
+					      		<p class="mui-content-text-son"><%=data.reply[i].comment%></p> 
+					      		<%
+					      	}else
+					      	{
+					      		%>
+					      		<p class="mui-content-text-son">回复<font color="#5C6D8F"><%=data.reply[i].rep%></font>：<%=data.reply[i].comment%></p> 
+					      		<%
+					      	}
+					      %>
+					      
+					     </div> 
+					     <div class="hidden-info plid-hide-37" data-index="<%=data.reply[i].id%>" data-pid="<%=data.id%>">
+					      <%=data.reply[i].id%>
+					     </div> 
+					    </li> 
+					<%
+		    	}
+		    %>
+		</script>
 	</body>
 </html>

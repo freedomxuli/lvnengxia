@@ -68,7 +68,7 @@
 	mui.plusReady(function() {
 		mid = plus.webview.currentWebview().mid;
 		mui(document.body).on('tap','.mui-action-back',function(){
-		   clicked("_www/view/member/znx/znxlist.html");
+		   mui.back();
 		});
 		var obj_znx = {};
 		obj_znx["sid"] = sid;
@@ -87,11 +87,10 @@
 		$.dataRequest(param, function(rs) {
 			console.log(JSON.stringify(rs));
 			jQuery("#title").html(rs.data.subject);
-			var s = '<div id="myDiv"></div>';
+/*			var s = '<div id="myDiv"></div>';
 			var temp = document.createElement('div');
-			temp.innerHTML = rs.data.content;
-			var htmlObject = temp.firstChild;
-			jQuery("#content").html(htmlObject); 
+			temp.innerHTML = rs.data.content.replace('\"','"');*/
+			jQuery("#content").html(rs.data.content); 
 		})
 	});
 

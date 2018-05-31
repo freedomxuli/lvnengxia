@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jado绿能侠</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" type="text/css" href="../../../css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+        <style type="text/css">
+
+        </style>
+        
+        <script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/zepto.js"></script>
+	    <script src="../../../js/mui.zoom.js"></script>
+	    <script src="../../../js/mui.lazyload.js"></script>
+	    <script src="../../../js/mui.lazyload.img.js"></script>
+	    <script src="../../../js/mui.previewimage.js"></script>
+	    <script src="../../../js/template.min.js"></script>
+	    <script src="../../../config.js"></script>
+	    <script src="../../../js/app.js"></script>
+	    <script src="../../../js/sign.js"></script>
+		<script src="../../../js/md5.js"></script>
+		<script src="../../../js/jquery.1.9.1.js"></script>
+		<script type="text/javascript">
+		    var jQuery = jQuery.noConflict();
+		</script>
+    </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+            <h1 class="mui-title">最新活动</h1>
+        </header>
+        <!-- 评论 -->
+        <div class="mui-content">
+            <!--<div class="mui-image-list-full">
+                <img src="" data-link="www.baidu.com" alt="234"/>
+            </div>-->
+        </div>
+    </body>
+    <script language="javascript" type="text/javascript" src="Resource/Script/mui/js/mui.js?v=1513673507"></script>
+    <script>
+        mui.init({
+            swipeBack:true //启用右滑关闭功能
+        });
+
+        jQuery(document.body).on('tap','.mui-action-home',function(){
+            mui.back();
+        });
+        
+        var sid = localStorage.getItem("sid");
+		var obj_kf = {};
+		obj_kf["sid"] = sid;
+		var sign = GetSign(obj_kf);
+		var param = {
+	        queryData: {
+	          'method': config.apimethod.activitylist,
+	          'sign':sign,
+	          'sid':sid
+	        },
+	        method: 'POST'
+	    }
+		$.dataRequest(param, function(rs) {
+			var list = template("list",rs);
+			jQuery(".mui-content").html(list);
+		})
+
+        /*jQuery(document.body).on('tap','.mui-image-list-full img',function(){
+            var link = jQuery(this).data('link');
+            if(!link){
+                return ;
+            }
+            mui.toast('跳转活动页面...');
+            document.location.href = link;
+        });*/
+    </script>
+    <script type="text/html" id="list">
+		<%
+			for(var i = 0;i < data.length; i++)
+			{
+				%>
+					<div class="mui-image-list-full">
+		                <img src="<%=data[i].coverImg%>" data-link="www.baidu.com" alt="234"/>
+		            </div>
+				<%
+			}
+		%>
+	</script>
+</html>

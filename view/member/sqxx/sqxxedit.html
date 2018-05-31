@@ -812,6 +812,7 @@
 		        },
 		        method: 'POST'
 		    }
+	    	console.log(JSON.stringify(param));
 	    	$.dataRequest(param, function(rs) {
 	    		waiting.close();
 	    		console.log(JSON.stringify(rs));
@@ -820,7 +821,8 @@
 		        	jQuery("#clientType").val(rs.data.clientType);
 		        	jQuery("#compName").val(rs.data.compName);
 		        	jQuery("#acreage").val(rs.data.acreage);
-		        	jQuery("#applyCapacity").val(rs.data.applyCapacity);
+		        	jQuery("#ApplyCapacityText").val(rs.data.applyCapacity);
+		        	jQuery("#ApplyCapacity").val(rs.data.applyCapacity);
 		        	jQuery("#clientDate").val(rs.data.clientDate);
 		        	jQuery("#isDaik").val(rs.data.isDaik);
 		        	jQuery("#daikyear").val(rs.data.daikyear);
@@ -831,14 +833,15 @@
 		        	jQuery("#bankId").val(rs.data.bankId);
 		        	jQuery("#bankName").val(rs.data.bankName);
 		        	jQuery("#huBiaoName").val(rs.data.huBiaoName);
-		        	jQuery("#proCardPic").val(rs.data.proCardPic);
-		        	jQuery("#proContPic").val(rs.data.proContPic);
-		        	jQuery("#landCardPic").val(rs.data.landCardPic);
-		        	jQuery("#IDFrontPic").val(rs.data.IDFrontPic);
-		        	jQuery("#IDBackPic").val(rs.data.IDBackPic);
-		        	jQuery("#bankCardPic").val(rs.data.bankCardPic);
-		        	jQuery("#houseAppPic").val(rs.data.houseAppPic);
-		        	jQuery("#longShotPic").val(rs.data.longShotPic);
+		        	jQuery("#proCardPic").val(rs.data.proCardPic.bpic);
+		        	jQuery("#proContPic").val(rs.data.proContPic.bpic);
+		        	jQuery("#landCardPic").val(rs.data.landCardPic.bpic);
+		        	jQuery("#IDFrontPic").val(rs.data.IDFrontPic.bpic);
+		        	jQuery("#IDBackPic").val(rs.data.IDBackPic.bpic);
+		        	jQuery("#bankCardPic").val(rs.data.bankCardPic.bpic);
+		        	jQuery("#houseAppPic").val(rs.data.houseAppPic.bpic);
+		        	jQuery("#longShotPic").val(rs.data.longShotPic.bpic);
+		        	//jQuery("#proCardPic").parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
 		        	//jQuery("#proCardPic").siblings("img").attr("src",rs.data.proCardPic.showPic);
 		        	jQuery("#area_id1").val(rs.data.Areas.selected[0]);
 		        	jQuery("#area_id2").val(rs.data.Areas.selected[1]);
@@ -914,7 +917,6 @@
 				    $.dataRequest(param_area, function(rs1) {
 				        if(rs1.rsp=="succ")
 				        {
-				        	console.log(JSON.stringify(rs1.data.Area[0]));
 				        	jQuery("#showarea_id1").data("select",rs1.data.Area[0]);
 				        	pickerArea[1].setData(rs1.data.Area[0]);
 				        	for(var i = 0;i<rs1.data.Area[0].length;i++)
@@ -1007,14 +1009,11 @@
 	    			obj = city4;
 	    		break;
 	    	}
-	    	console.log(n);
-	    	console.log(JSON.stringify(obj));
 		    jQuery('.area-text').change(function(){
 		        var that = this;
 		        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
 		        jQuery(this).siblings('input[type=hidden]').val(obj[jQuery(this).val()]);
 		        curLevel = curLevel+1;
-		        console.log(curLevel);
 		        //强制清空下级所有数据
 		        for(var le=curLevel;le<=4;le++){
 		            pickerArea[le].setData([]);
@@ -1029,15 +1028,12 @@
 		        // button.attr('disabled' ,'disabled');
 	
 		        var area_id = jQuery(this).siblings('input[type=hidden]').val();
-		        console.log(area_id);
 		        button.attr('data-select','');
 		        //开始到后台获取数据
 		        var val_obj = {};
 				val_obj["areaid"] = area_id;
 				val_obj["timestamp"] = new Date().getTime();
-				console.log(val_obj); 
 				var sign = GetSign(val_obj);
-				console.log(sign);
 				var param = {
 			        queryData: {
 			          'method': config.apimethod.areachildlist,
@@ -1050,7 +1046,6 @@
 				$.dataRequest(param, function(rs1) {
 			        if(rs1.rsp=="succ")
 	    			{
-	    				console.log(JSON.stringify(rs1.data));
 	    				jQuery("#showarea_id"+curLevel).data("select",rs1.data);
 	    				for(var i = 0;i<rs1.data.length;i++)
 			        	{
@@ -1068,7 +1063,6 @@
 			        			pickerArea[4].setData(rs1.data);
 			        		}
 			        	}
-			        	console.log(JSON.stringify(city2));
 	    				setdq2(curLevel);
 	    				if(curLevel<4)
 	    					changedq(curLevel);
@@ -1555,9 +1549,6 @@
 		// 上传文件
 		function upload(imgown, newid, inputnew, grayDiv, localPath, base64, imagename) {
 			var waiting = plus.nativeUI.showWaiting();
-			console.log(localPath);
-			console.log(base64);
-			console.log(imagename);
 			grayDiv.show();
 			//jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
 	        jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('.image-show-box').show();
@@ -1583,8 +1574,6 @@
 		        if(rs.rsp=="succ")
 		        {
 		        	if(rs.data.success=="true"){
-		        		console.log(rs.data.bpicShow);
-		        		console.log(rs.data.bpic);
 		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
 	                    inputnew.val(rs.data.bpic);
 	                    grayDiv.hide();
@@ -1626,9 +1615,6 @@
 		// 上传文件
 		function upload1(houseAppPic, imgown, newid, inputnew, grayDiv, localPath, base64, imagename) {
 			var waiting = plus.nativeUI.showWaiting();
-			console.log(localPath);
-			console.log(base64);
-			console.log(imagename);
 			grayDiv.show();
 			//jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('img').attr('src',url);
 	        jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('.image-show-box').show();
@@ -1659,11 +1645,10 @@
 				        }*/
 				        jQuery('#houseAppPic').before("<img src="+rs.data.bpicShow+">");
 		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
-	                    houseAppPic = houseAppPic + rs.data.bpic + ',';
+	                    houseAppPic = inputnew.val() + rs.data.bpic + ',';
 	                    inputnew.val(houseAppPic);
 	                    grayDiv.hide();
 	                    var num = jQuery('#houseAppPic').siblings('img').length;
-				        console.log(num);
 				        if(num>=6) jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).attr('disabled','disabled');
 	                    waiting.close(); 
 		        	}else
@@ -1752,7 +1737,6 @@
 	            }
 	        });*/
 	        var num = jQuery('#houseAppPic').siblings('img').length;
-	        console.log(num);
 	        if(num>=6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).attr('disabled','disabled');
 	
 	    });

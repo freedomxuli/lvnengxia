@@ -38,6 +38,7 @@ var config = {
         savecom:'infomation.perfect.qy.save',//企业信息完善
         saveper:'infomation.perfect.personal.save',//个人信息完善
         roofget:'archives.roof.list.get',//获取屋顶结构选择项信息
+        tileget:'archives.tileKind.list.get',//获取瓦片选择项信息
         headimgup:'headimg.upload.confirm',//上传头像图片
         getpointlist:'point.logs.list',//会员积分日志列表
         ewmget:'invitation.info.get',//获取邀请二维码
@@ -54,7 +55,7 @@ var config = {
         znxlist:'mail.list',
         znxdetail:'mail.detail.get',
         login: 'login.account.passwd', //用户登录
-        logout: 'user.logout', //用户登出
+        logout: 'login.out', //用户登出
         agreement: 'user.license', //注册协议
         useProtocol: 'user.protocol', //使用协议
         trustDcloudLogin:'user.trust.dcloudlogin', //dcloud第三方信任登录信息验证
@@ -156,6 +157,8 @@ var config = {
         filteritems: 'item.filterItems', //根据搜索条件，列出渐进式的筛选项
         getcommonsetting: 'common.getsetting', //根据配置名获取配置值
         arealist:'get.area.list',//获取地区列表
-        areachildlist:'get.area.children'//获取地区列表
+        areachildlist:'get.area.children',//获取地区列表
+        getsidver:'verifiIdentity.member.sid',//获取sid
+        getwddzurl:'ems.url.get'//获取我的电站
     }
 }

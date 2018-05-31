@@ -12,6 +12,7 @@
 	    <link rel="stylesheet" type="text/css" href="../../..//css/mui.poppicker.css" />
 	    <link rel="stylesheet" type="text/css" href="../../../css/icons-extra.css" />
 	    <link rel="stylesheet" type="text/css" href="../../../css/mui.yh.css" />
+	    <link rel="stylesheet" type="text/css" href="../../../css/cropper.min.css" />
         
         <style>
         .mui-header{min-height: 35px;}
@@ -264,7 +265,7 @@
         </div>
     </div>
     <div class="zhuxiao-content">
-        <a class="logout goto-a" href="javascript:void(0);">退出登录</a>
+        <div class="logout goto-a">退出登录</div>
     </div>
     <div id="sheet" class="mui-popover mui-popover-action mui-popover-bottom" style="display: none;">
         <ul class="mui-table-view">
@@ -313,7 +314,7 @@
         </ul>
     </div>-->
     
-    <script src="../../../js/mui.min.js"></script>
+	<script src="../../../js/mui.min.js"></script>
 	<script src="../../../js/zepto.js"></script>
 	<script src="../../../js/mui.picker.js"></script>
 	<script src="../../../js/mui.picker.min.js"></script>
@@ -324,12 +325,13 @@
 	<script src="../../../js/app.js"></script>
 	<script src="../../../js/sign.js"></script>
 	<script src="../../../js/md5.js"></script>
+	<script src="../../../js/app.min.js"></script>
 	<script src="../../../js/jquery.1.9.1.js"></script>
+	<script src="../../../js/cropper.min.js"></script>
+	<script src="../../../js/exif.js"></script>
 	<script type="text/javascript">
 	    var jQuery = jQuery.noConflict();
 	</script>
-	<script src="../../../js/ajaxfileupload.js"></script>
-	<script src="../../../js/layer.js"></script>
 
     <script type="text/javascript">
         //var homePage = 'http://crm.lvnengxia.cn/index.php?controller=WXApp&action=index';
@@ -402,7 +404,7 @@
 			        	jQuery("#compName").html("<h5>公司名称："+rs.data.compName+"</h5>");
 			        	jQuery("#corporation").val(rs.data.corporation);
 			        	jQuery("#acreage").val(rs.data.roofAcreage);
-			        	//jQuery("#rongliang").val(rs.data.rongliang);
+			        	jQuery("#rongliang").val(rs.data.rongliang);
 			        	$("input[name='isProCard']").eq(rs.data.isProCard).attr("checked", "checked");
 			        	$("input[name='isLandCard']").eq(rs.data.isLandCard).attr("checked", "checked");
 			        	if(rs.data.isProCard=="0"){
@@ -707,37 +709,291 @@
 			        }
 			    });
 		    });
+		    
+		    
+	        mui(document.body).on('tap','.mui-action-home',function(){
+	            mui.back();
+	        });
+	         mui(document.body).on('tap','.goto-a',function(){
+	        	var sid = localStorage.getItem("sid");
+	    		var obj_sid = {};
+				obj_sid["sid"] = sid;
+				var sign = GetSign(obj_sid);
+				var param = {
+			        queryData: {
+			          'method': config.apimethod.logout,
+			          'sign':sign,
+			          'sid':sid
+			        },
+			        method: 'POST'
+			    }
+				$.dataRequest(param, function(rs) {
+					console.log(JSON.stringify(rs));
+					if(rs.rsp=="succ")
+	        		{
+	        			if(rs.data.status="true")
+	        			{
+	        			  	  localStorage.removeItem("sid");
+	        				  var wa = plus.nativeUI.showWaiting();
+				              var parent = plus.webview.currentWebview().opener();
+				              parent.reload(true);
+				              app.setState({});
+				              parent.addEventListener('loaded', function() {
+				                wa.close()
+				                mui.back();
+				                setTimeout(function(){
+				                  plus.webview.currentWebview().close();
+				                },300)
+				              });
+	        			}
+	        		}
+				})
+	        });
+	        mui(document.body).on('tap','.hyjfrz',function(){
+	            clicked('_www/view/member/pointlist/pointlist.html',{
+					'type': 1
+				});
+	        });
+	        mui(document.body).on('tap','.wdyqm',function(){
+	            clicked('_www/view/member/yqhy/yqhy.html',{
+					'type': 1
+				});
+	        });
+	        mui(document.body).on('tap','.wtjdhy',function(){
+	            clicked('_www/view/member/hylist/hylist.html',{
+					'type': 1
+				});
+	        });
+	        
+	        mui(document.body).on('tap','.znx',function(){
+	            clicked('_www/view/member/znx/znxlist.html',{
+					'type': 1
+				});
+	        });
+        	
+        	$('.action-camera').on('tap', function() {
+				jQuery('#sheet').css('display','none');
+                jQuery('.mui-backdrop').css('display','none');
+
+                /*var mask = mui.createMask(function(){
+                    mui.toast('图片上传中...');
+                });
+                mask.show();//显示遮罩*/
+                //mui.toast('图片上传中...');
+		        var cmr = plus.camera.getCamera();
+				
+				cmr.captureImage(function(p) {
+					plus.io.resolveLocalFileSystemURL(p, function(entry) {
+						cutImage(entry.toLocalURL());//裁剪图片，传入绝对地址
+						//var name = entry.toLocalURL().substr(entry.toLocalURL().lastIndexOf('/') + 1)
+						//appendFile(mask, "photo_pic1", entry.toLocalURL(), name);
+					}, function(e) {
+						console.log("读取拍照文件错误：" + e.message);
+					});
+				}, function(e) {
+					console.log("失败：" + e.message);
+				}, {
+					filename: "_doc/camera/",
+					index: 1
+				});
+			});
+			
+			$('.action-gallery').on('tap', function() {
+				jQuery('#sheet').css('display','none');
+                jQuery('.mui-backdrop').css('display','none');
+				plus.gallery.pick(function(a) {
+                    plus.io.resolveLocalFileSystemURL(a, function(entry) { 　　　　　　//entry为图片原目录（相册）流
+                        cutImage(entry.toLocalURL());
+                    }, function(e) {
+                        console.log("读取图片错误：" + e.message);
+                    });
+                }, function(a) {}, {
+					filter: "image"
+				})
+			});
+			
+			//裁剪图片
+            function cutImage(path) {
+                mui.openWindow({
+                    url: 'cropper.html',
+                    id: 'cropper',
+                    extras: {
+                        path: path,
+                    },
+                    show: {
+                        aniShow: 'zoom-fade-in',
+                        duration: 800
+                    },
+                    waiting: {
+                        autoShow: true
+                    }
+                });
+            }
+            
+            //更新用户头像，主要是裁剪页面裁剪完后触发的
+            //添加updateHeadImg自定义事件监听
+            window.addEventListener('updateHeadImg',function(event){
+                //获得事件参数
+	            var my_icon = event.detail.img_path;
+	            console.log("裁剪后的图片："+my_icon);
+              
+                var waiting = plus.nativeUI.showWaiting();
+				
+		        var obj_img_up = {};
+		        obj_img_up["from"] = "APP";
+		        obj_img_up["keyCode"] = "";
+		        obj_img_up["key"] = "HEAD";
+		        obj_img_up["imageFiles"] = my_icon;
+		        var sign = GetSign(obj_img_up);
+		        var param = {
+			        queryData: {
+			          'method': config.apimethod.imageupload,
+			          'sign':sign,
+			          'from':"APP",
+			          'keyCode':'',
+			          'key':"HEAD",
+			          'imageFiles':my_icon
+			        },
+			        method: 'POST'
+			    }
+		        $.dataRequest(param, function(rs) {
+			        if(rs.rsp=="succ")
+			        {
+			        	if(rs.data.success=="true"){
+			        		//mask.close();//关闭遮罩
+			        		waiting.close(); 
+		                    //inputnew.val(rs.data.bpic);
+		                    //jQuery('#'+hiddenid).val(rs.data.bpic);
+		                    //jQuery("#up-avatar").attr('src',rs.data.bpicShow);
+		                    var obj_head = {};
+		                    obj_head["sid"] = sid;
+		                    obj_head["imagePath"] = rs.data.bpic;
+		                    sign = GetSign(obj_head);
+		                    param = {
+						        queryData: {
+						          'method': config.apimethod.headimgup,
+						          'sign':sign,
+						          'sid':sid,
+						          'imagePath':rs.data.bpic
+						        },
+						        method: 'POST'
+						    }
+		                    $.dataRequest(param, function(rs1) {
+		                    	if(rs1.rsp=="succ")
+			        			{
+			        				if(rs1.data.success=="true"){
+			        					console.log(rs.data.bpicShow);
+			        					jQuery("#up-avatar").attr('src',rs.data.bpicShow);
+			        				}else
+			        				{
+			        					plus.nativeUI.toast("上传失败：" + rs.data.msg);
+										return;
+			        				}
+			        			}else
+			        			{
+			        				plus.nativeUI.toast("上传失败：" + rs.data);
+									return;
+			        			}
+		                    })
+			        	}else
+			        	{
+			        		plus.nativeUI.toast("上传失败：" + rs.data.msg);
+							return;
+			        	}
+			        }else
+			        {
+			        	plus.nativeUI.toast("上传失败：" + rs.data);
+						return;
+			        }
+			    });
+            });
+			
+			// 添加文件
+			function appendFile(mask, hiddenid, path, imgname) {
+				var img = new Image();
+				img.src = path; // 传过来的图片路径在这里用。
+				var img_id = '';
+				img.onload = function() {
+					var el = this;
+					//生成比例 
+					var w = el.width,
+						h = el.height;
+					if(w > h) {
+						var scale = w / h;
+						w = 1280 || w;
+						h = w / scale;
+					} else {
+						var scale = h / w;
+						h = 1280 || h;
+						w = h / scale;
+					}
+					//生成canvas
+					var canvas = document.createElement('canvas');
+					var ctx = canvas.getContext('2d');
+					if(w > h) {
+						$(canvas).attr({
+							width: w,
+							height: h
+						});
+						ctx.drawImage(el, 0, 0, w, h);
+					} else {
+						$(canvas).attr({
+							width: h,
+							height: w
+						});
+						ctx.drawImage(el, 0, 0, h, w);
+					}
+		
+					var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
+					upload(mask, hiddenid, path, base64, imgname);
+				}
+			}
+			
+			function upload(mask, hiddenid, localPath, base64, imagename) {
+				var waiting = plus.nativeUI.showWaiting();
+				
+		        var obj_img_up = {};
+		        obj_img_up["from"] = "APP";
+		        obj_img_up["keyCode"] = "";
+		        obj_img_up["key"] = "HEAD";
+		        obj_img_up["imageFiles"] = base64;
+		        var sign = GetSign(obj_img_up);
+		        var param = {
+			        queryData: {
+			          'method': config.apimethod.imageupload,
+			          'sign':sign,
+			          'from':"APP",
+			          'keyCode':'',
+			          'key':"HEAD",
+			          'imageFiles':base64
+			        },
+			        method: 'POST'
+			    }
+		        $.dataRequest(param, function(rs) {
+			        if(rs.rsp=="succ")
+			        {
+			        	if(rs.data.success=="true"){
+			        		mask.close();//关闭遮罩
+			        		waiting.close(); 
+		                    //inputnew.val(rs.data.bpic);
+		                    jQuery('#'+hiddenid).val(rs.data.bpic);
+		                    
+			        	}else
+			        	{
+			        		plus.nativeUI.toast("上传失败：" + rs.data.msg);
+							return;
+			        	}
+			        }else
+			        {
+			        	plus.nativeUI.toast("上传失败：" + rs.data);
+						return;
+			        }
+			    });
+			}
         });
 
-        mui(document.body).on('tap','.mui-action-home',function(){
-            clicked('_www/view/passport/login.html');
-        });
-        mui(document.body).on('tap','.goto-a',function(){
-            clicked('_www/view/passport/login.html');
-        });
-        mui(document.body).on('tap','.hyjfrz',function(){
-            clicked('_www/view/member/pointlist/pointlist.html',{
-				'type': 1
-			});
-        });
-        mui(document.body).on('tap','.wdyqm',function(){
-            clicked('_www/view/member/yqhy/yqhy.html',{
-				'type': 1
-			});
-        });
-        mui(document.body).on('tap','.wtjdhy',function(){
-            clicked('_www/view/member/hylist/hylist.html',{
-				'type': 1
-			});
-        });
-        
-        mui(document.body).on('tap','.znx',function(){
-            clicked('_www/view/member/znx/znxlist.html',{
-				'type': 1
-			});
-        });
        
-        $('.action-camera').on('tap', function() {
+        /*$('.action-camera').on('tap', function() {
 			jQuery('#sheet').css('display','none');
             jQuery('.mui-backdrop').css('display','none');
 
@@ -861,7 +1117,7 @@
 					return;
 		        }
 		    });
-		}
+		}*/
 
         //文件上传带预览
         /*function ajaxFileUploadview(imgid,hiddenid,url){
@@ -928,9 +1184,9 @@
             return false;
         }*/
 
-        function tb_remove(){
+        /*function tb_remove(){
             layer.close(t_layer); //执行关闭
-        }
+        }*/
 
         
     </script>

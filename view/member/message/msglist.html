@@ -265,9 +265,9 @@
         <header class="mui-bar mui-bar-nav">
             <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
             <h1 class="mui-title">留言列表</h1>
-            <a class="mui-pull-right href-go" href="http://test.lvnengxia.cn/index.php?controller=Jichu_AppMem_MemberComment&action=ToComment">
+             <div class="mui-pull-right href-go">
                 <i class="mui-icon mui-icon-compose"></i>
-            </a>
+            </div>
         </header>
         <div class="mui-content">
 	        <div class="pl-self pl-list-tip">
@@ -608,6 +608,10 @@
 		    
 		    mui(document.body).on('tap','.pl-self',function(){
 		    	clicked("_www/view/member/message/mymsglist.html");
+		    });
+		    
+		    mui(document.body).on('tap','.href-go',function(){
+		    	clicked("_www/view/member/message/sendmsg.html");
 		    });
 
 		</script>

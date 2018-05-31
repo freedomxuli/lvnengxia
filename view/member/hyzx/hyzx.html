@@ -495,42 +495,42 @@
 	    <section id="category_list">
 			<div class="center-content-div">
 	    		<div id="tzsy" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/tzxy.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/001.png" /></div>
 	    			<div class="center-content-div-flex-span">投资收益</div>
 	    		</div>
 	    		<div id="mhbj" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/sqjz.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/043.png" /></div>
 	    			<div class="center-content-div-flex-span">模糊报价</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			<a href="#sheet_1">
-		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/sqjz.png" /></div>
+		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/044.png" /></div>
 		    			<div class="center-content-div-flex-span">申请建站</div>
 	    			</a>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hdzs.png" /></div>
+	    		<div id="hdzs" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/039.png" /></div>
 	    			<div class="center-content-div-flex-span">活动专属</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
+	    		<div id="jfsc" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/041.png" /></div>
 	    			<div class="center-content-div-flex-span">积分商城</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hyzx.png" /></div>
+	    		<div id="hyzx" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/042.png" /></div>
 	    			<div class="center-content-div-flex-span">会员中心</div>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jzxz.png" /></div>
+	    		<div id="wddz" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/045.png" /></div>
 	    			<div class="center-content-div-flex-span">我的电站</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
-	    			<div id="yqhy" class="center-content-div-flex-span">邀请会员</div>
+	    		<div id="yqhy" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/038.png" /></div>
+	    			<div class="center-content-div-flex-span">邀请会员</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			
@@ -625,7 +625,7 @@
 				<div class="content-div-message-span">
 					留言列表
 				</div>
-				<div class="content-div-message-right">
+				<div id="fbly" class="content-div-message-right">
 					<span>发布留言　</span>
 					<img class="content-div-message-right-img" src="../../../img/hyzx/next.png" />
 				</div>
@@ -1168,8 +1168,80 @@
 					});
 			    });
 			    
+			    mui(document.body).on('tap','#hdzs',function(){
+			    	clicked('_www/view/member/hdzs/hdzs.html'); 
+			    });
+			    
+			    mui(document.body).on('tap','#jfsc',function(){
+			    	/*clicked('_www/view/member/jfsc/jfsc.html');*/
+			    	var obj_jf = {};
+					obj_jf["sid"] = sid;
+					var sign = GetSign(obj_jf);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.getshopurl,
+				          'sign':sign,
+				          'sid':sid
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+						if(rs.rsp=="succ")
+		        		{
+		        			if(rs.data.success="true")
+		        			{
+		        				console.log(rs.data.url);
+		        				clicked(rs.data.url);
+		        			}
+		        			else{
+		        				mui.toast("暂未开放");
+		        			}
+		        		}else{
+		        			mui.toast("暂未开放");
+		        		}
+					})
+			    });
+			    
+			    mui(document.body).on('tap','#wddz',function(){
+			    	/*clicked('_www/view/member/jfsc/jfsc.html');*/
+			    	var obj_jf = {};
+					obj_jf["sid"] = sid;
+					var sign = GetSign(obj_jf);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.getwddzurl,
+				          'sign':sign,
+				          'sid':sid
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+						if(rs.rsp=="succ")
+		        		{
+		        			if(rs.data.success="true")
+		        			{
+		        				console.log(rs.data.url);
+		        				clicked(rs.data.url);
+		        			}
+		        			else{
+		        				mui.toast("暂未开放");
+		        			}
+		        		}else{
+		        			mui.toast("暂未开放");
+		        		}
+					})
+			    });
+			    
+			    mui(document.body).on('tap','#fbly',function(){
+			    	clicked("_www/view/member/message/sendmsg.html");
+			    });
+			    
 			    mui(document.body).on('tap','.pl-footer',function(){
 			    	clicked("_www/view/member/message/msglist.html");
+			    });
+
+			    mui(document.body).on('tap','.div-bottom-list-span',function(){
+			    	clicked("_www/view/member/lxkf/lxkf.html");
 			    });
 			});
 
@@ -1450,38 +1522,38 @@
 		<script type="text/html" id="cat_list">
 			<div class="center-content-div">
 	    		<div id="tzsy" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/tzxy.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/001.png" /></div>
 	    			<div class="center-content-div-flex-span">投资收益</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			<a href="#sheet_1">
-		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/sqjz.png" /></div>
+		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/044.png" /></div>
 		    			<div class="center-content-div-flex-span">申请建站</div>
 	    			</a>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hdzs.png" /></div>
+	    		<div id="hdzs" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/039.png" /></div>
 	    			<div class="center-content-div-flex-span">活动专属</div>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
+	    		<div id="jfsc" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/041.png" /></div>
 	    			<div class="center-content-div-flex-span">积分商城</div>
 	    		</div>
 	    		<div id="member" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hyzx.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/042.png" /></div>
 	    			<div class="center-content-div-flex-span">会员中心</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jzxz.png" /></div>
+	    		<div id="wddz" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/045.png" /></div>
 	    			<div class="center-content-div-flex-span">我的电站</div>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
-	    			<div id="yqhy" class="center-content-div-flex-span">邀请会员</div>
+	    		<div id="yqhy" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/038.png" /></div>
+	    			<div class="center-content-div-flex-span">邀请会员</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			
@@ -1494,41 +1566,41 @@
 		<script type="text/html" id="cat_list2">
 			<div class="center-content-div">
 	    		<div id="tzsy" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/tzxy.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/001.png" /></div>
 	    			<div class="center-content-div-flex-span">投资收益</div>
 	    		</div>
 	    		<div id="mhbj" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/sqjz.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/043.png" /></div>
 	    			<div class="center-content-div-flex-span">模糊报价</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
 	    			<a href="#sheet_2">
-		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/sqjz.png" /></div>
+		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/044.png" /></div>
 		    			<div class="center-content-div-flex-span">申请建站</div>
 		    		</a>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hdzs.png" /></div>
+	    		<div id="hdzs" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/039.png" /></div>
 	    			<div class="center-content-div-flex-span">活动专属</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
+	    		<div id="jfsc" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/041.png" /></div>
 	    			<div class="center-content-div-flex-span">积分商城</div>
 	    		</div>
 	    		<div id="member" class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/hyzx.png" /></div>
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/042.png" /></div>
 	    			<div class="center-content-div-flex-span">会员中心</div>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jzxz.png" /></div>
+	    		<div id="wddz" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/045.png" /></div>
 	    			<div class="center-content-div-flex-span">我的电站</div>
 	    		</div>
-	    		<div class="center-content-div-flex">
-	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/jfsc.png" /></div>
+	    		<div id="yqhy" class="center-content-div-flex">
+	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/038.png" /></div>
 	    			<div class="center-content-div-flex-span">邀请会员</div>
 	    		</div>
 	    		<div class="center-content-div-flex">
