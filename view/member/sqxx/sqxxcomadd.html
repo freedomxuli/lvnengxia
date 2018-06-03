@@ -227,14 +227,14 @@
         </div>
         <div class="mui-input-row mui-input-btn-label mui-input-btn-label-bg">
             <label>投资模式</label>
-            <input type="text" name="isDaikText" placeholder="投资模式" id="isDaikText" value="" readonly>
+            <input type="text" name="isDaikText" placeholder="投资模式" id="isDaikText" value="全款" readonly>
             <button id='showIsDaik' data-select='' class="mui-btn mui-btn-block btn-select" type='button'><i class="mui-icon mui-icon-arrowdown"></i></button>
             <input class="select-hide" type="hidden" id="isDaik" name="isDaik" value="">
         </div>
         <div class="mui-input-row mui-input-btn-label display display-none">
             <label>贷款年限</label>
-            <input type="text" name="daikyearText" placeholder="贷款年限" id="daikyearText" value="" readonly>
-            <input class="select-hide" type="hidden" id="daikyear" name="daikyear" value="">
+            <input type="text" name="daikyearText" placeholder="贷款年限" id="daikyearText" value="5年" readonly>
+            <input class="select-hide" type="hidden" id="daikyear" name="daikyear" value="5">
         </div>
         <div class="mui-input-row display display-none">
             <label>借款人</label>
@@ -1296,7 +1296,7 @@ var homePage = 'http://test.lvnengxia.cn/index.php?controller=WXApp&action=index
 				        {
 				        	if(rs.data.status=="succ"){
 				        		plus.nativeUI.toast("保存成功");
-				        		clicked("_www/view/member/hyzx/hyzx.html");
+				        		mui.back();
 								//return;
 				        	}else
 				        	{
@@ -1321,7 +1321,7 @@ var homePage = 'http://test.lvnengxia.cn/index.php?controller=WXApp&action=index
 		        {
 		        	if(rs.data.status=="succ"){
 		        		plus.nativeUI.toast("保存成功");
-		        		clicked("_www/view/member/hyzx/hyzx.html");
+		        		mui.back();
 						//return;
 		        	}else
 		        	{

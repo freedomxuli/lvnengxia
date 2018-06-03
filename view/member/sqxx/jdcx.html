@@ -142,6 +142,20 @@
 		                       <%
 	                        		for(var j = 0;j < data[i].Slide.length;j++)
 	                        		{
+	                        			if(data[i].Slide[j].text=="户口簿整本(最多6张)")
+	                        			{
+	                        				for(var k = 0;k<data[i].Slide[j].image.length;k++)
+	                        				{
+	                        				%>
+	                        				<div class="mui-slider-item">
+				                                <a href="#">
+				                                    <img src="<%=data[i].Slide[j].image[k]%>">
+				                                    <p class="mui-slider-title"><%=data[i].Slide[j].text%></p>
+				                                </a>
+				                            </div>
+	                        				<%
+	                        				}
+	                        			}else{
 	                        			%>
 		                        			<div class="mui-slider-item">
 				                                <a href="#">
@@ -150,6 +164,7 @@
 				                                </a>
 				                            </div>
 			                            <%
+			                            }
 	                        		}
 	                        	%>
 	                            <div class="mui-slider-item mui-slider-item-duplicate">
@@ -221,7 +236,7 @@
 	    	console.log(JSON.stringify(rs));
 			if(rs.rsp=="succ")
 			{
-				console.log(JSON.stringify(rs.data));
+				console.log(JSON.stringify(rs.data[3]));
 				var result = template('jd_list', rs);
 				jQuery('.mui-after-content').html(result);
 				

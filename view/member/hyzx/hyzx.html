@@ -1258,15 +1258,17 @@
 	            mui.previewImage();
 			},2000);*/
 			
-			function loadMsg1(p_id){
+			function loadMsg1(plid,p_id){
 		    	var obj_msg = {};
 		    	obj_msg["sid"] = sid;
+		    	obj_msg["cid"] = plid;
 		    	var sign = GetSign(obj_msg);
 				var param = {
 			        queryData: {
-			          'method': config.apimethod.homemsglist,
+			          'method': config.apimethod.singlemsg,
 			          'sign':sign,
-			          'sid':sid
+			          'sid':sid,
+			          'cid':plid
 			        },
 			        method: 'POST'
 			    }
@@ -1429,7 +1431,7 @@
 						{
 							jQuery('.pl-input').css({'height':'auto'});
 		                    jQuery('.pl-btn').css({'height':'auto'});
-							loadMsg1(pid);
+							loadMsg1(plid,pid);
 							mui.toast(rs.data.msg);
 							hideSend();
 							return;
@@ -1610,93 +1612,119 @@
 		</script>
 		<script type="text/html" id="msg_list">
 			<ul class="mui-table-view">
-				 <li class="mui-table-view-cell mui-media list-pinglun"> 
-			 		<img class="mui-media-object mui-pull-left" src="<%=data.avatar%>" /> 
-				    <div class="mui-media-body">
-				      <%=data.com%> 
-				     <p class="mui-content-text"> <%=data.comment%></p> 
-				     <div class="image-content"> 
-				      <div class="box">
-				       <img data-lazyload="<%=data.pic[0].path%>" data-preview-src="" data-preview-group="<%=data.id%>" />
-				      </div> 
-				     </div> 
-				     <div class="mui-content-text"> 
-				      <span class="time-tip"><%=data.time%></span> 
-				      <div class="mui-pull-right"> 
-				       <div id="zan-a<%=data.id%>" class="a-btn zan-a"> 
-				       	<%if(data.isZan){
-				       		%>
-				       		<span class="mui-icon-extra mui-icon-extra-heart-filled"></span>赞&nbsp;<%=data.zannum%>
-				       		<%
-				       	}else{
-				       		%>
-				       		<span class="mui-icon-extra mui-icon-extra-heart"></span>赞&nbsp;<%=data.zannum%>
-				       		<%
-				       	}%>
-				       </div> 
-				       <div id="pl-a<%=data.id%>"  class="a-btn pinglun"> 
-				        <span class="mui-icon mui-icon-chatbubble"></span>评论&nbsp;<%=data.replynum%>  
-				       </div> 
-				       <div class="hidden-info plid-hide-<%=data.id%>" data-index="<%=data.id%>" data-pid="<%=data.id%>">
-				        <%=data.id%>
-				       </div> 
-				      </div> 
-				     </div> 
-				    </div> 
-				   <!-- 子评论列表 --> 
-				   <ul id="msg_son<%=data.id%>" class="mui-table-view mui-table-view-son"> 
-				    <div class="triangle triangle-up"></div> 
-				    <li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+				<%
+					for(var i = 0;i < data.length;i++)
+					{
+						%>
+						<li class="mui-table-view-cell mui-media list-pinglun"> 
+					 		<img class="mui-media-object mui-pull-left" src="<%=data[i].avatar%>" /> 
+						    <div class="mui-media-body">
+						      <%=data[i].com%> 
+						     <p class="mui-content-text"> <%=data[i].comment%></p> 
+						     <div class="image-content"> 
+						     	<%
+						     		if(data[i].pic)
+						     		{
+						     			for(var j = 0;j<data[i].pic.length;j++)
+						     			{
+						     				%>
+						     				 <div class="box">
+										       <img data-lazyload="<%=data[i].pic[j].path%>" data-preview-src="" data-preview-group="<%=data[i].id%>" />
+										      </div> 
+						     				<%
+						     			}
+						     		}
+						     	%>
+						     </div> 
+						     <div class="mui-content-text"> 
+						      <span class="time-tip"><%=data[i].time%></span> 
+						      <div class="mui-pull-right"> 
+						       <div id="zan-a<%=data[i].id%>" class="a-btn zan-a"> 
+						       	<%if(data[i].isZan){
+						       		%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart-filled"></span>赞&nbsp;<%=data[i].zannum%>
+						       		<%
+						       	}else{
+						       		%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart"></span>赞&nbsp;<%=data[i].zannum%>
+						       		<%
+						       	}%>
+						       </div> 
+						       <div id="pl-a<%=data[i].id%>"  class="a-btn pinglun"> 
+						        <span class="mui-icon mui-icon-chatbubble"></span>评论&nbsp;<%=data[i].replynum%>  
+						       </div> 
+						       <div class="hidden-info plid-hide-<%=data[i].id%>" data-index="<%=data[i].id%>" data-pid="<%=data[i].id%>">
+						        <%=data[i].id%>
+						       </div> 
+						      </div> 
+						     </div> 
+						    </div> 
+						   <!-- 子评论列表 --> 
+						   <ul id="msg_son<%=data[i].id%>" class="mui-table-view mui-table-view-son"> 
+						   	<%
+						   		if(data[i].reply&&data[i].reply.length>0){
+						   	%>
+						    <div class="triangle triangle-up"></div> 
+						    <%if(data[i].Zan){
+						    	%>
+						    <li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+						     <div class="mui-media-body"> 
+						      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
+						      <p id="zan-person<%=data[i].id%>" class="mui-content-text-son"> <%=data[i].Zan%> </p> 
+						     </div> 
+						    </li> 
+						    	<%
+						    }
+						    		for(var j = 0;j < data[i].reply.length; j++)
+							    	{
+							    		%>
+							    			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+										     <span class="mui-icon-tip mui-icon mui-icon-chatbubble"></span> 
+										     <img class="mui-media-object mui-pull-left" src="<%=data[i].reply[j].avatar%>" /> 
+										     <div class="mui-media-body pinglun-li-son show-pl-input">
+										       <%=data[i].reply[j].com%>
+										      <span class="mui-pull-right son-tip"><%=data[i].reply[j].date%></span> 
+										      <%
+										      	if(data[i].reply[j].level == 2)
+										      	{
+										      		%>
+										      		<p class="mui-content-text-son"><%=data[i].reply[j].comment%></p> 
+										      		<%
+										      	}else
+										      	{
+										      		%>
+										      		<p class="mui-content-text-son">回复<font color="#5C6D8F"><%=data[i].reply[j].rep%></font>：<%=data[i].reply[j].comment%></p> 
+										      		<%
+										      	}
+										      %>
+										      
+										     </div> 
+										     <div class="hidden-info plid-hide-<%=data[i].reply[j].id%>" data-index="<%=data[i].reply[j].id%>" data-pid="<%=data[i].id%>">
+										      <%=data[i].reply[j].id%>
+										     </div> 
+										    </li> 
+										<%
+							    	}
+						    	}
+						    %>
+						   </ul> 
+						 </li> 
+						<%
+					}
+				%>
+			</ul>
+		</script>
+		<script type="text/html" id="msg_list1">
+			<%if(data.Zan){
+    			%>
+        			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
 				     <div class="mui-media-body"> 
 				      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
 				      <p id="zan-person<%=data.id%>" class="mui-content-text-son"> <%=data.Zan%> </p> 
 				     </div> 
 				    </li> 
-				    <%
-				    	for(var i = 0;i < data.reply.length; i++)
-				    	{
-				    		%>
-				    			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
-							     <span class="mui-icon-tip mui-icon mui-icon-chatbubble"></span> 
-							     <img class="mui-media-object mui-pull-left" src="<%=data.reply[i].avatar%>" /> 
-							     <div class="mui-media-body pinglun-li-son show-pl-input">
-							       <%=data.reply[i].com%>
-							      <span class="mui-pull-right son-tip"><%=data.reply[i].date%></span> 
-							      <%
-							      	if(data.reply[i].level == 2)
-							      	{
-							      		%>
-							      		<p class="mui-content-text-son"><%=data.reply[i].comment%></p> 
-							      		<%
-							      	}else
-							      	{
-							      		%>
-							      		<p class="mui-content-text-son">回复<font color="#5C6D8F"><%=data.reply[i].rep%></font>：<%=data.reply[i].comment%></p> 
-							      		<%
-							      	}
-							      %>
-							      
-							     </div> 
-							     <div class="hidden-info plid-hide-37" data-index="<%=data.reply[i].id%>" data-pid="<%=data.id%>">
-							      <%=data.reply[i].id%>
-							     </div> 
-							    </li> 
-							<%
-				    	}
-				    %>
-				   </ul> 
-				 </li> 
-			</ul>
-		</script>
-		<script type="text/html" id="msg_list1">
-			<div class="triangle triangle-up"></div> 
-		    <li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
-		     <div class="mui-media-body"> 
-		      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
-		      <p id="zan-person<%=data.id%>" class="mui-content-text-son"> <%=data.Zan%> </p> 
-		     </div> 
-		    </li> 
-		    <%
+    			<%
+    			}
 		    	for(var i = 0;i < data.reply.length; i++)
 		    	{
 		    		%>

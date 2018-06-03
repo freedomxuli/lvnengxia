@@ -245,7 +245,7 @@
             <div class="image-box">
                 <a href="#sheet_0"><input type="file" accept="image/*;capture=camera" name="longShotFile" id="longShotFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -267,7 +267,7 @@
             <div class="image-box">
                 <a href="#sheet_1"><input type="file" accept="image/*;capture=camera" name="proCardFile" id="proCardFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -280,7 +280,7 @@
             <div class="image-box">
                 <a href="#sheet_2"><input type="file" accept="image/*;capture=camera" name="proContFile" id="proContFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -293,7 +293,7 @@
             <div class="image-box">
                 <a href="#sheet_3"><input type="file" accept="image/*;capture=camera" name="landCardFile" id="landCardFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -306,7 +306,7 @@
             <div class="image-box">
                 <a href="#sheet_4"><input type="file" accept="image/*;capture=camera" name="IDFrontFile" id="IDFrontFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class=" mui-img-remove">删除</i>
                     <img src="">
@@ -319,7 +319,7 @@
             <div class="image-box">
                 <a href="#sheet_5"><input type="file" accept="image/*;capture=camera" name="IDBackFile" id="IDBackFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -332,7 +332,7 @@
             <div class="image-box">
                 <a href="#sheet_6"><input type="file" accept="image/*;capture=camera" name="mateIDFrontFile" id="mateIDFrontFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -345,7 +345,7 @@
             <div class="image-box">
                 <a href="#sheet_7"><input type="file" accept="image/*;capture=camera" name="mateIDBackFile" id="mateIDBackFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -358,7 +358,7 @@
             <div class="image-box">
                 <a href="#sheet_8"><input type="file" accept="image/*;capture=camera" name="houseAppFile" id="houseAppFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove-house">删除</i>
                     <input type="hidden" name="houseAppPic" id="houseAppPic" value="">
@@ -370,7 +370,7 @@
             <div class="image-box">
                 <a href="#sheet_9"><input type="file" accept="image/*;capture=camera" name="bankCardFile" id="bankCardFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -383,7 +383,7 @@
             <div class="image-box">
                 <a href="#sheet_10"><input type="file" accept="image/*;capture=camera" name="marryCardFile" id="marryCardFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -396,7 +396,7 @@
             <div class="image-box">
                 <a href="#sheet_11"><input type="file" accept="image/*;capture=camera" name="singleCardFile" id="singleCardFile" class='up-image'></a>
                 <i class="up-image-btn"></i>
-                <div class="image-show-box ">
+                <div class="image-show-box block-dis">
                     <div class="gray-div-img">上传中...</div>
                     <i class="mui-img-remove">删除</i>
                     <img src="">
@@ -826,6 +826,7 @@
 		        	jQuery("#clientDate").val(rs.data.clientDate);
 		        	jQuery("#isDaik").val(rs.data.isDaik);
 		        	jQuery("#daikyear").val(rs.data.daikyear);
+		        	jQuery("#daikyearText").val(rs.data.daikyear+"年");
 		        	jQuery("#borrowName").val(rs.data.borrowName);
 		        	jQuery("#address").val(rs.data.address);
 		        	jQuery("#memo").val(rs.data.memo);
@@ -834,15 +835,43 @@
 		        	jQuery("#bankName").val(rs.data.bankName);
 		        	jQuery("#huBiaoName").val(rs.data.huBiaoName);
 		        	jQuery("#proCardPic").val(rs.data.proCardPic.bpic);
+		        	jQuery("#proCardPic").siblings("img").attr("src",rs.data.proCardPic.showPic);
 		        	jQuery("#proContPic").val(rs.data.proContPic.bpic);
+		        	jQuery("#proContPic").siblings("img").attr("src",rs.data.proContPic.showPic);
 		        	jQuery("#landCardPic").val(rs.data.landCardPic.bpic);
+		        	jQuery("#landCardPic").siblings("img").attr("src",rs.data.landCardPic.showPic);
+		        	
 		        	jQuery("#IDFrontPic").val(rs.data.IDFrontPic.bpic);
+		        	jQuery("#IDFrontPic").siblings("img").attr("src",rs.data.IDFrontPic.showPic);
 		        	jQuery("#IDBackPic").val(rs.data.IDBackPic.bpic);
+		        	jQuery("#IDBackPic").siblings("img").attr("src",rs.data.IDBackPic.showPic);
 		        	jQuery("#bankCardPic").val(rs.data.bankCardPic.bpic);
+		        	jQuery("#bankCardPic").siblings("img").attr("src",rs.data.bankCardPic.showPic);
 		        	jQuery("#houseAppPic").val(rs.data.houseAppPic.bpic);
+		        	if(rs.data.houseAppPic.bpic)
+		        	{
+		        		for(var i = 0;i<rs.data.houseAppPic.showPic.split(',').length;i++)
+		        		{
+		        			jQuery("#houseAppPic").before("<img src="+rs.data.houseAppPic.showPic.split(',')[i]+">");
+		        			//jQuery("#houseAppPic").siblings("img").attr("src",rs.data.houseAppPic.showPic);
+		        		}
+		        	}
 		        	jQuery("#longShotPic").val(rs.data.longShotPic.bpic);
-		        	//jQuery("#proCardPic").parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
-		        	//jQuery("#proCardPic").siblings("img").attr("src",rs.data.proCardPic.showPic);
+		        	jQuery("#longShotPic").siblings("img").attr("src",rs.data.longShotPic.showPic);
+		        	jQuery("#mateIDFrontPic").val(rs.data.mateIDFrontPic.bpic);
+		        	jQuery("#mateIDFrontPic").siblings("img").attr("src",rs.data.mateIDFrontPic.showPic);
+		        	jQuery("#mateIDBackPic").val(rs.data.mateIDBackPic.bpic);
+		        	jQuery("#mateIDBackPic").siblings("img").attr("src",rs.data.mateIDBackPic.showPic);
+		        	if(rs.data.marryCardPic)
+		        	{
+		        		jQuery("#marryCardPic").val(rs.data.marryCardPic.bpic);
+		        		jQuery("#marryCardPic").siblings("img").attr("src",rs.data.marryCardPic.showPic);
+		        	}
+		        	if(rs.data.singleCardPic)
+		        	{
+		        		jQuery("#singleCardPic").val(rs.data.singleCardPic.bpic);
+		        		jQuery("#singleCardPic").siblings("img").attr("src",rs.data.singleCardPic.showPic);
+		        	}
 		        	jQuery("#area_id1").val(rs.data.Areas.selected[0]);
 		        	jQuery("#area_id2").val(rs.data.Areas.selected[1]);
 		        	jQuery("#area_id3").val(rs.data.Areas.selected[2]);
@@ -1645,7 +1674,7 @@
 				        }*/
 				        jQuery('#houseAppPic').before("<img src="+rs.data.bpicShow+">");
 		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
-	                    houseAppPic = inputnew.val() + rs.data.bpic + ',';
+	                    houseAppPic = jQuery('#houseAppPic').val() + rs.data.bpic + ',';
 	                    inputnew.val(houseAppPic);
 	                    grayDiv.hide();
 	                    var num = jQuery('#houseAppPic').siblings('img').length;
@@ -1822,14 +1851,67 @@
         	var bankId = jQuery("#bankId").val();
         	var bankName = jQuery("#bankName").val();
         	var huBiaoName = jQuery("#huBiaoName").val();
-        	var proCardPic = jQuery("#proCardPic").val();
-        	var proContPic = jQuery("#proContPic").val();
-        	var landCardPic = jQuery("#landCardPic").val();
-        	var IDFrontPic = jQuery("#IDFrontPic").val();
-        	var IDBackPic = jQuery("#IDBackPic").val();
-        	var bankCardPic = jQuery("#bankCardPic").val();
-        	var houseAppPic = jQuery("#houseAppPic").val();
-        	var longShotPic = jQuery("#longShotPic").val();
+        	var proCardPic = "";
+        	if(jQuery("#proCardPic").val()!="[object Object]")
+        	{
+        		proCardPic = jQuery("#proCardPic").val();
+        	}
+        	var proContPic = "";
+        	if(jQuery("#proContPic").val()!="[object Object]")
+        	{
+        		proContPic = jQuery("#proContPic").val();
+        	}
+        	var landCardPic = "";
+        	if(jQuery("#landCardPic").val()!="[object Object]")
+        	{
+        		landCardPic = jQuery("#landCardPic").val();
+        	}
+        	var IDFrontPic = "";
+        	if(jQuery("#IDFrontPic").val()!="[object Object]")
+        	{
+        		IDFrontPic = jQuery("#IDFrontPic").val();
+        	}
+        	var IDBackPic = "";
+        	if(jQuery("#IDBackPic").val()!="[object Object]")
+        	{
+        		IDBackPic = jQuery("#IDBackPic").val();
+        	}
+        	var bankCardPic = "";
+        	if(jQuery("#bankCardPic").val()!="[object Object]")
+        	{
+        		bankCardPic = jQuery("#bankCardPic").val();
+        	}
+        	var houseAppPic = "";
+        	if(jQuery("#houseAppPic").val()!="[object Object]")
+        	{
+        		houseAppPic = jQuery("#houseAppPic").val();
+        	}
+        	var longShotPic = "";
+        	if(jQuery("#longShotPic").val()!="[object Object]")
+        	{
+        		longShotPic = jQuery("#longShotPic").val();
+        	}
+        	var mateIDFrontPic = "";
+        	if(jQuery("#mateIDFrontPic").val()!="[object Object]")
+        	{
+        		mateIDFrontPic = jQuery("#mateIDFrontPic").val();
+        	}
+        	var mateIDBackPic = "";
+        	if(jQuery("#mateIDBackPic").val()!="[object Object]")
+        	{
+        		mateIDBackPic = jQuery("#mateIDBackPic").val();
+        	}
+        	var marryCardPic = "";
+        	if(jQuery("#marryCardPic").val()!="[object Object]")
+        	{
+        		marryCardPic = jQuery("#marryCardPic").val();
+        	}
+        	var singleCardPic = "";
+        	if(jQuery("#singleCardPic").val()!="[object Object]")
+        	{
+        		singleCardPic = jQuery("#singleCardPic").val();
+        	}
+        	var rongliang = jQuery("#ApplyCapacityText").val();
         	var areaid1 = jQuery("#area_id1").val();
         	var areaid2 = jQuery("#area_id2").val();
         	var areaid3 = jQuery("#area_id3").val();
@@ -1860,6 +1942,11 @@
 			obj_add["bankCardPic"] = bankCardPic;
 			obj_add["houseAppPic"] = houseAppPic;
 			obj_add["longShotPic"] = longShotPic;
+			obj_add["mateIDFrontPic"] = mateIDFrontPic;
+			obj_add["mateIDBackPic"] = mateIDBackPic;
+			obj_add["marryCardPic"] = marryCardPic;
+			obj_add["singleCardPic"] = singleCardPic;
+			obj_add["rongliang"] = rongliang;
 			obj_add["areaid1"] = areaid1;
 			obj_add["areaid2"] = areaid2;
 			obj_add["areaid3"] = areaid3;
@@ -1894,6 +1981,11 @@
 				  'bankCardPic':bankCardPic,
 				  'houseAppPic':houseAppPic,
 				  'longShotPic':longShotPic,
+				  'mateIDFrontPic':mateIDFrontPic,
+				  'mateIDBackPic':mateIDBackPic,
+				  'marryCardPic':marryCardPic,
+				  'singleCardPic':singleCardPic,
+				  'rongliang':rongliang,
 				  'areaid1':areaid1,
 				  'areaid2':areaid2,
 				  'areaid3':areaid3,
@@ -1916,7 +2008,7 @@
 					        {
 					        	if(rs.data.status=="succ"){
 					        		plus.nativeUI.toast("保存成功");
-					        		clicked("_www/view/member/hyzx/hyzx.html");
+					        		mui.back();
 									//return;
 					        	}else
 					        	{
@@ -1941,7 +2033,7 @@
 			        {
 			        	if(rs.data.status=="succ"){
 			        		plus.nativeUI.toast("保存成功");
-			        		clicked("_www/view/member/hyzx/hyzx.html");
+			        		mui.back();
 							//return;
 			        	}else
 			        	{

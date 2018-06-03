@@ -168,8 +168,8 @@
 	            var mask = mui.createMask(function(){
 	                mui.toast('图片上传中...');
 	            });
-	            mask.show();//显示遮罩
-	            mui.toast('图片上传中...');
+	            /*mask.show();//显示遮罩
+	            mui.toast('图片上传中...');*/
 	            
 		        var cmr = plus.camera.getCamera();
 				
@@ -294,10 +294,10 @@
 	                    	var form = new FormData();
 		                    var input = jQuery('#commentPic');
 		                    form.append("upload", 1);
-		                    form.append(jQuery(input).attr('id'), rs.data.bpic);
+		                    form.append(jQuery(input).attr('id'), rs.data.imgId);
 		                    $uploaderFiles.append(jQuery(tmpl.replace('#url#', rs.data.bpicShow)));
 		                    var name = rs.data.bpic.split('/')[rs.data.bpic.split('/').length-1];
-		                    jQuery('#uploaderFiles li').last().removeClass('weui-uploader__file_status').addClass('picId_'+name.split('.')[0]).find('input').val(rs.data.bpic);
+		                    jQuery('#uploaderFiles li').last().removeClass('weui-uploader__file_status').addClass('picId_'+name.split('.')[0]).find('input').val(rs.data.imgId);
 	                    	var num = $uploaderFiles.children('li').length;
                     		if(num>=6) jQuery('.weui-uploader__input-box').css('display','none');
 			        	}else

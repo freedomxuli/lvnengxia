@@ -123,11 +123,23 @@
                     <div id="compName" class="mui-collapse-content border">
                         <h5>公司名称：</h5>
                     </div>
+                    <div id="fr" class="mui-collapse-content border">
+                        <h5>法　人：</h5>
+                    </div>
+                    <div id="fcmj" class="mui-collapse-content border">
+                        <h5>房产面积：</h5>
+                    </div>
+                    <div id="byqrl" class="mui-collapse-content border">
+                        <h5>变压器容量：</h5>
+                    </div>
                     <div id="isProCard" class="mui-collapse-content border">
                         <h5>是否有房产证：</h5>
                     </div>
                     <div id="isLandCard" class="mui-collapse-content border">
                         <h5>是否有土地证：</h5>
+                    </div>
+                    <div id="wdlx" class="mui-collapse-content border">
+                        <h5>屋顶类型：</h5>
                     </div>
                     <div class="mui-collapse-content border">
                     	<a class="wdyqm" href="javascript:void(0);">
@@ -390,6 +402,7 @@
 			        	jQuery("#up-avatar").attr('src',rs.data.headimgurl);
 			        	jQuery("#account").html("<h5>用户名："+rs.data.account+"</h5>");
 			        	jQuery("#name").html("<h5>姓　名："+rs.data.name+"</h5>");
+			        	jQuery("#addr").html("<h5>地　址："+rs.data.addr+"</h5>");
 			        	jQuery("#level").html("<h5>等　级："+rs.data.level+"</h5>");
 			        	jQuery("#point").html(rs.data.point);
 			        	if(rs.data.regType=="0")
@@ -402,8 +415,12 @@
 			        	jQuery("#roofId").val(rs.data.roofId);
 			        	jQuery("#submember").html(rs.data.submember);
 			        	jQuery("#compName").html("<h5>公司名称："+rs.data.compName+"</h5>");
+			        	jQuery("#fr").html("<h5>法　人："+rs.data.corporation+"</h5>");
+			        	jQuery("#fcmj").html("<h5>房产面积："+rs.data.acreage+"</h5>");
+			        	jQuery("#byqrl").html("<h5>变压器容量："+rs.data.rongliang+"</h5>");
+			        	jQuery("#wdlx").html("<h5>屋顶类型："+rs.data.roof+"</h5>");
 			        	jQuery("#corporation").val(rs.data.corporation);
-			        	jQuery("#acreage").val(rs.data.roofAcreage);
+			        	jQuery("#acreage").val(rs.data.acreage);
 			        	jQuery("#rongliang").val(rs.data.rongliang);
 			        	$("input[name='isProCard']").eq(rs.data.isProCard).attr("checked", "checked");
 			        	$("input[name='isLandCard']").eq(rs.data.isLandCard).attr("checked", "checked");

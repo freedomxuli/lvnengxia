@@ -815,6 +815,7 @@
 	    		console.log(JSON.stringify(rs));
 	    		if(rs.rsp=="succ")
 		        {
+		        	//console.log(JSON.stringify(rs.data.houseAppPic));
 		        	jQuery("#clientType").val(rs.data.clientType);
 		        	jQuery("#compName").val(rs.data.compName);
 		        	jQuery("#acreage").val(rs.data.acreage);
@@ -835,7 +836,7 @@
 		        	jQuery("#IDFrontPic").val(rs.data.IDFrontPic);
 		        	jQuery("#IDBackPic").val(rs.data.IDBackPic);
 		        	jQuery("#bankCardPic").val(rs.data.bankCardPic);
-		        	jQuery("#houseAppPic").val(rs.data.houseAppPic);
+		        	//jQuery("#houseAppPic").val(rs.data.houseAppPic);
 		        	jQuery("#longShotPic").val(rs.data.longShotPic);
 		        	//jQuery("#proCardPic").siblings("img").attr("src",rs.data.proCardPic.showPic);
 		        	jQuery("#area_id1").val(rs.data.Areas.selected[0]);
@@ -1603,12 +1604,12 @@
 		        if(rs.rsp=="succ")
 		        {
 		        	if(rs.data.success=="true"){
-		        		/*if (houseAppPic=='') {
+		        		/*if (jQuery('#houseAppPic').val()=='') {
 				            jQuery(imgown).parents('.image-box').find('img').remove();
-				        }*/
+				        } */
 				        jQuery('#houseAppPic').before("<img src="+rs.data.bpicShow+">");
-		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('img').attr('src',rs.data.bpicShow);
-	                    houseAppPic = houseAppPic + rs.data.bpic + ',';
+		        		jQuery(imgown).parents('.mui-popover').siblings('.mui-after-content').find('#'+newid).parents('.image-box').find('.image-show-box').show();
+	                    houseAppPic = jQuery('#houseAppPic').val() + rs.data.bpic + ',';
 	                    inputnew.val(houseAppPic);
 	                    grayDiv.hide();
 	                    var num = jQuery('#houseAppPic').siblings('img').length;
@@ -1650,7 +1651,7 @@
 			}, 'json');*/
 		}
 	    
-	    jQuery('.up-image-house').change(function(){
+	    /*jQuery('.up-image-house').change(function(){
 	        jQuery('.mui-popover').css('display','none');
 	        jQuery('.mui-popover').removeClass('mui-active');
 	        jQuery('.mui-backdrop').css('display','none');
@@ -1681,7 +1682,7 @@
 	        jQuery('#houseAppPic').before("<img src="+url+">");
 	        jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).parents('.image-box').find('.image-show-box').show();
 	
-	/*        $.ajax({
+	        $.ajax({
 	            url: img_url,
 	            type: "POST",
 	            processData: false,
@@ -1699,12 +1700,12 @@
 	                }
 	
 	            }
-	        });*/
+	        });
 	        var num = jQuery('#houseAppPic').siblings('img').length;
 	        console.log(num);
 	        if(num>=6) jQuery(that).parents('.mui-popover').siblings('.mui-after-content').find('#'+id).attr('disabled','disabled');
 	
-	    });
+	    });*/
 	
 	    //删掉当前图片
 	    jQuery('.mui-img-remove').click(function(){
@@ -1787,14 +1788,67 @@
         	var bankId = jQuery("#bankId").val();
         	var bankName = jQuery("#bankName").val();
         	var huBiaoName = jQuery("#huBiaoName").val();
-        	var proCardPic = jQuery("#proCardPic").val();
-        	var proContPic = jQuery("#proContPic").val();
-        	var landCardPic = jQuery("#landCardPic").val();
-        	var IDFrontPic = jQuery("#IDFrontPic").val();
-        	var IDBackPic = jQuery("#IDBackPic").val();
-        	var bankCardPic = jQuery("#bankCardPic").val();
-        	var houseAppPic = jQuery("#houseAppPic").val();
-        	var longShotPic = jQuery("#longShotPic").val();
+        	var proCardPic = "";
+        	if(jQuery("#proCardPic").val()!="[object Object]")
+        	{
+        		proCardPic = jQuery("#proCardPic").val();
+        	}
+        	var proContPic = "";
+        	if(jQuery("#proContPic").val()!="[object Object]")
+        	{
+        		proContPic = jQuery("#proContPic").val();
+        	}
+        	var landCardPic = "";
+        	if(jQuery("#landCardPic").val()!="[object Object]")
+        	{
+        		landCardPic = jQuery("#landCardPic").val();
+        	}
+        	var IDFrontPic = "";
+        	if(jQuery("#IDFrontPic").val()!="[object Object]")
+        	{
+        		IDFrontPic = jQuery("#IDFrontPic").val();
+        	}
+        	var IDBackPic = "";
+        	if(jQuery("#IDBackPic").val()!="[object Object]")
+        	{
+        		IDBackPic = jQuery("#IDBackPic").val();
+        	}
+        	var bankCardPic = "";
+        	if(jQuery("#bankCardPic").val()!="[object Object]")
+        	{
+        		bankCardPic = jQuery("#bankCardPic").val();
+        	}
+        	var houseAppPic = "";
+        	if(jQuery("#houseAppPic").val()!="[object Object]")
+        	{
+        		houseAppPic = jQuery("#houseAppPic").val();
+        	}
+        	var longShotPic = "";
+        	if(jQuery("#longShotPic").val()!="[object Object]")
+        	{
+        		longShotPic = jQuery("#longShotPic").val();
+        	}
+        	var mateIDFrontPic = "";
+        	if(jQuery("#mateIDFrontPic").val()!="[object Object]")
+        	{
+        		mateIDFrontPic = jQuery("#mateIDFrontPic").val();
+        	}
+        	var mateIDBackPic = "";
+        	if(jQuery("#mateIDBackPic").val()!="[object Object]")
+        	{
+        		mateIDBackPic = jQuery("#mateIDBackPic").val();
+        	}
+        	var marryCardPic = "";
+        	if(jQuery("#marryCardPic").val()!="[object Object]")
+        	{
+        		marryCardPic = jQuery("#marryCardPic").val();
+        	}
+        	var singleCardPic = "";
+        	if(jQuery("#singleCardPic").val()!="[object Object]")
+        	{
+        		singleCardPic = jQuery("#singleCardPic").val();
+        	}
+        	var rongliang = jQuery("#ApplyCapacityText").val();
         	var areaid1 = jQuery("#area_id1").val();
         	var areaid2 = jQuery("#area_id2").val();
         	var areaid3 = jQuery("#area_id3").val();
@@ -1825,6 +1879,11 @@
 			obj_add["bankCardPic"] = bankCardPic;
 			obj_add["houseAppPic"] = houseAppPic;
 			obj_add["longShotPic"] = longShotPic;
+			obj_add["mateIDFrontPic"] = mateIDFrontPic;
+			obj_add["mateIDBackPic"] = mateIDBackPic;
+			obj_add["marryCardPic"] = marryCardPic;
+			obj_add["singleCardPic"] = singleCardPic;
+			obj_add["rongliang"] = rongliang;
 			obj_add["areaid1"] = areaid1;
 			obj_add["areaid2"] = areaid2;
 			obj_add["areaid3"] = areaid3;
@@ -1859,6 +1918,11 @@
 				  'bankCardPic':bankCardPic,
 				  'houseAppPic':houseAppPic,
 				  'longShotPic':longShotPic,
+				  'mateIDFrontPic':mateIDFrontPic,
+				  'mateIDBackPic':mateIDBackPic,
+				  'marryCardPic':marryCardPic,
+				  'singleCardPic':singleCardPic,
+				  'rongliang':rongliang,
 				  'areaid1':areaid1,
 				  'areaid2':areaid2,
 				  'areaid3':areaid3,
@@ -1881,7 +1945,7 @@
 					        {
 					        	if(rs.data.status=="succ"){
 					        		plus.nativeUI.toast("保存成功");
-					        		clicked("_www/view/member/hyzx/hyzx.html");
+					        		mui.back();
 									//return;
 					        	}else
 					        	{
@@ -1906,7 +1970,7 @@
 			        {
 			        	if(rs.data.status=="succ"){
 			        		plus.nativeUI.toast("保存成功");
-			        		clicked("_www/view/member/hyzx/hyzx.html");
+			        		mui.back();
 							//return;
 			        	}else
 			        	{
