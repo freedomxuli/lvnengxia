@@ -266,6 +266,173 @@
 		        	console.log(JSON.stringify(obj));
 		        	jQuery("#state_subsidies_time").val(rs.data.state_subsidies_time);
 		        	jQuery("#fund_subsidy_time").val(rs.data.fund_subsidy_time);
+		        	
+			        mui(document.body).on('tap','.mui-action-home',function(){
+			            mui.back();
+			        });
+			
+			        mui(document.body).on('click','.moshi',function(){
+			            // mui.alert('11');
+			            var value = jQuery(this).val();
+			            if(value){
+			                var key = value+'_price';
+			                //默认价格
+			                var danjia = _json[key]['value'];
+			                jQuery('#price').val(danjia);
+			                jQuery('#price').change();
+			            }
+			            jQuery('#touzi_type').val(value);
+			        });
+			
+			        //贷款时间选择
+			        var loanYearPicker = new mui.PopPicker();
+			        var loanYearData = [];
+			        for(var i=1;i<=10;i++){
+			            loanYearData.push({
+			                value: i,
+			                text: '贷款'+i+'年'
+			            });
+			        }
+			        loanYearPicker.setData(loanYearData);
+			        var loan_year_btn = document.getElementById('loan_year_btn'); 
+			        loan_year_btn.addEventListener('tap', function(event) {
+			            loanYearPicker.show(function(items) {
+			                var result = items[0];
+			                jQuery('#loan_year').val(result.value);
+			                var btnTz = jQuery('#loan_year_btn');
+			                btnTz.text(result.text);
+			
+			                //选择贷款后改变利率
+			                if(result.value > 0){
+			                  var key = 'interest_rate_'+result.value;
+			                  var rate = _json[key]['value'];
+			                  jQuery('#year_rate').val(rate);
+			                }
+			            });
+			        }, false);
+			        //end
+			
+			        //改变单价的时候
+			        jQuery('#price').change(function(){
+			            setMoney();
+			        });
+			
+			        //计算装机容量：单独的
+			        jQuery('#ban_num').change(function(){
+			            var userBan = parseInt(jQuery(this).val())||0;
+			            var acreage_coefficient = parseFloat(_json.acreage_coefficient.value)||0;
+			            var rongliang = userBan * acreage_coefficient;
+			            rongliang = rongliang.toFixed(4);
+			            jQuery('#rongliang').val(rongliang);
+			            rongliangText = Math.floor(rongliang*100)/100;
+			            jQuery('#rongliangText').val(rongliangText);
+			            jQuery('#rongliang').change();
+			        });
+			        //装机容量调整后
+			        jQuery('#rongliang').change(function(){
+			            //计算年发电量
+			            setDianYear();
+			            setMoney();
+			        });
+			
+			        jQuery('#touzi_year').change(function(){
+			            var year = parseInt(jQuery('#touzi_year').val());
+			            if(isNaN(year))jQuery('#touzi_year').val(25);
+			            if(year > 50) mui.alert('确定能运营那么久？');
+			        });
+			
+			        jQuery('#ok-view').click(function(){
+			            var waiting = plus.nativeUI.showWaiting();
+			            var that = this;
+			            var key = ['touzi_type','rongliang','touzi_year','loan_year','touziShebei'];
+			            var data = {};
+			            data["sid"] = sid;
+			            for(var kk in key){
+			                data[key[kk]] = jQuery('#'+key[kk]).val();
+			            }
+			            var sign = GetSign(data);
+			            data["method"] = config.apimethod.pertzdetail;
+			            data["sign"] = sign;
+			            var param = {
+					        queryData:data,
+					        method: 'POST'
+					    }
+			            $.dataRequest(param, function(rs) {
+			            	console.log(JSON.stringify(rs));
+			            	waiting.close();
+			            	if(rs.rsp=="succ")
+					        {
+					        	if(rs.data.status=="succ"){
+					        		jQuery('#touzi_rate').val(rs.data.shouyilv);
+			                    	jQuery('#huibenyear').val(rs.data.huibenYear);
+			                    	var allHtml = [];
+				                    for(var kl in rs.data.view){
+				                        if(kl == 0 || rs.data.view[kl].num == '合计'){
+				                            if(kl == 0){
+				                                rs.data.view[kl].num = "第"+rs.data.view[kl].num+"年";
+				                            }
+				                            var _html = substitute(jQuery('#mui_card_first').html(),rs.data.view[kl]);
+				                            allHtml.push(_html);
+				                        }else{
+				                            rs.data.view[kl].num = "第"+rs.data.view[kl].num+"年";
+				                            var _html = substitute(jQuery('#mui_card_after').html(),rs.data.view[kl]);
+				                            allHtml.push(_html);
+				                        }
+				                    }
+				                    jQuery('.mui-card-container').html(allHtml.join(''));
+					        	}else
+					        	{
+					        		plus.nativeUI.toast("获取收益明细失败：" + rs.data.msg);
+									return;
+					        	}
+					        }else
+					        {
+					        	plus.nativeUI.toast("获取收益明细失败：" + rs.res);
+								return;
+					        }
+			            });
+			        });
+			        
+				    //m默认选择全款投资模式
+				    setTimeout(function(){
+				        jQuery('.moshi:first').trigger('click');
+				    },100);
+				
+					function setMoney(){
+					    //计算设备投资
+					    var Rongliang = parseFloat(jQuery('#rongliang').val())||0;
+					    var price = parseFloat(jQuery('#price').val())||0;
+					    var Money = toDecimal(Rongliang*price*1000);
+					    jQuery('#touziShebei').val(Money);
+					}
+					//计算第一年年发电量
+					function setDianYear(){
+					    var rongliang = parseFloat(jQuery('#rongliang').val())||0;
+					    var year_time = parseFloat(_json.year_time.value)||0;
+					    var yearDian  = toDecimal(rongliang * year_time);
+					    jQuery('#yearDian').val(yearDian);
+					}
+					
+					//保留两位小数
+					//功能：将浮点数四舍五入，取小数点后2位
+					function toDecimal(x) {
+					    var f = parseFloat(x);
+					    if (isNaN(f)) {
+					        return x;
+					    }
+					    f = Math.round(x*100)/100;
+					    return f;
+					}
+					
+					function substitute(str,o,regexp){
+					
+					  return  str.replace(regexp || /\\?\{([^{}]+)\}/g, function (match, name) {
+					
+					    return (o[name] === undefined) ? '' : o[name];
+					
+					  });
+					
+					}
 		        }else
 		        {
 		        	plus.nativeUI.toast("获取失败：" + rs.data);
@@ -273,202 +440,7 @@
 		        }
 		    });
     	}
-    	
-        mui(document.body).on('tap','.mui-action-home',function(){
-            mui.back();
-        });
-
-        mui(document.body).on('click','.moshi',function(){
-            // mui.alert('11');
-            var value = jQuery(this).val();
-            if(value){
-                var key = value+'_price';
-                //默认价格
-                var danjia = _json[key]['value'];
-                jQuery('#price').val(danjia);
-                jQuery('#price').change();
-            }
-            jQuery('#touzi_type').val(value);
-        });
-
-        //贷款时间选择
-        var loanYearPicker = new mui.PopPicker();
-        var loanYearData = [];
-        for(var i=1;i<=10;i++){
-            loanYearData.push({
-                value: i,
-                text: '贷款'+i+'年'
-            });
-        }
-        loanYearPicker.setData(loanYearData);
-        var loan_year_btn = document.getElementById('loan_year_btn'); 
-        loan_year_btn.addEventListener('tap', function(event) {
-            loanYearPicker.show(function(items) {
-                var result = items[0];
-                jQuery('#loan_year').val(result.value);
-                var btnTz = jQuery('#loan_year_btn');
-                btnTz.text(result.text);
-
-                //选择贷款后改变利率
-                if(result.value > 0){
-                  var key = 'interest_rate_'+result.value;
-                  var rate = _json[key]['value'];
-                  jQuery('#year_rate').val(rate);
-                }
-            });
-        }, false);
-        //end
-
-        //改变单价的时候
-        jQuery('#price').change(function(){
-            setMoney();
-        });
-
-        //计算装机容量：单独的
-        jQuery('#ban_num').change(function(){
-            var userBan = parseInt(jQuery(this).val())||0;
-            var acreage_coefficient = parseFloat(_json.acreage_coefficient.value)||0;
-            var rongliang = userBan * acreage_coefficient;
-            rongliang = rongliang.toFixed(4);
-            jQuery('#rongliang').val(rongliang);
-            rongliangText = Math.floor(rongliang*100)/100;
-            jQuery('#rongliangText').val(rongliangText);
-            jQuery('#rongliang').change();
-        });
-        //装机容量调整后
-        jQuery('#rongliang').change(function(){
-            //计算年发电量
-            setDianYear();
-            setMoney();
-        });
-
-        jQuery('#touzi_year').change(function(){
-            var year = parseInt(jQuery('#touzi_year').val());
-            if(isNaN(year))jQuery('#touzi_year').val(25);
-            if(year > 50) mui.alert('确定能运营那么久？');
-        });
-
-        jQuery('#ok-view').click(function(){
-            var waiting = plus.nativeUI.showWaiting();
-            var that = this;
-            var key = ['touzi_type','rongliang','touzi_year','loan_year','touziShebei'];
-            var data = {};
-            data["sid"] = sid;
-            for(var kk in key){
-                data[key[kk]] = jQuery('#'+key[kk]).val();
-            }
-            var sign = GetSign(data);
-            data["method"] = config.apimethod.pertzdetail;
-            data["sign"] = sign;
-            var param = {
-		        queryData:data,
-		        method: 'POST'
-		    }
-            $.dataRequest(param, function(rs) {
-            	waiting.close();
-            	if(rs.rsp=="succ")
-		        {
-		        	if(rs.data.status=="succ"){
-		        		jQuery('#touzi_rate').val(rs.data.shouyilv);
-                    	jQuery('#huibenyear').val(rs.data.huibenYear);
-                    	var allHtml = [];
-	                    for(var kl in rs.data.view){
-	                        if(kl == 0 || rs.data.view[kl].num == '合计'){
-	                            if(kl == 0){
-	                                rs.data.view[kl].num = "第"+rs.data.view[kl].num+"年";
-	                            }
-	                            var _html = substitute(jQuery('#mui_card_first').html(),rs.data.view[kl]);
-	                            allHtml.push(_html);
-	                        }else{
-	                            rs.data.view[kl].num = "第"+rs.data.view[kl].num+"年";
-	                            var _html = substitute(jQuery('#mui_card_after').html(),rs.data.view[kl]);
-	                            allHtml.push(_html);
-	                        }
-	                    }
-	                    jQuery('.mui-card-container').html(allHtml.join(''));
-		        	}else
-		        	{
-		        		plus.nativeUI.toast("获取收益明细失败：" + rs.data.msg);
-						return;
-		        	}
-		        }else
-		        {
-		        	plus.nativeUI.toast("获取收益明细失败：" + rs.data);
-					return;
-		        }
-            });
-            
-/*            jQuery.post(_url,data,function(dlist){
-                if(dlist.status == 'succ'){
-                    jQuery('#touzi_rate').val(dlist.shouyilv);
-                    jQuery('#huibenyear').val(dlist.huibenYear);
-                    var allHtml = [];
-                    for(var kl in dlist.view){
-                        if(kl == 0 || dlist.view[kl].num == '合计'){
-                            if(kl == 0){
-                                dlist.view[kl].num = "第"+dlist.view[kl].num+"年";
-                            }
-                            var _html = substitute(jQuery('#mui_card_first').html(),dlist.view[kl]);
-                            allHtml.push(_html);
-                        }else{
-                            dlist.view[kl].num = "第"+dlist.view[kl].num+"年";
-                            var _html = substitute(jQuery('#mui_card_after').html(),dlist.view[kl]);
-                            allHtml.push(_html);
-                        }
-                    }
-                    jQuery('.mui-card-container').html(allHtml.join(''));
-
-                }else{
-                    if(!dlist.msg){
-                        dlist['msg'] = '计算失败';
-                    }
-                    mui.alert(dlist.msg);
-                }
-            },'json');*/
-
-        });
     });
-
-    //m默认选择全款投资模式
-    setTimeout(function(){
-        jQuery('.moshi:first').trigger('click');
-    },100);
-
-	function setMoney(){
-	    //计算设备投资
-	    var Rongliang = parseFloat(jQuery('#rongliang').val())||0;
-	    var price = parseFloat(jQuery('#price').val())||0;
-	    var Money = toDecimal(Rongliang*price*1000);
-	    jQuery('#touziShebei').val(Money);
-	}
-	//计算第一年年发电量
-	function setDianYear(){
-	    var rongliang = parseFloat(jQuery('#rongliang').val())||0;
-	    var year_time = parseFloat(_json.year_time.value)||0;
-	    var yearDian  = toDecimal(rongliang * year_time);
-	    jQuery('#yearDian').val(yearDian);
-	}
-	
-	//保留两位小数
-	//功能：将浮点数四舍五入，取小数点后2位
-	function toDecimal(x) {
-	    var f = parseFloat(x);
-	    if (isNaN(f)) {
-	        return x;
-	    }
-	    f = Math.round(x*100)/100;
-	    return f;
-	}
-	
-	function substitute(str,o,regexp){
-	
-	  return  str.replace(regexp || /\\?\{([^{}]+)\}/g, function (match, name) {
-	
-	    return (o[name] === undefined) ? '' : o[name];
-	
-	  });
-	
-	}
 
 </script>
 </html>

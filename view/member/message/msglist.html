@@ -366,14 +366,17 @@
 						setTimeout(function() {
 							mui('#pullrefresh').pullRefresh().endPullupToRefresh((count > rs.data.pageCount)); //参数为true代表没有更多数据了。
 							//var table = document.body.querySelector('.mui-table-view');
+							document.body.removeAttribute('data-imagelazyload');
 							var list = template("msg_list",rs.data);
 							jQuery('.main-class').append(list);
 							boxImgHeight();
 							document.body.removeAttribute('data-imagelazyload');
 							//懒加载
-				            mui(document).imageLazyload({
-				                placeholder: 'Resource/Image/userimg.png'
+				            var lazyLoad = mui(document).imageLazyload({
+				                placeholder: '../../../img/load.gif',
+				                destroy: false
 				            });
+				            lazyLoad.refresh(true);
 				            //图片预览:会覆盖a标签跳转
 				            mui.previewImage();
 						},2000);

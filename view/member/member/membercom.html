@@ -438,7 +438,7 @@
 			        	}
 			        }else
 			        {
-			        	plus.nativeUI.toast("获取个人信息失败：" + rs.data);
+			        	//plus.nativeUI.toast("获取个人信息失败：" + rs.data);
 						return;
 			        }
 			   })
@@ -564,6 +564,7 @@
 			        {
 			        	if(rs.data.success=="true"){
 			        		plus.nativeUI.toast("修改成功");
+			        		loadData();
 							return;
 			        	}else
 			        	{
@@ -618,6 +619,7 @@
 			        {
 			        	if(rs.data.success=="true"){
 			        		plus.nativeUI.toast("修改成功");
+			        		loadData();
 							return;
 			        	}else
 			        	{
@@ -683,6 +685,7 @@
 				}
 		    	var obj_save = {};
 		    	obj_save["sid"] = sid;
+		    	obj_save["realName"] = realName;
 		    	obj_save["corporation"] = corporation;
 		    	obj_save["acreage"] = acreage;
 		    	obj_save["rongliang"] = rongliang;
@@ -696,6 +699,7 @@
 			          'method': config.apimethod.savecom,
 			          'sign':sign,
 			          'sid':sid,
+			          'realName':realName,
 			          'corporation':corporation,
 			          'acreage':acreage,
 			          'rongliang':rongliang,
@@ -713,6 +717,7 @@
 			        {
 			        	if(rs.data.success=="true"){
 			        		plus.nativeUI.toast("保存成功");
+			        		loadData();
 							return;
 			        	}else
 			        	{

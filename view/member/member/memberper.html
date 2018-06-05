@@ -330,6 +330,7 @@
 				        method: 'POST'
 				    }
 				    $.dataRequest(param, function(rs) {
+				    	console.log(JSON.stringify(rs));
 				   		waiting.close();
 				   		if(rs.rsp=="succ")
 				        {
@@ -339,6 +340,7 @@
 				        	jQuery("#addr").html("<h5>地　址："+rs.data.addr+"</h5>");
 				        	jQuery("#level").html("<h5>等　级："+rs.data.level+"</h5>");
 				        	jQuery("#point").html(rs.data.point);
+				        	jQuery("#submember").html(rs.data.submember);
 				        	if(rs.data.regType=="0")
 				        		jQuery("#regType").html("<h5>类　型：私宅</h5>");
 				        	else
@@ -360,7 +362,7 @@
 
 				        }else
 				        {
-				        	plus.nativeUI.toast("获取个人信息失败：" + rs.data);
+				        	//plus.nativeUI.toast("获取个人信息失败：" + rs.data);
 							return;
 				        }
 				    })
@@ -487,6 +489,7 @@
 				        {
 				        	if(rs.data.success=="true"){
 				        		plus.nativeUI.toast("修改成功");
+				        		loadData();
 								return;
 				        	}else
 				        	{
@@ -541,6 +544,7 @@
 				        {
 				        	if(rs.data.success=="true"){
 				        		plus.nativeUI.toast("修改成功");
+				        		loadData();
 								return;
 				        	}else
 				        	{
@@ -621,6 +625,7 @@
 				        {
 				        	if(rs.data.success=="true"){
 				        		plus.nativeUI.toast("保存成功");
+				        		loadData();
 								return;
 				        	}else
 				        	{
@@ -664,8 +669,8 @@
 					              parent.reload(true);
 					              app.setState({});
 					              parent.addEventListener('loaded', function() {
-					                wa.close()
-					                mui.back();
+					                wa.close();
+					                plus.runtime.quit();
 					                setTimeout(function(){
 					                  plus.webview.currentWebview().close();
 					                },300)

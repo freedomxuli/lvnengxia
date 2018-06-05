@@ -105,7 +105,7 @@
                 </div>
                 <div class="mui-input-row">
                     <label>发电比例</label>
-                    <input type="number" name='qy_year_time' id='qy_year_time' value="1150"  readonly>
+                    <input type="number" name='qy_year_time' id='qy_year_time' value=""  readonly>
                 </div>
                 <div class="mui-input-row">
                     <label>年发电量</label>
@@ -128,7 +128,7 @@
                 <h5>投资概况</h5>
                 <div class="mui-input-row">
                     <label>业主自投比例(%)</label>
-                    <input type="text" name='zitoubili' id='zitoubili' class="mui-input" value="30" placeholder="自投比例" readonly>
+                    <input type="text" name='zitoubili' id='zitoubili' class="mui-input" value="" placeholder="自投比例" readonly>
                 </div>
                 <div class="mui-input-row">
                     <label id="zitouMoney_title">自投金额(元)</label>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="mui-input-row">
                     <label>银行融资比例(%)</label>
-                    <input type="number" name='rongzibili' id='rongzibili' placeholder="融资比例" value="70" readonly>
+                    <input type="number" name='rongzibili' id='rongzibili' placeholder="融资比例" value="" readonly>
                 </div>
                 <div class="mui-input-row">
                     <label id="rongziMoney_title">银行融资金额(元)</label>
@@ -353,6 +353,10 @@
 		        waiting.close(); 
 		        if(rs.rsp=="succ")
 		        {
+		        	jQuery("#by_rongliang").val(rs.data.by_rongliang);
+		        	jQuery("#qy_year_time").val(rs.data.qy_year_time);
+		        	jQuery("#zitoubili").val(rs.data.qy_business_touzi);
+		        	jQuery("#rongzibili").val(rs.data.qy_bank_touzi);
 		        	var obj = {};
 		        	obj["qy_full_payment_price"] = {"text":"企业全款单价","value":rs.data.qy_full_payment_price};
 		        	obj["qy_loan_price"] = {"text":"企业贷款单价","value":rs.data.qy_loan_price};

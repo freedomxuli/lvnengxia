@@ -819,7 +819,8 @@
 		        	jQuery("#clientType").val(rs.data.clientType);
 		        	jQuery("#compName").val(rs.data.compName);
 		        	jQuery("#acreage").val(rs.data.acreage);
-		        	jQuery("#applyCapacity").val(rs.data.applyCapacity);
+		        	jQuery("#ApplyCapacityText").val(rs.data.applyCapacity);
+		        	jQuery("#ApplyCapacity").val(rs.data.applyCapacity);
 		        	jQuery("#clientDate").val(rs.data.clientDate);
 		        	jQuery("#isDaik").val(rs.data.isDaik);
 		        	jQuery("#daikyear").val(rs.data.daikyear);
@@ -870,6 +871,29 @@
 				        	for(var i = 0;i<rs1.data.Area[0].length;i++)
 				        	{
 				        		city1[rs1.data.Area[0][i].text] = rs1.data.Area[0][i].value;
+				        		if(rs1.data.Area[0][i].value==rs.data.Areas.selected[0])
+				        			jQuery('#area_text1').val(rs1.data.Area[0][i].text);
+				        	}
+				        	pickerArea[2].setData(rs.data.Areas.Area[1]);
+				        	for(var i = 0;i<rs.data.Areas.Area[1].length;i++)
+				        	{
+				        		city2[rs.data.Areas.Area[1][i].text] = rs.data.Areas.Area[1][i].value;
+				        		if(rs.data.Areas.Area[1][i].value==rs.data.Areas.selected[1])
+				        			jQuery('#area_text2').val(rs.data.Areas.Area[1][i].text);
+				        	}
+				        	pickerArea[3].setData(rs.data.Areas.Area[2]);
+				        	for(var i = 0;i<rs.data.Areas.Area[2].length;i++)
+				        	{
+				        		city3[rs.data.Areas.Area[2][i].text] = rs.data.Areas.Area[2][i].value;
+				        		if(rs.data.Areas.Area[2][i].value==rs.data.Areas.selected[2])
+				        			jQuery('#area_text3').val(rs.data.Areas.Area[2][i].text);
+				        	}
+				        	pickerArea[4].setData(rs.data.Areas.Area[3]);
+				        	for(var i = 0;i<rs.data.Areas.Area[3].length;i++)
+				        	{
+				        		city4[rs.data.Areas.Area[3][i].text] = rs.data.Areas.Area[3][i].value;
+				        		if(rs.data.Areas.Area[3][i].value==rs.data.Areas.selected[3])
+				        			jQuery('#area_text4').val(rs.data.Areas.Area[3][i].text);
 				        	}
 				        	setdq();
 				        	changedq(1);
@@ -962,7 +986,7 @@
 		    jQuery('.area-text').change(function(){
 		        var that = this;
 		        var curLevel = parseInt(jQuery(this).siblings('button').data('level'))||1;
-		        jQuery(this).siblings('input[type=hidden]').val(obj[jQuery(this).val()]);
+		        //jQuery(this).siblings('input[type=hidden]').val(obj[jQuery(this).val()]);
 		        curLevel = curLevel+1;
 		        console.log(curLevel);
 		        //强制清空下级所有数据
@@ -1050,7 +1074,6 @@
 	    			pickerArea[llevel].show(function(items) {
 		                forInput && forInput.val(items[0]['text']);
 		                forVal && forVal.val(items[0]['value']);
-	
 		                if(oldVal!=items[0]['text'])forInput.change();
 		            });
 	    		});
@@ -1235,6 +1258,10 @@
 			var img_obj = {};
 	
 	    });*/
+	   
+	    jQuery(document.body).on('tap','.mui-action-home',function(){
+            clicked('_www/view/member/hyzx/hyzx.html');
+        });
 	    
 	    $('.cancel_div').on('tap', function() { 
 	    	jQuery('.mui-popover').css('display','none');
@@ -1934,7 +1961,7 @@
 	        if(_rule!=''){
 	            var btnArray = ['否', '是'];
 	            mui.confirm('您有信息未填写完整，完整度越高申请通过率越大，是否完善信息？',null,btnArray,function(e) {
-	                if (e.index == 1) {
+	                if (e.index == 0) {
 	                	waiting.close();
 	                    return;
 	                } else {
@@ -1945,7 +1972,7 @@
 					        {
 					        	if(rs.data.status=="succ"){
 					        		plus.nativeUI.toast("保存成功");
-					        		mui.back();
+					        		clicked("_www/view/member/sqxx/jdcx.html");
 									//return;
 					        	}else
 					        	{
@@ -1970,7 +1997,7 @@
 			        {
 			        	if(rs.data.status=="succ"){
 			        		plus.nativeUI.toast("保存成功");
-			        		mui.back();
+			        		clicked("_www/view/member/sqxx/jdcx.html");
 							//return;
 			        	}else
 			        	{

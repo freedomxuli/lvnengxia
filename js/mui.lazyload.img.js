@@ -78,7 +78,7 @@
 				});
 			};
 			img.src = uri;
-			element.removeAttribute('data-lazyload'); //鍙皾璇曚竴娆★紝鍚庣画鍙兘鏀寔澶氭灏濊瘯
+			element.removeAttribute('data-lazyload'); //只尝试一次，后续可能支持多次尝试
 		},
 		handle: function(element, key) {
 			var uri = element.getAttribute('data-lazyload');

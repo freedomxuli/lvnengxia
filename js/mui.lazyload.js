@@ -4,13 +4,12 @@
 		init: function(element, options) {
 			var self = this;
 			this.container = this.element = element;
-			//			placeholder //榛樿鍥剧墖
 			this.options = $.extend({
-				selector: '', //鏌ヨ鍝簺鍏冪礌闇€瑕乴azyload
-				diff: false, //璺濈瑙嗙獥搴曢儴澶氬皯鍍忕礌鍑哄彂lazyload
-				force: false, //寮哄埗鍔犺浇(涓嶈鍏冪礌鏄惁鍦ㄦ槸瑙嗙獥鍐�)
-				autoDestroy: true, //鍏冪礌鍔犺浇瀹屽悗鏄惁鑷姩閿€姣佸綋鍓嶆彃浠跺璞�
-				duration: 100 //婊戝姩鍋滄澶氫箙鍚庡紑濮嬪姞杞�
+				selector: '',
+				diff: false,
+				force: false,
+				autoDestroy: true,
+				duration: 100
 			}, options);
 
 			this._key = 0;
@@ -34,30 +33,30 @@
 		},
 		_initLoadFn: function() {
 			var self = this;
-			self._loadFn = this._buffer(function() { // 鍔犺浇寤惰繜椤�
-				if(self.options.autoDestroy && self._counter == 0 && $.isEmptyObject(self._callbacks)) {
+			self._loadFn = this._buffer(function() { // 加载延迟项
+				if (self.options.autoDestroy && self._counter == 0 && $.isEmptyObject(self._callbacks)) {
 					self.destroy();
 				}
 				self._loadItems();
 			}, self.options.duration, self);
 		},
 		/**
-		 *鏍规嵁鍔犺浇鍑芥暟瀹炵幇鍔犺浇鍣�
-		 *@param {Function} load 鍔犺浇鍑芥暟
-		 *@returns {Function} 鍔犺浇鍣�
+		 *根据加载函数实现加载器
+		 *@param {Function} load 加载函数
+		 *@returns {Function} 加载器
 		 */
 		_createLoader: function(load) {
 			var value, loading, handles = [],
 				h;
 			return function(handle) {
-				if(!loading) {
+				if (!loading) {
 					loading = true;
 					load(function(v) {
 						value = v;
-						while(h = handles.shift()) {
+						while (h = handles.shift()) {
 							try {
 								h && h.apply(null, [value]);
-							} catch(e) {
+							} catch (e) {
 								setTimeout(function() {
 									throw e;
 								}, 0)
@@ -65,7 +64,7 @@
 						}
 					})
 				}
-				if(value) {
+				if (value) {
 					handle && handle.apply(null, [value]);
 					return value;
 				}
@@ -80,7 +79,7 @@
 			var ms = ms || 150;
 
 			function run() {
-				if(timer) {
+				if (timer) {
 					timer.cancel();
 					timer = 0;
 				}
@@ -90,21 +89,21 @@
 			}
 
 			return $.extend(function() {
-				if(
-					(!lastStart) || // 浠庢湭杩愯杩�
-					(lastEnd >= lastStart && $.now() - lastEnd > ms) || // 涓婃杩愯鎴愬姛鍚庡凡缁忚秴杩噈s姣
-					(lastEnd < lastStart && $.now() - lastStart > ms * 8) // 涓婃杩愯鎴栨湭瀹屾垚锛屽悗8*ms姣
+				if (
+					(!lastStart) || // 从未运行过
+					(lastEnd >= lastStart && $.now() - lastEnd > ms) || // 上次运行成功后已经超过ms毫秒
+					(lastEnd < lastStart && $.now() - lastStart > ms * 8) // 上次运行或未完成，后8*ms毫秒
 				) {
 					run();
 				} else {
-					if(timer) {
+					if (timer) {
 						timer.cancel();
 					}
 					timer = $.later(run, ms, null, arguments);
 				}
 			}, {
 				stop: function() {
-					if(timer) {
+					if (timer) {
 						timer.cancel();
 						timer = 0;
 					}
@@ -114,7 +113,7 @@
 		_getBoundingRect: function(c) {
 			var vh, vw, left, top;
 
-			if(c !== undefined) {
+			if (c !== undefined) {
 				vh = c.offsetHeight;
 				vw = c.offsetWidth;
 				var offset = $.offset(c);
@@ -140,6 +139,7 @@
 			var right = left + vw;
 			var bottom = top + vh;
 
+
 			left -= diffX0;
 			right += diffX1;
 			top -= diffY0;
@@ -152,13 +152,13 @@
 			};
 		},
 		_cacheWidth: function(el) {
-			if(el._mui_lazy_width) {
+			if (el._mui_lazy_width) {
 				return el._mui_lazy_width;
 			}
 			return el._mui_lazy_width = el.offsetWidth;
 		},
 		_cacheHeight: function(el) {
-			if(el._mui_lazy_height) {
+			if (el._mui_lazy_height) {
 				return el._mui_lazy_height;
 			}
 			return el._mui_lazy_height = el.offsetHeight;
@@ -173,7 +173,7 @@
 		},
 		_elementInViewport: function(elem, windowRegion, containerRegion) {
 			// display none or inside display none
-			if(!elem.offsetWidth) {
+			if (!elem.offsetWidth) {
 				return false;
 			}
 			var elemOffset = $.offset(elem);
@@ -190,22 +190,22 @@
 
 			inWin = this._isCross(windowRegion, elemRegion);
 
-			if(inWin && containerRegion) {
+			if (inWin && containerRegion) {
 				inContainer = this._isCross(containerRegion, elemRegion);
 			}
-			// 纭繚鍦ㄥ鍣ㄥ唴鍑虹幇
-			// 骞朵笖鍦ㄨ绐楀唴涔熷嚭鐜�
+			// 确保在容器内出现
+			// 并且在视窗内也出现
 			return inContainer && inWin;
 		},
 		_loadItems: function() {
 			var self = this;
 			// container is display none
-			if(self._containerIsNotDocument && !self.container.offsetWidth) {
+			if (self._containerIsNotDocument && !self.container.offsetWidth) {
 				return;
 			}
 			self._windowRegion = self._getBoundingRect();
 
-			if(self._containerIsNotDocument) {
+			if (self._containerIsNotDocument) {
 				self._containerRegion = self._getBoundingRect(this.container);
 			}
 			$.each(self._callbacks, function(key, callback) {
@@ -215,22 +215,22 @@
 		_loadItem: function(key, callback) {
 			var self = this;
 			callback = callback || self._callbacks[key];
-			if(!callback) {
+			if (!callback) {
 				return true;
 			}
 			var el = callback.el;
 			var remove = false;
 			var fn = callback.fn;
-			if(self.options.force || self._elementInViewport(el, self._windowRegion, self._containerRegion)) {
+			if (self.options.force || self._elementInViewport(el, self._windowRegion, self._containerRegion)) {
 				try {
 					remove = fn.call(self, el, key);
-				} catch(e) {
+				} catch (e) {
 					setTimeout(function() {
 						throw e;
 					}, 0);
 				}
 			}
-			if(remove !== false) {
+			if (remove !== false) {
 				delete self._callbacks[key];
 			}
 			return remove;
@@ -245,8 +245,8 @@
 			var key = ++this._key;
 			callbacks[key] = callback;
 
-			// add 绔嬪嵆妫€娴嬶紝闃叉棣栧睆鍏冪礌闂
-			if(self._windowRegion) {
+			// add 立即检测，防止首屏元素问题
+			if (self._windowRegion) {
 				self._loadItem(key, callback);
 			} else {
 				self.refresh();
@@ -256,20 +256,16 @@
 			var self = this;
 			self._counter = self._counter || 0;
 			var lazyloads = [];
-			if(!elements && self.options.selector) {
+			if (!elements && self.options.selector) {
 				lazyloads = self.container.querySelectorAll(self.options.selector);
 			} else {
 				$.each(elements, function(index, el) {
 					lazyloads = lazyloads.concat($.qsa(self.options.selector, el));
 				});
 			}
-			//addElements鏃讹紝鑷姩鍒濆鍖栦竴娆�
-			if(self._containerIsNotDocument) {
-				self._containerRegion = self._getBoundingRect(self.container);
-			}
 			$.each(lazyloads, function(index, el) {
-				if(!el.getAttribute('data-lazyload-id')) {
-					if(self.addElement(el)) {
+				if (!el.getAttribute('data-lazyload-id')) {
+					if (self.addElement(el)) {
 						el.setAttribute('data-lazyload-id', mid++);
 						self.addCallback(el, self.handle);
 					}
@@ -280,47 +276,47 @@
 			return true;
 		},
 		handle: function() {
-			//throw new Error('闇€瀛愮被瀹炵幇');
+			//throw new Error('需子类实现');
 		},
 		refresh: function(check) {
-			if(check) { //妫€鏌ユ柊鐨刲azyload
+			if (check) { //检查新的lazyload
 				this.addElements();
 			}
 			this._loadFn();
 		},
 		pause: function() {
 			var load = this._loadFn;
-			if(this._destroyed) {
+			if (this._destroyed) {
 				return;
 			}
 			window.removeEventListener('scroll', load);
-			window.removeEventListener($.EVENT_MOVE, load);
+			window.removeEventListener('touchmove', load);
 			window.removeEventListener('resize', load);
-			if(this._containerIsNotDocument) {
+			if (this._containerIsNotDocument) {
 				this.container.removeEventListener('scrollend', load);
 				this.container.removeEventListener('scroll', load);
-				this.container.removeEventListener($.EVENT_MOVE, load);
+				this.container.removeEventListener('touchmove', load);
 			}
 		},
 		resume: function() {
 			var load = this._loadFn;
-			if(this._destroyed) {
+			if (this._destroyed) {
 				return;
 			}
 			window.addEventListener('scroll', load, false);
-			window.addEventListener($.EVENT_MOVE, load, false);
+			window.addEventListener('touchmove', load, false);
 			window.addEventListener('resize', load, false);
-			if(this._containerIsNotDocument) {
+			if (this._containerIsNotDocument) {
 				this.container.addEventListener('scrollend', load, false);
 				this.container.addEventListener('scroll', load, false);
-				this.container.addEventListener($.EVENT_MOVE, load, false);
+				this.container.addEventListener('touchmove', load, false);
 			}
 		},
 		destroy: function() {
 			var self = this;
 			self.pause();
 			self._callbacks = {};
-			$.trigger(this.container, 'destroy', self);
+			$.trigger(this.container, 'destory', self);
 			self._destroyed = 1;
 		}
 	});

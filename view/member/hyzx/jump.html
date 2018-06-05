@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+	<meta charset="UTF-8">
+	<title></title>
+		
+    <style type="text/css">
+        html, body
+        {
+            margin: 0px 0px;
+            width: 100%;
+            height: 100%;
+        }
+        iframe
+        {
+            margin: 0px 0px;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+    	iframeHeight()
+        function iframeHeight() {
+            document.getElementById('iframeId').height="100%";
+        }
+    </script>
 	</head>
 	<body>
-		<iframe width="100%" height="100%" src="http://emstest.lvnengxia.cn/index.php?controller=App_Index&action=index&sid=gu3svupl67e1rvpradtlv3pj06&token=f8ff982a12968bb6bd0566e91a4f0ceb">
-			
-		</iframe>
+		<iframe id="iframeId" frameborder="0" scrolling="no" src="http://emstest.lvnengxia.cn/index.php?controller=App_Index&action=index&sid=app_11api8b0dg4jid2emmepvpvsh7&token=f927d12a06b642df8d9a5ee0960cf77b" />
 	</body>
 </html>
