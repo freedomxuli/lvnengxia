@@ -734,7 +734,7 @@
 		    
 		    
 	        mui(document.body).on('tap','.mui-action-home',function(){
-	            mui.back();
+	            clicked("_www/view/member/hyzx/hyzx.html");
 	        });
 	         mui(document.body).on('tap','.goto-a',function(){
 	        	var sid = localStorage.getItem("sid");
@@ -761,8 +761,8 @@
 				              parent.reload(true);
 				              app.setState({});
 				              parent.addEventListener('loaded', function() {
-				                wa.close()
-				                mui.back();
+				                wa.close();
+				                plus.runtime.quit();
 				                setTimeout(function(){
 				                  plus.webview.currentWebview().close();
 				                },300)

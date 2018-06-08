@@ -204,7 +204,7 @@
 	mui.plusReady(function(){
 		//首页
 	    mui(document.body).on('tap','.mui-action-home',function(){
-	        mui.back();
+	        clicked("_www/view/member/hyzx/hyzx.html");
 	    });
 	    mui(document.body).on('tap','.edit-client',function(){
 	        clicked("_www/view/member/sqxx/sqxxedit.html",{
@@ -236,7 +236,11 @@
 	    	console.log(JSON.stringify(rs));
 			if(rs.rsp=="succ")
 			{
-				console.log(JSON.stringify(rs.data[3]));
+				console.log(JSON.stringify(rs));
+				for(var i = 0;i<rs.data.length;i++)
+				{
+					rs.data[i].clientDate = timestampToTime(rs.data[i].clientDate);
+				}
 				var result = template('jd_list', rs);
 				jQuery('.mui-after-content').html(result);
 				
@@ -253,6 +257,16 @@
 				return;
 			}
 		})
+	    function timestampToTime(timestamp) {
+	        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+	        Y = date.getFullYear() + '-';
+	        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+	        D = date.getDate() + ' ';
+	        h = date.getHours() + ':';
+	        m = date.getMinutes() + ':';
+	        s = date.getSeconds();
+	        return Y+M+D;
+	    }
 	})
 </script>
 </html>

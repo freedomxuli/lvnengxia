@@ -1178,7 +1178,10 @@
 
 	
 	    // mui('.mui-scroll-wrapper').scroll();
-	
+		//首页
+	    mui(document.body).on('tap','.mui-action-home',function(){
+	        clicked("_www/view/member/sqxx/jdcx.html");
+	    });
 	    //日期选择
 	    var btns = mui('.btn-date');
 	    btns.each(function(i, btn) {

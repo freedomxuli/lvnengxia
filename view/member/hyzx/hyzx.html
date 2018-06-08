@@ -67,7 +67,7 @@
 	    	}
 	    	.center-content-div{
 	    		background-color: #FFFFFF;
-	    		border-bottom: 1px solid #CCCCCC;
+	    		border-bottom: 1px solid #efefef;
 	    		display: flex;
 	    		flex-direction: row;
 	    		align-items: center;
@@ -470,10 +470,10 @@
 		    	</div>
 		    	<div class="top-div-center">
 		    		<div id="tel" class="top-div-center-tel">
-		    			13584388072
+		    			
 		    		</div>
 		    		<div id="name" class="top-div-center-name">
-		    			XXX
+		    			
 		    		</div>
 		    		<div class="top-div-center-name">
 		    			<span id="level">您是：会员等级</span><span id="point" class="top-div-center-name-span"></span>
@@ -973,7 +973,10 @@
 			var sid = localStorage.getItem("sid");
 			var box_width = "";
 			mui.init({
-					swipeBack:true //启用右滑关闭功能
+					swipeBack:true, //启用右滑关闭功能
+					keyEventBind:{
+						backbutton:false
+					}
 				});
 			mui.plusReady(function() {
 				var regType = 0;
@@ -1026,14 +1029,14 @@
 			    {
 			    	var obj_member = {};
 					obj_member["sid"] = sid;
-					obj_member["type"] = 'simple';
+					obj_member["type"] = 'detailed';
 					var sign = GetSign(obj_member);
 					var param = {
 				        queryData: {
 				          'method': config.apimethod.member,
 				          'sign':sign,
 				          'sid':sid,
-				          'type':'simple'
+				          'type':'detailed'
 				        },
 				        method: 'POST'
 				   }
@@ -1042,7 +1045,10 @@
 				        if(rs.rsp=="succ")
 				        {
 				        	jQuery("#tel").html(rs.data.account);
-			        		jQuery("#name").html(rs.data.name);
+				        	if(rs.data.regType=="1")
+			        			jQuery("#name").html(rs.data.compName);
+			        		else
+			        			jQuery("#name").html(rs.data.name);
 			        		jQuery("#level").html("您是："+rs.data.level);
 			        		jQuery("#point").html("　"+rs.data.point);
 			        		jQuery("#img-head").attr("src",rs.data.headimgurl);
@@ -1123,6 +1129,8 @@
 				        {
 				        	var result = template('pic_list', rs);
 				        	jQuery('#pic').html(result);
+				        	var result1 = template('pic_dots',rs);
+				        	jQuery('.mui-slider-indicator').html(result1);
 				        }else
 				        {
 				        	//plus.nativeUI.toast("获取个人信息失败：" + rs.data);
@@ -1523,6 +1531,24 @@
 					<img src="<%=data[0].imageurl%>">
 				</a>
 			</div>
+		</script>
+		<script type="text/html" id="pic_dots">
+			<%
+				for(var i = 0;i<data.length;i++)
+				{
+					if(i==0)
+					{
+						%>
+							<div class="mui-indicator mui-active"></div>
+						<%
+					}else
+					{
+						%>
+							<div class="mui-indicator"></div>
+						<%
+					}
+				}
+			%>
 		</script>
 		<script type="text/html" id="cat_list">
 			<div class="center-content-div">
