@@ -173,7 +173,7 @@
                             <input id='inputToken' type="hidden" value="1841017fc608adb5bfcac61d1057241a">
                             <div class="mui-input-row">
                                 <label>姓名</label>
-                                <input type="text" class="mui-input-clear" placeholder="姓名" name="realName" id="realName" value="英航工作室">
+                                <input type="text" class="mui-input-clear" placeholder="姓名" name="realName" id="realName" value="">
                             </div>
                             <div class="mui-input-row">
                                 <label>法人</label>
@@ -419,6 +419,7 @@
 			        	jQuery("#fcmj").html("<h5>房产面积："+rs.data.acreage+"</h5>");
 			        	jQuery("#byqrl").html("<h5>变压器容量："+rs.data.rongliang+"</h5>");
 			        	jQuery("#wdlx").html("<h5>屋顶类型："+rs.data.roof+"</h5>");
+			        	jQuery("#realName").val(rs.data.name);
 			        	jQuery("#corporation").val(rs.data.corporation);
 			        	jQuery("#acreage").val(rs.data.acreage);
 			        	jQuery("#rongliang").val(rs.data.rongliang);
