@@ -1200,7 +1200,7 @@
 		        			if(rs.data.success="true")
 		        			{
 		        				console.log(rs.data.url);
-		        				clicked(rs.data.url);
+		        				plus.runtime.openURL(rs.data.url);
 		        			}
 		        			else{
 		        				mui.toast("暂未开放");
