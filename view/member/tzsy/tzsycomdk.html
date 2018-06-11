@@ -201,13 +201,13 @@
 
                 <h5>电价详情</h5>
                 <div class="mui-input-row">
-                    <label style="width:100% !important;">自用比例：95%，￥1.26</label>
+                    <label style="width:100% !important;">自用比例：<span id="zybl"></span>%，￥<span id="zyjg"></span></label>
                 </div>
                 <div class="mui-input-row">
-                    <label style="width:100% !important;">上网比例：5%，￥0.76</label>
+                    <label style="width:100% !important;">上网比例：<span id="swbl"></span>%，￥<span id="swjg"></span></label>
                 </div>
                 <div class="mui-input-row">
-                    <label style="width:100% !important;">国家补贴：￥0.37</label>
+                    <label style="width:100% !important;">国家补贴：￥<span id="gjbt"></span></label>
                 </div>
                 <div class="mui-input-row">
                     <label>运营期/年</label>
@@ -379,6 +379,11 @@
 		        	obj["by_rongliang"] = {"text":"变压器容量","value":rs.data.by_rongliang};
 		        	
 		        	_json = obj;
+		        	jQuery("#gjbt").html(rs.data.qy_state_subsidies_rate);
+		        	jQuery("#zybl").html(rs.data.qy_use_rate);
+		        	jQuery("#zyjg").html(rs.data.qy_use_rate_price);
+		        	jQuery("#swbl").html(rs.data.qy_connect_rate);
+		        	jQuery("#swjg").html(rs.data.qy_connect_rate_price);
 		        	
 			        //ajax自动加载金额
 			        autoAjaxPrice();

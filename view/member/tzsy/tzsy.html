@@ -119,7 +119,7 @@
                 </div>
                 <h5>补贴情况</h5>
                 <div class="mui-input-row">
-                    <label>国家补贴:0.37元/度,年限</label>
+                    <label>国家补贴:<span id="gjbt"></span>元/度,年限</label>
                     <input type="text" name='state_subsidies_time' id='state_subsidies_time' placeholder="补贴年限" value="20" readonly>
                 </div>
                 <div class="mui-input-row">
@@ -137,10 +137,10 @@
                 </div>
                 <h5>收益分析</h5>
                 <div class="mui-input-row">
-                    <label style="width:100% !important;">自用比例：20%，￥0.55</label>
+                    <label style="width:100% !important;">自用比例：<span id="zybl"></span>%，￥<span id="zyjg"></span></label>
                 </div>
                 <div class="mui-input-row">
-                    <label style="width:100% !important;">上网比例：80%，￥0.391</label>
+                    <label style="width:100% !important;">上网比例：<span id="swbl"></span>%，￥<span id="swjg"></span></label>
                 </div>
                 <div class="mui-input-row">
                     <label>运营期/年</label>
@@ -266,6 +266,12 @@
 		        	console.log(JSON.stringify(obj));
 		        	jQuery("#state_subsidies_time").val(rs.data.state_subsidies_time);
 		        	jQuery("#fund_subsidy_time").val(rs.data.fund_subsidy_time);
+		        	
+		        	jQuery("#gjbt").html(rs.data.state_subsidies);
+		        	jQuery("#zybl").html(rs.data.use_rate);
+		        	jQuery("#zyjg").html(rs.data.use_rate_price);
+		        	jQuery("#swbl").html(rs.data.connect_rate);
+		        	jQuery("#swjg").html(rs.data.connect_rate_price);
 		        	
 			        mui(document.body).on('tap','.mui-action-home',function(){
 			            mui.back();
