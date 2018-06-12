@@ -70,6 +70,8 @@
 	    obj_jd["pid"] = pid;
 	    obj_jd["itemCode"] = itemCode;
 	    obj_jd["itemValue"] = itemValue;
+	    obj_jd["method"] = config.apimethod.xmjdmxcx;
+		obj_jd["version"] = config.apiversion;
 	    var sign = GetSign(obj_jd);
 	    var param = {
 	        queryData: {

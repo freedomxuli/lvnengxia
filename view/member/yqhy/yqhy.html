@@ -90,6 +90,8 @@
 				var waiting = plus.nativeUI.showWaiting();
       			var obj_yq = {};
       			obj_yq["sid"] = sid;
+      			obj_yq["method"] = config.apimethod.ewmget;
+            	obj_yq["version"] = config.apiversion;
       			var sign = GetSign(obj_yq);
       			var param = {
 			        queryData: {

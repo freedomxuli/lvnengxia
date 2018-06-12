@@ -202,6 +202,8 @@
 	    
 	    var obj_jd ={};
 	    obj_jd["sid"] = sid;
+	    obj_jd["method"] = config.apimethod.comjzjd;
+		obj_jd["version"] = config.apiversion;
 	    var sign = GetSign(obj_jd);
 	    var param = {
 	        queryData: {

@@ -225,6 +225,8 @@
     		var waiting = plus.nativeUI.showWaiting();
     		var obj_pertzinfo = {};
 	    	obj_pertzinfo["sid"] = sid;
+	    	obj_pertzinfo["method"] = config.apimethod.pertzinfo;
+			obj_pertzinfo["version"] = config.apiversion;
 	    	var sign = GetSign(obj_pertzinfo);
 	    	var param = {
 		        queryData: {
@@ -356,6 +358,8 @@
 			            for(var kk in key){
 			                data[key[kk]] = jQuery('#'+key[kk]).val();
 			            }
+			            data["method"] = config.apimethod.pertzdetail;
+						data["version"] = config.apiversion;
 			            var sign = GetSign(data);
 			            data["method"] = config.apimethod.pertzdetail;
 			            data["sign"] = sign;

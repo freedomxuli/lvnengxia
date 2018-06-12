@@ -73,7 +73,8 @@
 		var obj_znx = {};
 		obj_znx["sid"] = sid;
 		obj_znx["mid"] = mid;
-
+		obj_znx["method"] = config.apimethod.znxdetail;
+        obj_znx["version"] = config.apiversion;
 		var sign = GetSign(obj_znx);
 		var param = {
 	        queryData: {

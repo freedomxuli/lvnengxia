@@ -271,6 +271,8 @@
 		        obj_img_up["keyCode"] = "";
 		        obj_img_up["key"] = "COMMENT";
 		        obj_img_up["imageFiles"] = base64;
+		        obj_img_up["method"] = config.apimethod.imageupload;
+				obj_img_up["version"] = config.apiversion;
 		        var sign = GetSign(obj_img_up);
 		        var param = {
 			        queryData: {
@@ -398,6 +400,8 @@
                 obj_pl["comment"] = comment;
                 obj_pl["commentPic"] = pic;
                 obj_pl["sid"] = sid;
+                obj_pl["method"] = config.apimethod.addmsg;
+				obj_pl["version"] = config.apiversion;
                 var sign = GetSign(obj_pl);
                 var param_xx = {
 			        queryData: {

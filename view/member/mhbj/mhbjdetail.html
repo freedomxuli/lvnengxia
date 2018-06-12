@@ -295,6 +295,8 @@
 	    	obj_mhbjinfo["sid"] = sid;
 	    	obj_mhbjinfo["offerCode"] = offerCode;
 	    	obj_mhbjinfo["rongliang"] = rongliang;
+	    	obj_mhbjinfo["method"] = config.apimethod.comtzmbdetail;
+			obj_mhbjinfo["version"] = config.apiversion;
 	    	var sign = GetSign(obj_mhbjinfo);
 	    	var param = {
 		        queryData: {
@@ -313,6 +315,8 @@
 		        	var obj_member = {};
 					obj_member["sid"] = sid;
 					obj_member["type"] = 'detailed';
+					obj_member["method"] = config.apimethod.member;
+					obj_member["version"] = config.apiversion;
 					var sign1 = GetSign(obj_member);
 					var param1 = {
 				        queryData: {

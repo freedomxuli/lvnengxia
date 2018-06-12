@@ -87,6 +87,8 @@
     		var waiting = plus.nativeUI.showWaiting();
     		var obj_mhbjinfo = {};
 	    	obj_mhbjinfo["sid"] = sid;
+	    	obj_mhbjinfo["method"] = config.apimethod.comtzmblist;
+			obj_mhbjinfo["version"] = config.apiversion;
 	    	var sign = GetSign(obj_mhbjinfo);
 	    	var param = {
 		        queryData: {

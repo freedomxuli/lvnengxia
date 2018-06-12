@@ -776,6 +776,8 @@
 		id = plus.webview.currentWebview().pid;
 		var obj_xx = {};
 		obj_xx['sid'] = sid;
+		obj_xx["method"] = config.apimethod.isinfoget;
+		obj_xx["version"] = config.apiversion;
 		var sign = GetSign(obj_xx);
 		var param_xx = {
 	        queryData: {
@@ -802,6 +804,8 @@
 			var perjzinfo = {};
 	    	perjzinfo["sid"] = sid;
 	    	perjzinfo["id"] = id;
+	    	perjzinfo["method"] = config.apimethod.perjzinfo;
+			perjzinfo["version"] = config.apiversion;
 	    	var sign = GetSign(perjzinfo);
 	    	var param = {
 		        queryData: {
@@ -933,6 +937,8 @@
 		        	var val_area = {};
 				    val_area["mid"] = "";
 				    val_area["timestamp"] = new Date().getTime();
+				    val_area["method"] = config.apimethod.arealist;
+					val_area["version"] = config.apiversion;
 				    var sign_area = GetSign(val_area);
 				    var param_area = {
 				        queryData: {
@@ -1062,6 +1068,8 @@
 		        var val_obj = {};
 				val_obj["areaid"] = area_id;
 				val_obj["timestamp"] = new Date().getTime();
+				val_obj["method"] = config.apimethod.areachildlist;
+				val_obj["version"] = config.apiversion;
 				var sign = GetSign(val_obj);
 				var param = {
 			        queryData: {
@@ -1590,6 +1598,8 @@
 	        obj_img_up["keyCode"] = "";
 	        obj_img_up["key"] = "APPLYBUILD";
 	        obj_img_up["imageFiles"] = base64;
+	        obj_img_up["method"] = config.apimethod.imageupload;
+			obj_img_up["version"] = config.apiversion;
 	        var sign = GetSign(obj_img_up);
 	        var param = {
 		        queryData: {
@@ -1656,6 +1666,8 @@
 	        obj_img_up["keyCode"] = "";
 	        obj_img_up["key"] = "APPLYBUILD";
 	        obj_img_up["imageFiles"] = base64;
+	        obj_img_up["method"] = config.apimethod.imageupload;
+			obj_img_up["version"] = config.apiversion;
 	        var sign = GetSign(obj_img_up);
 	        var param = {
 		        queryData: {
@@ -1954,7 +1966,8 @@
 			obj_add["areaid2"] = areaid2;
 			obj_add["areaid3"] = areaid3;
 			obj_add["areaid4"] = areaid4;
-
+			obj_add["method"] = config.apimethod.perjzsave;
+			obj_add["version"] = config.apiversion;
 			var sign = GetSign(obj_add);
 			var param_add = {
 		        queryData: {

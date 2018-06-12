@@ -990,6 +990,8 @@
 					val_obj["sid"] = sid;
 					val_obj["isCheckin"] = "";
 					val_obj["timestamp"] = new Date().getTime();
+					val_obj["method"] = config.apimethod.signin;
+					val_obj["version"] = config.apiversion;
 					console.log(val_obj); 
 					var sign = GetSign(val_obj);
 					console.log(sign);
@@ -1030,6 +1032,8 @@
 			    	var obj_member = {};
 					obj_member["sid"] = sid;
 					obj_member["type"] = 'detailed';
+					obj_member["method"] = config.apimethod.member;
+					obj_member["version"] = config.apiversion;
 					var sign = GetSign(obj_member);
 					var param = {
 				        queryData: {
@@ -1080,6 +1084,8 @@
 			    function loadMsg(){
 			    	var obj_msg = {};
 			    	obj_msg["sid"] = sid;
+			    	obj_msg["method"] = config.apimethod.homemsglist;
+					obj_msg["version"] = config.apiversion;
 			    	var sign = GetSign(obj_msg);
 					var param = {
 				        queryData: {
@@ -1115,7 +1121,10 @@
 			    }
 			    
 			    function picShow(){
-			    	var sign = GetSign({});
+			    	var obj_msg = {};
+			    	obj_msg["method"] = config.apimethod.picshow;
+					obj_msg["version"] = config.apiversion;
+			    	var sign = GetSign(obj_msg);
 			    	var param = {
 				        queryData: {
 				          'method': config.apimethod.picshow,
@@ -1185,6 +1194,8 @@
 			    	/*clicked('_www/view/member/jfsc/jfsc.html');*/
 			    	var obj_jf = {};
 					obj_jf["sid"] = sid;
+					obj_jf["method"] = config.apimethod.getshopurl;
+					obj_jf["version"] = config.apiversion;
 					var sign = GetSign(obj_jf);
 					var param = {
 				        queryData: {
@@ -1215,6 +1226,8 @@
 			    	/*clicked('_www/view/member/jfsc/jfsc.html');*/
 			    	var obj_jf = {};
 					obj_jf["sid"] = sid;
+					obj_jf["method"] = config.apimethod.getwddzurl;
+					obj_jf["version"] = config.apiversion;
 					var sign = GetSign(obj_jf);
 					var param = {
 				        queryData: {
@@ -1273,6 +1286,8 @@
 		    	var obj_msg = {};
 		    	obj_msg["sid"] = sid;
 		    	obj_msg["cid"] = plid;
+		    	obj_msg["method"] = config.apimethod.singlemsg;
+				obj_msg["version"] = config.apiversion;
 		    	var sign = GetSign(obj_msg);
 				var param = {
 			        queryData: {
@@ -1375,6 +1390,8 @@
 		        var obj_zan = {};
 		        obj_zan["sid"] = sid;
 		        obj_zan["cid"] = id;
+		        obj_zan["method"] = config.apimethod.followup;
+				obj_zan["version"] = config.apiversion;
 		        var sign = GetSign(obj_zan);
 		        var param = {
 			        queryData: {
@@ -1423,6 +1440,8 @@
 		        obj_pl["sid"] = sid;
 		        obj_pl["cid"] = plid;
 		        obj_pl["comment"] = comment;
+		        obj_pl["method"] = config.apimethod.msgsend;
+				obj_pl["version"] = config.apiversion;
 		        var sign = GetSign(obj_pl);
 		        var param = {
 			        queryData: {

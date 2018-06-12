@@ -131,6 +131,8 @@
 				obj_point["name"] = jQuery("#key").val();
 				obj_point["type"] = jQuery("#regType").val();
 				obj_point["mobile"] = "";
+				obj_point["method"] = config.apimethod.gethylist;
+				obj_point["version"] = config.apiversion;
 				var sign = GetSign(obj_point);
 				var param = {
 			        queryData: {

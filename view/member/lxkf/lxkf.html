@@ -84,6 +84,8 @@
 		var sid = localStorage.getItem("sid");
 		var obj_kf = {};
 		obj_kf["sid"] = sid;
+		obj_kf["method"] = config.apimethod.customerlist;
+		obj_kf["version"] = config.apiversion;
 		var sign = GetSign(obj_kf);
 		var param = {
 	        queryData: {

@@ -345,6 +345,8 @@
 				obj_point["page"] = count;
 				obj_point["pageNum"] = pageNum;
 				obj_point["tip"] = 0;
+				obj_point["method"] = config.apimethod.msglist;
+				obj_point["version"] = config.apiversion;
 				var sign = GetSign(obj_point);
 				var param = {
 			        queryData: {
@@ -487,6 +489,8 @@
 		        var obj_zan = {};
 		        obj_zan["sid"] = sid;
 		        obj_zan["cid"] = id;
+		        obj_zan["method"] = config.apimethod.followup;
+				obj_zan["version"] = config.apiversion;
 		        var sign = GetSign(obj_zan);
 		        var param = {
 			        queryData: {
@@ -535,6 +539,8 @@
 		        obj_pl["sid"] = sid;
 		        obj_pl["cid"] = plid;
 		        obj_pl["comment"] = comment;
+		        obj_pl["method"] = config.apimethod.msgsend;
+				obj_pl["version"] = config.apiversion;
 		        var sign = GetSign(obj_pl);
 		        var param = {
 			        queryData: {
@@ -592,6 +598,8 @@
 		    	var obj_msg = {};
 		    	obj_msg["sid"] = sid;
 		    	obj_msg["cid"] = plid;
+		    	obj_msg["method"] = config.apimethod.singlemsg;
+				obj_msg["version"] = config.apiversion;
 		    	var sign = GetSign(obj_msg);
 				var param = {
 			        queryData: {

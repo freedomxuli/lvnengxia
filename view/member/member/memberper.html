@@ -319,6 +319,8 @@
 	        		var obj_member = {};
 					obj_member["sid"] = sid;
 					obj_member["type"] = 'detailed';
+					obj_member["method"] = config.apimethod.member;
+					obj_member["version"] = config.apiversion;
 					var sign = GetSign(obj_member);
 					var param = {
 				        queryData: {
@@ -371,6 +373,8 @@
 	        	function loadkind(){
 	        		var obj_roof = {};
 	        		obj_roof["sid"] = sid;
+	        		obj_roof["method"] = config.apimethod.tileget;
+					obj_roof["version"] = config.apiversion;
 	        		var sign = GetSign(obj_roof);
 					var param = {
 				        queryData: {
@@ -421,6 +425,8 @@
 					val_obj["type"] = "changeTel";
 					val_obj["mobile"] = phonenum;
 					val_obj["timestamp"] = new Date().getTime();
+					val_obj["method"] = config.apimethod.usersendSms;
+					val_obj["version"] = config.apiversion;
 					console.log(val_obj); 
 					var sign = GetSign(val_obj);
 					console.log(sign);
@@ -470,6 +476,8 @@
 			    	obj_changetel["phone"] = phonenum;
 			    	obj_changetel["msgCode"] = msgCode;
 			    	obj_changetel["timestamp"] = new Date().getTime();
+			    	obj_changetel["method"] = config.apimethod.changetel;
+					obj_changetel["version"] = config.apiversion;
 			    	var sign = GetSign(obj_changetel);
 			    	var param = {
 				        queryData: {
@@ -527,6 +535,8 @@
 			    	var obj_changepwd = {};
 			    	obj_changepwd["sid"] = sid;
 			    	obj_changepwd["password"] = repasswd;
+			    	obj_changepwd["method"] = config.apimethod.changepwd;
+					obj_changepwd["version"] = config.apiversion;
 			    	var sign = GetSign(obj_changepwd);
 			    	var param = {
 				        queryData: {
@@ -604,6 +614,8 @@
 			    	obj_save["roofAcreage"] = roofAcreage;
 			    	obj_save["tileKind"] = tileKind;
 			    	obj_save["addr"] = addr;
+			    	obj_save["method"] = config.apimethod.saveper;
+					obj_save["version"] = config.apiversion;
 			    	var sign = GetSign(obj_save);
 			    	var param = {
 				        queryData: {
@@ -648,6 +660,8 @@
 		        	var sid = localStorage.getItem("sid");
 		    		var obj_sid = {};
 					obj_sid["sid"] = sid;
+					obj_sid["method"] = config.apimethod.logout;
+					obj_sid["version"] = config.apiversion;
 					var sign = GetSign(obj_sid);
 					var param = {
 				        queryData: {
@@ -777,6 +791,8 @@
 			        obj_img_up["keyCode"] = "";
 			        obj_img_up["key"] = "HEAD";
 			        obj_img_up["imageFiles"] = my_icon;
+			        obj_img_up["method"] = config.apimethod.imageupload;
+					obj_img_up["version"] = config.apiversion;
 			        var sign = GetSign(obj_img_up);
 			        var param = {
 				        queryData: {
@@ -801,6 +817,8 @@
 			                    var obj_head = {};
 			                    obj_head["sid"] = sid;
 			                    obj_head["imagePath"] = rs.data.bpic;
+			                    obj_head["method"] = config.apimethod.headimgup;
+								obj_head["version"] = config.apiversion;
 			                    sign = GetSign(obj_head);
 			                    param = {
 							        queryData: {
@@ -890,6 +908,8 @@
 			        obj_img_up["keyCode"] = "";
 			        obj_img_up["key"] = "HEAD";
 			        obj_img_up["imageFiles"] = base64;
+			        obj_img_up["method"] = config.apimethod.imageupload;
+					obj_img_up["version"] = config.apiversion;
 			        var sign = GetSign(obj_img_up);
 			        var param = {
 				        queryData: {
