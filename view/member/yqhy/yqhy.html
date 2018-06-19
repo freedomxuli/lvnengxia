@@ -54,12 +54,14 @@
 	                </div>
 	            </div>
 	            <div class="mui-card-content">
-	            	<p class="left_tip" style="margin-top:15px;">1. 右上角点击"发送给朋友"分享</p>
-  					<p class="left_tip">2. 长按二维码可选择下载或发送给朋友</p>
+  					<p class="left_tip">单击二维码可选择发送朋友圈或发送给朋友</p>
   					<!-- <button class="mui-btn mui-btn-success btn" data-clipboard-text="">复制我的专属邀请链接</button> -->
-					<img class="ewm" src="" alt="" width="80%"/>
+					<img id="pic" class="ewm" src="" alt="" width="80%" onclick="shareShow();"/>
 					<p class="detail_tip">扫一扫邀请好友注册会员</p>
 					<p class="detail_tip"></p>
+				</div>
+				<div class="row mui-input-row" style="width: 100%;display: none;">
+					<textarea id="sharecontent" rows="3" class="mui-input-clear" placeholder="多行文本框">手机扫描二维码，用浏览器打开链接，随时随地，轻松下载 绿能侠会员 APP。</textarea>
 				</div>
         	</div>
 		</div>
@@ -110,6 +112,7 @@
 			        	jQuery(".avatar").attr('src',rs.data.avatar); 
 		        		jQuery(".mui-media-body").html("<b>"+rs.data.showName+"</b><p>"+rs.data.account+"</p>");
 		        		jQuery(".ewm").attr('src',rs.data.qrcodeImg);
+		        		updateSerivces();
 			        }else
 			        {
 			        	plus.nativeUI.toast("获取失败：" + rs.data);
@@ -117,6 +120,108 @@
 			        }
       			})
 			});
+			/**
+			 * 更新分享服务
+			 */
+			function updateSerivces() {
+				plus.share.getServices(function(s) {
+					shares = {};
+					for(var i in s) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+				}, function(e) {
+					mui.alert('获取分享服务列表失败：' + e.message);
+				});
+			}
+
+			// 打开分享
+			function shareShow() {
+				var shareBts = [];
+				// 更新分享列表
+				var ss = shares['weixin'];
+				if(navigator.userAgent.indexOf('qihoo') < 0) { //在360流应用中微信不支持分享图片
+					ss && ss.nativeClient && (shareBts.push({
+							title: '微信朋友圈',
+							s: ss,
+							x: 'WXSceneTimeline'
+						}),
+						shareBts.push({
+							title: '微信好友',
+							s: ss,
+							x: 'WXSceneSession'
+						}));
+				}
+				//	ss=shares['sinaweibo'];
+				//	ss&&shareBts.push({title:'新浪微博',s:ss});
+				//	ss=shares['qq'];
+				//	ss&&ss.nativeClient&&shareBts.push({title:'QQ',s:ss});
+				// 弹出分享列表
+				shareBts.length > 0 ? plus.nativeUI.actionSheet({
+					title: '分享',
+					cancel: '取消',
+					buttons: shareBts
+				}, function(e) {
+					(e.index > 0) && shareAction(shareBts[e.index - 1], false);
+				}) : plus.nativeUI.alert('当前环境无法支持分享操作!');
+			}
+
+			function shareAction(sb, bh) {
+//				mui.alert('分享操作：');
+				pic.realUrl = pic.src;
+				if(!sb || !sb.s) {
+					alert('无效的分享服务！');
+					return;
+				}
+				var msg = {
+					content: sharecontent.value,
+					extra: {
+						scene: sb.x
+					}
+				};
+				if(bh) {
+					msg.href = sharehref.value;
+					if(sharehrefTitle && sharehrefTitle.value != '') {
+						msg.title = sharehrefTitle.value;
+					}
+					if(sharehrefDes && sharehrefDes.value != '') {
+						msg.content = sharehrefDes.value;
+					}
+					msg.thumbs = ['_www/logo.png'];
+					msg.pictures = ['_www/logo.png'];
+				} else {
+//					alert(pic);
+//					alert(pic.realUrl);
+					if(pic && pic.realUrl) {
+						msg.pictures = [pic.realUrl];
+					}
+				}
+				// 发送分享
+				if(sb.s.authenticated) {
+//					alert('---已授权---');
+					shareMessage(msg, sb.s);
+				} else {
+//					alert('---未授权---');
+					sb.s.authorize(function() {
+						shareMessage(msg, sb.s);
+					}, function(e) {
+						alert('认证授权失败：' + e.code + ' - ' + e.message);
+					});
+				}
+			}
+			/**
+			 * 发送分享消息
+			 * @param {JSON} msg
+			 * @param {plus.share.ShareService} s
+			 */
+			function shareMessage(msg, s) {
+//				alert(JSON.stringify(msg));
+				s.send(msg, function() {
+//					alert('分享到"' + s.description + '"成功！');
+				}, function(e) {
+//					alert('分享到"' + s.description + '"失败: ' + JSON.stringify(e));
+				});
+			}
 			/*var type = "";
             mui.plusReady(function() {
       			type = plus.webview.currentWebview().type;

@@ -199,32 +199,36 @@
 				mui.init({
 		        swipeBack: true //启用右滑关闭功能
 		   });
-		    if(localStorage.getItem("autoLogin")=="1"){
+		    if(localStorage.getItem("autoLogin")&&localStorage.getItem("autoLogin")=="1"){
 		    	if(localStorage.getItem("account")){
-		    		var sid = localStorage.getItem("sid");
-		    		var obj_sid = {};
-						obj_sid["sid"] = sid;
-						obj_sid["method"] = config.apimethod.getsidver;
-        		obj_sid["version"] = config.apiversion;
-						var sign = GetSign(obj_sid);
-						var param = {
-					        queryData: {
-					          'method': config.apimethod.getsidver,
-					          'sign':sign,
-					          'sid':sid
-					        },
-					        method: 'POST'
-					    }
-						$.dataRequest(param, function(rs) {
-							console.log(JSON.stringify(rs));
-							if(rs.rsp=="succ")
-	        		{
-	        			if(rs.data.status=="true")
-	        			{
-	        				clicked('_www/view/member/hyzx/hyzx.html');
-	        			}
-	        		}
-						})
+		    		if(localStorage.getItem("sid"))
+		    		{
+		    			var sid = localStorage.getItem("sid");
+			    		var obj_sid = {};
+							obj_sid["sid"] = sid;
+							obj_sid["method"] = config.apimethod.getsidver;
+	        		obj_sid["version"] = config.apiversion;
+	        		console.log(JSON.stringify(obj_sid));
+							var sign = GetSign(obj_sid);
+							var param = {
+						        queryData: {
+						          'method': config.apimethod.getsidver,
+						          'sign':sign,
+						          'sid':sid
+						        },
+						        method: 'POST'
+						    }
+							$.dataRequest(param, function(rs) {
+								console.log(JSON.stringify(rs));
+								if(rs.rsp=="succ")
+		        		{
+		        			if(rs.data.status=="true")
+		        			{
+		        				clicked('_www/view/member/hyzx/hyzx.html');
+		        			}
+		        		}
+							})
+		    		}
 		    	}
 		    }
 		    	
