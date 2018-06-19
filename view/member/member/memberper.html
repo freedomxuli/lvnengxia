@@ -349,9 +349,9 @@
 				        		jQuery("#regType").html("<h5>类　型：企业</h5>");
 				        		
 				        	jQuery("#realName").val(rs.data.name);
-				        	jQuery("#age").val(rs.data.age);
-				        	jQuery("#roofAcreage").val(rs.data.roofAcreage);
-				        	jQuery("#tileKind").val(rs.data.tileKind);
+				        	jQuery("#age").html("<h5>户主年龄："+rs.data.age+"</h5>");
+				        	jQuery("#roofAcreage").html("<h5>屋顶朝南面积："+rs.data.roofAcreage+"</h5>");
+				        	jQuery("#tileKind").html("<h5>瓦片类型："+rs.data.tileKind+"</h5>");
 				        	if(rs.data.mail!="0"){
 				        		jQuery(".znxnum").addClass("mui-badge");
 				        		jQuery(".znxnum").html(rs.data.mail);
