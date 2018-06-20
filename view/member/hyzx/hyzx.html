@@ -264,7 +264,7 @@
 	    	}
 	    	.pl-footer{width: 100%;text-align: center;height: 38px;background: #fff;margin-top: 2px;margin-bottom: 2px;line-height: 38px;}
             .pl-footer a,.pl-footer span.mui-icon{font-size: 13px;color: #555;}
-			.middle-fixed{position: fixed;top:47%;z-index:10;right:4px;}
+			.middle-fixed{position: fixed;top:47%;z-index:1000000000000000;right:4px;}
 	    </style>
 	    <style type="text/css">
 		    .mui-backdrop-e7 {
@@ -1082,18 +1082,28 @@
 							var param_ishasznx = {
 						        queryData: {
 						          'method': config.apimethod.ishasznx,
-						          'sign':sign,
+						          'sign':sign_ishasznx,
 						          'sid':sid
 						        },
 						        method: 'POST'
 						    }
 							$.dataRequest(param_ishasznx, function(rs1) {
-								console.log(rs1);
-								var html = "";
-								html = "<div class='middle-fixed'>"+
-								            "<img src='"+rs1.data.logoUrl+"' width='55' id='jumpznx'>"+
-								        "</div>";
-								jQuery(".section-bottom").append(html);
+								console.log(JSON.stringify(rs1));
+								if(rs1.rsp=="succ")
+								{
+									if(parseInt(rs1.data.count)>0)
+									{
+										var html = "";
+										html = "<div class='middle-fixed'>"+
+										            "<img src='"+rs1.data.logoUrl+"' width='55' id='jumpznx'>"+
+										        "</div>";
+										jQuery(".container").before(html);
+									}
+								}else
+								{
+									plus.nativeUI.toast("获取失败：" + rs.data);
+									return;
+								}
 							})
 				        }else
 				        {
