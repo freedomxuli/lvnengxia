@@ -264,7 +264,7 @@
 	    	}
 	    	.pl-footer{width: 100%;text-align: center;height: 38px;background: #fff;margin-top: 2px;margin-bottom: 2px;line-height: 38px;}
             .pl-footer a,.pl-footer span.mui-icon{font-size: 13px;color: #555;}
-
+			.middle-fixed{position: fixed;top:47%;z-index:10;right:4px;}
 	    </style>
 	    <style type="text/css">
 		    .mui-backdrop-e7 {
@@ -1054,7 +1054,7 @@
 			        		else
 			        			jQuery("#name").html(rs.data.name);
 			        		jQuery("#level").html("您是："+rs.data.level);
-			        		jQuery("#point").html("　"+rs.data.point);
+			        		jQuery("#point").html("　"+rs.data.point+"积分");
 			        		jQuery("#img-head").attr("src",rs.data.headimgurl);
 			        		regType = rs.data.regType;
 			        		if(regType=="0")
@@ -1073,6 +1073,28 @@
 			        		{
 			        			jQuery("#qiandao_edit").html("签到");
 			        		}
+			        		
+			        		var obj_ishasznx = {};
+			        		obj_ishasznx["sid"] = sid;
+			        		obj_ishasznx["method"] = config.apimethod.ishasznx;
+							obj_ishasznx["version"] = config.apiversion;
+							var sign_ishasznx = GetSign(obj_ishasznx);
+							var param_ishasznx = {
+						        queryData: {
+						          'method': config.apimethod.ishasznx,
+						          'sign':sign,
+						          'sid':sid
+						        },
+						        method: 'POST'
+						    }
+							$.dataRequest(param_ishasznx, function(rs1) {
+								console.log(rs1);
+								var html = "";
+								html = "<div class='middle-fixed'>"+
+								            "<img src='"+rs1.data.logoUrl+"' width='55' id='jumpznx'>"+
+								        "</div>";
+								jQuery(".section-bottom").append(html);
+							})
 				        }else
 				        {
 				        	//plus.nativeUI.toast("获取个人信息失败：" + rs.data);
@@ -1381,11 +1403,11 @@
 		    });
 		
 		    jQuery(document.body).on('tap','.zan-a',function(){
-		        if(jQuery(this).attr('disabled')){
+		        /*if(jQuery(this).attr('disabled')){
 		            return;
-		        }
+		        }*/
 		        var that = this;
-		        jQuery(this).attr('disabled',true);
+		        //jQuery(this).attr('disabled',true);
 		        var id = jQuery(this).siblings('.hidden-info').data("index");
 		        var obj_zan = {};
 		        obj_zan["sid"] = sid;
@@ -1408,8 +1430,17 @@
 					{
 						if(rs.data.success)
 						{
-							jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart-filled'></span>赞&nbsp;"+rs.data.zanNum);
-							jQuery("#zan-person"+id).text(rs.data.zan);
+							console.log(jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan"));
+							if(jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan") == 0)
+							{
+								jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart-filled'></span>赞&nbsp;"+rs.data.zanNum);
+								jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan","1");
+							}else
+							{
+								jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart'></span>赞&nbsp;"+rs.data.zanNum);
+								jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan","0");
+							}
+							jQuery("#zan-person"+id).text(rs.data.zan==""?"　":rs.data.zan);
 							mui.toast(rs.data.msg);
 						}else
 						{
@@ -1688,13 +1719,13 @@
 						      <span class="time-tip"><%=data[i].time%></span> 
 						      <div class="mui-pull-right"> 
 						       <div id="zan-a<%=data[i].id%>" class="a-btn zan-a"> 
-						       	<%if(data[i].isZan){
+						       	<%if(data[i].isZan=="true"){
 						       		%>
-						       		<span class="mui-icon-extra mui-icon-extra-heart-filled"></span>赞&nbsp;<%=data[i].zannum%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart-filled" data-zan="1"></span>赞&nbsp;<%=data[i].zannum%>
 						       		<%
 						       	}else{
 						       		%>
-						       		<span class="mui-icon-extra mui-icon-extra-heart"></span>赞&nbsp;<%=data[i].zannum%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart" data-zan="0"></span>赞&nbsp;<%=data[i].zannum%>
 						       		<%
 						       	}%>
 						       </div> 
@@ -1709,20 +1740,15 @@
 						    </div> 
 						   <!-- 子评论列表 --> 
 						   <ul id="msg_son<%=data[i].id%>" class="mui-table-view mui-table-view-son"> 
-						   	<%
-						   		if(data[i].reply&&data[i].reply.length>0){
-						   	%>
-						    <div class="triangle triangle-up"></div> 
-						    <%if(data[i].Zan){
-						    	%>
-						    <li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+						   	<div class="triangle triangle-up"></div> 
+						   	<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
 						     <div class="mui-media-body"> 
 						      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
-						      <p id="zan-person<%=data[i].id%>" class="mui-content-text-son"> <%=data[i].Zan%> </p> 
+						      <p id="zan-person<%=data[i].id%>" class="mui-content-text-son"> <%=data[i].Zan==""?"　":data[i].Zan%> </p> 
 						     </div> 
 						    </li> 
-						    	<%
-						    }
+						   	<%
+						   		if(data[i].reply&&data[i].reply.length>0){
 						    		for(var j = 0;j < data[i].reply.length; j++)
 							    	{
 							    		%>

@@ -263,7 +263,7 @@
 	</head>
 	<body>
         <header class="mui-bar mui-bar-nav">
-            <a class="mui-action-back mui-icon mui-icon-arrowthinleft"></a>
+            <a class="mui-action-home mui-icon mui-icon-arrowthinleft"></a>
             <h1 class="mui-title">留言列表</h1>
              <div class="mui-pull-right href-go">
                 <i class="mui-icon mui-icon-compose"></i>
@@ -331,7 +331,9 @@
 			var count = 1;
 			var pageNum = 5;
 			var sid = localStorage.getItem("sid");
-			
+			jQuery(document.body).on('tap','.mui-action-home',function(){
+	            clicked('_www/view/member/hyzx/hyzx.html');
+	        });
 			/**
 			 * 上拉加载具体业务实现
 			 */
@@ -480,11 +482,11 @@
 		    });
 		
 			jQuery(document.body).on('tap','.zan-a',function(){
-		        if(jQuery(this).attr('disabled')){
+		        /*if(jQuery(this).attr('disabled')){
 		            return;
-		        }
+		        }*/
 		        var that = this;
-		        jQuery(this).attr('disabled',true);
+		        //jQuery(this).attr('disabled',true);
 		        var id = jQuery(this).siblings('.hidden-info').data("index");
 		        var obj_zan = {};
 		        obj_zan["sid"] = sid;
@@ -507,8 +509,17 @@
 					{
 						if(rs.data.success)
 						{
-							jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart-filled'></span>赞&nbsp;"+rs.data.zanNum);
-							jQuery("#zan-person"+id).text(rs.data.zan);
+							console.log(jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan"));
+							if(jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan") == 0)
+							{
+								jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart-filled'></span>赞&nbsp;"+rs.data.zanNum);
+								jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan","1");
+							}else
+							{
+								jQuery("#zan-a"+id).html("<span class='mui-icon-extra mui-icon-extra-heart'></span>赞&nbsp;"+rs.data.zanNum);
+								jQuery("#zan-a"+id).find(".mui-icon-extra").data("zan","0");
+							}
+							jQuery("#zan-person"+id).text(rs.data.zan==""?"　":rs.data.zan);
 							mui.toast(rs.data.msg);
 						}else
 						{
@@ -653,13 +664,13 @@
 						      <span class="time-tip"><%=List[i].time%></span> 
 						      <div class="mui-pull-right"> 
 						       <div id="zan-a<%=List[i].id%>" class="a-btn zan-a"> 
-						       	<%if(List[i].isZan){
+						       	<%if(List[i].isZan=="true"){
 						       		%>
-						       		<span class="mui-icon-extra mui-icon-extra-heart-filled"></span>赞&nbsp;<%=List[i].zannum%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart-filled" data-zan="1"></span>赞&nbsp;<%=List[i].zannum%>
 						       		<%
 						       	}else{
 						       		%>
-						       		<span class="mui-icon-extra mui-icon-extra-heart"></span>赞&nbsp;<%=List[i].zannum%>
+						       		<span class="mui-icon-extra mui-icon-extra-heart" data-zan="0"></span>赞&nbsp;<%=List[i].zannum%>
 						       		<%
 						       	}%>
 						       </div> 
@@ -674,21 +685,15 @@
 						    </div> 
 			        		<!-- 子评论列表 -->
 					        <ul id="msg_son<%=List[i].id%>" class="mui-table-view mui-table-view-son"> 
+					        	<div class="triangle triangle-up"></div> 
+					        	<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
+							     <div class="mui-media-body"> 
+							      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
+							      <p id="zan-person<%=List[i].id%>" class="mui-content-text-son"> <%=List[i].Zan==""?"　":List[i].Zan%> </p> 
+							     </div> 
+							    </li>
 					        <%
 					        	if(List[i].reply&&List[i].reply.length>0){
-					        	%>
-					        		<div class="triangle triangle-up"></div> 
-					        		<%if(List[i].Zan){
-					        			%>
-						        			<li class="mui-table-view-cell mui-media mui-table-view-cell-zan"> 
-										     <div class="mui-media-body"> 
-										      <span class="mui-icon-tip mui-icon-extra mui-icon-extra-heart"></span> 
-										      <p id="zan-person<%=List[i].id%>" class="mui-content-text-son"> <%=List[i].Zan%> </p> 
-										     </div> 
-										    </li> 
-					        			<%
-					        		}%>
-								    <%
 								    	for(var k = 0;k < List[i].reply.length; k++)
 								    	{
 								    		%>

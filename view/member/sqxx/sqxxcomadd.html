@@ -1321,7 +1321,7 @@ var homePage = 'http://test.lvnengxia.cn/index.php?controller=WXApp&action=index
         if(_rule!=''){
             var btnArray = ['否', '是'];
             mui.confirm('您有信息未填写完整，完整度越高申请通过率越大，是否完善信息？',null,btnArray,function(e) {
-                if (e.index == 0) {
+                if (e.index == 1) {
                 	waiting.close();
                     return;
                 } else {

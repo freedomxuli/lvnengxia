@@ -429,7 +429,7 @@
 						if(rs.data.success=="true")
 						{
 							mui.toast("发布成功！");
-							mui.back();
+							clicked('_www/view/member/message/msglist.html');
 						}
 						else{
 							mui.toast("发布失败！"+rs.res);

@@ -159,6 +159,7 @@ var config = {
         arealist:'get.area.list',//获取地区列表
         areachildlist:'get.area.children',//获取地区列表
         getsidver:'verifiIdentity.member.sid',//获取sid
-        getwddzurl:'ems.url.get'//获取我的电站
+        getwddzurl:'ems.url.get',//获取我的电站
+        ishasznx:'mail.unread.get'//是否含有站内信
     }
 }
