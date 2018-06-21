@@ -264,7 +264,7 @@
 	    	}
 	    	.pl-footer{width: 100%;text-align: center;height: 38px;background: #fff;margin-top: 2px;margin-bottom: 2px;line-height: 38px;}
             .pl-footer a,.pl-footer span.mui-icon{font-size: 13px;color: #555;}
-			.middle-fixed{position: fixed;top:47%;z-index:1000000000000000;right:4px;}
+			.middle-fixed{position: fixed;top:47%;z-index:1000000000000000;right:4px;display: none;}
 	    </style>
 	    <style type="text/css">
 		    .mui-backdrop-e7 {
@@ -464,6 +464,9 @@
 	      <div class="header-title">会员中心</div>
 	    </header>
 	    <section class="container">
+			<div class="middle-fixed">
+				<img src="" width="55" id="jumpznx">
+			</div>
 	    	<div class="top-div">
 		    	<div class="top-div-left">
 		    		<img id="img-head" class="top-div-left-img" src="../../../img/hyzx/head.png" />
@@ -1093,12 +1096,14 @@
 								{
 									if(parseInt(rs1.data.count)>0)
 									{
-										var html = "";
-										html = "<div class='middle-fixed'>"+
-										            "<img src='"+rs1.data.logoUrl+"' width='55' id='jumpznx'>"+
-										        "</div>";
-										jQuery(".container").before(html);
+										jQuery(".middle-fixed").show();
+										jQuery("#jumpznx").attr("src",rs1.data.iconUrl);
+									}else{
+										jQuery(".middle-fixed").hide();
 									}
+									jQuery("#jumpznx").click(function(){
+										clicked("_www/view/member/znx/znxlist.html");
+									})
 								}else
 								{
 									plus.nativeUI.toast("获取失败：" + rs.data);

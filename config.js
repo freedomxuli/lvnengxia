@@ -1,5 +1,5 @@
 var config = {
-    server: 'http://test.lvnengxia.cn/api.php/',
+    server: 'http://crm.lvnengxia.cn/api.php/',
     apiversion: 'app1', //系统api版本
     apiname: '', //系统配置的api名称
     pagesize: 10, // 分页组件每页显示数量
