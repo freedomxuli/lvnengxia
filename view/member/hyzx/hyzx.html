@@ -1192,6 +1192,10 @@
 						clicked("_www/view/member/tzsy/tzsycom.html");
 			    });
 			    
+			    mui(document.body).on('tap','.header-img',function(){
+			    	window.location.reload();
+			    });
+			    
 			    mui(document.body).on('tap','#member',function(){
 			    	if(regType=="0")
 						clicked("_www/view/member/member/memberper.html");
@@ -1248,7 +1252,10 @@
 		        			if(rs.data.success="true")
 		        			{
 		        				console.log(rs.data.url);
-		        				plus.runtime.openURL(rs.data.url);
+		        				plus.runtime.openWeb(rs.data.url);
+		        				/*clicked("_www/view/member/hyzx/jump.html",{
+				                	linkstr:rs.data.url
+				                });*/
 		        			}
 		        			else{
 		        				mui.toast("暂未开放");
@@ -1280,7 +1287,12 @@
 		        			if(rs.data.success="true")
 		        			{
 		        				console.log(rs.data.url);
-		        				plus.runtime.openURL(rs.data.url);
+		        				//var nwv = plus.android.currentWebview();
+		        				//plus.android.invoke(nwv,"loadUrl",rs.data.url);
+		        				plus.runtime.openWeb(rs.data.url);
+		        				/*clicked("_www/view/member/hyzx/jump.html",{
+				                	linkstr:rs.data.url
+				                });*/
 		        				//document.location.href = rs.data.url;
 		        				//clicked("jump.html");
 		        			}

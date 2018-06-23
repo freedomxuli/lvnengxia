@@ -120,9 +120,16 @@
 	                <div class="cell-view-12 detial-cell" style="padding-top: 8px;">
 	                    <div class="cell-view-6 mui-pull-left" style="padding-left: 10px;">相关图片</div>
 	                    <div class="cell-view-6 mui-pull-right" style="text-align: right;padding-right: 10px;">
-	                        <a href="javascript:void(0);"  class="edit-client" data-index="<%=data[i].id%>">
-	                            	修改<span class="mui-icon mui-icon-compose"></span>
-	                        </a>
+	                        <%
+	                    		if(data[i].isShenhe!="1")
+	                    		{
+	                    			%>
+		                    			<a href="javascript:void(0);"  class="edit-client" data-index="<%=data[i].id%>">
+				                            	修改<span class="mui-icon mui-icon-compose"></span>
+				                        </a>
+	                    			<%
+	                    		}
+	                    	%>
 	                    </div>
 	                    <% if(data[i].Slide!=null){ %>
 	                    <div id="slider" class="mui-slider" data-slidershowtimer="161">

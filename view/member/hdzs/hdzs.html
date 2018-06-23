@@ -44,7 +44,7 @@
     <script language="javascript" type="text/javascript" src="Resource/Script/mui/js/mui.js?v=1513673507"></script>
     <script>
         mui.init({
-            swipeBack:true //启用右滑关闭功能
+            swipeBack:false //启用右滑关闭功能
         });
 
         jQuery(document.body).on('tap','.mui-action-home',function(){
@@ -66,8 +66,27 @@
 	        method: 'POST'
 	    }
 		$.dataRequest(param, function(rs) {
+			console.log(JSON.stringify(rs));
 			var list = template("list",rs);
 			jQuery(".mui-content").html(list);
+			jQuery(document.body).on('tap','.mui-image-list-full img',function(){
+                var link = jQuery(this).data('link');
+                var target = jQuery(this).data('target');
+                if(!link){
+                    return ;
+                }
+                mui.toast('跳转活动页面...');
+                plus.runtime.openWeb(link);
+                /*if(target=="0")
+                {
+                	clicked("_www/view/member/hyzx/jump.html",{
+	                	linkstr:link
+	                });
+                }else
+                {
+                	plus.runtime.openURL(link);
+                }*/
+           });
 		})
 
         /*jQuery(document.body).on('tap','.mui-image-list-full img',function(){
@@ -85,7 +104,7 @@
 			{
 				%>
 					<div class="mui-image-list-full">
-		                <img src="<%=data[i].coverImg%>" data-link="www.baidu.com" alt="234"/>
+		                <img src="<%=data[i].coverImg%>" data-link="<%=data[i].link%>" data-target="<%=data[i].target%>" alt="234"/>
 		            </div>
 				<%
 			}

@@ -1,5 +1,5 @@
 var config = {
-    server: 'http://crm.lvnengxia.cn/api.php/',
+    server: 'http://test.lvnengxia.cn/api.php/',
     apiversion: 'app1', //系统api版本
     apiname: '', //系统配置的api名称
     pagesize: 10, // 分页组件每页显示数量
@@ -92,7 +92,7 @@ var config = {
         activitydetaillist: 'promotion.activity.detail', //活动详情及其商品列表
         projectPageInfo: 'promotion.page.info', //营销活动详情页
         activityitemdetail: 'promotion.activity.itemdetail', //活动商品详情
-        activitylist: 'promotion.activity.list', //活动列表
+        activitylist: 'activity.list.get', //活动列表
         usercoupon: 'member.coupon.list', //会员优惠券
         uservoucher: 'member.voucher.list', //会员优惠券
         cartlist: 'cart.get', //购物车列表
