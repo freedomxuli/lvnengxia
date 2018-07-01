@@ -443,14 +443,14 @@
 			                <div class="cell-view-4"><%=data.cailiao[i].proName%></div>
 			                <div class="cell-view-4"><%=data.cailiao[i].kind%></div>
 			                <div class="cell-view-4"><%=data.cailiao[i].guige%></div>
-			                <div class="cell-view-4">单位:<%=data.cailiao[i].unit%></div>
+			                <div class="cell-view-4">单位：<%=data.cailiao[i].unit%></div>
 			               <!--  <div class="cell-view-4">方案18</div>
 			                <div class="cell-view-4">参数10.270</div>
 			                <div class="cell-view-4">方案27</div>
 			                <div class="cell-view-4">参数2760.000</div> -->
-			                <div class="cell-view-4">数量<span><input type="text" name="cnt[]" placeholder="数量" id="cnt[]" value="<%=data.cailiao[i].cnt%>" readonly></span></div>
-			                <div class="cell-view-4">单价<span><input type="text" name="danjia[]" placeholder="单价" id="danjia[]" value="<%=data.cailiao[i].price%>" readonly></span></div>
-			                <div class="cell-view-4">金额<span><input type="text" name="money[]" placeholder="金额" id="money[]" value="<%=data.cailiao[i].money%>" readonly></span></div>
+			                <div class="cell-view-4">数量：<span name="cnt[]" id="cnt[]"><%=data.cailiao[i].cnt%></span></div>
+			                <div class="cell-view-4">单价：<span name="danjia[]" id="danjia[]"><%=data.cailiao[i].price%></span></div>
+			                <div class="cell-view-4">金额：<span name="money[]" id="money[]"><%=data.cailiao[i].money%></span></div>
 			
 			                <span><input type="hidden" name="guize[]" id="guize[]" value="divide" readonly></span>
 			                <span><input type="hidden" name="guize2[]" id="guize2[]" value="equal" readonly></span>
@@ -476,10 +476,10 @@
 		                        <span class="mui-radius mui-badge-success"><%=data.project[i].no%></span>
 		                    </div>
 		                    <div class="cell-view-4"><%=data.project[i].proName%></div>
-			                <div class="cell-view-4">单位:<%=data.project[i].unit%></div>
-		                    <div class="cell-view-4">数量<input type="text" class="form-control" name="otherAcnt[]" id="otherAcnt[]" value="<%=data.project[i].cnt%>" readonly></div>
-		                    <div class="cell-view-4">单价<input type="text" class="form-control" name="otherAdanjia[]" id="otherAdanjia[]" value="<%=data.project[i].price%>" readonly></div>
-		                    <div class="cell-view-4">金额<input type="text" class="form-control" name="otherAmoney[]" id="otherAmoney[]" value="<%=data.project[i].money%>" readonly></div>
+			                <div class="cell-view-4">单位：<%=data.project[i].unit%></div>
+		                    <div class="cell-view-4">数量：<span class="form-control" name="otherAcnt[]" id="otherAcnt[]"><%=data.project[i].cnt%></span></div>
+		                    <div class="cell-view-4">单价：<span class="form-control" name="otherAdanjia[]" id="otherAdanjia[]"><%=data.project[i].price%></span></div>
+		                    <div class="cell-view-4">金额：<span class="form-control" name="otherAmoney[]" id="otherAmoney[]"><%=data.project[i].money%></span></div>
 		
 		                    <span><input type="hidden" name="otherguize[]" id="otherguize[]" value="multiply" readonly></span>
 		                    <span><input type="hidden" name="otherguize2[]" id="otherguize2[]" value="equal" readonly></span>
@@ -511,9 +511,9 @@
 		                    <div class="cell-view-4">参数11000.000</div>
 		                    <div class="cell-view-4">方案27</div>
 		                    <div class="cell-view-4">参数20.160</div> -->
-		                    <div class="cell-view-4">数量<input type="text" class="form-control" name="otherAcnt[]" id="otherAcnt[]" value="<%=data.qita[i].cnt%>" readonly></div>
-		                    <div class="cell-view-4">单价<input type="text" class="form-control" name="otherAdanjia[]" id="otherAdanjia[]" value="<%=data.qita[i].price%>" readonly></div>
-		                    <div class="cell-view-4">金额<input type="text" class="form-control" name="otherAmoney[]" id="otherAmoney[]" value="<%=data.qita[i].money%>" readonly></div>
+		                    <div class="cell-view-4">数量：<span class="form-control" name="otherAcnt[]" id="otherAcnt[]"><%=data.qita[i].cnt%></span></div>
+		                    <div class="cell-view-4">单价：<span class="form-control" name="otherAdanjia[]" id="otherAdanjia[]"><%=data.qita[i].price%></span></div>
+		                    <div class="cell-view-4">金额：<span class="form-control" name="otherAmoney[]" id="otherAmoney[]"><%=data.qita[i].money%></span></div>
 		
 		                    <span><input type="hidden" name="otherguize[]" id="otherguize[]" value="multiply" readonly></span>
 		                    <span><input type="hidden" name="otherguize2[]" id="otherguize2[]" value="equal" readonly></span>

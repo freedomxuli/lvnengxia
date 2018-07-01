@@ -198,7 +198,107 @@
 			
 				mui.init({
 		        swipeBack: true //启用右滑关闭功能
-		   });
+		    });
+		   	var dangqianbanbenhao = plus.runtime.version;
+				var xitong = null;
+				if(mui.os.ios) {
+					xitong = "IOS";
+				} else {
+					xitong = "Android";
+				}
+				jiachabanben("login", xitong, dangqianbanbenhao);
+				function jiachabanben(type, xitong, dangqianbanbenhao) {
+					var sid = localStorage.getItem("sid");
+	    		var obj_sid = {};
+					obj_sid["timestamp"] = new Date().getTime();
+					obj_sid["method"] = config.apimethod.getversion;
+    			obj_sid["version"] = config.apiversion;
+    			console.log(JSON.stringify(obj_sid));
+					var sign = GetSign(obj_sid);
+					var param = {
+				        queryData: {
+				          'method': config.apimethod.getversion,
+				          'sign':sign,
+				          'timestamp':obj_sid["timestamp"]
+				        },
+				        method: 'POST'
+				    }
+					$.dataRequest(param, function(rs) {
+						if(rs.rsp=="succ")
+        		{
+        			if(rs.data.android!=dangqianbanbenhao)
+        			{
+        				var zuixinbanben = rs.data.android;
+								var btnArray = ['否', '是'];
+								mui.confirm('当前版本:' + dangqianbanbenhao + ',最新版本:' + zuixinbanben, '确认更新', btnArray, function(e) {
+									var genxinurl = rs.data.android_url;
+									if(e.index == 1) {
+		                var ua = navigator.userAgent.toLowerCase();
+		                if(/iphone|ipad|ipod/.test(ua)) {
+		                	plus.runtime.openURL(rs.data.ios_url);
+		                }else
+		                {
+		                	var wt = plus.nativeUI.showWaiting('下载更新中，请勿关闭');
+		                	var dtask = plus.downloader.createDownload(genxinurl, {}, function(d, status) {   
+		                        if (status == 200) { // 下载成功   
+		                            var path = d.filename;    
+		                            plus.runtime.install(path);   
+		                        } else { //下载失败   
+		                            mui.alert("Download failed: " + status);
+		                        }   
+		                    });   
+		                	dtask.start();  
+		                }
+									}
+								})
+        			}
+        		}
+					})
+					/*mui.ajax("http://chb.yk56.net/WebService/APP_JianChaBanBen.ashx", {
+						dataType: "json",
+						type: "post",
+						data: {
+							"xitong": xitong,
+							"dangqianbanbenhao": dangqianbanbenhao
+						},
+						success: function(data, status, xhr) {
+							if(data.sign == '0') {
+								if(type == "shezhi") {
+									mui.alert("已是最新版本");
+								};
+							}
+							if(data.sign == '1') {
+								var zuixinbanben = data.zuixinbanben;
+								var genxinurl = data.genxinurl;
+								//var genxinurl = "http://main.chahuobao.net/chahuobao.apk";
+								var btnArray = ['否', '是'];
+								mui.confirm('当前版本:' + dangqianbanbenhao + ',最新版本:' + zuixinbanben, '确认更新', btnArray, function(e) {
+									if(e.index == 1) {
+										//plus.runtime.openURL(genxinurl);
+		                var url = "http://main.chahuobao.net/chahuobao.apk"; // 下载文件地址   
+		                var ua = navigator.userAgent.toLowerCase();
+		                if(/iphone|ipad|ipod/.test(ua)) {
+		                	plus.runtime.openURL(genxinurl);
+		                }else
+		                {
+		                	var wt = plus.nativeUI.showWaiting('下载更新中，请勿关闭');
+		                	var dtask = plus.downloader.createDownload(url, {}, function(d, status) {   
+		                        if (status == 200) { // 下载成功   
+		                            var path = d.filename;    
+		                            plus.runtime.install(path);   
+		                        } else { //下载失败   
+		                            mui.alert("Download failed: " + status);   
+		                        }   
+		                    });   
+		                	dtask.start();  
+		                }
+									}
+								})
+							}
+						}
+					});*/
+				}
+				
 		    if(localStorage.getItem("autoLogin")&&localStorage.getItem("autoLogin")=="1"){
 		    	if(localStorage.getItem("account")){
 		    		if(localStorage.getItem("sid"))
