@@ -463,14 +463,14 @@
 	      <img class="header-img" src="../../../img/hyzx/home.png"/>
 	      <div class="header-title">会员中心</div>
 	    </header>
+		<div class="middle-fixed">
+			<img src="" width="55" id="jumpznx">
+		</div>
 	    <div id="pullrefresh">
 	    	<div class="mui-scroll">
 	    		<ul class="scroll">
 	    			<li style="width: 100%;">
 	    				<section class="container">
-							<div class="middle-fixed">
-								<img src="" width="55" id="jumpznx">
-							</div>
 					    	<div class="top-div">
 						    	<div class="top-div-left">
 						    		<img id="img-head" class="top-div-left-img" src="../../../img/hyzx/head.png" />
@@ -1152,6 +1152,7 @@
 						        method: 'POST'
 						    }
 							$.dataRequest(param_ishasznx, function(rs1) {
+								console.log("站内信图标："+JSON.stringify(rs1));
 								if(rs1.rsp=="succ")
 								{
 									if(parseInt(rs1.data.count)>0)
