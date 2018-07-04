@@ -9,7 +9,7 @@ function onPlusReady() {
 function onNetChange() {
   var nt = plus.networkinfo.getCurrentType();
 
-  switch(nt) {
+  /*switch(nt) {
     case plus.networkinfo.CONNECTION_ETHERNET:
     case plus.networkinfo.CONNECTION_WIFI:
       plus.nativeUI.toast("已连接到wifi网络", {
@@ -31,7 +31,7 @@ function onNetChange() {
         verticalAlign: 'center'
       });
       break;
-  }
+  }*/
 }
 
 // 通用倒计时，包括倒计时所在容器，倒数秒数，显示方式，回调。
