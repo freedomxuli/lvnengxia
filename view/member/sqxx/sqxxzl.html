@@ -118,16 +118,30 @@
                      	<img src="../../../img/sqxxcx/site.png"/> 
                      <%}%>
                 </div>
-                <div class='content'>
-                    <div class='triangle'></div>
-                    <span><%=data[i].text%></span>
-                    <%if(data[i].finish=="true"&&(data[i].itemCode=="Kancha"||data[i].itemCode=="Hetong"||data[i].itemCode=="Caigou"||data[i].itemCode=="Bingwang"||data[i].itemCode=="Shigong")){%>
-                     	<span class="mui-icon mui-icon-arrowright goto-a" data-itemcode="<%=data[i].itemCode%>" data-itemvalue="<%=data[i].itemValue%>"></span><br>
-                     <%}else{%>
-                     	<span></span><br>
-                     <%}%>
-                    <span><%=data[i].memo%></span>
-                </div>
+                <%if(data[i].finish=="true"&&(data[i].itemCode=="Kancha"||data[i].itemCode=="Hetong"||data[i].itemCode=="Caigou"||data[i].itemCode=="Bingwang"||data[i].itemCode=="Shigong")){%>
+	            	<div class='content goto-a' data-itemcode="<%=data[i].itemCode%>" data-itemvalue="<%=data[i].itemValue%>">
+	                    <div class='triangle'></div>
+	                    <span><%=data[i].text%></span>
+	                    <%if(data[i].finish=="true"&&(data[i].itemCode=="Kancha"||data[i].itemCode=="Hetong"||data[i].itemCode=="Caigou"||data[i].itemCode=="Bingwang"||data[i].itemCode=="Shigong")){%>
+	                     	<span class="mui-icon mui-icon-arrowright goto-a" data-itemcode="<%=data[i].itemCode%>" data-itemvalue="<%=data[i].itemValue%>"></span><br>
+	                     <%}else{%>
+	                     	<span></span><br>
+	                     <%}%>
+	                    <span><%=data[i].memo%></span>
+	                </div>
+            	<%}else{%>
+            		<div class='content'>
+	                    <div class='triangle'></div>
+	                    <span><%=data[i].text%></span>
+	                    <%if(data[i].finish=="true"&&(data[i].itemCode=="Kancha"||data[i].itemCode=="Hetong"||data[i].itemCode=="Caigou"||data[i].itemCode=="Bingwang"||data[i].itemCode=="Shigong")){%>
+	                     	<span class="mui-icon mui-icon-arrowright goto-a" data-itemcode="<%=data[i].itemCode%>" data-itemvalue="<%=data[i].itemValue%>"></span><br>
+	                     <%}else{%>
+	                     	<span></span><br>
+	                     <%}%>
+	                    <span><%=data[i].memo%></span>
+	                </div>
+            	<%}%>
+                
             </div>
             <div class="vertbar"></div>
 			<%
