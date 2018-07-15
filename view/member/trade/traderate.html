@@ -329,7 +329,7 @@
                 ctx.drawImage(el, 0, 0, h, w);
               }
               
-              var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8 );   //1最清晰，越低越模糊。
+              var base64 = canvas.toDataURL('image/jpeg', 0.1 );   //1最清晰，越低越模糊。
               upload(path, base64, imgname);
             }
         }
