@@ -226,7 +226,7 @@
 					$.dataRequest(param, function(rs) {
 						if(rs.rsp=="succ")
         		{
-        			if(parseInt(rs.data.android.replace('.'))<parseInt(dangqianbanbenhao.replace('.')))
+        			if(parseInt(rs.data.android.replace('.'))>parseInt(dangqianbanbenhao.replace('.')))
         			{
         				var zuixinbanben = rs.data.android;
 								var btnArray = ['否', '是'];
