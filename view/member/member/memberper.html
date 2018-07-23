@@ -869,7 +869,7 @@
 						//生成比例 
 						var w = el.width,
 							h = el.height;
-						if(w > h) {
+/*						if(w > h) {
 							var scale = w / h;
 							w = 1280 || w;
 							h = w / scale;
@@ -877,11 +877,16 @@
 							var scale = h / w;
 							h = 1280 || h;
 							w = h / scale;
-						}
+						}*/
 						//生成canvas
 						var canvas = document.createElement('canvas');
 						var ctx = canvas.getContext('2d');
-						if(w > h) {
+						$(canvas).attr({
+							width: w,
+							height: h
+						});
+						ctx.drawImage(el, 0, 0, w, h);
+/*						if(w > h) {
 							$(canvas).attr({
 								width: w,
 								height: h
@@ -893,7 +898,7 @@
 								height: w
 							});
 							ctx.drawImage(el, 0, 0, h, w);
-						}
+						}*/
 			
 						var base64 = canvas.toDataURL('image/jpeg', 1 || 0.8); //1最清晰，越低越模糊。
 						upload(mask, hiddenid, path, base64, imgname);

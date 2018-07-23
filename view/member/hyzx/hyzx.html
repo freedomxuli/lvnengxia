@@ -516,7 +516,7 @@
 					    		<div class="center-content-div-flex">
 					    			<a href="#sheet_1">
 						    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/044.png" /></div>
-						    			<div class="center-content-div-flex-span">申请建站</div>
+						    			<div class="center-content-div-flex-span">我要赚钱</div>
 					    			</a>
 					    		</div>
 					    	</div>
@@ -537,7 +537,7 @@
 					    	<div class="center-content-div" style="display: none;">
 					    		<div id="wddz" class="center-content-div-flex">
 					    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/045.png" /></div>
-					    			<div class="center-content-div-flex-span">我的电站</div>
+					    			<div class="center-content-div-flex-span">我的资产</div>
 					    		</div>
 					    		<div id="yqhy" class="center-content-div-flex">
 					    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/038.png" /></div>
@@ -1194,18 +1194,21 @@
 				        method: 'POST'
 				    }
 					$.dataRequest(param, function(rs) {
+						//document.body.removeAttribute('data-imagelazyload');
 						var list = template("msg_list",rs);
 						jQuery(".content-div-message-list-all").html(list);
 						box_width = jQuery('.box:eq(0)').width();
 					    boxImgHeight1();
-					    document.body.removeAttribute('data-imagelazyload');
+					    //document.body.removeAttribute('data-imagelazyload');
 					    //懒加载
-			            var lazyLoad = mui(document).imageLazyload({
-			                placeholder: '../../../img/userimg.png'
+			            /*var lazyLoad = mui(document).imageLazyload({
+			                placeholder: '../../../img/userimg.png',
+				            destroy: false
 			            });
-			            lazyLoad.refresh(true);
+			            lazyLoad.refresh(true);*/
 			            //图片预览:会覆盖a标签跳转
 			            mui.previewImage();
+					    
 					})
 			    }
 			    
@@ -1692,7 +1695,7 @@
 	    		<div class="center-content-div-flex">
 	    			<a href="#sheet_1">
 		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/044.png" /></div>
-		    			<div class="center-content-div-flex-span">申请建站</div>
+		    			<div class="center-content-div-flex-span">我要赚钱</div>
 	    			</a>
 	    		</div>
 	    		<div id="hdzs" class="center-content-div-flex">
@@ -1711,7 +1714,7 @@
 	    		</div>
 	    		<div id="wddz" class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/045.png" /></div>
-	    			<div class="center-content-div-flex-span">我的电站</div>
+	    			<div class="center-content-div-flex-span">我的资产</div>
 	    		</div>
 	    	</div>
 	    	<div class="center-content-div">
@@ -1740,7 +1743,7 @@
 	    		<div class="center-content-div-flex">
 	    			<a href="#sheet_2">
 		    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/044.png" /></div>
-		    			<div class="center-content-div-flex-span">申请建站</div>
+		    			<div class="center-content-div-flex-span">我要赚钱</div>
 		    		</a>
 	    		</div>
 	    	</div>
@@ -1761,7 +1764,7 @@
 	    	<div class="center-content-div">
 	    		<div id="wddz" class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/045.png" /></div>
-	    			<div class="center-content-div-flex-span">我的电站</div>
+	    			<div class="center-content-div-flex-span">我的资产</div>
 	    		</div>
 	    		<div id="yqhy" class="center-content-div-flex">
 	    			<div class="center-content-div-flex-img-div"><img class="center-content-div-flex-img" src="../../../img/hyzx/038.png" /></div>
@@ -1791,7 +1794,7 @@
 						     			{
 						     				%>
 						     				 <div class="box">
-										       <img data-lazyload="<%=data[i].pic[j].path%>" data-preview-src="" data-preview-group="<%=data[i].id%>" />
+										       <img src="<%=data[i].pic[j].path%>" data-lazyload="<%=data[i].pic[j].path%>" data-preview-src="" data-preview-group="<%=data[i].id%>" />
 										      </div> 
 						     				<%
 						     			}
